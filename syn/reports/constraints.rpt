@@ -1,0 +1,21 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : async_fifo
+Version: O-2018.06-SP1
+Date   : Mon Dec  6 21:40:29 2021
+****************************************
+
+
+   max_leakage_power
+
+                             Required        Actual
+   Design                   Leakage Power  Leakage Power     Slack
+   -----------------------------------------------------------------
+   async_fifo                   0.00       8051798.00     -8051798.00
+                                                                    (VIOLATED)
+
+
+1
