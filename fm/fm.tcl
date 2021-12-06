@@ -102,8 +102,8 @@ set_top r:/WORK/async_fifo
 
 # USER INTERVENTION REQUIRED HERE:
 # read_ddc -i /home/rfic/Desktop/adapted/async_fifo/syn/unmapped/async_fifo.ddc
-# read_verilog -i /home/rfic/Desktop/adapted/async_fifo/syn/mapped/async_fifo.v
- read_ddc -i /home/rfic/Desktop/adapted/async_fifo/syn/mapped/async_fifo.ddc
+read_verilog -i /home/rfic/Desktop/adapted/async_fifo/syn/mapped/async_fifo.v
+#read_ddc -i /home/rfic/Desktop/adapted/async_fifo/syn/mapped/async_fifo.ddc
 set_top i:/WORK/async_fifo
 
 ########################################################################
