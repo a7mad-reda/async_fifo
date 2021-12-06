@@ -1,0 +1,41 @@
+#---------------------------------------------------------------------
+# Create Directories
+#---------------------------------------------------------------------
+if {![file exist bin]} { [exec mkdir bin] }
+if {![file exist unmapped]} { [exec mkdir unmapped] }
+if {![file exist mapped]} { [exec mkdir mapped] }
+if {![file exist scripts]} { [exec mkdir scripts] }
+if {![file exist reports]} { [exec mkdir reports] }
+
+define_design_lib WORK -path bin
+
+#---------------------------------------------------------------------
+# User-defined variables for logical library setup
+#---------------------------------------------------------------------
+
+set ADDITIONAL_SEARCH_PATH        "../libs/mw_lib/sc/LM \
+				   ./rtl ./scripts \
+				   ./mapped ./unmapped ./rtl "          ;#  Directories containing logic libraries,
+                                                                         #  logic design, script files, mapped files, RTL files.
+set TARGET_LIBRARY_FILES          sc_max.db                   		;#  Logic cell library file
+set SYMBOL_LIBRARY_FILES          sc.sdb                      		;#  Symbol library file
+
+#------------------------------------------------------------------
+# Logical Library Settings
+#------------------------------------------------------------------
+set_app_var search_path "$search_path $ADDITIONAL_SEARCH_PATH"
+set_app_var target_library $TARGET_LIBRARY_FILES
+set_app_var link_library "* $target_library"
+set_app_var symbol_library $SYMBOL_LIBRARY_FILES
+
+#------------------------------------------------------------------
+# Verify Setting
+#------------------------------------------------------------------
+echo "\n------------------------------------------------------"
+echo "\nLibrary Settings:"
+echo "search_path:             $search_path"
+echo "link_library:            $link_library"
+echo "target_library:          $target_library"
+echo "symbol_library:          $symbol_library"
+echo "\n------------------------------------------------------"
+
