@@ -1,2 +1,2 @@
-../rtl/src/async_fifo.v
--y ../rtl/src +libext+.v
+../rtl/async_fifo.v
+-y ../rtl +libext+.v

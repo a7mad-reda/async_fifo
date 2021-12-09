@@ -1,9 +1,9 @@
 current_design "async_fifo"
 
 #DEFINITE CLOCKS:
-clock -name "wclk" -domain wr_domain -period 10 -edge {0 5} -tag src
-clock -name "rclk" -domain rd_domain -period 10 -edge {0 5} -tag dest
-#sg_clock_group -group {src} -group {dest}
+clock -name "wclk" -domain wr_domain -period 8 -edge {0 4} -tag src
+clock -name "rclk" -domain rd_domain -period 6 -edge {0 3} -tag dest
+sg_clock_group -group {src} -group {dest}
 
 ##ASYNCHRONOUS RESETS:
 #DEFINITE RESETS:
@@ -11,18 +11,18 @@ reset -name "rrst_n" -value 0
 reset -name "wrst_n" -value 0
 
 #DEFINITE INPUTS:
-input -name {wrst_n wptr_clr wen wdata near_full_mrgn} -clock wclk
-input -name {rrst_n rptr_clr ren near_empty_mrgn} -clock rclk
+input -name {wrst_n wen wdata near_full_mrgn} -clock wclk
+input -name {rrst_n ren near_empty_mrgn} -clock rclk
 
 #DEFINITE OUTPUTS:
 output -name {full near_full over_flow} -clock "wclk"
 output -name {empty near_empty under_flow} -clock "rclk"
 
 #DEFINITE GRAY ENCODED SIGNALS:
-#cdc_filter_coherency -unrelated "rptr_empty.rptr"
-#cdc_filter_coherency -unrelated "wptr_full.wptr"
-#gray_signals -name "rptr_empty.rptr"
-#gray_signals -name "wptr_full.wptr"
+set_case_analysis -name async_fifo.rptr_clr -value 0
+set_case_analysis -name async_fifo.wptr_clr -value 0
+gray_signals -name rptr_empty.rptr
+gray_signals -name wptr_full.wptr
 
 #DEFINITE FIFO CONSTRAINT:
 fifo 	-memory "fifo_mem.mem" \

@@ -19,4 +19,20 @@ set_option top async_fifo
 current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
 
 
+current_goal cdc/cdc_setup_check -top async_fifo
+set_parameter use_inferred_abstract_port no
+set_parameter use_inferred_clocks no
+set_parameter use_inferred_resets no
+set_parameter enable_generated_clocks no
+
+
+current_goal cdc/cdc_verify_struct -top async_fifo
+set_parameter enable_fifo yes
+set_parameter use_inferred_abstract_port no
+set_parameter fa_msgmode all
+
+
+current_goal cdc/cdc_verify -top async_fifo
+set_parameter enable_fifo yes
+set_parameter use_inferred_abstract_port no
 

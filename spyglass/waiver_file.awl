@@ -1,0 +1,3 @@
+waive -rule {  {W240}  }  -comment {Created by rfic on 09-Dec-2021 22:12:04} 
+waive -rule {  {Av_deadcode01}  }  -comment {Created by rfic on 09-Dec-2021 23:14:17} 
+waive -rule {  {Av_bus02}  }  -comment {Created by rfic on 09-Dec-2021 23:14:33} 
