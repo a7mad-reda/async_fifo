@@ -1,7 +1,0 @@
-../rtl/async_fifo.v
-../rtl/dpram.v
-../rtl/rptr_empty.v
-../rtl/sync.v
-../rtl/sync_rst.v
-../rtl/wptr_full.v
-../ver/async_fifo_tb.sv

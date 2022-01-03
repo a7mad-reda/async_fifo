@@ -1,7 +1,0 @@
-/home/rfic/Desktop/adapted/async_fifo/rtl/async_fifo.v
-/home/rfic/Desktop/adapted/async_fifo/rtl/dpram.v
-/home/rfic/Desktop/adapted/async_fifo/rtl/rptr_empty.v
-/home/rfic/Desktop/adapted/async_fifo/rtl/sync.v
-/home/rfic/Desktop/adapted/async_fifo/rtl/sync_rst.v
-/home/rfic/Desktop/adapted/async_fifo/rtl/wptr_full.v
-/home/rfic/Desktop/adapted/async_fifo/ver/async_fifo_tb.sv
