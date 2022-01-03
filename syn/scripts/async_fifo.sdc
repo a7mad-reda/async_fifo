@@ -10,7 +10,7 @@ set src_latency_dest_clk	1.6	;# maximum dest_clock source latency is 1.1ns
 set net_latency_src_clk		0.3	;# maximum src_clock network latency is 0.3ns
 set net_latency_dest_clk	0.7	;# maximum dest_clock network latency is 0.5ns
 
-# Clock Uncertainty 		(MAX"setup" > SKEW + JITTER + SETUP_MARGIN)
+# Clock Uncertainty 			(MAX"setup" > SKEW + JITTER + SETUP_MARGIN)
 set uncertainty_src_clk		0.15	;# src_clk intraclock max uncertainty
 set uncertainty_dest_clk	0.35	;# dest_clk intraclock max uncertainty
 set uncertainty_src_clk_dest	0.15	;# src_clk to dest_clck interclock max uncertainty

@@ -1,0 +1,376 @@
+#-----------------------------------------------------------------------
+# Current Mode >> TM1		 					
+#-----------------------------------------------------------------------
+
+In mode: TM1...
+  Design has scan chains in this mode
+  Design is scan routed
+  Post-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  ...checking vector rules...
+  ...checking clock rules...
+  ...checking scan chain rules...
+  ...checking scan compression rules...
+  ...checking X-state rules...
+  ...checking tristate rules...
+  ...extracting scan details...
+
+-------------------------------------------------------------------------
+Traced Scan Chains
+-------------------------------------------------------------------------
+Chain "1" traced through 45 flip-flops 
+Chain "2" traced through 44 flip-flops 
+Chain "3" traced through 44 flip-flops 
+Chain "4" traced through 44 flip-flops 
+
+
+-------------------------------------------------------------------------
+Summary of all DFT DRC violations
+-------------------------------------------------------------------------
+
+0 TOTAL VIOLATIONS 
+
+Test Design rule checking did not find violations
+
+-----------------------------------------------------------------------------------------   
+ Sequential Cell Report:       Sequential       Core             Core                 
+                               Cells            Segments         Segment Cells        
+-----------------------------------------------------------------------------------------
+ Sequential Elements Detected:  177                0                   0                       
+ Clock Gating Cells          :  0                                                        
+ Synchronizing Cells         :  0                                                        
+ Non-Scan Elements           :  0                                                        
+ Excluded Scan Elements      :  0                  0                   0                       
+ Violated Scan Elements      :  0                  0                   0                       
+ (Traced) Scan Elements      :  177     (100.0%)   0       (  0.0%)    0       (  0.0%)      
+-----------------------------------------------------------------------------------------
+
+
+Information: Test design rule checking completed. (TEST-123)
+  Running test coverage estimation...
+ 6462 faults were added to fault list.
+ 0            3408    713         0/0/0    79.29%      0.01
+ 0             402    307         1/3/0    85.53%      0.01
+ 0             141    157        1/12/0    87.71%      0.01
+ 0              76     71        2/21/0    88.90%      0.01
+ 0              43      0        3/48/0    89.58%      0.02
+ 
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           0
+ -----------------------------------------------
+ 
+
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       5779
+ Possibly detected                PT          0
+ Undetectable                     UD         11
+ ATPG untestable                  AU        672
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              6462
+ test coverage                            89.58%
+ -----------------------------------------------
+  Information: The test coverage above may be inferior
+               than the real test coverage with customized
+               protocol and test simulation library.
+1
+#-----------------------------------------------------------------------
+# Current Mode >> TM2		 					
+#-----------------------------------------------------------------------
+
+In mode: TM2...
+  Design has scan chains in this mode
+  Design is scan routed
+  Post-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  ...checking vector rules...
+  ...checking clock rules...
+  ...checking scan chain rules...
+  ...checking scan compression rules...
+  ...checking X-state rules...
+  ...checking tristate rules...
+  ...extracting scan details...
+
+-------------------------------------------------------------------------
+Traced Scan Chains
+-------------------------------------------------------------------------
+Chain "1" traced through 89 flip-flops 
+Chain "2" traced through 88 flip-flops 
+
+
+-------------------------------------------------------------------------
+Summary of all DFT DRC violations
+-------------------------------------------------------------------------
+
+0 TOTAL VIOLATIONS 
+
+Test Design rule checking did not find violations
+
+-----------------------------------------------------------------------------------------   
+ Sequential Cell Report:       Sequential       Core             Core                 
+                               Cells            Segments         Segment Cells        
+-----------------------------------------------------------------------------------------
+ Sequential Elements Detected:  177                0                   0                       
+ Clock Gating Cells          :  0                                                        
+ Synchronizing Cells         :  0                                                        
+ Non-Scan Elements           :  0                                                        
+ Excluded Scan Elements      :  0                  0                   0                       
+ Violated Scan Elements      :  0                  0                   0                       
+ (Traced) Scan Elements      :  177     (100.0%)   0       (  0.0%)    0       (  0.0%)      
+-----------------------------------------------------------------------------------------
+
+
+Information: Test design rule checking completed. (TEST-123)
+  Running test coverage estimation...
+ 6462 faults were added to fault list.
+ 0            3374    753         0/0/0    77.68%      0.01
+ 0             426    325         0/2/0    84.27%      0.01
+ 0             146    172         1/8/0    86.55%      0.01
+ 0              79     76        2/24/0    87.79%      0.02
+ 0              46      2        3/51/0    88.51%      0.02
+ 0               1      0        3/52/0    88.53%      0.02
+ 
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           0
+ -----------------------------------------------
+ 
+
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       5711
+ Possibly detected                PT          0
+ Undetectable                     UD         11
+ ATPG untestable                  AU        740
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              6462
+ test coverage                            88.53%
+ -----------------------------------------------
+  Information: The test coverage above may be inferior
+               than the real test coverage with customized
+               protocol and test simulation library.
+1
+#-----------------------------------------------------------------------
+# Current Mode >> TM2		 					
+#-----------------------------------------------------------------------
+
+In mode: TM2...
+  Design has scan chains in this mode
+  Design is scan routed
+  Post-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  ...checking vector rules...
+  ...checking clock rules...
+  ...checking scan chain rules...
+  ...checking scan compression rules...
+  ...checking X-state rules...
+  ...checking tristate rules...
+  ...extracting scan details...
+
+-------------------------------------------------------------------------
+Traced Scan Chains
+-------------------------------------------------------------------------
+Chain "1" traced through 89 flip-flops 
+Chain "2" traced through 88 flip-flops 
+
+
+-------------------------------------------------------------------------
+Summary of all DFT DRC violations
+-------------------------------------------------------------------------
+
+0 TOTAL VIOLATIONS 
+
+Test Design rule checking did not find violations
+
+-----------------------------------------------------------------------------------------   
+ Sequential Cell Report:       Sequential       Core             Core                 
+                               Cells            Segments         Segment Cells        
+-----------------------------------------------------------------------------------------
+ Sequential Elements Detected:  177                0                   0                       
+ Clock Gating Cells          :  0                                                        
+ Synchronizing Cells         :  0                                                        
+ Non-Scan Elements           :  0                                                        
+ Excluded Scan Elements      :  0                  0                   0                       
+ Violated Scan Elements      :  0                  0                   0                       
+ (Traced) Scan Elements      :  177     (100.0%)   0       (  0.0%)    0       (  0.0%)      
+-----------------------------------------------------------------------------------------
+
+
+Information: Test design rule checking completed. (TEST-123)
+  Running test coverage estimation...
+ 6462 faults were added to fault list.
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin deterministic ATPG: #uncollapsed_faults=4127, abort_limit=10...
+ 0            3374    753         0/0/0    77.68%      0.02
+ 0             426    325         0/2/0    84.27%      0.02
+ 0             146    172         1/8/0    86.55%      0.02
+ 0              79     76        2/24/0    87.79%      0.02
+ 0              46      2        3/51/0    88.51%      0.02
+ 0               1      0        3/52/0    88.53%      0.02
+ 
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           0
+ -----------------------------------------------
+ 
+
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       5711
+ Possibly detected                PT          0
+ Undetectable                     UD         11
+ ATPG untestable                  AU        740
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              6462
+ test coverage                            88.53%
+ -----------------------------------------------
+  Information: The test coverage above may be inferior
+               than the real test coverage with customized
+               protocol and test simulation library.
+1
+#-----------------------------------------------------------------------
+# Current Mode >> TM4		 					
+#-----------------------------------------------------------------------
+
+In mode: TM4...
+  Design has scan chains in this mode
+  Design is scan routed
+  Post-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  ...checking vector rules...
+  ...checking clock rules...
+  ...checking scan chain rules...
+  ...checking scan compression rules...
+  ...checking X-state rules...
+  ...checking tristate rules...
+  ...extracting scan details...
+
+
+-------------------------------------------------------------------------
+DRC Violations which can affect ATPG Coverage
+-------------------------------------------------------------------------
+
+ Warning: Chains 9 and 23 always have the same load value. (R9-1)
+Information: There are 7 other such violation(s). (TEST-595)
+ Warning: Chains 1 and 19 have the same unload signature. (R10-1)
+Information: There are 35 other such violation(s). (TEST-595)
+ Warning: Chain 4 not observable with X on chain 1. (R11-1)
+Information: There are 135 other such violation(s). (TEST-595)
+
+
+-------------------------------------------------------------------------
+Traced Scan Chains
+-------------------------------------------------------------------------
+Chain "1" traced through 8 flip-flops 
+Chain "2" traced through 8 flip-flops 
+Chain "3" traced through 8 flip-flops 
+Chain "4" traced through 8 flip-flops 
+Chain "5" traced through 8 flip-flops 
+Chain "6" traced through 8 flip-flops 
+Chain "7" traced through 8 flip-flops 
+Chain "8" traced through 8 flip-flops 
+Chain "9" traced through 8 flip-flops 
+Chain "10" traced through 7 flip-flops 
+Chain "11" traced through 7 flip-flops 
+Chain "12" traced through 7 flip-flops 
+Chain "13" traced through 7 flip-flops 
+Chain "14" traced through 7 flip-flops 
+Chain "15" traced through 7 flip-flops 
+Chain "16" traced through 7 flip-flops 
+Chain "17" traced through 7 flip-flops 
+Chain "18" traced through 7 flip-flops 
+Chain "19" traced through 7 flip-flops 
+Chain "20" traced through 7 flip-flops 
+Chain "21" traced through 7 flip-flops 
+Chain "22" traced through 7 flip-flops 
+Chain "23" traced through 7 flip-flops 
+Chain "24" traced through 7 flip-flops 
+
+
+-------------------------------------------------------------------------
+Summary of all DFT DRC violations
+-------------------------------------------------------------------------
+
+180 DRC VIOLATIONS WHICH CAN AFFECT ATPG COVERAGE 
+     8 Two chains always have the same load value violations (R9)
+    36 Two chains always have the same unload signature violations (R10)
+   136 X on chain affects observe ability of other chains violations (R11)
+
+180 TOTAL VIOLATIONS 
+
+Warning: Violations occurred during test design rule checking. (TEST-124)
+
+-----------------------------------------------------------------------------------------   
+ Sequential Cell Report:       Sequential       Core             Core                 
+                               Cells            Segments         Segment Cells        
+-----------------------------------------------------------------------------------------
+ Sequential Elements Detected:  177                0                   0                       
+ Clock Gating Cells          :  0                                                        
+ Synchronizing Cells         :  0                                                        
+ Non-Scan Elements           :  0                                                        
+ Excluded Scan Elements      :  0                  0                   0                       
+ Violated Scan Elements      :  0                  0                   0                       
+ (Traced) Scan Elements      :  177     (100.0%)   0       (  0.0%)    0       (  0.0%)      
+-----------------------------------------------------------------------------------------
+
+
+Information: Test design rule checking completed. (TEST-123)
+  Running test coverage estimation...
+ 6462 faults were added to fault list.
+ 0            3367    754         0/0/0    83.16%      0.01
+ 0             449    305         0/0/0    90.11%      0.01
+ 0             177    127         1/0/0    92.87%      0.02
+ 0              78     47         2/1/0    94.09%      0.02
+ 0              34      0        3/12/0    94.62%      0.03
+ Compressor unload adjustment completed: #patterns_adjusted=0, #patterns_added=0, CPU time=0.00 sec.
+ 
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           0
+ -----------------------------------------------
+ 
+
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       6104
+ Possibly detected                PT          0
+ Undetectable                     UD         11
+ ATPG untestable                  AU        347
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              6462
+ test coverage                            94.62%
+ -----------------------------------------------
+  Information: The test coverage above may be inferior
+               than the real test coverage with customized
+               protocol and test simulation library.
+1

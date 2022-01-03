@@ -1,0 +1,104 @@
+#-----------------------------------------------------------------------
+# Pre Scan Insertion DFT_DRC 						
+#-----------------------------------------------------------------------
+
+In mode: all_dft...
+  Pre-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  	...checking for scan equivalents...
+  ...checking vector rules...
+  ...checking pre-dft rules...
+
+
+-------------------------------------------------------------------------
+DRC Violations which will prevent scan insertion
+-------------------------------------------------------------------------
+
+ Warning: Clock input CP of DFF wptr_full/wptr_reg[0] was not controlled. (D1-1)
+Information: There are 176 other cells with the same violation. (TEST-171)
+
+
+
+-------------------------------------------------------------------------
+DRC Violations which can affect ATPG Coverage
+-------------------------------------------------------------------------
+
+ Warning: Clock test_clk cannot capture data with other clocks off. (D8-1)
+Information: There are 2 other ports with the same violation. (TEST-299)
+
+
+
+-------------------------------------------------------------------------
+Summary of all DFT DRC violations
+-------------------------------------------------------------------------
+
+177 DRC VIOLATIONS WHICH WILL PREVENT SCAN INSERTION 
+   177 Uncontrollable clock input of flip-flop violations (D1)
+
+3 DRC VIOLATIONS WHICH CAN AFFECT ATPG COVERAGE 
+     3 Clock not able to capture violations (D8)
+
+180 TOTAL VIOLATIONS 
+
+Warning: Violations occurred during test design rule checking. (TEST-124)
+
+-----------------------------------------------------------------------------------------   
+ Sequential Cell Report:       Sequential       Core             Core                 
+                               Cells            Segments         Segment Cells        
+-----------------------------------------------------------------------------------------
+ Sequential Elements Detected:  177                0                   0                       
+ Clock Gating Cells          :  0                                                        
+ Synchronizing Cells         :  0                                                        
+ Non-Scan Elements           :  0                                                        
+ Excluded Scan Elements      :  0                  0                   0                       
+ Violated Scan Elements      :  177                0                   0                       
+ (Traced) Scan Elements      :  0       (  0.0%)   0       (  0.0%)    0       (  0.0%)      
+-----------------------------------------------------------------------------------------
+
+
+Information: Test design rule checking completed. (TEST-123)
+1
+#-----------------------------------------------------------------------
+# Post Scan Insertion DFT_DRC 						
+#-----------------------------------------------------------------------
+
+In mode: all_dft...
+  Pre-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  	...checking for scan equivalents...
+  ...checking vector rules...
+  ...checking pre-dft rules...
+
+
+-------------------------------------------------------------------------
+Summary of all DFT DRC violations
+-------------------------------------------------------------------------
+
+0 TOTAL VIOLATIONS 
+
+Test Design rule checking did not find violations
+
+-----------------------------------------------------------------------------------------   
+ Sequential Cell Report:       Sequential       Core             Core                 
+                               Cells            Segments         Segment Cells        
+-----------------------------------------------------------------------------------------
+ Sequential Elements Detected:  177                0                   0                       
+ Clock Gating Cells          :  0                                                        
+ Synchronizing Cells         :  0                                                        
+ Non-Scan Elements           :  0                                                        
+ Excluded Scan Elements      :  0                  0                   0                       
+ Violated Scan Elements      :  0                  0                   0                       
+ (Traced) Scan Elements      :  177     (100.0%)   0       (  0.0%)    0       (  0.0%)      
+-----------------------------------------------------------------------------------------
+
+
+Information: Test design rule checking completed. (TEST-123)
+1

@@ -1,0 +1,294 @@
+VERSION 5.5 ;
+NAMESCASESENSITIVE ON ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN async_fifo ;
+
+SCANCHAINS 27 ;
+
+- 1_SG1
++ START sync_r2w/U3 Z
++ ORDERED sync_r2w/temp_reg_0_ ( IN SD ) ( OUT Q )
+          sync_r2w/sync_out_reg_0_ ( IN D ) ( OUT Q )
++ ORDERED sync_r2w/temp_reg_1_ ( IN SD ) ( OUT Q )
+          sync_r2w/sync_out_reg_1_ ( IN D ) ( OUT Q )
++ ORDERED sync_r2w/temp_reg_2_ ( IN SD ) ( OUT Q )
+          sync_r2w/sync_out_reg_2_ ( IN D ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP sync_w2r/temp_reg_0_ SD ;
+
+- 1_SG2
++ START sync_w2r/U3 Z
++ ORDERED sync_w2r/temp_reg_1_ ( IN SD ) ( OUT Q )
+          sync_w2r/sync_out_reg_1_ ( IN D ) ( OUT Q )
++ ORDERED sync_w2r/temp_reg_2_ ( IN SD ) ( OUT Q )
+          sync_w2r/sync_out_reg_2_ ( IN D ) ( OUT Q )
++ ORDERED sync_w2r/temp_reg_3_ ( IN SD ) ( OUT Q )
+          sync_w2r/sync_out_reg_3_ ( IN D ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP sync_w2r/temp_reg_4_ SD ;
+
+- 1_SG3
++ START U198 Z
++ FLOATING R_0 ( IN SD ) ( OUT Q )
+           R_1 ( IN SD ) ( OUT Q )
+           R_2 ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_0__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_0__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_0__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_0__3_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_0__4_ SD ;
+
+- 1_SG4
++ START fifo_mem/U193 Z
++ FLOATING fifo_mem/mem_reg_0__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_0__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_0__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_1__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_1__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_1__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_1__3_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_1__4_ SD ;
+
+- 1_SG5
++ START fifo_mem/U202 Z
++ FLOATING fifo_mem/mem_reg_1__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_1__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_1__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_2__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_2__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_2__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_2__3_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_2__4_ SD ;
+
+- 1_SG6
++ START fifo_mem/U211 Z
++ FLOATING fifo_mem/mem_reg_2__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_2__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_2__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_3__0_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_3__1_ SD ;
+
+- 2_SG1
++ START fifo_mem/U220 ZN
++ FLOATING fifo_mem/mem_reg_3__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_3__3_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_3__4_ SD ;
+
+- 2_SG2
++ START fifo_mem/U229 Z
++ FLOATING fifo_mem/mem_reg_3__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_3__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_3__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_4__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_4__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_4__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_4__3_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_4__4_ SD ;
+
+- 2_SG3
++ START fifo_mem/U238 Z
++ FLOATING fifo_mem/mem_reg_4__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_4__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_4__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_5__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_5__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_5__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_5__3_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_5__4_ SD ;
+
+- 2_SG4
++ START fifo_mem/U247 Z
++ FLOATING fifo_mem/mem_reg_5__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_5__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_5__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_6__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_6__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_6__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_6__3_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_6__4_ SD ;
+
+- 2_SG5
++ START fifo_mem/U256 Z
++ FLOATING fifo_mem/mem_reg_6__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_6__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_6__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_7__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_7__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_7__2_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_7__3_ SD ;
+
+- 2_SG6
++ START fifo_mem/U265 Z
++ FLOATING fifo_mem/mem_reg_7__4_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_7__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_7__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_7__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_8__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_8__1_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_8__2_ SD ;
+
+- 2_SG7
++ START fifo_mem/U274 Z
++ FLOATING fifo_mem/mem_reg_8__3_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_8__4_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_8__5_ SD ;
+
+- 3_SG1
++ START fifo_mem/U275 Z
++ FLOATING fifo_mem/mem_reg_8__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_8__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_9__0_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_9__1_ SD ;
+
+- 3_SG2
++ START fifo_mem/U276 Z
++ FLOATING fifo_mem/mem_reg_9__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_9__3_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_9__4_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_9__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_9__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_9__7_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_10__0_ SD ;
+
+- 3_SG3
++ START fifo_mem/U277 Z
++ FLOATING fifo_mem/mem_reg_10__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_10__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_10__3_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_10__4_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_10__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_10__6_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_10__7_ SD ;
+
+- 3_SG4
++ START fifo_mem/U417 Z
++ FLOATING fifo_mem/mem_reg_11__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_11__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_11__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_11__3_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_11__4_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_11__5_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_11__6_ SD ;
+
+- 3_SG5
++ START fifo_mem/U418 Z
++ FLOATING fifo_mem/mem_reg_11__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_12__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_12__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_12__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_12__3_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_12__4_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_12__5_ SD ;
+
+- 3_SG6
++ START fifo_mem/U419 Z
++ FLOATING fifo_mem/mem_reg_12__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_12__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_13__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_13__1_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_13__2_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_13__3_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_13__4_ SD ;
+
+- 3_SG7
++ START fifo_mem/U420 Z
++ FLOATING fifo_mem/mem_reg_13__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_13__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_13__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_14__0_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_14__1_ SD ;
+
+- 4_SG1
++ START fifo_mem/U421 Z
++ FLOATING fifo_mem/mem_reg_14__2_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_14__3_ SD ;
+
+- 4_SG2
++ START fifo_mem/U422 Z
++ FLOATING fifo_mem/mem_reg_14__4_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_14__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_14__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_14__7_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_15__0_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_15__1_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP fifo_mem/mem_reg_15__2_ SD ;
+
+- 4_SG3
++ START fifo_mem/U423 Z
++ FLOATING fifo_mem/mem_reg_15__3_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_15__4_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_15__5_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_15__6_ ( IN SD ) ( OUT Q )
+           fifo_mem/mem_reg_15__7_ ( IN SD ) ( OUT Q )
+           rptr_empty_empty_reg ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP rptr_empty_near_empty_reg SD ;
+
+- 4_SG4
++ START U199 Z
++ FLOATING rptr_empty_rbin_reg_0_ ( IN SD ) ( OUT Q )
+           rptr_empty_rbin_reg_1_ ( IN SD ) ( OUT Q )
+           rptr_empty_rbin_reg_2_ ( IN SD ) ( OUT Q )
+           rptr_empty_rbin_reg_3_ ( IN SD ) ( OUT Q )
+           rptr_empty_rbin_reg_4_ ( IN SD ) ( OUT Q )
+           rptr_empty_rptr_reg_0_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP rptr_empty_rptr_reg_1_ SD ;
+
+- 4_SG5
++ START U201 Z
++ FLOATING rptr_empty_rptr_reg_2_ ( IN SD ) ( OUT Q )
+           rptr_empty_rptr_reg_3_ ( IN SD ) ( OUT Q )
+           rptr_empty_under_flow_reg ( IN SD ) ( OUT Q )
+           sync_r2w/temp_reg_3_ ( IN SD ) ( OUT Q )
+           sync_r2w/temp_reg_4_ ( IN SD ) ( OUT Q )
+           sync_rst_r/dff1_reg ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP sync_rst_r/dff2_reg SD ;
+
+- 4_SG6
++ START sync_rst_w/U6 Z
++ FLOATING sync_rst_w/dff1_reg ( IN SD ) ( OUT Q )
+           sync_rst_w/dff2_reg ( IN SD ) ( OUT Q )
+           wptr_full_full_reg ( IN SD ) ( OUT Q )
+           wptr_full_near_full_reg ( IN SD ) ( OUT Q )
+           wptr_full_over_flow_reg ( IN SD ) ( OUT Q )
+           wptr_full_wbin_reg_0_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP wptr_full_wbin_reg_1_ SD ;
+
+- 4_SG7
++ START U203 Z
++ FLOATING wptr_full_wbin_reg_2_ ( IN SD ) ( OUT Q )
+           wptr_full_wbin_reg_3_ ( IN SD ) ( OUT Q )
+           wptr_full_wbin_reg_4_ ( IN SD ) ( OUT Q )
+           wptr_full_wptr_reg_0_ ( IN SD ) ( OUT Q )
+           wptr_full_wptr_reg_1_ ( IN SD ) ( OUT Q )
+           wptr_full_wptr_reg_2_ ( IN SD ) ( OUT Q )
++ PARTITION test_clk_45_45
++ STOP wptr_full_wptr_reg_3_ SD ;
+
+END SCANCHAINS
+
+END DESIGN

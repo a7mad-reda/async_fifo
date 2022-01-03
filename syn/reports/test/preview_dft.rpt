@@ -1,0 +1,447 @@
+
+Information: Starting test design rule checking. (TEST-222)
+Warning: Violations occurred during test design rule checking. (TEST-124)
+Information: Test design rule checking completed. (TEST-123)
+    Running Autofix
+  Architecting Test Points
+
+Information: Starting test design rule checking. (TEST-222)
+Test Design rule checking did not find violations
+Information: Test design rule checking completed. (TEST-123)
+Architecting Scan Compression structures
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+  Architecting Scan Chains
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Architecting scan compression mode TM4 with base mode TM1
+Warning: The compressor generated might have lower diagnostics precision. (TEST-1603)
+Architecting Load Decompressor (version 5.8)
+  Number of inputs/chains/internal modes = 4/24/4
+Architecting Unload compressor (version 5.8)
+  Number of outputs/chains = 4/24
+  Warning: Compressor will have default x-tolerance
+
+****************************************
+Preview_dft report
+For    : 'Insert_dft' command
+Design : async_fifo
+Version: O-2018.06-SP1
+Date   : Tue Jan  4 00:56:57 2022
+****************************************
+
+
+
+****************************************
+
+Current mode: TM2
+****************************************
+
+Number of chains: 2
+Scan methodology: full_scan
+Scan style: multiplexed_flip_flop
+Clock domain: no_mix
+Scan enable: test_se (no hookup pin)
+
+Chain      Scan Ports (si --> so)        # of Cells   Inst/Chain               Clock (port, time, edge)
+-----      ----------------------        ----------   ----------               ------------------------
+S 1        test_si -->  test_so                  89   shift_reg_identified_1 (s) (test_clk, 45.0, rising) 
+S 2        test_si_1 -->  test_so_1              88   fifo_mem/mem_reg[8][6]   (test_clk, 45.0, rising) 
+
+
+****************************************
+
+Current mode: TM3
+****************************************
+
+Number of chains: 1
+Scan methodology: full_scan
+Scan style: multiplexed_flip_flop
+Clock domain: mix_clocks
+Scan enable: test_se (no hookup pin)
+
+Chain      Scan Ports (si --> so)        # of Cells   Inst/Chain               Clock (port, time, edge)
+-----      ----------------------        ----------   ----------               ------------------------
+S 1        test_si -->  test_so                 177   shift_reg_identified_1 (s) (test_clk, 45.0, rising) 
+
+
+****************************************
+
+Current mode: TM1
+****************************************
+
+Number of chains: 4
+Scan methodology: full_scan
+Scan style: multiplexed_flip_flop
+Clock domain: no_mix
+Scan enable: test_se (no hookup pin)
+
+Chain      Scan Ports (si --> so)        # of Cells   Inst/Chain               Clock (port, time, edge)
+-----      ----------------------        ----------   ----------               ------------------------
+S 1        test_si -->  test_so                  45   shift_reg_identified_1 (s) (test_clk, 45.0, rising) 
+S 2        test_si_1 -->  test_so_1              44   fifo_mem/mem_reg[3][2]   (test_clk, 45.0, rising) 
+S 3        test_si_2 -->  test_so_2              44   fifo_mem/mem_reg[8][6]   (test_clk, 45.0, rising) 
+S 4        test_si_3 -->  test_so_3              44   fifo_mem/mem_reg[14][2]  (test_clk, 45.0, rising) 
+
+
+****************************************
+
+Current mode: TM4
+****************************************
+
+Number of chains: 24
+Scan methodology: full_scan
+Scan style: multiplexed_flip_flop
+Clock domain: no_mix
+Scan enable: test_se (no hookup pin)
+
+Chain      Scan Ports (si --> so)        # of Cells   Inst/Chain               Clock (port, time, edge)
+-----      ----------------------        ----------   ----------               ------------------------
+S 1                                               8   shift_reg_identified_1 (s) (test_clk, 45.0, rising) 
+S 2                                               8   shift_reg_identified_5 (s) (test_clk, 45.0, rising) 
+S 3                                               8   R_0                      (test_clk, 45.0, rising) 
+S 4                                               8   fifo_mem/mem_reg[0][5]   (test_clk, 45.0, rising) 
+S 5                                               8   fifo_mem/mem_reg[1][5]   (test_clk, 45.0, rising) 
+S 6                                               8   fifo_mem/mem_reg[2][5]   (test_clk, 45.0, rising) 
+S 7                                               8   fifo_mem/mem_reg[3][5]   (test_clk, 45.0, rising) 
+S 8                                               8   fifo_mem/mem_reg[4][5]   (test_clk, 45.0, rising) 
+S 9                                               8   fifo_mem/mem_reg[5][5]   (test_clk, 45.0, rising) 
+S 10                                              7   fifo_mem/mem_reg[6][5]   (test_clk, 45.0, rising) 
+S 11                                              7   fifo_mem/mem_reg[7][4]   (test_clk, 45.0, rising) 
+S 12                                              7   fifo_mem/mem_reg[8][3]   (test_clk, 45.0, rising) 
+S 13                                              7   fifo_mem/mem_reg[9][2]   (test_clk, 45.0, rising) 
+S 14                                              7   fifo_mem/mem_reg[10][1]  (test_clk, 45.0, rising) 
+S 15                                              7   fifo_mem/mem_reg[11][0]  (test_clk, 45.0, rising) 
+S 16                                              7   fifo_mem/mem_reg[11][7]  (test_clk, 45.0, rising) 
+S 17                                              7   fifo_mem/mem_reg[12][6]  (test_clk, 45.0, rising) 
+S 18                                              7   fifo_mem/mem_reg[13][5]  (test_clk, 45.0, rising) 
+S 19                                              7   fifo_mem/mem_reg[14][4]  (test_clk, 45.0, rising) 
+S 20                                              7   fifo_mem/mem_reg[15][3]  (test_clk, 45.0, rising) 
+S 21                                              7   rptr_empty/rbin_reg[0]   (test_clk, 45.0, rising) 
+S 22                                              7   rptr_empty/rptr_reg[2]   (test_clk, 45.0, rising) 
+S 23                                              7   sync_rst_w/dff1_reg      (test_clk, 45.0, rising) 
+S 24                                              7   wptr_full/wbin_reg[2]    (test_clk, 45.0, rising) 
+
+
+ScanDataIn Ports:
+test_si
+test_si_1
+test_si_2
+test_si_3
+
+
+ScanDataOut Ports:
+test_so
+test_so_1
+test_so_2
+test_so_3
+
+================================
+Test Mode Controller Information
+================================
+
+Test Mode Controller Ports
+--------------------------
+test_mode: test_mode1
+test_mode: test_mode
+
+Test Mode Controller Index (MSB --> LSB)
+----------------------------------------
+test_mode1, test_mode
+
+Control signal value - Test Mode
+--------------------------------
+01 TM2 - InternalTest
+
+10 TM3 - InternalTest
+
+00 TM1 - InternalTest
+
+11 TM4 - InternalTest
+
+1
+
+Information: Starting test design rule checking. (TEST-222)
+Warning: Violations occurred during test design rule checking. (TEST-124)
+Information: Test design rule checking completed. (TEST-123)
+    Running Autofix
+  Architecting Test Points
+
+Information: Starting test design rule checking. (TEST-222)
+Test Design rule checking did not find violations
+Information: Test design rule checking completed. (TEST-123)
+Architecting Scan Compression structures
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+  Architecting Scan Chains
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'wrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Warning: Port 'rrst_n' cannot be used as a scan port. It has been previously inferred as an asynchronous signal. (TEST-337)
+Architecting scan compression mode TM4 with base mode TM1
+Warning: The compressor generated might have lower diagnostics precision. (TEST-1603)
+Architecting Load Decompressor (version 5.8)
+  Number of inputs/chains/internal modes = 4/24/4
+Architecting Unload compressor (version 5.8)
+  Number of outputs/chains = 4/24
+  Warning: Compressor will have default x-tolerance
+
+****************************************
+Preview_dft report
+For    : 'Insert_dft' command
+Design : async_fifo
+Version: O-2018.06-SP1
+Date   : Tue Jan  4 00:56:59 2022
+****************************************
+
+
+
+****************************************
+
+Current mode: TM2
+****************************************
+
+Number of chains: 2
+Scan methodology: full_scan
+Scan style: multiplexed_flip_flop
+Clock domain: no_mix
+Scan enable: test_se (no hookup pin)
+
+
+Scan chain '1' (test_si --> test_so) contains 89 cells
+  Active in modes: TM2 
+
+
+Scan chain '2' (test_si_1 --> test_so_1) contains 88 cells
+  Active in modes: TM2 
+
+
+
+
+****************************************
+
+Current mode: TM3
+****************************************
+
+Number of chains: 1
+Scan methodology: full_scan
+Scan style: multiplexed_flip_flop
+Clock domain: mix_clocks
+Scan enable: test_se (no hookup pin)
+
+
+Scan chain '1' (test_si --> test_so) contains 177 cells
+  Active in modes: TM3 
+
+
+
+
+****************************************
+
+Current mode: TM1
+****************************************
+
+Number of chains: 4
+Scan methodology: full_scan
+Scan style: multiplexed_flip_flop
+Clock domain: no_mix
+Scan enable: test_se (no hookup pin)
+
+
+Scan chain '1' (test_si --> test_so) contains 45 cells
+  Active in modes: TM1 
+
+
+Scan chain '2' (test_si_1 --> test_so_1) contains 44 cells
+  Active in modes: TM1 
+
+
+Scan chain '3' (test_si_2 --> test_so_2) contains 44 cells
+  Active in modes: TM1 
+
+
+Scan chain '4' (test_si_3 --> test_so_3) contains 44 cells
+  Active in modes: TM1 
+
+
+
+
+****************************************
+
+Current mode: TM4
+****************************************
+
+Number of chains: 24
+Scan methodology: full_scan
+Scan style: multiplexed_flip_flop
+Clock domain: no_mix
+Scan enable: test_se (no hookup pin)
+
+
+Scan chain '1' contains 8 cells
+  Active in modes: TM4 
+
+
+Scan chain '2' contains 8 cells
+  Active in modes: TM4 
+
+
+Scan chain '3' contains 8 cells
+  Active in modes: TM4 
+
+
+Scan chain '4' contains 8 cells
+  Active in modes: TM4 
+
+
+Scan chain '5' contains 8 cells
+  Active in modes: TM4 
+
+
+Scan chain '6' contains 8 cells
+  Active in modes: TM4 
+
+
+Scan chain '7' contains 8 cells
+  Active in modes: TM4 
+
+
+Scan chain '8' contains 8 cells
+  Active in modes: TM4 
+
+
+Scan chain '9' contains 8 cells
+  Active in modes: TM4 
+
+
+Scan chain '10' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '11' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '12' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '13' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '14' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '15' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '16' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '17' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '18' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '19' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '20' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '21' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '22' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '23' contains 7 cells
+  Active in modes: TM4 
+
+
+Scan chain '24' contains 7 cells
+  Active in modes: TM4 
+
+
+
+
+ScanDataIn Ports:
+test_si
+test_si_1
+test_si_2
+test_si_3
+
+
+ScanDataOut Ports:
+test_so
+test_so_1
+test_so_2
+test_so_3
+
+************ Test Point Plan Report ************
+Total number of test points  : 2
+Number of Autofix test points: 2
+Number of Wrapper test points: 0
+Number of test modes         : 1
+Number of test point enables : 0
+Number of data sources       : 1
+Number of data sinks         : 0
+**************************************************
+
+Dft signals:
+ TestMode: test_mode (no hookup pin)
+ TestMode: test_mode1 (no hookup pin)
+ TestData: test_clk (no hookup pin)
+ TestData: wrst_n (no hookup pin)
+ TestData: rrst_n (no hookup pin)
+ TestMode: atpg_mode (no hookup pin)
+
+================================
+Test Mode Controller Information
+================================
+
+Test Mode Controller Ports
+--------------------------
+test_mode: test_mode1
+test_mode: test_mode
+
+Test Mode Controller Index (MSB --> LSB)
+----------------------------------------
+test_mode1, test_mode
+
+Control signal value - Test Mode
+--------------------------------
+01 TM2 - InternalTest
+
+10 TM3 - InternalTest
+
+00 TM1 - InternalTest
+
+11 TM4 - InternalTest
+
+1

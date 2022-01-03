@@ -3,7 +3,7 @@
 Report : cell
 Design : async_fifo
 Version: O-2018.06-SP1
-Date   : Mon Dec  6 21:40:29 2021
+Date   : Mon Jan  3 19:37:44 2022
 ****************************************
 
 Attributes:
@@ -19,104 +19,104 @@ Attributes:
 
 Cell                      Reference       Library             Area  Attributes
 --------------------------------------------------------------------------------
+R_0                       sdcrq1          cb13fs120_tsmc_max
+                                                          7.750000  n
 R_1                       dfcrq1          cb13fs120_tsmc_max
                                                           5.500000  n
-R_2                       sdcrq1          cb13fs120_tsmc_max
-                                                          7.750000  n
-R_3                       dfcrq1          cb13fs120_tsmc_max
+R_2                       dfcrq1          cb13fs120_tsmc_max
                                                           5.500000  n
-U105                      cg01d0          cb13fs120_tsmc_max
-                                                          2.250000  
-U106                      nd02d1          cb13fs120_tsmc_max
+U105                      nd02d1          cb13fs120_tsmc_max
                                                           1.000000  
-U107                      cg01d0          cb13fs120_tsmc_max
-                                                          2.250000  
-U108                      nr03d0          cb13fs120_tsmc_max
+U106                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
-U109                      inv0d0          cb13fs120_tsmc_max
+U107                      nr03d0          cb13fs120_tsmc_max
+                                                          1.250000  
+U108                      inv0d0          cb13fs120_tsmc_max
                                                           0.750000  
-U110                      or02d1          cb13fs120_tsmc_max
-                                                          1.250000  
-U111                      nd02d1          cb13fs120_tsmc_max
-                                                          1.000000  
+U109                      inv0d1          cb13fs120_tsmc_max
+                                                          0.750000  
+U110                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
+U111                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
 U112                      inv0d0          cb13fs120_tsmc_max
                                                           0.750000  
-U113                      xr02d1          cb13fs120_tsmc_max
-                                                          2.750000  
-U114                      nr02d0          cb13fs120_tsmc_max
+U113                      buffd1          cb13fs120_tsmc_max
                                                           1.000000  
-U115                      inv0d0          cb13fs120_tsmc_max
+U114                      xr02d1          cb13fs120_tsmc_max
+                                                          2.750000  
+U115                      nr02d0          cb13fs120_tsmc_max
+                                                          1.000000  
+U116                      inv0d0          cb13fs120_tsmc_max
                                                           0.750000  
-U116                      an02d0          cb13fs120_tsmc_max
-                                                          1.250000  
 U117                      inv0d0          cb13fs120_tsmc_max
                                                           0.750000  
 U118                      aon211d1        cb13fs120_tsmc_max
                                                           2.500000  
 U119                      an02d1          cb13fs120_tsmc_max
                                                           1.250000  
-U120                      an02d0          cb13fs120_tsmc_max
+U120                      nd12d0          cb13fs120_tsmc_max
                                                           1.250000  
-U121                      nd12d0          cb13fs120_tsmc_max
-                                                          1.250000  
-U122                      xr02d1          cb13fs120_tsmc_max
+U121                      nd02d1          cb13fs120_tsmc_max
+                                                          1.000000  
+U122                      nr02d0          cb13fs120_tsmc_max
+                                                          1.000000  
+U123                      xr02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U123                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U124                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U125                      nd12d0          cb13fs120_tsmc_max
+U124                      nd12d0          cb13fs120_tsmc_max
                                                           1.250000  
+U125                      xr02d1          cb13fs120_tsmc_max
+                                                          2.750000  
 U126                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
-U127                      nr02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U128                      an02d0          cb13fs120_tsmc_max
+U127                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
-U129                      nd12d0          cb13fs120_tsmc_max
-                                                          1.250000  
+U128                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
+U129                      cg01d0          cb13fs120_tsmc_max
+                                                          2.250000  
 U130                      nd02d0          cb13fs120_tsmc_max
                                                           1.000000  
-U131                      oai211d1        cb13fs120_tsmc_max
+U131                      nd12d0          cb13fs120_tsmc_max
+                                                          1.250000  
+U132                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
+U133                      nd02d0          cb13fs120_tsmc_max
+                                                          1.000000  
+U134                      oai211d1        cb13fs120_tsmc_max
                                                           2.500000  
-U132                      nd02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U133                      xr02d1          cb13fs120_tsmc_max
-                                                          2.750000  
-U134                      nr02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U135                      nd02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U136                      inv0d0          cb13fs120_tsmc_max
+U135                      inv0d0          cb13fs120_tsmc_max
                                                           0.750000  
-U137                      nr02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U138                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U139                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U140                      cg01d0          cb13fs120_tsmc_max
+U136                      an02d0          cb13fs120_tsmc_max
+                                                          1.250000  
+U137                      cg01d0          cb13fs120_tsmc_max
                                                           2.250000  
-U141                      nd02d1          cb13fs120_tsmc_max
+U138                      cg01d0          cb13fs120_tsmc_max
+                                                          2.250000  
+U139                      nd02d0          cb13fs120_tsmc_max
                                                           1.000000  
-U142                      nr02d4          cb13fs120_tsmc_max
-                                                          2.750000  
-U143                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U144                      mx02d0          cb13fs120_tsmc_max
-                                                          2.000000  
-U145                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U146                      mx02d0          cb13fs120_tsmc_max
-                                                          2.000000  
-U147                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U148                      mx02d0          cb13fs120_tsmc_max
-                                                          2.000000  
-U149                      an12d1          cb13fs120_tsmc_max
-                                                          1.750000  
-U150                      nd02d0          cb13fs120_tsmc_max
+U140                      nd02d0          cb13fs120_tsmc_max
                                                           1.000000  
+U141                      nr02d2          cb13fs120_tsmc_max
+                                                          2.000000  
+U142                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
+U143                      mx02d0          cb13fs120_tsmc_max
+                                                          2.000000  
+U144                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
+U145                      mx02d0          cb13fs120_tsmc_max
+                                                          2.000000  
+U146                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
+U147                      mx02d0          cb13fs120_tsmc_max
+                                                          2.000000  
+U148                      nd03d0          cb13fs120_tsmc_max
+                                                          1.250000  
+U149                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
+U150                      an02d0          cb13fs120_tsmc_max
+                                                          1.250000  
 U151                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
 U152                      nr02d0          cb13fs120_tsmc_max
@@ -127,9 +127,9 @@ U154                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
 U155                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
-U156                      nd12d0          cb13fs120_tsmc_max
-                                                          1.250000  
-U157                      nd02d0          cb13fs120_tsmc_max
+U156                      xr02d1          cb13fs120_tsmc_max
+                                                          2.750000  
+U157                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
 U158                      xr02d1          cb13fs120_tsmc_max
                                                           2.750000  
@@ -139,26 +139,26 @@ U161                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
 U162                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
-U163                      xn02d1          cb13fs120_tsmc_max
-                                                          2.750000  
-U164                      an02d0          cb13fs120_tsmc_max
+U163                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
+U164                      nr02d0          cb13fs120_tsmc_max
+                                                          1.000000  
 U165                      nd12d0          cb13fs120_tsmc_max
                                                           1.250000  
-U166                      or02d1          cb13fs120_tsmc_max
+U166                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
-U167                      an02d0          cb13fs120_tsmc_max
-                                                          1.250000  
+U167                      nd02d0          cb13fs120_tsmc_max
+                                                          1.000000  
 U168                      xr02d1          cb13fs120_tsmc_max
                                                           2.750000  
 U169                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
-U170                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U171                      xn02d1          cb13fs120_tsmc_max
+U170                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U172                      an02d0          cb13fs120_tsmc_max
+U171                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
+U172                      xn02d1          cb13fs120_tsmc_max
+                                                          2.750000  
 U173                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
 U174                      xn02d1          cb13fs120_tsmc_max
@@ -167,46 +167,48 @@ U175                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
 U176                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U177                      xn02d1          cb13fs120_tsmc_max
+U177                      xr02d1          cb13fs120_tsmc_max
                                                           2.750000  
 U178                      xr02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U179                      xr02d1          cb13fs120_tsmc_max
+U179                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U180                      xn02d1          cb13fs120_tsmc_max
+U180                      xr02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U181                      xr02d1          cb13fs120_tsmc_max
-                                                          2.750000  
-U182                      nd03d0          cb13fs120_tsmc_max
+U181                      nd03d0          cb13fs120_tsmc_max
                                                           1.250000  
-U183                      nr03d0          cb13fs120_tsmc_max
+U182                      nr03d0          cb13fs120_tsmc_max
                                                           1.250000  
-U184                      an02d0          cb13fs120_tsmc_max
+U183                      nd12d0          cb13fs120_tsmc_max
                                                           1.250000  
-U185                      nd02d0          cb13fs120_tsmc_max
+U184                      or02d1          cb13fs120_tsmc_max
+                                                          1.250000  
+U185                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
 U186                      xr02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U187                      nr02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U188                      xr02d1          cb13fs120_tsmc_max
+U187                      xn02d1          cb13fs120_tsmc_max
+                                                          2.750000  
+U188                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
 U189                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U190                      xn02d1          cb13fs120_tsmc_max
-                                                          2.750000  
+U190                      or02d1          cb13fs120_tsmc_max
+                                                          1.250000  
 U191                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U192                      nr02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U193                      or02d1          cb13fs120_tsmc_max
+U192                      or02d1          cb13fs120_tsmc_max
                                                           1.250000  
-U194                      xn02d1          cb13fs120_tsmc_max
+U193                      nd02d1          cb13fs120_tsmc_max
+                                                          1.000000  
+U194                      nd02d0          cb13fs120_tsmc_max
+                                                          1.000000  
+U195                      nd02d0          cb13fs120_tsmc_max
+                                                          1.000000  
+U196                      nr02d0          cb13fs120_tsmc_max
+                                                          1.000000  
+U197                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U196                      nd02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U197                      nr02d0          cb13fs120_tsmc_max
-                                                          1.000000  
 U200                      nd02d0          cb13fs120_tsmc_max
                                                           1.000000  
 U202                      xn02d1          cb13fs120_tsmc_max
@@ -217,117 +219,117 @@ U208                      xr03d1          cb13fs120_tsmc_max
                                                           4.250000  
 U209                      xr02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U212                      nd02d0          cb13fs120_tsmc_max
+U210                      nd02d0          cb13fs120_tsmc_max
                                                           1.000000  
-U213                      nd02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U214                      xn02d1          cb13fs120_tsmc_max
+U211                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
+U214                      nd02d0          cb13fs120_tsmc_max
+                                                          1.000000  
 U215                      aor21d1         cb13fs120_tsmc_max
                                                           2.000000  
-U218                      nd02d0          cb13fs120_tsmc_max
+U217                      nd02d0          cb13fs120_tsmc_max
                                                           1.000000  
-U219                      xn02d1          cb13fs120_tsmc_max
+U218                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U220                      ora21d1         cb13fs120_tsmc_max
+U219                      ora21d1         cb13fs120_tsmc_max
                                                           2.000000  
-U222                      nd02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U223                      xn02d1          cb13fs120_tsmc_max
+U222                      xn02d1          cb13fs120_tsmc_max
                                                           2.750000  
-U225                      nr02d0          cb13fs120_tsmc_max
+U225                      nd02d1          cb13fs120_tsmc_max
                                                           1.000000  
-U226                      oan211d1        cb13fs120_tsmc_max
+U226                      nr02d0          cb13fs120_tsmc_max
+                                                          1.000000  
+U227                      oan211d1        cb13fs120_tsmc_max
                                                           2.500000  
-U227                      cg01d1          cb13fs120_tsmc_max
+U228                      cg01d1          cb13fs120_tsmc_max
                                                           2.250000  
-U228                      nr03d0          cb13fs120_tsmc_max
+U229                      nr03d0          cb13fs120_tsmc_max
                                                           1.250000  
-U229                      nr02d0          cb13fs120_tsmc_max
-                                                          1.000000  
 U230                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
-U231                      an02d0          cb13fs120_tsmc_max
-                                                          1.250000  
-U232                      nr02d0          cb13fs120_tsmc_max
+U231                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
-U233                      inv0d0          cb13fs120_tsmc_max
+U232                      an02d0          cb13fs120_tsmc_max
+                                                          1.250000  
+U233                      nr02d0          cb13fs120_tsmc_max
+                                                          1.000000  
+U234                      inv0d0          cb13fs120_tsmc_max
                                                           0.750000  
-U234                      mx02d0          cb13fs120_tsmc_max
+U235                      mx02d0          cb13fs120_tsmc_max
                                                           2.000000  
-U235                      ora21d1         cb13fs120_tsmc_max
-                                                          2.000000  
-U236                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
+U236                      aon211d1        cb13fs120_tsmc_max
+                                                          2.500000  
 U237                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
-U239                      inv0d0          cb13fs120_tsmc_max
+U240                      inv0d0          cb13fs120_tsmc_max
                                                           0.750000  
-U240                      mx02d0          cb13fs120_tsmc_max
-                                                          2.000000  
 U241                      mx02d0          cb13fs120_tsmc_max
                                                           2.000000  
-U242                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U243                      mx02d0          cb13fs120_tsmc_max
+U242                      mx02d0          cb13fs120_tsmc_max
                                                           2.000000  
+U243                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
 U244                      mx02d0          cb13fs120_tsmc_max
                                                           2.000000  
-U245                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U246                      mx02d0          cb13fs120_tsmc_max
+U245                      mx02d0          cb13fs120_tsmc_max
                                                           2.000000  
+U246                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
 U247                      mx02d0          cb13fs120_tsmc_max
                                                           2.000000  
-U248                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
+U248                      mx02d0          cb13fs120_tsmc_max
+                                                          2.000000  
 U249                      inv0d0          cb13fs120_tsmc_max
                                                           0.750000  
-U250                      mx02d0          cb13fs120_tsmc_max
-                                                          2.000000  
+U250                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
 U251                      mx02d0          cb13fs120_tsmc_max
                                                           2.000000  
-U252                      nd04d0          cb13fs120_tsmc_max
-                                                          1.750000  
-U253                      nr02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U254                      aor211d1        cb13fs120_tsmc_max
+U252                      mx02d0          cb13fs120_tsmc_max
                                                           2.000000  
-U255                      xr02d1          cb13fs120_tsmc_max
-                                                          2.750000  
-U256                      inv0d0          cb13fs120_tsmc_max
-                                                          0.750000  
-U257                      aor221d1        cb13fs120_tsmc_max
-                                                          2.500000  
-U258                      ad01d0          cb13fs120_tsmc_max
-                                                          5.000000  r
-U259                      ad01d0          cb13fs120_tsmc_max
-                                                          5.000000  r
-U260                      an03d0          cb13fs120_tsmc_max
+U253                      nd04d0          cb13fs120_tsmc_max
                                                           1.750000  
-U261                      nr02d0          cb13fs120_tsmc_max
+U254                      nr02d0          cb13fs120_tsmc_max
                                                           1.000000  
+U255                      aor211d1        cb13fs120_tsmc_max
+                                                          2.000000  
+U256                      xr02d1          cb13fs120_tsmc_max
+                                                          2.750000  
+U257                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
+U258                      inv0d0          cb13fs120_tsmc_max
+                                                          0.750000  
+U259                      aor221d1        cb13fs120_tsmc_max
+                                                          2.500000  
+U260                      ad01d0          cb13fs120_tsmc_max
+                                                          5.000000  r
+U261                      ad01d0          cb13fs120_tsmc_max
+                                                          5.000000  r
 U262                      an03d0          cb13fs120_tsmc_max
                                                           1.750000  
-U263                      an02d0          cb13fs120_tsmc_max
-                                                          1.250000  
-U264                      an02d0          cb13fs120_tsmc_max
-                                                          1.250000  
+U263                      nr02d0          cb13fs120_tsmc_max
+                                                          1.000000  
+U264                      an03d0          cb13fs120_tsmc_max
+                                                          1.750000  
 U265                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
-U266                      nr02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U267                      nr02d0          cb13fs120_tsmc_max
-                                                          1.000000  
-U268                      an02d0          cb13fs120_tsmc_max
+U266                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
-U269                      an02d0          cb13fs120_tsmc_max
+U267                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
+U268                      nr02d0          cb13fs120_tsmc_max
+                                                          1.000000  
+U269                      nr02d0          cb13fs120_tsmc_max
+                                                          1.000000  
 U270                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
 U271                      an02d0          cb13fs120_tsmc_max
                                                           1.250000  
-fifo_mem                  fifo_mem_4_4_54525545           754.750000
+U272                      an02d0          cb13fs120_tsmc_max
+                                                          1.250000  
+U273                      an02d0          cb13fs120_tsmc_max
+                                                          1.250000  
+fifo_mem                  dpram_ASIZE4_DSIZE8             1506.750000
                                                                     cp, h, n, p, st
 intadd_2/U2               ad01d0          cb13fs120_tsmc_max
                                                           5.000000  mo, r
@@ -339,8 +341,8 @@ rptr_empty/empty_reg      sdprb1          cb13fs120_tsmc_max
                                                           8.250000  n
 rptr_empty/near_empty_reg sdcrq1          cb13fs120_tsmc_max
                                                           7.750000  n
-rptr_empty/rbin_reg[0]    sdcrq1          cb13fs120_tsmc_max
-                                                          7.750000  n
+rptr_empty/rbin_reg[0]    sdcrq2          cb13fs120_tsmc_max
+                                                          8.000000  n
 rptr_empty/rbin_reg[1]    sdcrq1          cb13fs120_tsmc_max
                                                           7.750000  n
 rptr_empty/rbin_reg[2]    sdcrq1          cb13fs120_tsmc_max
@@ -360,6 +362,8 @@ rptr_empty/rptr_reg[3]    sdcrq1          cb13fs120_tsmc_max
 rptr_empty/under_flow_reg sdcrq1          cb13fs120_tsmc_max
                                                           7.750000  n
 sync_r2w                  sync_SIZE4_1                    55.250000 h, n, p
+sync_rst_r                sync_rst_0                      17.750000 h, n
+sync_rst_w                sync_rst_1                      17.750000 h, n
 sync_w2r                  sync_SIZE4_0                    66.250000 h, n, p
 wptr_full/full_reg        sdcrq1          cb13fs120_tsmc_max
                                                           7.750000  n
@@ -386,5 +390,5 @@ wptr_full/wptr_reg[2]     sdcrq1          cb13fs120_tsmc_max
 wptr_full/wptr_reg[3]     sdcrq1          cb13fs120_tsmc_max
                                                           7.750000  n
 --------------------------------------------------------------------------------
-Total 184 cells                                           1342.000000
+Total 187 cells                                           2129.750000
 1

@@ -5,7 +5,7 @@ Report : constraint
         -all_violators
 Design : async_fifo
 Version: O-2018.06-SP1
-Date   : Mon Dec  6 21:40:29 2021
+Date   : Mon Jan  3 19:37:44 2022
 ****************************************
 
 
@@ -14,7 +14,7 @@ Date   : Mon Dec  6 21:40:29 2021
                              Required        Actual
    Design                   Leakage Power  Leakage Power     Slack
    -----------------------------------------------------------------
-   async_fifo                   0.00       8051798.00     -8051798.00
+   async_fifo                   0.00       12407974.00    -12407974.00
                                                                     (VIOLATED)
 
 

@@ -7,7 +7,7 @@ Report : power
         -analysis_effort low
 Design : async_fifo
 Version: O-2018.06-SP1
-Date   : Mon Dec  6 21:40:29 2021
+Date   : Mon Jan  3 19:37:44 2022
 ****************************************
 
 
@@ -22,9 +22,11 @@ Wire Load Model Mode: enclosed
 Design        Wire Load Model            Library
 ------------------------------------------------
 async_fifo             8000              cb13fs120_tsmc_max
+sync_rst_1             ForQA             cb13fs120_tsmc_max
 sync_SIZE4_1           ForQA             cb13fs120_tsmc_max
-fifo_mem_4_4_54525545  8000              cb13fs120_tsmc_max
+dpram_ASIZE4_DSIZE8    8000              cb13fs120_tsmc_max
 sync_SIZE4_0           ForQA             cb13fs120_tsmc_max
+sync_rst_0             ForQA             cb13fs120_tsmc_max
 
 
 Global Operating Voltage = 1.08 
@@ -36,12 +38,12 @@ Power-specific unit information :
     Leakage Power Units = 1pW
 
 
-  Cell Internal Power  =  49.2509 uW   (66%)
-  Net Switching Power  =  25.1441 uW   (34%)
+  Cell Internal Power  =  56.5691 uW   (61%)
+  Net Switching Power  =  35.5050 uW   (39%)
                          ---------
-Total Dynamic Power    =  74.3950 uW  (100%)
+Total Dynamic Power    =  92.0741 uW  (100%)
 
-Cell Leakage Power     =   7.4382 uW
+Cell Leakage Power     =  11.6570 uW
 
 
                  Internal         Switching           Leakage            Total
@@ -51,9 +53,9 @@ io_pad             0.0000            0.0000            0.0000            0.0000 
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register       8.0746e-03        3.7171e-03        4.8358e+06        1.6628e-02  (  20.32%)
+register       9.6657e-03        4.5870e-03        7.6961e+06        2.1949e-02  (  21.16%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational  4.1176e-02        2.1427e-02        2.6024e+06        6.5206e-02  (  79.68%)
+combinational  4.6903e-02        3.0918e-02        3.9610e+06        8.1782e-02  (  78.84%)
 --------------------------------------------------------------------------------------------------
-Total          4.9251e-02 mW     2.5144e-02 mW     7.4382e+06 pW     8.1833e-02 mW
+Total          5.6569e-02 mW     3.5505e-02 mW     1.1657e+07 pW         0.1037 mW
 1

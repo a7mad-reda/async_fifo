@@ -6,39 +6,41 @@ Report : timing
         -max_paths 10
 Design : async_fifo
 Version: O-2018.06-SP1
-Date   : Mon Dec  6 21:40:29 2021
+Date   : Mon Jan  3 19:37:44 2022
 ****************************************
 
 Operating Conditions: cb13fs120_tsmc_max   Library: cb13fs120_tsmc_max
 Wire Load Model Mode: enclosed
 
-  Startpoint: rptr_empty/rbin_reg[0]
+  Startpoint: rptr_empty/rbin_reg[2]
               (rising edge-triggered flip-flop clocked by dest_clk)
-  Endpoint: rdata[3] (output port clocked by dest_clk)
+  Endpoint: rdata[6] (output port clocked by dest_clk)
   Path Group: dest_clk
   Path Type: max
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
   async_fifo         8000                  cb13fs120_tsmc_max
-  fifo_mem_4_4_54525545
+  dpram_ASIZE4_DSIZE8
                      8000                  cb13fs120_tsmc_max
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
   clock dest_clk (rise edge)                              0.00       0.00
   clock network delay (ideal)                             1.90       1.90
-  rptr_empty/rbin_reg[0]/CP (sdcrq1)                      0.00       1.90 r
-  rptr_empty/rbin_reg[0]/Q (sdcrq1)                       0.46       2.36 r
-  fifo_mem/raddr[0] (fifo_mem_4_4_54525545)               0.00       2.36 r
-  fifo_mem/U5/Z (or02d1)                                  0.48       2.84 r
-  fifo_mem/U6/ZN (oai2222d1)                              0.46       3.30 f
-  fifo_mem/U15/ZN (nd02d0)                                0.07       3.36 r
-  fifo_mem/U47/ZN (nd04d0)                                0.18       3.55 f
-  fifo_mem/rdata_tri[3]/ZN (invtd1)                       0.16       3.71 r
-  fifo_mem/rdata[3] (fifo_mem_4_4_54525545)               0.00       3.71 r
-  rdata[3] (out)                                          0.00       3.71 r
-  data arrival time                                                  3.71
+  rptr_empty/rbin_reg[2]/CP (sdcrq1)                      0.00       1.90 r
+  rptr_empty/rbin_reg[2]/Q (sdcrq1)                       0.48       2.38 f
+  fifo_mem/raddr[2] (dpram_ASIZE4_DSIZE8)                 0.00       2.38 f
+  fifo_mem/U279/ZN (inv0d1)                               0.13       2.52 r
+  fifo_mem/U286/ZN (nr03d1)                               0.58       3.10 f
+  fifo_mem/U362/Z (aor22d1)                               0.30       3.39 f
+  fifo_mem/U79/ZN (nr03d0)                                0.11       3.50 r
+  fifo_mem/U10/ZN (nd02d0)                                0.11       3.61 f
+  fifo_mem/U31/ZN (nd02d1)                                0.06       3.67 r
+  fifo_mem/U80/ZN (nd02d1)                                0.17       3.84 f
+  fifo_mem/rdata[6] (dpram_ASIZE4_DSIZE8)                 0.00       3.84 f
+  rdata[6] (out)                                          0.00       3.84 f
+  data arrival time                                                  3.84
 
   clock dest_clk (rise edge)                              7.00       7.00
   clock network delay (ideal)                             0.00       7.00
@@ -47,38 +49,40 @@ Wire Load Model Mode: enclosed
   data required time                                                 3.85
   --------------------------------------------------------------------------
   data required time                                                 3.85
-  data arrival time                                                 -3.71
+  data arrival time                                                 -3.84
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.14
+  slack (MET)                                                        0.01
 
 
-  Startpoint: rptr_empty/rbin_reg[0]
+  Startpoint: rptr_empty/rbin_reg[2]
               (rising edge-triggered flip-flop clocked by dest_clk)
-  Endpoint: rdata[2] (output port clocked by dest_clk)
+  Endpoint: rdata[5] (output port clocked by dest_clk)
   Path Group: dest_clk
   Path Type: max
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
   async_fifo         8000                  cb13fs120_tsmc_max
-  fifo_mem_4_4_54525545
+  dpram_ASIZE4_DSIZE8
                      8000                  cb13fs120_tsmc_max
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
   clock dest_clk (rise edge)                              0.00       0.00
   clock network delay (ideal)                             1.90       1.90
-  rptr_empty/rbin_reg[0]/CP (sdcrq1)                      0.00       1.90 r
-  rptr_empty/rbin_reg[0]/Q (sdcrq1)                       0.46       2.36 r
-  fifo_mem/raddr[0] (fifo_mem_4_4_54525545)               0.00       2.36 r
-  fifo_mem/U5/Z (or02d1)                                  0.48       2.84 r
-  fifo_mem/U18/ZN (oai2222d1)                             0.46       3.30 f
-  fifo_mem/U36/ZN (nd02d0)                                0.07       3.36 r
-  fifo_mem/U46/ZN (nd04d0)                                0.18       3.55 f
-  fifo_mem/rdata_tri[2]/ZN (invtd1)                       0.16       3.71 r
-  fifo_mem/rdata[2] (fifo_mem_4_4_54525545)               0.00       3.71 r
-  rdata[2] (out)                                          0.00       3.71 r
-  data arrival time                                                  3.71
+  rptr_empty/rbin_reg[2]/CP (sdcrq1)                      0.00       1.90 r
+  rptr_empty/rbin_reg[2]/Q (sdcrq1)                       0.48       2.38 f
+  fifo_mem/raddr[2] (dpram_ASIZE4_DSIZE8)                 0.00       2.38 f
+  fifo_mem/U279/ZN (inv0d1)                               0.13       2.52 r
+  fifo_mem/U286/ZN (nr03d1)                               0.58       3.10 f
+  fifo_mem/U351/Z (aor22d1)                               0.30       3.39 f
+  fifo_mem/U57/ZN (nr03d0)                                0.11       3.50 r
+  fifo_mem/U38/ZN (nd02d0)                                0.11       3.61 f
+  fifo_mem/U58/ZN (nd02d1)                                0.06       3.67 r
+  fifo_mem/U59/ZN (nd02d1)                                0.17       3.84 f
+  fifo_mem/rdata[5] (dpram_ASIZE4_DSIZE8)                 0.00       3.84 f
+  rdata[5] (out)                                          0.00       3.84 f
+  data arrival time                                                  3.84
 
   clock dest_clk (rise edge)                              7.00       7.00
   clock network delay (ideal)                             0.00       7.00
@@ -87,52 +91,12 @@ Wire Load Model Mode: enclosed
   data required time                                                 3.85
   --------------------------------------------------------------------------
   data required time                                                 3.85
-  data arrival time                                                 -3.71
+  data arrival time                                                 -3.84
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.14
+  slack (MET)                                                        0.01
 
 
-  Startpoint: rptr_empty/rbin_reg[0]
-              (rising edge-triggered flip-flop clocked by dest_clk)
-  Endpoint: rdata[1] (output port clocked by dest_clk)
-  Path Group: dest_clk
-  Path Type: max
-
-  Des/Clust/Port     Wire Load Model       Library
-  ------------------------------------------------
-  async_fifo         8000                  cb13fs120_tsmc_max
-  fifo_mem_4_4_54525545
-                     8000                  cb13fs120_tsmc_max
-
-  Point                                                   Incr       Path
-  --------------------------------------------------------------------------
-  clock dest_clk (rise edge)                              0.00       0.00
-  clock network delay (ideal)                             1.90       1.90
-  rptr_empty/rbin_reg[0]/CP (sdcrq1)                      0.00       1.90 r
-  rptr_empty/rbin_reg[0]/Q (sdcrq1)                       0.46       2.36 r
-  fifo_mem/raddr[0] (fifo_mem_4_4_54525545)               0.00       2.36 r
-  fifo_mem/U5/Z (or02d1)                                  0.48       2.84 r
-  fifo_mem/U24/ZN (oai2222d1)                             0.46       3.30 f
-  fifo_mem/U38/ZN (nd02d0)                                0.07       3.36 r
-  fifo_mem/U45/ZN (nd04d0)                                0.18       3.55 f
-  fifo_mem/rdata_tri[1]/ZN (invtd1)                       0.16       3.71 r
-  fifo_mem/rdata[1] (fifo_mem_4_4_54525545)               0.00       3.71 r
-  rdata[1] (out)                                          0.00       3.71 r
-  data arrival time                                                  3.71
-
-  clock dest_clk (rise edge)                              7.00       7.00
-  clock network delay (ideal)                             0.00       7.00
-  clock uncertainty                                      -0.35       6.65
-  output external delay                                  -2.80       3.85
-  data required time                                                 3.85
-  --------------------------------------------------------------------------
-  data required time                                                 3.85
-  data arrival time                                                 -3.71
-  --------------------------------------------------------------------------
-  slack (MET)                                                        0.14
-
-
-  Startpoint: rptr_empty/rbin_reg[0]
+  Startpoint: rptr_empty/rbin_reg[2]
               (rising edge-triggered flip-flop clocked by dest_clk)
   Endpoint: rdata[0] (output port clocked by dest_clk)
   Path Group: dest_clk
@@ -141,24 +105,26 @@ Wire Load Model Mode: enclosed
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
   async_fifo         8000                  cb13fs120_tsmc_max
-  fifo_mem_4_4_54525545
+  dpram_ASIZE4_DSIZE8
                      8000                  cb13fs120_tsmc_max
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
   clock dest_clk (rise edge)                              0.00       0.00
   clock network delay (ideal)                             1.90       1.90
-  rptr_empty/rbin_reg[0]/CP (sdcrq1)                      0.00       1.90 r
-  rptr_empty/rbin_reg[0]/Q (sdcrq1)                       0.46       2.36 r
-  fifo_mem/raddr[0] (fifo_mem_4_4_54525545)               0.00       2.36 r
-  fifo_mem/U5/Z (or02d1)                                  0.48       2.84 r
-  fifo_mem/U30/ZN (oai2222d1)                             0.46       3.30 f
-  fifo_mem/U42/ZN (nd02d0)                                0.07       3.36 r
-  fifo_mem/U44/ZN (nd04d0)                                0.18       3.55 f
-  fifo_mem/rdata_tri[0]/ZN (invtd1)                       0.16       3.71 r
-  fifo_mem/rdata[0] (fifo_mem_4_4_54525545)               0.00       3.71 r
-  rdata[0] (out)                                          0.00       3.71 r
-  data arrival time                                                  3.71
+  rptr_empty/rbin_reg[2]/CP (sdcrq1)                      0.00       1.90 r
+  rptr_empty/rbin_reg[2]/Q (sdcrq1)                       0.48       2.38 f
+  fifo_mem/raddr[2] (dpram_ASIZE4_DSIZE8)                 0.00       2.38 f
+  fifo_mem/U279/ZN (inv0d1)                               0.13       2.52 r
+  fifo_mem/U286/ZN (nr03d1)                               0.58       3.10 f
+  fifo_mem/U296/Z (aor22d1)                               0.30       3.39 f
+  fifo_mem/U67/ZN (nr03d0)                                0.11       3.50 r
+  fifo_mem/U9/ZN (nd02d0)                                 0.11       3.61 f
+  fifo_mem/U27/ZN (nd02d1)                                0.06       3.67 r
+  fifo_mem/U68/ZN (nd02d1)                                0.17       3.84 f
+  fifo_mem/rdata[0] (dpram_ASIZE4_DSIZE8)                 0.00       3.84 f
+  rdata[0] (out)                                          0.00       3.84 f
+  data arrival time                                                  3.84
 
   clock dest_clk (rise edge)                              7.00       7.00
   clock network delay (ideal)                             0.00       7.00
@@ -167,9 +133,219 @@ Wire Load Model Mode: enclosed
   data required time                                                 3.85
   --------------------------------------------------------------------------
   data required time                                                 3.85
-  data arrival time                                                 -3.71
+  data arrival time                                                 -3.84
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.14
+  slack (MET)                                                        0.01
+
+
+  Startpoint: rptr_empty/rbin_reg[2]
+              (rising edge-triggered flip-flop clocked by dest_clk)
+  Endpoint: rdata[7] (output port clocked by dest_clk)
+  Path Group: dest_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  async_fifo         8000                  cb13fs120_tsmc_max
+  dpram_ASIZE4_DSIZE8
+                     8000                  cb13fs120_tsmc_max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dest_clk (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             1.90       1.90
+  rptr_empty/rbin_reg[2]/CP (sdcrq1)                      0.00       1.90 r
+  rptr_empty/rbin_reg[2]/Q (sdcrq1)                       0.48       2.38 f
+  fifo_mem/raddr[2] (dpram_ASIZE4_DSIZE8)                 0.00       2.38 f
+  fifo_mem/U279/ZN (inv0d1)                               0.13       2.52 r
+  fifo_mem/U286/ZN (nr03d1)                               0.58       3.10 f
+  fifo_mem/U373/Z (aor22d1)                               0.30       3.39 f
+  fifo_mem/U64/ZN (nr03d0)                                0.13       3.52 r
+  fifo_mem/U37/ZN (nd02d1)                                0.08       3.60 f
+  fifo_mem/U29/ZN (nd02d1)                                0.05       3.66 r
+  fifo_mem/U65/ZN (nd02d1)                                0.17       3.83 f
+  fifo_mem/rdata[7] (dpram_ASIZE4_DSIZE8)                 0.00       3.83 f
+  rdata[7] (out)                                          0.00       3.83 f
+  data arrival time                                                  3.83
+
+  clock dest_clk (rise edge)                              7.00       7.00
+  clock network delay (ideal)                             0.00       7.00
+  clock uncertainty                                      -0.35       6.65
+  output external delay                                  -2.80       3.85
+  data required time                                                 3.85
+  --------------------------------------------------------------------------
+  data required time                                                 3.85
+  data arrival time                                                 -3.83
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.02
+
+
+  Startpoint: rptr_empty/rbin_reg[2]
+              (rising edge-triggered flip-flop clocked by dest_clk)
+  Endpoint: rdata[4] (output port clocked by dest_clk)
+  Path Group: dest_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  async_fifo         8000                  cb13fs120_tsmc_max
+  dpram_ASIZE4_DSIZE8
+                     8000                  cb13fs120_tsmc_max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dest_clk (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             1.90       1.90
+  rptr_empty/rbin_reg[2]/CP (sdcrq1)                      0.00       1.90 r
+  rptr_empty/rbin_reg[2]/Q (sdcrq1)                       0.48       2.38 f
+  fifo_mem/raddr[2] (dpram_ASIZE4_DSIZE8)                 0.00       2.38 f
+  fifo_mem/U279/ZN (inv0d1)                               0.13       2.52 r
+  fifo_mem/U286/ZN (nr03d1)                               0.58       3.10 f
+  fifo_mem/U340/Z (aor22d1)                               0.30       3.39 f
+  fifo_mem/U76/ZN (nr03d0)                                0.13       3.52 r
+  fifo_mem/U36/ZN (nd02d1)                                0.08       3.60 f
+  fifo_mem/U32/ZN (nd02d1)                                0.05       3.66 r
+  fifo_mem/U77/ZN (nd02d1)                                0.17       3.83 f
+  fifo_mem/rdata[4] (dpram_ASIZE4_DSIZE8)                 0.00       3.83 f
+  rdata[4] (out)                                          0.00       3.83 f
+  data arrival time                                                  3.83
+
+  clock dest_clk (rise edge)                              7.00       7.00
+  clock network delay (ideal)                             0.00       7.00
+  clock uncertainty                                      -0.35       6.65
+  output external delay                                  -2.80       3.85
+  data required time                                                 3.85
+  --------------------------------------------------------------------------
+  data required time                                                 3.85
+  data arrival time                                                 -3.83
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.02
+
+
+  Startpoint: rptr_empty/rbin_reg[2]
+              (rising edge-triggered flip-flop clocked by dest_clk)
+  Endpoint: rdata[3] (output port clocked by dest_clk)
+  Path Group: dest_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  async_fifo         8000                  cb13fs120_tsmc_max
+  dpram_ASIZE4_DSIZE8
+                     8000                  cb13fs120_tsmc_max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dest_clk (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             1.90       1.90
+  rptr_empty/rbin_reg[2]/CP (sdcrq1)                      0.00       1.90 r
+  rptr_empty/rbin_reg[2]/Q (sdcrq1)                       0.48       2.38 f
+  fifo_mem/raddr[2] (dpram_ASIZE4_DSIZE8)                 0.00       2.38 f
+  fifo_mem/U279/ZN (inv0d1)                               0.13       2.52 r
+  fifo_mem/U286/ZN (nr03d1)                               0.58       3.10 f
+  fifo_mem/U329/Z (aor22d1)                               0.30       3.39 f
+  fifo_mem/U61/ZN (nr03d0)                                0.13       3.52 r
+  fifo_mem/U34/ZN (nd02d1)                                0.08       3.60 f
+  fifo_mem/U26/ZN (nd02d1)                                0.05       3.66 r
+  fifo_mem/U62/ZN (nd02d1)                                0.17       3.83 f
+  fifo_mem/rdata[3] (dpram_ASIZE4_DSIZE8)                 0.00       3.83 f
+  rdata[3] (out)                                          0.00       3.83 f
+  data arrival time                                                  3.83
+
+  clock dest_clk (rise edge)                              7.00       7.00
+  clock network delay (ideal)                             0.00       7.00
+  clock uncertainty                                      -0.35       6.65
+  output external delay                                  -2.80       3.85
+  data required time                                                 3.85
+  --------------------------------------------------------------------------
+  data required time                                                 3.85
+  data arrival time                                                 -3.83
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.02
+
+
+  Startpoint: rptr_empty/rbin_reg[2]
+              (rising edge-triggered flip-flop clocked by dest_clk)
+  Endpoint: rdata[2] (output port clocked by dest_clk)
+  Path Group: dest_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  async_fifo         8000                  cb13fs120_tsmc_max
+  dpram_ASIZE4_DSIZE8
+                     8000                  cb13fs120_tsmc_max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dest_clk (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             1.90       1.90
+  rptr_empty/rbin_reg[2]/CP (sdcrq1)                      0.00       1.90 r
+  rptr_empty/rbin_reg[2]/Q (sdcrq1)                       0.48       2.38 f
+  fifo_mem/raddr[2] (dpram_ASIZE4_DSIZE8)                 0.00       2.38 f
+  fifo_mem/U279/ZN (inv0d1)                               0.13       2.52 r
+  fifo_mem/U286/ZN (nr03d1)                               0.58       3.10 f
+  fifo_mem/U318/Z (aor22d1)                               0.30       3.39 f
+  fifo_mem/U73/ZN (nr03d0)                                0.13       3.52 r
+  fifo_mem/U35/ZN (nd02d1)                                0.08       3.60 f
+  fifo_mem/U28/ZN (nd02d1)                                0.05       3.66 r
+  fifo_mem/U74/ZN (nd02d1)                                0.17       3.83 f
+  fifo_mem/rdata[2] (dpram_ASIZE4_DSIZE8)                 0.00       3.83 f
+  rdata[2] (out)                                          0.00       3.83 f
+  data arrival time                                                  3.83
+
+  clock dest_clk (rise edge)                              7.00       7.00
+  clock network delay (ideal)                             0.00       7.00
+  clock uncertainty                                      -0.35       6.65
+  output external delay                                  -2.80       3.85
+  data required time                                                 3.85
+  --------------------------------------------------------------------------
+  data required time                                                 3.85
+  data arrival time                                                 -3.83
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.02
+
+
+  Startpoint: rptr_empty/rbin_reg[2]
+              (rising edge-triggered flip-flop clocked by dest_clk)
+  Endpoint: rdata[1] (output port clocked by dest_clk)
+  Path Group: dest_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  async_fifo         8000                  cb13fs120_tsmc_max
+  dpram_ASIZE4_DSIZE8
+                     8000                  cb13fs120_tsmc_max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dest_clk (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             1.90       1.90
+  rptr_empty/rbin_reg[2]/CP (sdcrq1)                      0.00       1.90 r
+  rptr_empty/rbin_reg[2]/Q (sdcrq1)                       0.48       2.38 f
+  fifo_mem/raddr[2] (dpram_ASIZE4_DSIZE8)                 0.00       2.38 f
+  fifo_mem/U279/ZN (inv0d1)                               0.13       2.52 r
+  fifo_mem/U286/ZN (nr03d1)                               0.58       3.10 f
+  fifo_mem/U307/Z (aor22d1)                               0.30       3.39 f
+  fifo_mem/U70/ZN (nr03d0)                                0.13       3.52 r
+  fifo_mem/U33/ZN (nd02d1)                                0.08       3.60 f
+  fifo_mem/U25/ZN (nd02d1)                                0.05       3.66 r
+  fifo_mem/U71/ZN (nd02d1)                                0.17       3.83 f
+  fifo_mem/rdata[1] (dpram_ASIZE4_DSIZE8)                 0.00       3.83 f
+  rdata[1] (out)                                          0.00       3.83 f
+  data arrival time                                                  3.83
+
+  clock dest_clk (rise edge)                              7.00       7.00
+  clock network delay (ideal)                             0.00       7.00
+  clock uncertainty                                      -0.35       6.65
+  output external delay                                  -2.80       3.85
+  data required time                                                 3.85
+  --------------------------------------------------------------------------
+  data required time                                                 3.85
+  data arrival time                                                 -3.83
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.02
 
 
   Startpoint: rptr_empty/empty_reg
@@ -187,9 +363,9 @@ Wire Load Model Mode: enclosed
   clock dest_clk (rise edge)               0.00       0.00
   clock network delay (ideal)              1.90       1.90
   rptr_empty/empty_reg/CP (sdprb1)         0.00       1.90 r
-  rptr_empty/empty_reg/Q (sdprb1)          0.48       2.38 r
-  empty (out)                              0.00       2.39 r
-  data arrival time                                   2.39
+  rptr_empty/empty_reg/Q (sdprb1)          0.47       2.37 r
+  empty (out)                              0.00       2.37 r
+  data arrival time                                   2.37
 
   clock dest_clk (rise edge)               7.00       7.00
   clock network delay (ideal)              0.00       7.00
@@ -198,9 +374,9 @@ Wire Load Model Mode: enclosed
   data required time                                  3.85
   -----------------------------------------------------------
   data required time                                  3.85
-  data arrival time                                  -2.39
+  data arrival time                                  -2.37
   -----------------------------------------------------------
-  slack (MET)                                         1.46
+  slack (MET)                                         1.48
 
 
   Startpoint: rptr_empty/near_empty_reg
@@ -234,169 +410,6 @@ Wire Load Model Mode: enclosed
   slack (MET)                                                        1.52
 
 
-  Startpoint: rptr_empty/under_flow_reg
-              (rising edge-triggered flip-flop clocked by dest_clk)
-  Endpoint: under_flow (output port clocked by dest_clk)
-  Path Group: dest_clk
-  Path Type: max
-
-  Des/Clust/Port     Wire Load Model       Library
-  ------------------------------------------------
-  async_fifo         8000                  cb13fs120_tsmc_max
-
-  Point                                                   Incr       Path
-  --------------------------------------------------------------------------
-  clock dest_clk (rise edge)                              0.00       0.00
-  clock network delay (ideal)                             1.90       1.90
-  rptr_empty/under_flow_reg/CP (sdcrq1)                   0.00       1.90 r
-  rptr_empty/under_flow_reg/Q (sdcrq1)                    0.43       2.33 r
-  under_flow (out)                                        0.00       2.33 r
-  data arrival time                                                  2.33
-
-  clock dest_clk (rise edge)                              7.00       7.00
-  clock network delay (ideal)                             0.00       7.00
-  clock uncertainty                                      -0.35       6.65
-  output external delay                                  -2.80       3.85
-  data required time                                                 3.85
-  --------------------------------------------------------------------------
-  data required time                                                 3.85
-  data arrival time                                                 -2.33
-  --------------------------------------------------------------------------
-  slack (MET)                                                        1.52
-
-
-  Startpoint: sync_w2r/sync_out_reg[3]
-              (rising edge-triggered flip-flop clocked by dest_clk)
-  Endpoint: rptr_empty/near_empty_reg
-            (rising edge-triggered flip-flop clocked by dest_clk)
-  Path Group: dest_clk
-  Path Type: max
-
-  Des/Clust/Port     Wire Load Model       Library
-  ------------------------------------------------
-  async_fifo         8000                  cb13fs120_tsmc_max
-
-  Point                                                   Incr       Path
-  --------------------------------------------------------------------------
-  clock dest_clk (rise edge)                              0.00       0.00
-  clock network delay (ideal)                             1.90       1.90
-  sync_w2r/sync_out_reg[3]/CP (dfcrq1)                    0.00       1.90 r
-  sync_w2r/sync_out_reg[3]/Q (dfcrq1)                     0.39       2.29 r
-  sync_w2r/sync_out[3] (sync_SIZE4_0)                     0.00       2.29 r
-  U143/ZN (inv0d0)                                        0.09       2.38 f
-  U144/Z (mx02d0)                                         0.29       2.67 f
-  U145/ZN (inv0d0)                                        0.11       2.78 r
-  U146/Z (mx02d0)                                         0.28       3.06 r
-  U147/ZN (inv0d0)                                        0.11       3.18 f
-  U148/Z (mx02d0)                                         0.29       3.47 f
-  U233/ZN (inv0d0)                                        0.11       3.58 r
-  U234/Z (mx02d0)                                         0.23       3.82 r
-  U237/ZN (nr02d0)                                        0.14       3.95 f
-  intadd_2/U4/CO (ad01d0)                                 0.27       4.22 f
-  intadd_2/U3/CO (ad01d0)                                 0.27       4.49 f
-  intadd_2/U2/S (ad01d0)                                  0.35       4.84 r
-  U105/CO (cg01d0)                                        0.23       5.08 r
-  U140/CO (cg01d0)                                        0.20       5.27 r
-  U260/Z (an03d0)                                         0.17       5.44 r
-  rptr_empty/near_empty_reg/D (sdcrq1)                    0.00       5.44 r
-  data arrival time                                                  5.44
-
-  clock dest_clk (rise edge)                              7.00       7.00
-  clock network delay (ideal)                             1.90       8.90
-  clock uncertainty                                      -0.35       8.55
-  rptr_empty/near_empty_reg/CP (sdcrq1)                   0.00       8.55 r
-  library setup time                                     -0.18       8.37
-  data required time                                                 8.37
-  --------------------------------------------------------------------------
-  data required time                                                 8.37
-  data arrival time                                                 -5.44
-  --------------------------------------------------------------------------
-  slack (MET)                                                        2.94
-
-
-  Startpoint: ren (input port clocked by dest_clk)
-  Endpoint: rptr_empty/empty_reg
-            (rising edge-triggered flip-flop clocked by dest_clk)
-  Path Group: dest_clk
-  Path Type: max
-
-  Des/Clust/Port     Wire Load Model       Library
-  ------------------------------------------------
-  async_fifo         8000                  cb13fs120_tsmc_max
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock dest_clk (rise edge)               0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     2.80       2.80 r
-  ren (in)                                 0.03       2.83 r
-  U149/Z (an12d1)                          0.14       2.97 r
-  U150/ZN (nd02d0)                         0.17       3.14 f
-  U127/ZN (nr02d0)                         0.15       3.29 r
-  U120/Z (an02d0)                          0.24       3.53 r
-  U126/Z (an02d0)                          0.20       3.72 r
-  U155/ZN (nr02d0)                         0.22       3.94 f
-  U240/Z (mx02d0)                          0.26       4.20 f
-  U241/Z (mx02d0)                          0.24       4.44 r
-  U252/ZN (nd04d0)                         0.14       4.58 f
-  U254/Z (aor211d1)                        0.26       4.84 f
-  U261/ZN (nr02d0)                         0.09       4.92 r
-  rptr_empty/empty_reg/D (sdprb1)          0.00       4.92 r
-  data arrival time                                   4.92
-
-  clock dest_clk (rise edge)               7.00       7.00
-  clock network delay (ideal)              1.90       8.90
-  clock uncertainty                       -0.35       8.55
-  rptr_empty/empty_reg/CP (sdprb1)         0.00       8.55 r
-  library setup time                      -0.17       8.38
-  data required time                                  8.38
-  -----------------------------------------------------------
-  data required time                                  8.38
-  data arrival time                                  -4.92
-  -----------------------------------------------------------
-  slack (MET)                                         3.45
-
-
-  Startpoint: ren (input port clocked by dest_clk)
-  Endpoint: rptr_empty/rptr_reg[2]
-            (rising edge-triggered flip-flop clocked by dest_clk)
-  Path Group: dest_clk
-  Path Type: max
-
-  Des/Clust/Port     Wire Load Model       Library
-  ------------------------------------------------
-  async_fifo         8000                  cb13fs120_tsmc_max
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock dest_clk (rise edge)               0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     2.80       2.80 f
-  ren (in)                                 0.03       2.83 f
-  U149/Z (an12d1)                          0.14       2.98 f
-  U150/ZN (nd02d0)                         0.15       3.13 r
-  U127/ZN (nr02d0)                         0.17       3.30 f
-  U120/Z (an02d0)                          0.24       3.54 f
-  U126/Z (an02d0)                          0.20       3.73 f
-  U155/ZN (nr02d0)                         0.19       3.92 r
-  U240/Z (mx02d0)                          0.25       4.17 r
-  U265/Z (an02d0)                          0.14       4.31 r
-  rptr_empty/rptr_reg[2]/D (sdcrq1)        0.00       4.31 r
-  data arrival time                                   4.31
-
-  clock dest_clk (rise edge)               7.00       7.00
-  clock network delay (ideal)              1.90       8.90
-  clock uncertainty                       -0.35       8.55
-  rptr_empty/rptr_reg[2]/CP (sdcrq1)       0.00       8.55 r
-  library setup time                      -0.18       8.37
-  data required time                                  8.37
-  -----------------------------------------------------------
-  data required time                                  8.37
-  data arrival time                                  -4.31
-  -----------------------------------------------------------
-  slack (MET)                                         4.06
-
-
   Startpoint: sync_r2w/sync_out_reg[2]
               (rising edge-triggered flip-flop clocked by src_clk)
   Endpoint: wptr_full/near_full_reg
@@ -415,22 +428,22 @@ Wire Load Model Mode: enclosed
   sync_r2w/sync_out_reg[2]/CP (dfcrq1)                    0.00       1.00 r
   sync_r2w/sync_out_reg[2]/Q (dfcrq1)                     0.36       1.36 f
   sync_r2w/sync_out[2] (sync_SIZE4_1)                     0.00       1.36 f
-  U189/ZN (xn02d1)                                        0.32       1.68 f
-  U190/ZN (xn02d1)                                        0.28       1.96 f
-  U191/ZN (xn02d1)                                        0.29       2.26 f
-  U192/ZN (nr02d0)                                        0.09       2.35 r
-  U110/Z (or02d1)                                         0.15       2.50 r
-  U111/ZN (nd02d1)                                        0.07       2.57 f
-  U141/ZN (nd02d1)                                        0.08       2.64 r
-  U106/ZN (nd02d1)                                        0.09       2.73 f
-  U222/ZN (nd02d0)                                        0.10       2.83 r
-  U223/ZN (xn02d1)                                        0.24       3.07 f
-  U135/ZN (nd02d0)                                        0.08       3.15 r
-  U226/ZN (oan211d1)                                      0.24       3.39 f
-  U227/CO (cg01d1)                                        0.16       3.55 f
-  U228/ZN (nr03d0)                                        0.09       3.64 r
-  wptr_full/near_full_reg/D (sdcrq1)                      0.00       3.64 r
-  data arrival time                                                  3.64
+  U187/ZN (xn02d1)                                        0.31       1.67 f
+  U188/ZN (xn02d1)                                        0.28       1.96 f
+  U189/ZN (xn02d1)                                        0.27       2.23 f
+  U192/Z (or02d1)                                         0.13       2.36 f
+  U140/ZN (nd02d0)                                        0.12       2.48 r
+  U193/ZN (nd02d1)                                        0.08       2.56 f
+  U195/ZN (nd02d0)                                        0.13       2.69 r
+  U121/ZN (nd02d1)                                        0.12       2.80 f
+  U105/ZN (nd02d1)                                        0.07       2.87 r
+  U222/ZN (xn02d1)                                        0.24       3.11 f
+  U225/ZN (nd02d1)                                        0.06       3.17 r
+  U227/ZN (oan211d1)                                      0.23       3.40 f
+  U228/CO (cg01d1)                                        0.16       3.56 f
+  U229/ZN (nr03d0)                                        0.09       3.65 r
+  wptr_full/near_full_reg/D (sdcrq1)                      0.00       3.65 r
+  data arrival time                                                  3.65
 
   clock src_clk (rise edge)                               3.00       3.00
   clock network delay (ideal)                             1.00       4.00
@@ -440,9 +453,9 @@ Wire Load Model Mode: enclosed
   data required time                                                 3.65
   --------------------------------------------------------------------------
   data required time                                                 3.65
-  data arrival time                                                 -3.64
+  data arrival time                                                 -3.65
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.01
+  slack (MET)                                                        0.00
 
 
   Startpoint: wptr_full/full_reg
@@ -462,18 +475,18 @@ Wire Load Model Mode: enclosed
   clock network delay (ideal)              1.00       1.00
   wptr_full/full_reg/CP (sdcrq1)           0.00       1.00 r
   wptr_full/full_reg/Q (sdcrq1)            0.42       1.42 r
-  U142/ZN (nr02d4)                         0.34       1.76 f
-  U185/ZN (nd02d0)                         0.20       1.96 r
-  U134/ZN (nr02d0)                         0.15       2.11 f
-  U130/ZN (nd02d0)                         0.14       2.25 r
-  U129/ZN (nd12d0)                         0.17       2.41 r
-  U171/ZN (xn02d1)                         0.28       2.70 f
-  U173/ZN (xn02d1)                         0.26       2.96 f
-  U174/ZN (xn02d1)                         0.22       3.17 f
-  U183/ZN (nr03d0)                         0.12       3.30 r
-  U184/Z (an02d0)                          0.15       3.45 r
-  wptr_full/full_reg/D (sdcrq1)            0.00       3.45 r
-  data arrival time                                   3.45
+  U141/ZN (nr02d2)                         0.39       1.81 f
+  U130/ZN (nd02d0)                         0.21       2.02 r
+  U157/ZN (nr02d0)                         0.14       2.17 f
+  U133/ZN (nd02d0)                         0.14       2.31 r
+  U131/ZN (nd12d0)                         0.17       2.47 r
+  U170/ZN (xn02d1)                         0.28       2.76 f
+  U172/ZN (xn02d1)                         0.26       3.02 f
+  U173/ZN (xn02d1)                         0.22       3.23 f
+  U182/ZN (nr03d0)                         0.12       3.36 r
+  U136/Z (an02d0)                          0.15       3.51 r
+  wptr_full/full_reg/D (sdcrq1)            0.00       3.51 r
+  data arrival time                                   3.51
 
   clock src_clk (rise edge)                3.00       3.00
   clock network delay (ideal)              1.00       4.00
@@ -483,9 +496,9 @@ Wire Load Model Mode: enclosed
   data required time                                  3.65
   -----------------------------------------------------------
   data required time                                  3.65
-  data arrival time                                  -3.45
+  data arrival time                                  -3.51
   -----------------------------------------------------------
-  slack (MET)                                         0.20
+  slack (MET)                                         0.14
 
 
   Startpoint: wptr_full/full_reg
@@ -598,16 +611,16 @@ Wire Load Model Mode: enclosed
   clock network delay (ideal)              1.00       1.00
   wptr_full/full_reg/CP (sdcrq1)           0.00       1.00 r
   wptr_full/full_reg/Q (sdcrq1)            0.42       1.42 r
-  U142/ZN (nr02d4)                         0.34       1.76 f
-  U185/ZN (nd02d0)                         0.20       1.96 r
-  U134/ZN (nr02d0)                         0.15       2.11 f
-  U130/ZN (nd02d0)                         0.14       2.25 r
-  U129/ZN (nd12d0)                         0.17       2.41 r
-  U171/ZN (xn02d1)                         0.28       2.70 f
-  U173/ZN (xn02d1)                         0.22       2.92 r
-  U231/Z (an02d0)                          0.13       3.04 r
-  wptr_full/wptr_reg[3]/D (sdcrq1)         0.00       3.04 r
-  data arrival time                                   3.04
+  U141/ZN (nr02d2)                         0.39       1.81 f
+  U130/ZN (nd02d0)                         0.21       2.02 r
+  U157/ZN (nr02d0)                         0.14       2.17 f
+  U133/ZN (nd02d0)                         0.14       2.31 r
+  U131/ZN (nd12d0)                         0.17       2.47 r
+  U170/ZN (xn02d1)                         0.28       2.76 f
+  U172/ZN (xn02d1)                         0.22       2.98 r
+  U232/Z (an02d0)                          0.13       3.10 r
+  wptr_full/wptr_reg[3]/D (sdcrq1)         0.00       3.10 r
+  data arrival time                                   3.10
 
   clock src_clk (rise edge)                3.00       3.00
   clock network delay (ideal)              1.00       4.00
@@ -617,9 +630,9 @@ Wire Load Model Mode: enclosed
   data required time                                  3.65
   -----------------------------------------------------------
   data required time                                  3.65
-  data arrival time                                  -3.04
+  data arrival time                                  -3.10
   -----------------------------------------------------------
-  slack (MET)                                         0.61
+  slack (MET)                                         0.55
 
 
   Startpoint: wptr_full/full_reg
@@ -639,16 +652,16 @@ Wire Load Model Mode: enclosed
   clock network delay (ideal)              1.00       1.00
   wptr_full/full_reg/CP (sdcrq1)           0.00       1.00 r
   wptr_full/full_reg/Q (sdcrq1)            0.42       1.42 r
-  U142/ZN (nr02d4)                         0.34       1.76 f
-  U185/ZN (nd02d0)                         0.20       1.96 r
-  U134/ZN (nr02d0)                         0.15       2.11 f
-  U130/ZN (nd02d0)                         0.14       2.25 r
-  U168/Z (xr02d1)                          0.31       2.55 f
-  U139/ZN (inv0d0)                         0.10       2.66 r
-  U175/ZN (xn02d1)                         0.25       2.90 f
-  U232/ZN (nr02d0)                         0.08       2.98 r
-  wptr_full/wptr_reg[2]/D (sdcrq1)         0.00       2.98 r
-  data arrival time                                   2.98
+  U141/ZN (nr02d2)                         0.39       1.81 f
+  U130/ZN (nd02d0)                         0.21       2.02 r
+  U157/ZN (nr02d0)                         0.14       2.17 f
+  U133/ZN (nd02d0)                         0.14       2.31 r
+  U168/Z (xr02d1)                          0.31       2.61 f
+  U135/ZN (inv0d0)                         0.10       2.72 r
+  U174/ZN (xn02d1)                         0.25       2.96 f
+  U233/ZN (nr02d0)                         0.08       3.04 r
+  wptr_full/wptr_reg[2]/D (sdcrq1)         0.00       3.04 r
+  data arrival time                                   3.04
 
   clock src_clk (rise edge)                3.00       3.00
   clock network delay (ideal)              1.00       4.00
@@ -658,49 +671,9 @@ Wire Load Model Mode: enclosed
   data required time                                  3.65
   -----------------------------------------------------------
   data required time                                  3.65
-  data arrival time                                  -2.98
+  data arrival time                                  -3.04
   -----------------------------------------------------------
-  slack (MET)                                         0.67
-
-
-  Startpoint: wptr_full/full_reg
-              (rising edge-triggered flip-flop clocked by src_clk)
-  Endpoint: wptr_full/wbin_reg[4]
-            (rising edge-triggered flip-flop clocked by src_clk)
-  Path Group: src_clk
-  Path Type: max
-
-  Des/Clust/Port     Wire Load Model       Library
-  ------------------------------------------------
-  async_fifo         8000                  cb13fs120_tsmc_max
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock src_clk (rise edge)                0.00       0.00
-  clock network delay (ideal)              1.00       1.00
-  wptr_full/full_reg/CP (sdcrq1)           0.00       1.00 r
-  wptr_full/full_reg/Q (sdcrq1)            0.42       1.42 r
-  U142/ZN (nr02d4)                         0.34       1.76 f
-  U185/ZN (nd02d0)                         0.20       1.96 r
-  U134/ZN (nr02d0)                         0.15       2.11 f
-  U130/ZN (nd02d0)                         0.14       2.25 r
-  U129/ZN (nd12d0)                         0.17       2.41 r
-  U171/ZN (xn02d1)                         0.28       2.70 f
-  U172/Z (an02d0)                          0.14       2.83 f
-  wptr_full/wbin_reg[4]/D (sdcrq1)         0.00       2.83 f
-  data arrival time                                   2.83
-
-  clock src_clk (rise edge)                3.00       3.00
-  clock network delay (ideal)              1.00       4.00
-  clock uncertainty                       -0.15       3.85
-  wptr_full/wbin_reg[4]/CP (sdcrq1)        0.00       3.85 r
-  library setup time                      -0.16       3.69
-  data required time                                  3.69
-  -----------------------------------------------------------
-  data required time                                  3.69
-  data arrival time                                  -2.83
-  -----------------------------------------------------------
-  slack (MET)                                         0.86
+  slack (MET)                                         0.61
 
 
   Startpoint: wptr_full/full_reg
@@ -720,14 +693,14 @@ Wire Load Model Mode: enclosed
   clock network delay (ideal)              1.00       1.00
   wptr_full/full_reg/CP (sdcrq1)           0.00       1.00 r
   wptr_full/full_reg/Q (sdcrq1)            0.42       1.42 r
-  U142/ZN (nr02d4)                         0.34       1.76 f
-  U185/ZN (nd02d0)                         0.20       1.96 r
-  U134/ZN (nr02d0)                         0.15       2.11 f
-  U133/Z (xr02d1)                          0.34       2.44 f
-  U177/ZN (xn02d1)                         0.26       2.70 f
-  U229/ZN (nr02d0)                         0.08       2.78 r
-  wptr_full/wptr_reg[1]/D (sdcrq1)         0.00       2.78 r
-  data arrival time                                   2.78
+  U141/ZN (nr02d2)                         0.39       1.81 f
+  U130/ZN (nd02d0)                         0.21       2.02 r
+  U128/ZN (inv0d0)                         0.15       2.17 f
+  U125/Z (xr02d1)                          0.34       2.51 f
+  U176/ZN (xn02d1)                         0.30       2.81 f
+  U230/ZN (nr02d0)                         0.08       2.89 r
+  wptr_full/wptr_reg[1]/D (sdcrq1)         0.00       2.89 r
+  data arrival time                                   2.89
 
   clock src_clk (rise edge)                3.00       3.00
   clock network delay (ideal)              1.00       4.00
@@ -737,9 +710,49 @@ Wire Load Model Mode: enclosed
   data required time                                  3.65
   -----------------------------------------------------------
   data required time                                  3.65
-  data arrival time                                  -2.78
+  data arrival time                                  -2.89
   -----------------------------------------------------------
-  slack (MET)                                         0.87
+  slack (MET)                                         0.76
+
+
+  Startpoint: wptr_full/full_reg
+              (rising edge-triggered flip-flop clocked by src_clk)
+  Endpoint: wptr_full/wbin_reg[4]
+            (rising edge-triggered flip-flop clocked by src_clk)
+  Path Group: src_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  async_fifo         8000                  cb13fs120_tsmc_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock src_clk (rise edge)                0.00       0.00
+  clock network delay (ideal)              1.00       1.00
+  wptr_full/full_reg/CP (sdcrq1)           0.00       1.00 r
+  wptr_full/full_reg/Q (sdcrq1)            0.42       1.42 r
+  U141/ZN (nr02d2)                         0.39       1.81 f
+  U130/ZN (nd02d0)                         0.21       2.02 r
+  U157/ZN (nr02d0)                         0.14       2.17 f
+  U133/ZN (nd02d0)                         0.14       2.31 r
+  U131/ZN (nd12d0)                         0.17       2.47 r
+  U170/ZN (xn02d1)                         0.28       2.76 f
+  U171/Z (an02d0)                          0.14       2.89 f
+  wptr_full/wbin_reg[4]/D (sdcrq1)         0.00       2.89 f
+  data arrival time                                   2.89
+
+  clock src_clk (rise edge)                3.00       3.00
+  clock network delay (ideal)              1.00       4.00
+  clock uncertainty                       -0.15       3.85
+  wptr_full/wbin_reg[4]/CP (sdcrq1)        0.00       3.85 r
+  library setup time                      -0.16       3.69
+  data required time                                  3.69
+  -----------------------------------------------------------
+  data required time                                  3.69
+  data arrival time                                  -2.89
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
 
 
   Startpoint: wptr_full/full_reg
@@ -759,14 +772,14 @@ Wire Load Model Mode: enclosed
   clock network delay (ideal)              1.00       1.00
   wptr_full/full_reg/CP (sdcrq1)           0.00       1.00 r
   wptr_full/full_reg/Q (sdcrq1)            0.42       1.42 r
-  U142/ZN (nr02d4)                         0.34       1.76 f
-  U185/ZN (nd02d0)                         0.20       1.96 r
-  U170/ZN (inv0d0)                         0.15       2.11 f
-  U161/ZN (nr02d0)                         0.17       2.27 r
-  U180/ZN (xn02d1)                         0.32       2.59 f
-  U230/ZN (nr02d0)                         0.08       2.67 r
-  wptr_full/wptr_reg[0]/D (sdcrq1)         0.00       2.67 r
-  data arrival time                                   2.67
+  U141/ZN (nr02d2)                         0.39       1.81 f
+  U130/ZN (nd02d0)                         0.21       2.02 r
+  U128/ZN (inv0d0)                         0.15       2.17 f
+  U125/Z (xr02d1)                          0.34       2.51 f
+  U179/ZN (xn02d1)                         0.26       2.77 f
+  U231/ZN (nr02d0)                         0.08       2.84 r
+  wptr_full/wptr_reg[0]/D (sdcrq1)         0.00       2.84 r
+  data arrival time                                   2.84
 
   clock src_clk (rise edge)                3.00       3.00
   clock network delay (ideal)              1.00       4.00
@@ -776,9 +789,9 @@ Wire Load Model Mode: enclosed
   data required time                                  3.65
   -----------------------------------------------------------
   data required time                                  3.65
-  data arrival time                                  -2.67
+  data arrival time                                  -2.84
   -----------------------------------------------------------
-  slack (MET)                                         0.98
+  slack (MET)                                         0.81
 
 
 1

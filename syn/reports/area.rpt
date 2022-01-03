@@ -3,28 +3,28 @@
 Report : area
 Design : async_fifo
 Version: O-2018.06-SP1
-Date   : Mon Dec  6 21:40:29 2021
+Date   : Mon Jan  3 19:37:44 2022
 ****************************************
 
 Library(s) Used:
 
     cb13fs120_tsmc_max (File: /home/rfic/Desktop/adapted/async_fifo/libs/mw_lib/sc/LM/sc_max.db)
 
-Number of ports:                           76
-Number of nets:                           549
-Number of cells:                          484
-Number of combinational cells:            292
-Number of sequential cells:               189
+Number of ports:                          104
+Number of nets:                           848
+Number of cells:                          763
+Number of combinational cells:            437
+Number of sequential cells:               321
 Number of macros/black boxes:               0
-Number of buf/inv:                         27
-Number of references:                      34
+Number of buf/inv:                         30
+Number of references:                      38
 
-Combinational area:                527.250000
-Buf/Inv area:                       20.250000
-Noncombinational area:             814.750000
+Combinational area:                779.750000
+Buf/Inv area:                       22.750000
+Noncombinational area:            1350.000000
 Macro/Black Box area:                0.000000
-Net Interconnect area:             190.898259
+Net Interconnect area:             347.249171
 
-Total cell area:                  1342.000000
-Total area:                       1532.898259
+Total cell area:                  2129.750000
+Total area:                       2476.999171
 1
