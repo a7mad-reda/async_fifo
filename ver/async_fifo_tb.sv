@@ -15,10 +15,10 @@ module	async_fifo_tb
 	parameter				ASIZE		= 4		;	// Number of address bits
 	parameter				DEPTH		= 1<<ASIZE	;	// memory depth
 	parameter				FALLTHROUGH 	= "TRUE"	;	// TRUE => first word fall-through "async_read" else => sync_read
-	parameter				WCLK_PERIOD	= 10		;
-	parameter				RCLK_PERIOD	= 100		;
-	parameter				clk_phase_shift	= 2		;
-	parameter				hold		= 2		;	// min duration after clk active edge
+	parameter				WCLK_PERIOD	= 5		;
+	parameter				RCLK_PERIOD	= 7		;
+	parameter				clk_phase_shift	= 1		;
+	parameter				hold		= 1		;	// min duration after clk active edge
 	parameter 				max_latency	= 2*RCLK_PERIOD	;
 											
 	//-------------------------- SIGNALS ---------------------------------
@@ -53,7 +53,10 @@ module	async_fifo_tb
 	reg	[DSIZE-1 : 0]			rd_file_array	[DEPTH-1 : 0]	;
 	
 	//--------------------- test end flags ---------------------------------
-	reg					test1, test2, test3		;					
+	reg					test1, test2, test3,tm		;	
+
+	//--------------------- disabel scan mode ------------------------------
+	reg					tm				;				
 
 	//--------------------------------------------------------------------
 	// instantiation of Asynchronous FIFO top module
@@ -62,8 +65,7 @@ module	async_fifo_tb
 		//------------------------- PARAMETERS -------------------------------
 		#(	
 		 .DSIZE 			(DSIZE			),
-		 .ASIZE 			(ASIZE			),
-		 .FALLTHROUGH 			(FALLTHROUGH		)
+		 .ASIZE 			(ASIZE			)
 		) DUT
 		//--------------------------- PORTS ----------------------------------
 		(
@@ -84,7 +86,12 @@ module	async_fifo_tb
 		 .near_full 			(near_full		),
 		 .near_empty 			(near_empty		),
 		 .over_flow 			(over_flow		),
-		 .under_flow 			(under_flow		)
+		 .under_flow 			(under_flow		),
+		 .test_si 			(			),
+		 .test_so	 		(			),
+		 .test_se	 		(			),
+		 .test_mode	 		(			),
+		 .atpg_mode	 		(1'b0			)
 		);
 
 
@@ -329,13 +336,14 @@ module	async_fifo_tb
 			near_full_mrgn	=	4						;
 			near_empty_mrgn	=	4						;
 			
-			#10
 			wrst_n		=	0						;
 			rrst_n		=	0						;
 		
-			#10
+			#500
 			wrst_n		=	1						;
-			rrst_n		=	1						;								
+			rrst_n		=	1						;
+	
+			#500									;			
 		end
 
 	endtask
