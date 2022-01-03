@@ -9,9 +9,8 @@
 module	async_fifo
 	//------------------------- PARAMETERS -------------------------------
 	#(
-	 parameter				DSIZE 		= 4	,	// word width
-	 parameter				ASIZE		= 4	,	// Number of address bits
-	 parameter				FALLTHROUGH 	="TRUE"		// TRUE => first word fall-through "async_read" else => sync_read
+	 parameter				DSIZE 		= 8	,	// word width
+	 parameter				ASIZE		= 4	 	// Number of address bits
 	)
 	//---------------------------- PORTS ---------------------------------
 	(
@@ -32,7 +31,11 @@ module	async_fifo
 	 output wire				near_full		,
 	 output wire				near_empty		,
 	 output wire				over_flow		,
-	 output	wire				under_flow		
+	 output	wire				under_flow		,
+	 input	wire				test_si			, 
+	 output	wire				test_so			,
+	 input	wire				test_se, atpg_mode	,
+	 input	wire				test_mode				
 	);
 
 	//--------------------------- SIGNALS ---------------------------------
@@ -40,6 +43,26 @@ module	async_fifo
 	wire		[ASIZE	 : 0]		sync_wptr, sync_rptr			;
 	wire		[ASIZE-1 : 0]		raddr, waddr				;
 	wire					mem_wr, mem_rd				;
+	wire					sync_wrst_n, sync_rrst_n		;
+
+	//---------------------------------------------------------------------
+	// instantiation of reset synchronization modules
+	//---------------------------------------------------------------------
+	sync_rst	sync_rst_w
+		(
+			.clk			(wclk			),
+			.rst_n			(wrst_n			),
+			.sync_rst_n		(sync_wrst_n		),
+			.atpg_mode		(atpg_mode		)
+		);
+
+	sync_rst	sync_rst_r
+		(
+			.clk			(rclk			),
+			.rst_n			(rrst_n			),
+			.sync_rst_n		(sync_rrst_n		),
+			.atpg_mode		(atpg_mode		)
+		);
 
 	//---------------------------------------------------------------------
 	// instantiation of module generating write pointer and full flags
@@ -51,7 +74,7 @@ module	async_fifo
 	wptr_full
 		(
 			.wclk			(wclk			),
-			.wrst_n			(wrst_n			),
+			.wrst_n			(sync_wrst_n		),
 			.winc			(wen			),
 			.wptr_clr		(wptr_clr		),
 			.near_full_mrgn		(near_full_mrgn		),
@@ -73,7 +96,7 @@ module	async_fifo
 	rptr_empty
 		(
 			.rclk			(rclk			),
-			.rrst_n			(rrst_n			),
+			.rrst_n			(sync_rrst_n		),
 			.rinc			(ren			),
 			.rptr_clr		(rptr_clr		),
 			.near_empty_mrgn	(near_empty_mrgn	),
@@ -96,7 +119,7 @@ module	async_fifo
 	sync_r2w
 		(
 			.clk			(wclk			),
-			.rst_n			(wrst_n			),
+			.rst_n			(sync_wrst_n			),
 			.async_in		(rptr			),
 			.sync_out		(sync_rptr		)	
 		);
@@ -113,7 +136,7 @@ module	async_fifo
 	sync_w2r
 		(
 			.clk			(rclk			),
-			.rst_n			(rrst_n			),
+			.rst_n			(sync_rrst_n			),
 			.async_in		(wptr			),
 			.sync_out		(sync_wptr		)	
 		);
@@ -124,19 +147,17 @@ module	async_fifo
 	// instaniation of fifo memory
 	// dual port synchronous write asynchronous read
 	//---------------------------------------------------------------------
-	fifo_mem
+	dpram
 		#(
 			.ASIZE 			(ASIZE			),				
-			.DSIZE			(DSIZE			),								
-			.FALLTHROUGH		(FALLTHROUGH		)		
+			.DSIZE			(DSIZE			)										
 		)
 	fifo_mem
 		(
 			.wclk			(wclk			),
+			.rst_n			(wrst_n			),
 			.wen			(mem_wr			),
 			.waddr			(waddr			),
-			.rclk			(rclk			),
-			.ren			(mem_rd			),
 			.raddr			(raddr			),
 			.wdata			(wdata			),
 			.rdata			(rdata			)
