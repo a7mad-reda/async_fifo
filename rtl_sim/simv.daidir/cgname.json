@@ -1,0 +1,26 @@
+{
+    "std": [
+        "std",
+        "reYIK",
+        "module",
+        1
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        4
+    ],
+    "async_fifo_tb": [
+        "async_fifo_tb",
+        "JuPRz",
+        "module",
+        2
+    ],
+    "sync_rst": [
+        "sync_rst",
+        "T1ypp",
+        "module",
+        3
+    ]
+}

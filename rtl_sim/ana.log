@@ -1,0 +1,24 @@
+Command: vlogan -full64 -sverilog -l ana.log -kdb -f run.f
+                         Chronologic VCS (TM)
+       Version O-2018.09-SP2_Full64 -- Fri Dec 24 01:58:38 2021
+               Copyright (c) 1991-2018 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+Parsing design file '../ver/async_fifo_tb.sv'
+
+Warning-[IPDW] Identifier previously declared
+../ver/async_fifo_tb.sv, 59
+  Second declaration for identifier 'tm' ignored
+  Identifier 'tm' previously declared as reg. [../ver/async_fifo_tb.sv, 56]
+
+Parsing library directory file '../rtl/async_fifo.v'
+Parsing library directory file '../rtl/dpram.v'
+Parsing library directory file '../rtl/rptr_empty.v'
+Parsing library directory file '../rtl/sync.v'
+Parsing library directory file '../rtl/sync_rst.v'
+Parsing library directory file '../rtl/wptr_full.v'
+CPU time: .166 seconds to compile

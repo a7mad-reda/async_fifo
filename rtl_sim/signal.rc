@@ -2,11 +2,11 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort -4 124 1914 831 331 84
+viewPort -10 20 1914 831 331 84
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
-openDirFile -d / -i 0 "" "/home/rfic/Desktop/adapted/async_fifo/sim/async_fifo_tb.fsdb"
+openDirFile -d / -i 0 "" "/home/rfic/Desktop/adapted/async_fifo/rtl_sim/async_fifo_tb.fsdb"
 
 ; file time scale:
 ; fileTimeScale ### s|ms|us|ns|ps
@@ -16,14 +16,14 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 2798988.360699 3205664.559841
+zoom 0.000000 1316393.175049
 cursor 3072000.000000
 marker 100000.000000
 
 ; visible top row signal index
-top 6
+top 10
 ; marker line index
-markerPos 39
+markerPos 43
 
 ; event list
 ; addEvent event_name event_expression
@@ -47,7 +47,7 @@ addGroup "G2"
 addSubGroup "G2-1"
 addSubGroup "DUT"
 addSubGroup "**** clocks ***"
-activeDirFile "" "/home/rfic/Desktop/adapted/async_fifo/sim/async_fifo_tb.fsdb"
+activeDirFile "" "/home/rfic/Desktop/adapted/async_fifo/rtl_sim/async_fifo_tb.fsdb"
 addSignal -h 15 /async_fifo_tb/DUT/wclk
 addSignal -h 15 -holdScope rclk
 endSubGroup "**** clocks ***"
@@ -98,12 +98,16 @@ endSubGroup "POINTERS"
 endSubGroup "DUT"
 endSubGroup "G2-1"
 addSubGroup "G2-2"
+addSignal -h 15 /async_fifo_tb/DUT/sync_w2r/sync_out[4:0]
+addSignal -h 15 /async_fifo_tb/DUT/sync_rst_w/sync_rst_n
+addSignal -h 15 -holdScope sync_rst_n
+addSignal -h 15 /async_fifo_tb/DUT/sync_rst_r/sync_rst_n
 endSubGroup "G2-2"
 addGroup "G3"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm
-activeDirFile "" "/home/rfic/Desktop/adapted/async_fifo/sim/async_fifo_tb.fsdb"
+activeDirFile "" "/home/rfic/Desktop/adapted/async_fifo/rtl_sim/async_fifo_tb.fsdb"
 
 GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
 getSignalForm close
@@ -111,16 +115,19 @@ getSignalForm close
 "/async_fifo_tb"
 "/async_fifo_tb/DUT"
 "/async_fifo_tb/DUT/rptr_empty"
+"/async_fifo_tb/DUT/sync_rst_w"
 
 SCOPE_LIST_BEGIN
 "/async_fifo_tb"
 "/async_fifo_tb/DUT/rptr_empty"
 "/async_fifo_tb/DUT/wptr_full"
 "/async_fifo_tb/DUT"
-"/async_fifo_tb/DUT/fifo_mem"
+"/async_fifo_tb/DUT/dpram"
 "/async_fifo_tb/DUT/rptr_empty/gray_bin"
 "/async_fifo_tb/DUT/sync_r2w"
 "/async_fifo_tb/DUT/sync_w2r"
+"/async_fifo_tb/DUT/sync_rst_w"
+"/async_fifo_tb/DUT/sync_rst_r"
 SCOPE_LIST_END
 
 GETSIGNALFORM_SCOPE_HIERARCHY_END

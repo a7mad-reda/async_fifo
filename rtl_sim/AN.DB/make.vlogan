@@ -1,0 +1,42 @@
+
+VLOGAN	= vlogan
+VLOGAN_OPT	= -kdb -l ana.log -full64 -sverilog -y ../rtl +libext+.v -full64
+
+all :		_VCSgd_NIIMFc_1.db \
+	_VCSgd_gQruec_1.db \
+	_VCSgd_FzJmSc_1.db \
+	_VCSgd_7qyE4d_1.db \
+	_VCSgd_oakoRb_1.db \
+	_VCSgd_SDNA9c_1.db \
+	_VCSgd_r3czUd_1.db \
+
+
+
+_VCSgd_NIIMFc_1.db :	../ver/async_fifo_tb.sv 
+		${VLOGAN}  ${VLOGAN_OPT} ../ver/async_fifo_tb.sv
+
+
+_VCSgd_gQruec_1.db :	../rtl/async_fifo.v 
+		${VLOGAN}  ${VLOGAN_OPT} ../rtl/async_fifo.v
+
+
+_VCSgd_FzJmSc_1.db :	../rtl/dpram.v 
+		${VLOGAN}  ${VLOGAN_OPT} ../rtl/dpram.v
+
+
+_VCSgd_7qyE4d_1.db :	../rtl/rptr_empty.v 
+		${VLOGAN}  ${VLOGAN_OPT} ../rtl/rptr_empty.v
+
+
+_VCSgd_oakoRb_1.db :	../rtl/sync.v 
+		${VLOGAN}  ${VLOGAN_OPT} ../rtl/sync.v
+
+
+_VCSgd_SDNA9c_1.db :	../rtl/sync_rst.v 
+		${VLOGAN}  ${VLOGAN_OPT} ../rtl/sync_rst.v
+
+
+_VCSgd_r3czUd_1.db :	../rtl/wptr_full.v 
+		${VLOGAN}  ${VLOGAN_OPT} ../rtl/wptr_full.v
+
+
