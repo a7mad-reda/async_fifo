@@ -1,4 +1,4 @@
-# Asynchronous FIFO Flow Summary
+# Asynchronous FIFO Project Summary
 Sep 2021 - Present
 
 - Design: Modular, Parameterizable, and Configurable flags at runtime.
