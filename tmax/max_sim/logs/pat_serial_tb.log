@@ -1,0 +1,25 @@
+
+
+
+maxtb> Parsing command line...
+
+maxtb> Checking for feature license...
+
+maxtb> Parsing STIL file "./patterns/async_fifo_TM3.stil" ...
+
+maxtb> STIL file successfully interpreted (PatternExec: "").
+
+maxtb> Total test patterns to process 73
+
+maxtb> Detected a Normal Scan mode.
+
+maxtb> Enabling timing back annotation from sdf file ./sdf/async_fifo.sdf
+
+maxtb> Test data file "./max_sim/serial/TM3/pat_serial_tb.dat" generated successfully.
+
+maxtb> Test bench file "./max_sim/serial/TM3/pat_serial_tb.v" generated successfully.
+
+maxtb> Memory usage: 5.32 Mbytes. CPU usage: 0.045 seconds.
+
+maxtb> End.
+End.

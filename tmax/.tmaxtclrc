@@ -1,0 +1,13 @@
+if {! [file exist logs] } { exec mkdir logs}
+if {! [file exist reports] } { exec mkdir reports}
+if {! [file exist patterns] } { exec mkdir patterns}
+if {! [file exist imgs] } { exec mkdir imgs}
+if {! [file exist test_protocols] } { exec mkdir test_protocols}
+if {! [file exist max_sim] } { exec mkdir max_sim}
+
+set_commands -abort
+
+
+
+
+

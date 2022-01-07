@@ -1,0 +1,22 @@
+
+
+
+maxtb> Parsing command line...
+
+maxtb> Checking for feature license...
+
+maxtb> Parsing STIL file "./patterns/async_fifo_TM4.stil" ...
+
+maxtb> STIL file successfully interpreted (PatternExec: "").
+
+maxtb> Total test patterns to process 73
+
+maxtb> Detected a Scan Compression mode.
+
+maxtb> Test data file "./max_sim/parallel/TM4/pat_parallel_tb.dat" generated successfully.
+
+maxtb> Test bench file "./max_sim/parallel/TM4/pat_parallel_tb.v" generated successfully.
+
+maxtb> Memory usage: 5.82 Mbytes. CPU usage: 0.030 seconds.
+
+maxtb> End.

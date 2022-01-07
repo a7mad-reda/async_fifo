@@ -1,0 +1,49 @@
+Extended error info:
+
+    while executing
+"set_commands -abort"
+ -- End Extended Error Info
+set top_design "async_fifo"
+async_fifo
+set mode "TM1"
+TM1
+# Restore image saved after previous ATPG
+read_image ./imgs/${top_design}_${mode}.img.gz
+ Warning: All netlist and library module data are now deleted. (M41)
+ End read image: #bytes=246405, CPU time=0.02 sec, Memory=15MB.
+report_pattern -summary
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           0
+ -----------------------------------------------
+# Reference the previously generated patterns
+set_pattern -external ./patterns/gzip/${top_design}.pats_${mode}.gz
+ End parsing binary file ./patterns/gzip/async_fifo.pats_TM1.gz with 0 errors.
+ End reading 71 patterns, CPU_time = 0.00 sec, Memory = 0MB
+report_pattern -summary
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           0
+ #external patterns (./patterns/gzip/async_fifo.pats_TM1.gz)     71
+     #basic_scan patterns                    70
+     #fast_sequential patterns                1
+ -----------------------------------------------
+# Generate some reports
+#report_pattern -ext -all -type > pattern_detail.rpt
+#report_scan_cell -all > scan_cell.rpt
+#
+#
+# Save your patterns HERE
+#
+#
+#write_pattern pattern/pat.stil -external -format stil -replace 
+#
+#
+# Save your simulation testbench HERE
+#
+#
+write_testbench -input ./patterns/${top_design}_${mode}.stil -output ./max_sim/pat_parallel_tb     -parameter {-parallel -replace -log ./max_sim/pat_parallel_tb.log} 
+ Executing 'stil2verilog'...
+#write_testbench -input ./pattern/pat.stil -output ./pattern/pat_serial_tb #    -parameter {-serial -replace -log pat_serial_tb.log -sdf_file ../../design_data/orca_final.sdf}
+# All done
+#quit

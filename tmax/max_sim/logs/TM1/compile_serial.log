@@ -1,0 +1,194 @@
+Command: vcs -full64 -override_timescale=1ns/1ns -v ../../libs/mw_lib/tmax/core.v \
+../../syn/mapped_scan/async_fifo.v ./serial/TM1/pat_serial_tb.v +tetramax +define+tmax_rtp=1 \
++define+tmax_msg=1 +define+tmax_fsdb -debug_access+dmptf -o pat_serial_simv_TM1 -l \
+logs/TM1/compile_serial.log
+                         Chronologic VCS (TM)
+       Version O-2018.09-SP2_Full64 -- Fri Jan  7 06:00:19 2022
+               Copyright (c) 1991-2018 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+Parsing design file '../../syn/mapped_scan/async_fifo.v'
+Parsing design file './serial/TM1/pat_serial_tb.v'
+Parsing library file '../../libs/mw_lib/tmax/core.v'
+Top Level Modules:
+       async_fifo_test
+       async_fifo_test_SDF_ANN
+TimeScale is 1 ns / 1 ns
+
+Warning-[TFIPC] Too few instance port connections
+../../syn/mapped_scan/async_fifo.v, 1126
+async_fifo, "ad01d0 U260( .A (intadd_0_B_0_),  .B (near_empty_mrgn[1]),  .CI (n198),  .CO (n199));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../syn/mapped_scan/async_fifo.v, 1127
+async_fifo, "ad01d0 U261( .A (intadd_0_B_1_),  .B (near_empty_mrgn[2]),  .CI (n199),  .CO (n200));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+   ***   $sdf_annotate() version 1.2R
+   ***    SDF file: "./sdf/async_fifo.sdf"
+   ***    Annotation scope: async_fifo_test.dut
+   ***    No MTM selection argument specified
+   ***    No SCALE FACTORS argument specified
+   ***    No SCALE TYPE argument specified
+   ***    MTM selection defaulted to "TOOL_CONTROL":
+               (+typdelays compiled, TYPICAL delays selected)
+   ***    SCALE FACTORS defaulted to "1.0:1.0:1.0":
+   ***    SCALE TYPE defaulted to: "FROM_MTM"
+   ***    Turnoff delay: "FROM_FILE"
+   ***    Approximation (mipd) policy: "MAXIMUM"
+
+   ***    SDF annotation begin: Fri Jan  7 06:00:20 2022
+
+
+SDF Info: +pulse_r/100, +pulse_e/100 in effect
+
+Warning-[SDFCOM_IWSBA] INTERCONNECT will still be annotated
+./sdf/async_fifo.sdf, 305
+module: nd02d0, "instance: async_fifo_test.dut.async_fifo_U_decompressor_TM4.U15"
+  SDF Warning: INTERCONNECT from async_fifo_U_decompressor_TM4.U15.ZN to 
+  fifo_mem.U429.B1 has Instance at ../../syn/mapped_scan/async_fifo.v:1224, 
+  delay will still be annotated.
+
+
+Warning-[SDFCOM_IWSBA] INTERCONNECT will still be annotated
+./sdf/async_fifo.sdf, 336
+module: nd02d0, "instance: async_fifo_test.dut.async_fifo_U_decompressor_TM4.U18"
+  SDF Warning: INTERCONNECT from async_fifo_U_decompressor_TM4.U18.ZN to 
+  fifo_mem.U435.B1 has Instance at ../../syn/mapped_scan/async_fifo.v:1224, 
+  delay will still be annotated.
+
+
+Warning-[SDFCOM_IWSBA] INTERCONNECT will still be annotated
+./sdf/async_fifo.sdf, 338
+module: nd02d0, "instance: async_fifo_test.dut.async_fifo_U_decompressor_TM4.U11"
+  SDF Warning: INTERCONNECT from async_fifo_U_decompressor_TM4.U11.ZN to 
+  fifo_mem.U436.B1 has Instance at ../../syn/mapped_scan/async_fifo.v:1224, 
+  delay will still be annotated.
+
+
+Warning-[SDFCOM_IWSBA] INTERCONNECT will still be annotated
+./sdf/async_fifo.sdf, 340
+module: nd02d0, "instance: async_fifo_test.dut.async_fifo_U_decompressor_TM4.U10"
+  SDF Warning: INTERCONNECT from async_fifo_U_decompressor_TM4.U10.ZN to 
+  fifo_mem.U437.B1 has Instance at ../../syn/mapped_scan/async_fifo.v:1224, 
+  delay will still be annotated.
+
+
+Warning-[SDFCOM_IWSBA] INTERCONNECT will still be annotated
+./sdf/async_fifo.sdf, 785
+module: nd02d0, "instance: async_fifo_test.dut.async_fifo_U_decompressor_TM4.U17"
+  SDF Warning: INTERCONNECT from async_fifo_U_decompressor_TM4.U17.ZN to 
+  fifo_mem.U431.B1 has Instance at ../../syn/mapped_scan/async_fifo.v:1224, 
+  delay will still be annotated.
+
+
+Warning-[SDFCOM_IWSBA] INTERCONNECT will still be annotated
+./sdf/async_fifo.sdf, 2155
+module: nd02d0, "instance: async_fifo_test.dut.async_fifo_U_decompressor_TM4.U13"
+  SDF Warning: INTERCONNECT from async_fifo_U_decompressor_TM4.U13.ZN to 
+  fifo_mem.U430.B1 has Instance at ../../syn/mapped_scan/async_fifo.v:1224, 
+  delay will still be annotated.
+
+
+Warning-[SDFCOM_IWSBA] INTERCONNECT will still be annotated
+./sdf/async_fifo.sdf, 2157
+module: nd02d0, "instance: async_fifo_test.dut.async_fifo_U_decompressor_TM4.U16"
+  SDF Warning: INTERCONNECT from async_fifo_U_decompressor_TM4.U16.ZN to 
+  fifo_mem.U432.B1 has Instance at ../../syn/mapped_scan/async_fifo.v:1224, 
+  delay will still be annotated.
+
+
+Warning-[SDFCOM_IWSBA] INTERCONNECT will still be annotated
+./sdf/async_fifo.sdf, 2160
+module: nd02d0, "instance: async_fifo_test.dut.async_fifo_U_decompressor_TM4.U12"
+  SDF Warning: INTERCONNECT from async_fifo_U_decompressor_TM4.U12.ZN to 
+  fifo_mem.U434.B1 has Instance at ../../syn/mapped_scan/async_fifo.v:1224, 
+  delay will still be annotated.
+
+
+          Total errors: 0
+          Total warnings: 8
+   ***    SDF annotation completed: Fri Jan  7 06:00:20 2022
+
+
+
+Warning-[DRTZ] Detect delay value roundoff to 0
+  Delay from design or SDF file roundoff to 0 based on timescale
+  Please use switch -diag timescale to dump detailed information.
+
+Notice: Ports coerced to inout, use -notice for details
+Starting vcs inline pass...
+43 modules and 5 UDPs read.
+recompiling module sync_rst_1
+recompiling module sync_rst_0
+recompiling module sync_SIZE4_1
+recompiling module sync_SIZE4_0
+recompiling module dpram_ASIZE4_DSIZE8
+recompiling module async_fifo_SCCOMP_DECOMPRESSOR
+recompiling module async_fifo_SCCOMP_COMPRESSOR
+recompiling module async_fifo
+recompiling module async_fifo_test
+recompiling module async_fifo_test_SDF_ANN
+recompiling module ad01d0
+recompiling module an02d1
+recompiling module an03d0
+recompiling module aoi2222d1
+recompiling module aoi22d1
+recompiling module aon211d1
+recompiling module aor211d1
+recompiling module aor21d1
+recompiling module aor221d1
+recompiling module aor222d1
+recompiling module aor22d1
+recompiling module buffd2
+recompiling module cg01d0
+recompiling module cg01d1
+recompiling module dfcrq1
+recompiling module inv0d1
+recompiling module mx02d1
+recompiling module nd02d1
+recompiling module nd03d0
+recompiling module nd04d0
+recompiling module nd12d0
+recompiling module nr02d2
+recompiling module nr03d1
+recompiling module oai211d1
+recompiling module oan211d1
+recompiling module or02d1
+recompiling module ora21d1
+recompiling module sdcrq1
+recompiling module sdcrq2
+recompiling module sdprb1
+recompiling module xn02d1
+recompiling module xr02d1
+recompiling module xr03d1
+All of 43 modules done
+make[1]: Entering directory `/home/rfic/Desktop/adapted/async_fifo/tmax/max_sim/csrc' \
+
+rm -f _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../pat_serial_simv_TM1 ]; then chmod -x ../pat_serial_simv_TM1; fi
+g++  -o ../pat_serial_simv_TM1    -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/pat_serial_simv_TM1.daidir/ \
+-Wl,-rpath=./pat_serial_simv_TM1.daidir/ -Wl,-rpath='$ORIGIN'/pat_serial_simv_TM1.daidir//scsim.db.dir \
+-rdynamic  -Wl,-rpath=/opt/synopsys/VCS2018/vcs-mx/O-2018.09-SP2/linux64/lib -L/opt/synopsys/VCS2018/vcs-mx/O-2018.09-SP2/linux64/lib \
+objs/amcQw_d.o   _60257_archive_1.so objs/udps/Nginy.o objs/udps/QRIPd.o objs/udps/afYMY.o \
+objs/udps/USMy8.o objs/udps/K79QG.o        rmapats_mop.o rmapats.o rmar.o rmar_nd.o \
+rmar_llvm_0_1.o rmar_llvm_0_0.o          -lzerosoft_rt_stubs -lvirsim -lerrorinf \
+-lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /opt/synopsys/VCS2018/vcs-mx/O-2018.09-SP2/linux64/lib/vcs_tls.o \
+-Wl,-whole-archive -lvcsucli -Wl,-no-whole-archive        _vcs_pli_stub_.o   /opt/synopsys/VCS2018/vcs-mx/O-2018.09-SP2/linux64/lib/vcs_save_restore_new.o \
+/opt/synopsys/Verdi2018/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a -ldl \
+-lc -lm -lpthread -ldl 
+../pat_serial_simv_TM1 up to date
+make[1]: Leaving directory `/home/rfic/Desktop/adapted/async_fifo/tmax/max_sim/csrc' \
+
+CPU time: .905 seconds to compile + .246 seconds to elab + .344 seconds to link
