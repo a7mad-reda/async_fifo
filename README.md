@@ -6,7 +6,8 @@ Sep 2021 - Present
 - Lint and CDC Checks.
 - Complete timing constraints in the form of SDC
 - Logic Synthesis using Controlled Optimization Techniques.
-- Multi-mode DFT Architecture, DRC clean, and Pre ATPG Coverage Estimation.
-- Stuck At ATPG Pattern generation And Validation with SDF back annotated delay.
+- Multi-mode DFT Architecture, Test Protocols , on-chip clock controller.
 - Logic Equivalence Checking.
-- Currently working on At Speed Fault.
+- ATPG for " Stuck-At Transition Small-Delay-Defects Path_Delay IDDQ " fault models.
+- Patterns Validation with SDF back annotated delay.
+- Currently working on low power flow, UPF.
