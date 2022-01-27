@@ -1,0 +1,21 @@
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** self-invoked file for tmax tool  ***		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+
+# create required directories
+if {! [file exist logs] } { exec mkdir logs}
+if {! [file exist reports] } { exec mkdir reports}
+if {! [file exist patterns] } { exec mkdir patterns}
+if {! [file exist imgs] } { exec mkdir imgs}
+if {! [file exist dftc_protocols] } { exec mkdir dftc_protocols}
+if {! [file exist max_sim] } { exec mkdir max_sim}
+if {! [file exist pt] } { exec mkdir pt}
+
+# abort script if there is an error
+set_commands -abort
+
+
+
+

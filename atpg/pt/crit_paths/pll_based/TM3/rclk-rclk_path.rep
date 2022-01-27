@@ -1,0 +1,491 @@
+
+// pt2tmax
+// Version N-2017.09
+
+$path {
+  // from: snps_clk_chain_1/U_shftreg_0_ff_7_q_reg
+  // to: occ_rclk/U_clk_control_i_0/pipeline_or_tree_l_reg
+  $name "dest_clk-dest_clk_1" ;
+  $cycle 3.5 ;
+  $slack 2.627995 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "occ_rclk/U_clk_control_i_0/U6/A2" v ; // (an02d0)
+    "occ_rclk/U_clk_control_i_0/U_or_tree_i/U3/A4" v ; // (nr04d0)
+    "occ_rclk/U_clk_control_i_0/U_or_tree_i/U1/A1" ^ ; // (nd02d0)
+    "occ_rclk/U_clk_control_i_0/pipeline_or_tree_l_reg/D" v ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: occ_rclk/U_clk_control_i_0/fast_clk_enable_l_reg
+  // to: occ_rclk/fast_clk_clkgt/cg_latch_reg
+  $name "dest_clk-dest_clk_2" ;
+  $cycle 7.0 ;
+  $slack 2.966274 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "occ_rclk/U_gf_mux_0/U5/B1" v ; // (aor21d1)
+    "occ_rclk/fast_clk_clkgt/cg_latch_reg/D" v ; // (laclq1)
+  }
+}
+
+$path {
+  // from: snps_clk_chain_1/U_shftreg_0_ff_0_q_reg
+  // to: LOCKUP
+  $name "dest_clk-dest_clk_3" ;
+  $cycle 7.0 ;
+  $slack 3.111211 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (fall edge)
+  $transition {
+    "snps_clk_chain_1/U_shftreg_0_ff_0_q_reg/Q" v ; // (denrq2)
+    "LOCKUP/D" v ; // (lanhq1)
+  }
+}
+
+$path {
+  // from: sync_w2r/sync_out_reg_3_
+  // to: rptr_empty_near_empty_reg
+  $name "dest_clk-dest_clk_4" ;
+  $cycle 7.0 ;
+  $slack 3.140641 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U142/I" ^ ; // (inv0d0)
+    "U143/I0" v ; // (mx02d0)
+    "U144/I" v ; // (inv0d0)
+    "U145/I1" ^ ; // (mx02d0)
+    "U146/I" ^ ; // (inv0d0)
+    "U147/I1" v ; // (mx02d0)
+    "U234/I" v ; // (inv0d0)
+    "U235/I0" ^ ; // (mx02d0)
+    "U237/A1" ^ ; // (nr02d0)
+    "intadd_2_U4/CI" v ; // (ad01d0)
+    "intadd_2_U3/CI" v ; // (ad01d0)
+    "intadd_2_U2/CI" v ; // (ad01d0)
+    "U138/A" ^ ; // (cg01d0)
+    "U137/CI" ^ ; // (cg01d0)
+    "U262/A3" ^ ; // (an03d0)
+    "rptr_empty_near_empty_reg/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: rptr_empty_rbin_reg_1_
+  // to: rptr_empty_empty_reg
+  $name "dest_clk-dest_clk_5" ;
+  $cycle 7.0 ;
+  $slack 4.318275 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U149/I" v ; // (inv0d0)
+    "U122/A2" ^ ; // (nr02d0)
+    "U127/A1" v ; // (an02d0)
+    "U154/A1" v ; // (nr02d0)
+    "U155/A2" ^ ; // (nr02d0)
+    "U241/I0" v ; // (mx02d0)
+    "U242/S" v ; // (mx02d0)
+    "U253/A1" ^ ; // (nd04d0)
+    "U255/A" v ; // (aor211d1)
+    "U263/A2" v ; // (nr02d0)
+    "rptr_empty_empty_reg/D" ^ ; // (sdprb1)
+  }
+}
+
+$path {
+  // from: rptr_empty_rbin_reg_1_
+  // to: rptr_empty_rptr_reg_2_
+  $name "dest_clk-dest_clk_6" ;
+  $cycle 7.0 ;
+  $slack 4.944138 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U149/I" v ; // (inv0d0)
+    "U122/A2" ^ ; // (nr02d0)
+    "U127/A1" v ; // (an02d0)
+    "U154/A1" v ; // (nr02d0)
+    "U155/A2" ^ ; // (nr02d0)
+    "U241/I0" v ; // (mx02d0)
+    "U267/A2" v ; // (an02d0)
+    "rptr_empty_rptr_reg_2_/D" v ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: rptr_empty_rbin_reg_0_
+  // to: rptr_empty_rptr_reg_1_
+  $name "dest_clk-dest_clk_7" ;
+  $cycle 7.0 ;
+  $slack 5.103712 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U148/A2" ^ ; // (nd03d0)
+    "U122/A1" v ; // (nr02d0)
+    "U127/A1" ^ ; // (an02d0)
+    "U153/A1" ^ ; // (nr02d0)
+    "U244/I0" v ; // (mx02d0)
+    "U266/A2" v ; // (an02d0)
+    "rptr_empty_rptr_reg_1_/D" v ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: rptr_empty_rbin_reg_0_
+  // to: rptr_empty_rbin_reg_4_
+  $name "dest_clk-dest_clk_8" ;
+  $cycle 7.0 ;
+  $slack 5.136883 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U148/A2" ^ ; // (nd03d0)
+    "U122/A1" v ; // (nr02d0)
+    "U127/A1" ^ ; // (an02d0)
+    "U126/A1" ^ ; // (an02d0)
+    "U251/S" ^ ; // (mx02d0)
+    "U273/A1" ^ ; // (an02d0)
+    "rptr_empty_rbin_reg_4_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: rptr_empty_rbin_reg_0_
+  // to: rptr_empty_rptr_reg_3_
+  $name "dest_clk-dest_clk_9" ;
+  $cycle 7.0 ;
+  $slack 5.143528 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U148/A2" ^ ; // (nd03d0)
+    "U122/A1" v ; // (nr02d0)
+    "U127/A1" ^ ; // (an02d0)
+    "U154/A1" ^ ; // (nr02d0)
+    "U114/A2" v ; // (xr02d1)
+    "U268/A2" v ; // (nr02d0)
+    "rptr_empty_rptr_reg_3_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: rptr_empty_rbin_reg_1_
+  // to: rptr_empty_rbin_reg_3_
+  $name "dest_clk-dest_clk_10" ;
+  $cycle 7.0 ;
+  $slack 5.176169 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U149/I" v ; // (inv0d0)
+    "U122/A2" ^ ; // (nr02d0)
+    "U127/A1" v ; // (an02d0)
+    "U154/A1" v ; // (nr02d0)
+    "U155/A2" ^ ; // (nr02d0)
+    "U272/A2" v ; // (an02d0)
+    "rptr_empty_rbin_reg_3_/D" v ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: rptr_empty_rbin_reg_0_
+  // to: rptr_empty_rptr_reg_0_
+  $name "dest_clk-dest_clk_11" ;
+  $cycle 7.0 ;
+  $slack 5.295753 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U148/A2" ^ ; // (nd03d0)
+    "U150/A1" v ; // (an02d0)
+    "U151/A2" v ; // (nr02d0)
+    "U247/I1" ^ ; // (mx02d0)
+    "U265/A2" ^ ; // (an02d0)
+    "rptr_empty_rptr_reg_0_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: rptr_empty_rbin_reg_0_
+  // to: rptr_empty_rbin_reg_2_
+  $name "dest_clk-dest_clk_12" ;
+  $cycle 7.0 ;
+  $slack 5.331901 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U148/A2" ^ ; // (nd03d0)
+    "U122/A1" v ; // (nr02d0)
+    "U127/A1" ^ ; // (an02d0)
+    "U153/A1" ^ ; // (nr02d0)
+    "U271/A2" v ; // (an02d0)
+    "rptr_empty_rbin_reg_2_/D" v ; // (sdcrq2)
+  }
+}
+
+$path {
+  // from: rptr_empty_rbin_reg_0_
+  // to: rptr_empty_rbin_reg_1_
+  $name "dest_clk-dest_clk_13" ;
+  $cycle 7.0 ;
+  $slack 5.527203 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U148/A2" ^ ; // (nd03d0)
+    "U150/A1" v ; // (an02d0)
+    "U151/A2" v ; // (nr02d0)
+    "U270/A2" ^ ; // (an02d0)
+    "rptr_empty_rbin_reg_1_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/tercnt_n_reg_reg
+  // to: occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/tercnt_n_reg_reg
+  $name "dest_clk-dest_clk_14" ;
+  $cycle 7.0 ;
+  $slack 5.672216 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "occ_rclk/U_clk_control_i_0/U18/A1" ^ ; // (an02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/add_221_U1/A4" ^ ; // (an04d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/add_221_U4/A2" ^ ; // (xr02d1)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/U6/A1" ^ ; // (nd02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/U10/A3" v ; // (nr04d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/tercnt_n_reg_reg/D" ^ ; // (dfcrn1)
+  }
+}
+
+$path {
+  // from: rptr_empty_rbin_reg_0_
+  // to: rptr_empty_rbin_reg_0_
+  $name "dest_clk-dest_clk_15" ;
+  $cycle 7.0 ;
+  $slack 5.703018 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U148/A2" v ; // (nd03d0)
+    "U236/A" ^ ; // (aon211d1)
+    "U269/A2" v ; // (nr02d0)
+    "rptr_empty_rbin_reg_0_/D" ^ ; // (sdcrq2)
+  }
+}
+
+$path {
+  // from: occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/tercnt_n_reg_reg
+  // to: occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_2_
+  $name "dest_clk-dest_clk_16" ;
+  $cycle 7.0 ;
+  $slack 5.727551 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "occ_rclk/U_clk_control_i_0/U18/A1" v ; // (an02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/U11/A1" v ; // (nd02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/add_221_U6/A2" ^ ; // (nr02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/add_221_U5/A2" v ; // (xr02d1)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/U4/A2" v ; // (an02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_2_/D" v ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/tercnt_n_reg_reg
+  // to: occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_3_
+  $name "dest_clk-dest_clk_17" ;
+  $cycle 7.0 ;
+  $slack 5.762310 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "occ_rclk/U_clk_control_i_0/U18/A1" ^ ; // (an02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/add_221_U1/A4" ^ ; // (an04d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/add_221_U4/A2" ^ ; // (xr02d1)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/U6/A1" ^ ; // (nd02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/U8/I" v ; // (inv0d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_3_/D" ^ ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/tercnt_n_reg_reg
+  // to: occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_1_
+  $name "dest_clk-dest_clk_18" ;
+  $cycle 7.0 ;
+  $slack 5.838342 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "occ_rclk/U_clk_control_i_0/U18/A1" ^ ; // (an02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/U11/A1" ^ ; // (nd02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/add_221_U7/A2" v ; // (xn02d1)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/U5/A2" v ; // (an02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_1_/D" v ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/tercnt_n_reg_reg
+  // to: occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_0_
+  $name "dest_clk-dest_clk_19" ;
+  $cycle 7.0 ;
+  $slack 6.031733 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "occ_rclk/U_clk_control_i_0/U18/A1" v ; // (an02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/add_221_U8/A1" v ; // (xr02d1)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/U7/A2" v ; // (an02d0)
+    "occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_0_/D" v ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: rptr_empty_empty_reg
+  // to: rptr_empty_under_flow_reg
+  $name "dest_clk-dest_clk_20" ;
+  $cycle 7.0 ;
+  $slack 6.181853 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "U264/A2" ^ ; // (an03d0)
+    "rptr_empty_under_flow_reg/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: sync_rst_r/dff1_reg
+  // to: sync_rst_r/dff2_reg
+  $name "dest_clk-dest_clk_21" ;
+  $cycle 7.0 ;
+  $slack 6.383854 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "sync_rst_r/dff1_reg/Q" ^ ; // (sdcrq1)
+    "sync_rst_r/dff2_reg/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: occ_rclk/U_clk_control_i_0/pipeline_or_tree_l_reg
+  // to: occ_rclk/U_clk_control_i_0/fast_clk_enable_l_reg
+  $name "dest_clk-dest_clk_22" ;
+  $cycle 7.0 ;
+  $slack 6.402923 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "occ_rclk/U_clk_control_i_0/U7/A3" ^ ; // (an03d0)
+    "occ_rclk/U_clk_control_i_0/fast_clk_enable_l_reg/D" ^ ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: sync_w2r/temp_reg_4_
+  // to: sync_w2r/sync_out_reg_4_
+  $name "dest_clk-dest_clk_23" ;
+  $cycle 7.0 ;
+  $slack 6.523147 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "sync_w2r/temp_reg_4_/Q" ^ ; // (sdcrq1)
+    "sync_w2r/sync_out_reg_4_/D" ^ ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: sync_w2r/temp_reg_3_
+  // to: sync_w2r/sync_out_reg_3_
+  $name "dest_clk-dest_clk_24" ;
+  $cycle 7.0 ;
+  $slack 6.523147 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "sync_w2r/temp_reg_3_/Q" ^ ; // (sdcrq1)
+    "sync_w2r/sync_out_reg_3_/D" ^ ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: sync_w2r/temp_reg_2_
+  // to: sync_w2r/sync_out_reg_2_
+  $name "dest_clk-dest_clk_25" ;
+  $cycle 7.0 ;
+  $slack 6.523147 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "sync_w2r/temp_reg_2_/Q" ^ ; // (sdcrq1)
+    "sync_w2r/sync_out_reg_2_/D" ^ ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: sync_w2r/temp_reg_1_
+  // to: sync_w2r/sync_out_reg_1_
+  $name "dest_clk-dest_clk_26" ;
+  $cycle 7.0 ;
+  $slack 6.523147 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "sync_w2r/temp_reg_1_/Q" ^ ; // (sdcrq1)
+    "sync_w2r/sync_out_reg_1_/D" ^ ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: sync_w2r/temp_reg_0_
+  // to: sync_w2r/sync_out_reg_0_
+  $name "dest_clk-dest_clk_27" ;
+  $cycle 7.0 ;
+  $slack 6.523147 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "sync_w2r/temp_reg_0_/Q" ^ ; // (sdcrq1)
+    "sync_w2r/sync_out_reg_0_/D" ^ ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: occ_rclk/U_clk_control_i_0/load_n_meta_0_l_reg
+  // to: occ_rclk/U_clk_control_i_0/load_n_meta_1_l_reg
+  $name "dest_clk-dest_clk_28" ;
+  $cycle 7.0 ;
+  $slack 6.554972 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "occ_rclk/U_clk_control_i_0/load_n_meta_0_l_reg/Q" v ; // (dfcrq1)
+    "occ_rclk/U_clk_control_i_0/load_n_meta_1_l_reg/D" v ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: occ_rclk/U_clk_control_i_0/load_n_meta_1_l_reg
+  // to: occ_rclk/U_clk_control_i_0/load_n_meta_2_l_reg
+  $name "dest_clk-dest_clk_29" ;
+  $cycle 7.0 ;
+  $slack 6.554972 ;
+  $launch "rclk" ; // (rise edge)
+  $capture "rclk" ; // (rise edge)
+  $transition {
+    "occ_rclk/U_clk_control_i_0/load_n_meta_1_l_reg/Q" v ; // (dfcrq1)
+    "occ_rclk/U_clk_control_i_0/load_n_meta_2_l_reg/D" v ; // (dfcrq1)
+  }
+}
+

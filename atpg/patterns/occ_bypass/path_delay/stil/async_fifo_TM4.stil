@@ -1,0 +1,720 @@
+STIL 1.0 { Design 2005; }
+Header {
+   Title "  TetraMAX(R)  O-2018.06-SP1-i20180719_204316 STIL output";
+   Date "Thu Jan 27 08:08:50 2022";
+   Source "  TetraMAX(R)  O-2018.06-SP1-i20180719_204316 STIL output";
+   History {
+      Ann {*  Incoming_Date "Thu Jan 27 08:08:50 2022"  *}
+      Ann {*  Incoming_Src "Minimal STIL for design `async_fifo'"  *}
+      Ann {*  Incoming_Date "Mon Jan 24 06:00:42 2022"  *}
+      Ann {*  Incoming_Src "DFT Compiler O-2018.06-SP1"  *}
+      Ann {*    Collapsed Path_delay Fault Summary Report *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* fault class                     code   #faults *}
+      Ann {* ------------------------------  ----  --------- *}
+      Ann {* Detected                         DT          0 *}
+      Ann {* Possibly detected                PT          0 *}
+      Ann {* Undetectable                     UD          0 *}
+      Ann {* ATPG untestable                  AU          0 *}
+      Ann {* Not detected                     ND         78 *}
+      Ann {*   not-controlled                 NC        (78) *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* total faults                                78 *}
+      Ann {* test coverage                             0.00% *}
+      Ann {* fault coverage                            0.00% *}
+      Ann {* ATPG effectiveness                        0.00% *}
+      Ann {* ----------------------------------------------- *}
+      Ann {*  *}
+      Ann {*            Pattern Summary Report *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* #internal patterns                           0 *}
+      Ann {* ----------------------------------------------- *}
+      Ann {*  *}
+      Ann {* rule  severity  #fails  description *}
+      Ann {* ----  --------  ------  --------------------------------- *}
+      Ann {* B7    warning       16  undriven module output pin *}
+      Ann {* B8    warning       10  unconnected module input pin *}
+      Ann {* B9    warning       12  undriven module internal net *}
+      Ann {* B10   warning       34  unconnected module internal net *}
+      Ann {* S19   warning       23  nonscan cell disturb *}
+      Ann {* C3    warning        1  no latch transparency when clocks off *}
+      Ann {* V6    warning        1  unused item *}
+      Ann {* V14   warning        4  missing state *}
+      Ann {* P8    warning       60  capture later than path cycle time *}
+      Ann {* P14   warning        4  ambiguous path segment *}
+      Ann {* P16   warning        1  ambiguous capture clock *}
+      Ann {* P22   warning        5  off-path node values not satisfiable *}
+      Ann {* R10   warning       36  two chains always have the same unload signature *}
+      Ann {* R11   warning      136  X on chain affects observability of other chains *}
+      Ann {*  *}
+      Ann {* clock_name        off  usage *}
+      Ann {* ----------------  ---  -------------------------- *}
+      Ann {* wclk               0   shift nonscan_DLAT nonscan_DFF  *}
+      Ann {* rclk               0   shift nonscan_DLAT nonscan_DFF  *}
+      Ann {* ate_wclk           0   master shift nonscan_DLAT nonscan_DFF  *}
+      Ann {* ate_rclk           0   master shift nonscan_DLAT nonscan_DFF  *}
+      Ann {* wrst_n             1    *}
+      Ann {* rrst_n             1    *}
+      Ann {*  *}
+      Ann {* port_name         constraint_value *}
+      Ann {* ----------------  --------------- *}
+      Ann {* wrst_n              1 *}
+      Ann {* wen                 1 *}
+      Ann {* wptr_clr            0 *}
+      Ann {* rrst_n              1 *}
+      Ann {* ren                 1 *}
+      Ann {* rptr_clr            0 *}
+      Ann {* test_se             0 *}
+      Ann {* atpg_mode           1 *}
+      Ann {* test_mode           1 *}
+      Ann {* occ_rst             0 *}
+      Ann {* occ_mode            1 *}
+      Ann {* pll_bypass          1 *}
+      Ann {* test_mode1          1 *}
+      Ann {*  *}
+      Ann {* There are no equivalent pins *}
+      Ann {* There are no net connections *}
+      Ann {* top_module_name = async_fifo *}
+      Ann {* Unified STIL Flow *}
+      Ann {* serial_flag = 0 *}
+   }
+}
+Signals {
+   "wclk" In; "wrst_n" In; "wen" In; "wptr_clr" In; "wdata[7]" In; "wdata[6]" In;
+   "wdata[5]" In; "wdata[4]" In; "wdata[3]" In; "wdata[2]" In; "wdata[1]" In; "wdata[0]" In;
+   "rclk" In; "rrst_n" In; "ren" In; "rptr_clr" In; "near_full_mrgn[4]" In; "near_full_mrgn[3]" In;
+   "near_full_mrgn[2]" In; "near_full_mrgn[1]" In; "near_full_mrgn[0]" In; "near_empty_mrgn[4]" In;
+   "near_empty_mrgn[3]" In; "near_empty_mrgn[2]" In; "near_empty_mrgn[1]" In; 
+   "near_empty_mrgn[0]" In; "test_si" In { ScanIn; } "test_se" In; "atpg_mode" In;
+   "test_mode" In; "ate_wclk" In; "ate_rclk" In; "occ_rst" In; "occ_mode" In; "pll_bypass" In;
+   "test_mode1" In; "test_si_1" In { ScanIn; } "test_si_2" In { ScanIn; } "test_si_3" In
+   { ScanIn; } "rdata[7]" Out; "rdata[6]" Out; "rdata[5]" Out; "rdata[4]" Out; "rdata[3]" Out;
+   "rdata[2]" Out; "rdata[1]" Out; "rdata[0]" Out; "full" Out; "empty" Out; "near_full" Out;
+   "near_empty" Out; "over_flow" Out; "under_flow" Out; "test_so" Out { ScanOut; }
+   "test_so_1" Out { ScanOut; } "test_so_2" Out { ScanOut; } "test_so_3" Out { ScanOut;
+   } "fifo_mem/U256/Z" Pseudo { ScanIn; } "fifo_mem/U202/Z" Pseudo { ScanIn; } 
+   "sync_rst_r/dff2_reg/Q" Pseudo { ScanOut; } "fifo_mem/mem_reg_15__7_/Q" Pseudo
+   { ScanOut; } "fifo_mem/U277/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_6__7_/Q" Pseudo
+   { ScanOut; } "fifo_mem/U418/Z" Pseudo { ScanIn; } "fifo_mem/U229/Z" Pseudo { ScanIn;
+   } "occ_wclk/U2/Z" Pseudo; "fifo_mem/mem_reg_12__7_/Q" Pseudo { ScanOut; } 
+   "fifo_mem/U276/Z" Pseudo { ScanIn; } "sync_w2r/U5/Z" Pseudo { ScanIn; } 
+   "fifo_mem/mem_reg_3__7_/Q" Pseudo { ScanOut; } "fifo_mem/U265/Z" Pseudo { ScanIn;
+   } "fifo_mem/U417/Z" Pseudo { ScanIn; } "fifo_mem/U211/Z" Pseudo { ScanIn; } 
+   "fifo_mem/U275/Z" Pseudo { ScanIn; } "occ_rclk/fast_clk_clkgt/U2/A2" Pseudo; 
+   "fifo_mem/mem_reg_7__7_/Q" Pseudo { ScanOut; } "fifo_mem/mem_reg_0__7_/Q" Pseudo
+   { ScanOut; } "fifo_mem/U238/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_13__7_/Q" Pseudo
+   { ScanOut; } "occ_wclk/fast_clk_clkgt/U2/A2" Pseudo; "fifo_mem/U274/Z" Pseudo {
+   ScanIn; } "sync_w2r/U3/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_4__7_/Q" Pseudo
+   { ScanOut; } "fifo_mem/U220/Z" Pseudo { ScanIn; } "U203/Z" Pseudo { ScanIn; } 
+   "sync_r2w/U5/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_10__7_/Q" Pseudo { ScanOut;
+   } "snps_clk_chain_0/U_shftreg_0_ff_0_q_reg/Q" Pseudo { ScanOut; } 
+   "fifo_mem/mem_reg_8__7_/Q" Pseudo { ScanOut; } "fifo_mem/mem_reg_1__7_/Q" Pseudo
+   { ScanOut; } "snps_clk_chain_1/U_shftreg_0_ff_0_q_reg/Q" Pseudo { ScanOut; } "R_2/Q" Pseudo
+   { ScanOut; } "fifo_mem/U247/Z" Pseudo { ScanIn; } "wptr_full_wbin_reg_0_/Q" Pseudo
+   { ScanOut; } "U199/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_14__7_/Q" Pseudo { ScanOut;
+   } "occ_rclk/U2/Z" Pseudo; "fifo_mem/mem_reg_5__7_/Q" Pseudo { ScanOut; } 
+   "sync_w2r/sync_out_reg_3_/Q" Pseudo { ScanOut; } "rptr_empty_rbin_reg_3_/Q" Pseudo
+   { ScanOut; } "U201/Z" Pseudo { ScanIn; } "U198/Z" Pseudo { ScanIn; } 
+   "fifo_mem/mem_reg_11__7_/Q" Pseudo { ScanOut; } "wptr_full_wptr_reg_3_/Q" Pseudo
+   { ScanOut; } "sync_r2w/U3/Z" Pseudo { ScanIn; } "fifo_mem/U193/Z" Pseudo { ScanIn;
+   } "fifo_mem/U419/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_9__7_/Q" Pseudo { ScanOut;
+   } "fifo_mem/mem_reg_2__7_/Q" Pseudo { ScanOut; }
+}
+SignalGroups {
+   "_pi" = '"atpg_mode" + "near_empty_mrgn[0]" + "near_empty_mrgn[1]" +
+   "near_empty_mrgn[2]" + "near_empty_mrgn[3]" + "near_empty_mrgn[4]" +
+   "near_full_mrgn[0]" + "near_full_mrgn[1]" + "near_full_mrgn[2]" +
+   "near_full_mrgn[3]" + "near_full_mrgn[4]" + "rclk" + "ren" + "rptr_clr" +
+   "rrst_n" + "test_mode" + "test_se" + "test_si" + "wclk" + "wdata[0]" +
+   "wdata[1]" + "wdata[2]" + "wdata[3]" + "wdata[4]" + "wdata[5]" + "wdata[6]" +
+   "wdata[7]" + "wen" + "wptr_clr" + "wrst_n" + "ate_wclk" + "ate_rclk" +
+   "occ_rst" + "occ_mode" + "pll_bypass" + "test_mode1" + "test_si_1" +
+   "test_si_2" + "test_si_3"'; // #signals=39
+   "all_inputs" = '"atpg_mode" + "near_empty_mrgn[0]" + "near_empty_mrgn[1]" +
+   "near_empty_mrgn[2]" + "near_empty_mrgn[3]" + "near_empty_mrgn[4]" +
+   "near_full_mrgn[0]" + "near_full_mrgn[1]" + "near_full_mrgn[2]" +
+   "near_full_mrgn[3]" + "near_full_mrgn[4]" + "rclk" + "ren" + "rptr_clr" +
+   "rrst_n" + "test_mode" + "test_se" + "test_si" + "wclk" + "wdata[0]" +
+   "wdata[1]" + "wdata[2]" + "wdata[3]" + "wdata[4]" + "wdata[5]" + "wdata[6]" +
+   "wdata[7]" + "wen" + "wptr_clr" + "wrst_n" + "ate_wclk" + "ate_rclk" +
+   "occ_rst" + "occ_mode" + "pll_bypass" + "test_mode1" + "test_si_1" +
+   "test_si_2" + "test_si_3"'; // #signals=39
+   "all_outputs" = '"empty" + "full" + "near_empty" + "near_full" + "over_flow" +
+   "rdata[0]" + "rdata[1]" + "rdata[2]" + "rdata[3]" + "rdata[4]" + "rdata[5]" +
+   "rdata[6]" + "rdata[7]" + "test_so" + "under_flow" + "test_so_1" +
+   "test_so_2" + "test_so_3"'; // #signals=18
+   "all_ports" = '"all_inputs" + "all_outputs"'; // #signals=57
+   "_in" = '"wclk" + "wrst_n" + "wen" + "wptr_clr" + "wdata[7]" + "wdata[6]" +
+   "wdata[5]" + "wdata[4]" + "wdata[3]" + "wdata[2]" + "wdata[1]" + "wdata[0]" +
+   "rclk" + "rrst_n" + "ren" + "rptr_clr" + "near_full_mrgn[4]" +
+   "near_full_mrgn[3]" + "near_full_mrgn[2]" + "near_full_mrgn[1]" +
+   "near_full_mrgn[0]" + "near_empty_mrgn[4]" + "near_empty_mrgn[3]" +
+   "near_empty_mrgn[2]" + "near_empty_mrgn[1]" + "near_empty_mrgn[0]" +
+   "test_si" + "test_se" + "atpg_mode" + "test_mode" + "ate_wclk" + "ate_rclk" +
+   "occ_rst" + "occ_mode" + "pll_bypass" + "test_mode1" + "test_si_1" +
+   "test_si_2" + "test_si_3"'; // #signals=39
+   "_clk" = '"rclk" + "rrst_n" + "wclk" + "wrst_n" + "ate_wclk" + "ate_rclk"'; // #signals=6
+   "_so" = '"test_so" + "test_so_1" + "test_so_2" + "test_so_3"' { ScanOut; } // #signals=4
+   "_po" = '"empty" + "full" + "near_empty" + "near_full" + "over_flow" +
+   "rdata[0]" + "rdata[1]" + "rdata[2]" + "rdata[3]" + "rdata[4]" + "rdata[5]" +
+   "rdata[6]" + "rdata[7]" + "test_so" + "under_flow" + "test_so_1" +
+   "test_so_2" + "test_so_3"'; // #signals=18
+   "_out" = '"rdata[7]" + "rdata[6]" + "rdata[5]" + "rdata[4]" + "rdata[3]" +
+   "rdata[2]" + "rdata[1]" + "rdata[0]" + "full" + "empty" + "near_full" +
+   "near_empty" + "over_flow" + "under_flow" + "test_so" + "test_so_1" +
+   "test_so_2" + "test_so_3"'; // #signals=18
+   "_si" = '"test_si" + "test_si_1" + "test_si_2" + "test_si_3"' { ScanIn; } // #signals=4
+}
+Timing {
+   WaveformTable "_allclock_launch_capture_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "all_inputs" { 0 { '0ns' D; } }
+         "all_inputs" { 1 { '0ns' U; } }
+         "all_inputs" { Z { '0ns' Z; } }
+         "all_inputs" { N { '0ns' N; } }
+         "all_outputs" { X { '0ns' X; '40ns' X; } }
+         "all_outputs" { H { '0ns' X; '40ns' H; } }
+         "all_outputs" { T { '0ns' X; '40ns' T; } }
+         "all_outputs" { L { '0ns' X; '40ns' L; } }
+         "wclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "rclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "ate_wclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "ate_rclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "wrst_n" { P { '0ns' U; '45ns' D; '55ns' U; } }
+         "rrst_n" { P { '0ns' U; '45ns' D; '55ns' U; } }
+      }
+   }
+   WaveformTable "_allclock_launch_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "all_inputs" { 0 { '0ns' D; } }
+         "all_inputs" { 1 { '0ns' U; } }
+         "all_inputs" { Z { '0ns' Z; } }
+         "all_inputs" { N { '0ns' N; } }
+         "all_outputs" { X { '0ns' X; '40ns' X; } }
+         "all_outputs" { H { '0ns' X; '40ns' H; } }
+         "all_outputs" { T { '0ns' X; '40ns' T; } }
+         "all_outputs" { L { '0ns' X; '40ns' L; } }
+         "wclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "rclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "ate_wclk" { P { '0ns' D; '97ns' U; '99ns' D; } }
+         "ate_rclk" { P { '0ns' D; '97ns' U; '99ns' D; } }
+         "wrst_n" { P { '0ns' U; '45ns' D; '55ns' U; } }
+         "rrst_n" { P { '0ns' U; '45ns' D; '55ns' U; } }
+      }
+   }
+   WaveformTable "_default_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "all_inputs" { 0 { '0ns' D; } }
+         "all_inputs" { 1 { '0ns' U; } }
+         "all_inputs" { Z { '0ns' Z; } }
+         "all_inputs" { N { '0ns' N; } }
+         "wrst_n" { P { '0ns' U; '45ns' D; '55ns' U; } }
+         "rrst_n" { P { '0ns' U; '45ns' D; '55ns' U; } }
+         "wclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "rclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "ate_wclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "ate_rclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "all_outputs" { X { '0ns' X; '40ns' X; } }
+         "all_outputs" { H { '0ns' X; '40ns' H; } }
+         "all_outputs" { T { '0ns' X; '40ns' T; } }
+         "all_outputs" { L { '0ns' X; '40ns' L; } }
+      }
+   }
+   WaveformTable "_multiclock_capture_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "all_inputs" { 0 { '0ns' D; } }
+         "all_inputs" { 1 { '0ns' U; } }
+         "all_inputs" { Z { '0ns' Z; } }
+         "all_inputs" { N { '0ns' N; } }
+         "all_outputs" { X { '0ns' X; '40ns' X; } }
+         "all_outputs" { H { '0ns' X; '40ns' H; } }
+         "all_outputs" { T { '0ns' X; '40ns' T; } }
+         "all_outputs" { L { '0ns' X; '40ns' L; } }
+         "wclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "rclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "ate_wclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "ate_rclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "wrst_n" { P { '0ns' U; '45ns' D; '55ns' U; } }
+         "rrst_n" { P { '0ns' U; '45ns' D; '55ns' U; } }
+      }
+   }
+   WaveformTable "_allclock_capture_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "all_inputs" { 0 { '0ns' D; } }
+         "all_inputs" { 1 { '0ns' U; } }
+         "all_inputs" { Z { '0ns' Z; } }
+         "all_inputs" { N { '0ns' N; } }
+         "all_outputs" { X { '0ns' X; '1ns' X; } }
+         "all_outputs" { H { '0ns' X; '1ns' H; } }
+         "all_outputs" { T { '0ns' X; '1ns' T; } }
+         "all_outputs" { L { '0ns' X; '1ns' L; } }
+         "wclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "rclk" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "ate_wclk" { P { '0ns' D; '2ns' U; '4ns' D; } }
+         "ate_rclk" { P { '0ns' D; '4ns' U; '6ns' D; } }
+         "wrst_n" { P { '0ns' U; '45ns' D; '55ns' U; } }
+         "rrst_n" { P { '0ns' U; '45ns' D; '55ns' U; } }
+      }
+   }
+}
+ScanStructures {
+   ScanChain "1" {
+      ScanLength 8;
+      ScanIn "U199/Z";
+      ScanOut "snps_clk_chain_0/U_shftreg_0_ff_0_q_reg/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.snps_clk_chain_0.U_shftreg_0_ff_7_q_reg.D" 
+      "async_fifo.snps_clk_chain_0.U_shftreg_0_ff_6_q_reg.D" 
+      "async_fifo.snps_clk_chain_0.U_shftreg_0_ff_5_q_reg.D" 
+      "async_fifo.snps_clk_chain_0.U_shftreg_0_ff_4_q_reg.D" 
+      "async_fifo.snps_clk_chain_0.U_shftreg_0_ff_3_q_reg.D" 
+      "async_fifo.snps_clk_chain_0.U_shftreg_0_ff_2_q_reg.D" 
+      "async_fifo.snps_clk_chain_0.U_shftreg_0_ff_1_q_reg.D" 
+      "async_fifo.snps_clk_chain_0.U_shftreg_0_ff_0_q_reg.D" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "2" {
+      ScanLength 8;
+      ScanIn "U198/Z";
+      ScanOut "snps_clk_chain_1/U_shftreg_0_ff_0_q_reg/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.snps_clk_chain_1.U_shftreg_0_ff_7_q_reg.D" 
+      "async_fifo.snps_clk_chain_1.U_shftreg_0_ff_6_q_reg.D" 
+      "async_fifo.snps_clk_chain_1.U_shftreg_0_ff_5_q_reg.D" 
+      "async_fifo.snps_clk_chain_1.U_shftreg_0_ff_4_q_reg.D" 
+      "async_fifo.snps_clk_chain_1.U_shftreg_0_ff_3_q_reg.D" 
+      "async_fifo.snps_clk_chain_1.U_shftreg_0_ff_2_q_reg.D" 
+      "async_fifo.snps_clk_chain_1.U_shftreg_0_ff_1_q_reg.D" 
+      "async_fifo.snps_clk_chain_1.U_shftreg_0_ff_0_q_reg.D" ;
+      ScanMasterClock "ate_rclk" ;
+   }
+   ScanChain "3" {
+      ScanLength 9;
+      ScanIn "sync_r2w/U3/Z";
+      ScanOut "R_2/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.sync_r2w.temp_reg_0_.SD" "async_fifo.sync_r2w.sync_out_reg_0_.D" 
+      "async_fifo.sync_r2w.temp_reg_1_.SD" "async_fifo.sync_r2w.sync_out_reg_1_.D" 
+      "async_fifo.sync_r2w.temp_reg_2_.SD" "async_fifo.sync_r2w.sync_out_reg_2_.D" 
+      "async_fifo.R_0.SD" "async_fifo.R_1.SD" "async_fifo.R_2.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "4" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U193/Z";
+      ScanOut "fifo_mem/mem_reg_0__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_0__0_.SD" "async_fifo.fifo_mem.mem_reg_0__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_0__2_.SD" "async_fifo.fifo_mem.mem_reg_0__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_0__4_.SD" "async_fifo.fifo_mem.mem_reg_0__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_0__6_.SD" "async_fifo.fifo_mem.mem_reg_0__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "5" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U202/Z";
+      ScanOut "fifo_mem/mem_reg_1__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_1__0_.SD" "async_fifo.fifo_mem.mem_reg_1__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_1__2_.SD" "async_fifo.fifo_mem.mem_reg_1__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_1__4_.SD" "async_fifo.fifo_mem.mem_reg_1__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_1__6_.SD" "async_fifo.fifo_mem.mem_reg_1__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "6" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U211/Z";
+      ScanOut "fifo_mem/mem_reg_2__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_2__0_.SD" "async_fifo.fifo_mem.mem_reg_2__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_2__2_.SD" "async_fifo.fifo_mem.mem_reg_2__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_2__4_.SD" "async_fifo.fifo_mem.mem_reg_2__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_2__6_.SD" "async_fifo.fifo_mem.mem_reg_2__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "7" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U220/Z";
+      ScanOut "fifo_mem/mem_reg_3__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_3__0_.SD" "async_fifo.fifo_mem.mem_reg_3__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_3__2_.SD" "async_fifo.fifo_mem.mem_reg_3__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_3__4_.SD" "async_fifo.fifo_mem.mem_reg_3__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_3__6_.SD" "async_fifo.fifo_mem.mem_reg_3__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "8" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U229/Z";
+      ScanOut "fifo_mem/mem_reg_4__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_4__0_.SD" "async_fifo.fifo_mem.mem_reg_4__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_4__2_.SD" "async_fifo.fifo_mem.mem_reg_4__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_4__4_.SD" "async_fifo.fifo_mem.mem_reg_4__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_4__6_.SD" "async_fifo.fifo_mem.mem_reg_4__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "9" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U238/Z";
+      ScanOut "fifo_mem/mem_reg_5__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_5__0_.SD" "async_fifo.fifo_mem.mem_reg_5__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_5__2_.SD" "async_fifo.fifo_mem.mem_reg_5__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_5__4_.SD" "async_fifo.fifo_mem.mem_reg_5__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_5__6_.SD" "async_fifo.fifo_mem.mem_reg_5__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "10" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U247/Z";
+      ScanOut "fifo_mem/mem_reg_6__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_6__0_.SD" "async_fifo.fifo_mem.mem_reg_6__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_6__2_.SD" "async_fifo.fifo_mem.mem_reg_6__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_6__4_.SD" "async_fifo.fifo_mem.mem_reg_6__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_6__6_.SD" "async_fifo.fifo_mem.mem_reg_6__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "11" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U256/Z";
+      ScanOut "fifo_mem/mem_reg_7__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_7__0_.SD" "async_fifo.fifo_mem.mem_reg_7__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_7__2_.SD" "async_fifo.fifo_mem.mem_reg_7__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_7__4_.SD" "async_fifo.fifo_mem.mem_reg_7__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_7__6_.SD" "async_fifo.fifo_mem.mem_reg_7__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "12" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U265/Z";
+      ScanOut "fifo_mem/mem_reg_8__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_8__0_.SD" "async_fifo.fifo_mem.mem_reg_8__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_8__2_.SD" "async_fifo.fifo_mem.mem_reg_8__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_8__4_.SD" "async_fifo.fifo_mem.mem_reg_8__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_8__6_.SD" "async_fifo.fifo_mem.mem_reg_8__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "13" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U274/Z";
+      ScanOut "fifo_mem/mem_reg_9__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_9__0_.SD" "async_fifo.fifo_mem.mem_reg_9__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_9__2_.SD" "async_fifo.fifo_mem.mem_reg_9__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_9__4_.SD" "async_fifo.fifo_mem.mem_reg_9__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_9__6_.SD" "async_fifo.fifo_mem.mem_reg_9__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "14" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U275/Z";
+      ScanOut "fifo_mem/mem_reg_10__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_10__0_.SD" "async_fifo.fifo_mem.mem_reg_10__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_10__2_.SD" "async_fifo.fifo_mem.mem_reg_10__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_10__4_.SD" "async_fifo.fifo_mem.mem_reg_10__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_10__6_.SD" "async_fifo.fifo_mem.mem_reg_10__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "15" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U276/Z";
+      ScanOut "fifo_mem/mem_reg_11__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_11__0_.SD" "async_fifo.fifo_mem.mem_reg_11__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_11__2_.SD" "async_fifo.fifo_mem.mem_reg_11__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_11__4_.SD" "async_fifo.fifo_mem.mem_reg_11__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_11__6_.SD" "async_fifo.fifo_mem.mem_reg_11__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "16" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U277/Z";
+      ScanOut "fifo_mem/mem_reg_12__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_12__0_.SD" "async_fifo.fifo_mem.mem_reg_12__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_12__2_.SD" "async_fifo.fifo_mem.mem_reg_12__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_12__4_.SD" "async_fifo.fifo_mem.mem_reg_12__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_12__6_.SD" "async_fifo.fifo_mem.mem_reg_12__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "17" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U417/Z";
+      ScanOut "fifo_mem/mem_reg_13__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_13__0_.SD" "async_fifo.fifo_mem.mem_reg_13__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_13__2_.SD" "async_fifo.fifo_mem.mem_reg_13__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_13__4_.SD" "async_fifo.fifo_mem.mem_reg_13__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_13__6_.SD" "async_fifo.fifo_mem.mem_reg_13__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "18" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U418/Z";
+      ScanOut "fifo_mem/mem_reg_14__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_14__0_.SD" "async_fifo.fifo_mem.mem_reg_14__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_14__2_.SD" "async_fifo.fifo_mem.mem_reg_14__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_14__4_.SD" "async_fifo.fifo_mem.mem_reg_14__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_14__6_.SD" "async_fifo.fifo_mem.mem_reg_14__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "19" {
+      ScanLength 8;
+      ScanIn "fifo_mem/U419/Z";
+      ScanOut "fifo_mem/mem_reg_15__7_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.fifo_mem.mem_reg_15__0_.SD" "async_fifo.fifo_mem.mem_reg_15__1_.SD" 
+      "async_fifo.fifo_mem.mem_reg_15__2_.SD" "async_fifo.fifo_mem.mem_reg_15__3_.SD" 
+      "async_fifo.fifo_mem.mem_reg_15__4_.SD" "async_fifo.fifo_mem.mem_reg_15__5_.SD" 
+      "async_fifo.fifo_mem.mem_reg_15__6_.SD" "async_fifo.fifo_mem.mem_reg_15__7_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "20" {
+      ScanLength 8;
+      ScanIn "sync_r2w/U5/Z";
+      ScanOut "wptr_full_wbin_reg_0_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.sync_r2w.temp_reg_3_.SD" "async_fifo.sync_r2w.temp_reg_4_.SD" 
+      "async_fifo.sync_rst_w.dff1_reg.SD" "async_fifo.sync_rst_w.dff2_reg.SD" 
+      "async_fifo.wptr_full_full_reg.SD" "async_fifo.wptr_full_near_full_reg.SD" 
+      "async_fifo.wptr_full_over_flow_reg.SD" "async_fifo.wptr_full_wbin_reg_0_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "21" {
+      ScanLength 8;
+      ScanIn "U201/Z";
+      ScanOut "wptr_full_wptr_reg_3_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.wptr_full_wbin_reg_1_.SD" "async_fifo.wptr_full_wbin_reg_2_.SD" 
+      "async_fifo.wptr_full_wbin_reg_3_.SD" "async_fifo.wptr_full_wbin_reg_4_.SD" 
+      "async_fifo.wptr_full_wptr_reg_0_.SD" "async_fifo.wptr_full_wptr_reg_1_.SD" 
+      "async_fifo.wptr_full_wptr_reg_2_.SD" "async_fifo.wptr_full_wptr_reg_3_.SD" ;
+      ScanMasterClock "ate_wclk" ;
+   }
+   ScanChain "22" {
+      ScanLength 8;
+      ScanIn "sync_w2r/U3/Z";
+      ScanOut "sync_w2r/sync_out_reg_3_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.sync_w2r.temp_reg_0_.SD" "async_fifo.sync_w2r.sync_out_reg_0_.D" 
+      "async_fifo.sync_w2r.temp_reg_1_.SD" "async_fifo.sync_w2r.sync_out_reg_1_.D" 
+      "async_fifo.sync_w2r.temp_reg_2_.SD" "async_fifo.sync_w2r.sync_out_reg_2_.D" 
+      "async_fifo.sync_w2r.temp_reg_3_.SD" "async_fifo.sync_w2r.sync_out_reg_3_.D" ;
+      ScanMasterClock "ate_rclk" ;
+   }
+   ScanChain "23" {
+      ScanLength 8;
+      ScanIn "sync_w2r/U5/Z";
+      ScanOut "rptr_empty_rbin_reg_3_/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.sync_w2r.temp_reg_4_.SD" "async_fifo.sync_w2r.sync_out_reg_4_.D" 
+      "async_fifo.rptr_empty_empty_reg.SD" "async_fifo.rptr_empty_near_empty_reg.SD" 
+      "async_fifo.rptr_empty_rbin_reg_0_.SD" "async_fifo.rptr_empty_rbin_reg_1_.SD" 
+      "async_fifo.rptr_empty_rbin_reg_2_.SD" "async_fifo.rptr_empty_rbin_reg_3_.SD" ;
+      ScanMasterClock "ate_rclk" ;
+   }
+   ScanChain "24" {
+      ScanLength 8;
+      ScanIn "U203/Z";
+      ScanOut "sync_rst_r/dff2_reg/Q";
+      ScanInversion 0;
+      ScanCells "async_fifo.rptr_empty_rbin_reg_4_.SD" "async_fifo.rptr_empty_rptr_reg_0_.SD" 
+      "async_fifo.rptr_empty_rptr_reg_1_.SD" "async_fifo.rptr_empty_rptr_reg_2_.SD" 
+      "async_fifo.rptr_empty_rptr_reg_3_.SD" "async_fifo.rptr_empty_under_flow_reg.SD" 
+      "async_fifo.sync_rst_r.dff1_reg.SD" "async_fifo.sync_rst_r.dff2_reg.SD" ;
+      ScanMasterClock "ate_rclk" ;
+   }
+   ScanChain "sccompin0" {
+      ScanLength 10; // compressor length
+      ScanIn "test_si";
+   }
+   ScanChain "sccompin1" {
+      ScanLength 10; // compressor length
+      ScanIn "test_si_1";
+   }
+   ScanChain "sccompout0" {
+      ScanLength 10; // compressor length
+      ScanOut "test_so";
+   }
+   ScanChain "sccompout1" {
+      ScanLength 10; // compressor length
+      ScanOut "test_so_1";
+   }
+   ScanChain "sccompout2" {
+      ScanLength 10; // compressor length
+      ScanOut "test_so_2";
+   }
+   ScanChain "sccompout3" {
+      ScanLength 10; // compressor length
+      ScanOut "test_so_3";
+   }
+   ScanChain "sccompin2" {
+      ScanLength 10; // compressor length
+      ScanIn "test_si_2";
+   }
+   ScanChain "sccompin3" {
+      ScanLength 10; // compressor length
+      ScanIn "test_si_3";
+   }
+   ScanChainGroups {
+      "core_group" { "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "10"; "11"; "12"; "13"; "14"; 
+         "15"; "16"; "17"; "18"; "19"; "20"; "21"; "22"; "23"; "24"; }
+      "load_group" { "sccompin0"; "sccompin1"; }
+      "unload_group" { "sccompout0"; "sccompout1"; "sccompout2"; "sccompout3"; }
+      "mode_group" { "sccompin2"; "sccompin3"; }
+   }
+}
+PatternBurst "TM4_occ_bypass" {
+   MacroDefs "TM4_occ_bypass";
+   Procedures "TM4_occ_bypass";
+   PatList { "_pattern_" {
+   }
+}}
+PatternExec "TM4_occ_bypass" {
+   PatternBurst "TM4_occ_bypass";
+}
+UserKeywords CompressorStructures;
+CompressorStructures {
+   Compressor "async_fifo_U_decompressor_TM4" {
+      ModeGroup "mode_group";
+      LoadGroup "load_group";
+      CoreGroup "core_group";
+      Modes 4;
+      Mode 0 {
+         ModeControls { "test_si_2"=0; "test_si_3"=0; }
+         Connection 0 "2" "4" "6" "8" "10" ! "11" "13" "15" "18" "19" "21" !
+         "24";
+         Connection 1 "1" "3" "5" "7" "9" ! "12" "14" "16" "17" "20" "22" ! "23";
+      }
+      Mode 1 {
+         ModeControls { "test_si_2"=0; "test_si_3"=1; }
+         Connection 0 "2" "4" "5" "7" "10" "12" "14" ! "15" "18" "19" ! "22" "24";
+         Connection 1 "1" "3" "6" "8" "9" "11" "13" ! "16" "17" "20" ! "21" "23";
+      }
+      Mode 2 {
+         ModeControls { "test_si_2"=1; "test_si_3"=0; }
+         Connection 0 "2" "3" "5" "8" "10" "12" ! "13" "16" ! "18" ! "20" "22" "24";
+         Connection 1 "1" "4" "6" "7" "9" "11" ! "14" "15" ! "17" ! "19" "21" "23";
+      }
+      Mode 3 {
+         ModeControls { "test_si_2"=1; "test_si_3"=1; }
+         Connection 0 "2" "3" ! "5" "7" ! "9" "11" "13" "15" ! "18" "19" "21" "23";
+         Connection 1 "1" "4" ! "6" "8" ! "10" "12" "14" "16" ! "17" "20" "22" "24";
+      }
+   }
+   Compressor "async_fifo_U_compressor_TM4" {
+      UnloadGroup "unload_group";
+      CoreGroup "core_group";
+      Mode {
+         Connection "1" 0 1;
+         Connection "2" 2;
+         Connection "3" 3;
+         Connection "4" 0;
+         Connection "5" 1;
+         Connection "6" 2;
+         Connection "7" 3;
+         Connection "8" 0;
+         Connection "9" 1;
+         Connection "10" 2;
+         Connection "11" 3;
+         Connection "12" 0;
+         Connection "13" 1;
+         Connection "14" 2;
+         Connection "15" 3;
+         Connection "16" 0;
+         Connection "17" 1;
+         Connection "18" 2 3;
+         Connection "19" 0 1;
+         Connection "20" 2 3;
+         Connection "21" 0 1;
+         Connection "22" 2 3;
+         Connection "23" 0 1;
+         Connection "24" 2 3;
+      }
+   }
+}
+Procedures "TM4_occ_bypass" {
+   "multiclock_capture" {
+      W "_multiclock_capture_WFT_";
+      C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
+      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
+          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; 
+          "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; 
+          "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; 
+          "test_so_3"=X; }
+      V { "_pi"=\r39 # ; "_po"=\r18 # ; }
+   }
+   "allclock_capture" {
+      W "_allclock_capture_WFT_";
+      C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
+      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
+          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; 
+          "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; 
+          "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; 
+          "test_so_3"=X; }
+      V { "_pi"=\r39 # ; "_po"=\r18 # ; }
+   }
+   "allclock_launch" {
+      W "_allclock_launch_WFT_";
+      C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
+      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
+          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; 
+          "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; 
+          "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; 
+          "test_so_3"=X; }
+      V { "_pi"=\r39 # ; "_po"=\r18 # ; }
+   }
+   "allclock_launch_capture" {
+      W "_allclock_launch_capture_WFT_";
+      C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
+      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
+          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; 
+          "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; 
+          "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; 
+          "test_so_3"=X; }
+      V { "_pi"=\r39 # ; "_po"=\r18 # ; }
+   }
+   "load_unload" {
+      W "_default_WFT_";
+      C { "atpg_mode"=1; "near_empty_mrgn[0]"=N; "near_empty_mrgn[1]"=N; "near_empty_mrgn[2]"=N; 
+         "near_empty_mrgn[3]"=N; "near_empty_mrgn[4]"=N; "near_full_mrgn[0]"=N; "near_full_mrgn[1]"=N; 
+         "near_full_mrgn[2]"=N; "near_full_mrgn[3]"=N; "near_full_mrgn[4]"=N; "rclk"=0; 
+         "ren"=N; "rptr_clr"=N; "rrst_n"=1; "test_mode"=1; "test_se"=0; "test_si"=N; "wclk"=0; "wdata[0]"=N; 
+         "wdata[1]"=N; "wdata[2]"=N; "wdata[3]"=N; "wdata[4]"=N; "wdata[5]"=N; "wdata[6]"=N; "wdata[7]"=N; 
+         "wen"=N; "wptr_clr"=N; "wrst_n"=1; "empty"=X; "full"=X; "near_empty"=X; "near_full"=X; "over_flow"=X; 
+         "rdata[0]"=X; "rdata[1]"=X; "rdata[2]"=X; "rdata[3]"=X; "rdata[4]"=X; "rdata[5]"=X; "rdata[6]"=X; 
+         "rdata[7]"=X; "test_so"=X; "under_flow"=X; "ate_wclk"=0; "ate_rclk"=0; "occ_rst"=0; "occ_mode"=1; 
+         "pll_bypass"=1; "test_mode1"=1; "test_si_1"=N; "test_so_1"=X; "test_si_2"=N; "test_so_2"=X; 
+         "test_si_3"=N; "test_so_3"=X; }
+      "TM4_occ_bypass_pre_shift": V { "test_se"=1; }
+      Shift { ActiveScanChains "mode_group" "unload_group" "load_group" "core_group";
+         W "_default_WFT_";
+         V { "_clk"=P1P1PP; "_si"=####; "_so"=####; }
+      }
+   }
+}
+MacroDefs "TM4_occ_bypass" {
+   "test_setup" {
+      W "_default_WFT_";
+      C { "all_inputs"=\r39 N ; "all_outputs"=\r18 X ; }
+      V { "atpg_mode"=1; "rclk"=0; "rrst_n"=1; "test_mode"=1; "wclk"=0; "wrst_n"=1; "ate_wclk"=0; "ate_rclk"=0; 
+         "occ_mode"=1; "test_mode1"=1; }
+      V { "test_se"=0; "occ_rst"=0; "pll_bypass"=1; "wen"=1; "wptr_clr"=0; "ren"=1; "rptr_clr"=0; }
+   }
+}
+Pattern "_pattern_" {
+   W "_multiclock_capture_WFT_";
+   "precondition all Signals": C { "_pi"=\r39 0 ; "_po"=\r18 X ; }
+   Macro "test_setup";
+}

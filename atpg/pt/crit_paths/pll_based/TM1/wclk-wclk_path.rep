@@ -1,0 +1,1047 @@
+
+// pt2tmax
+// Version N-2017.09
+
+$path {
+  // from: sync_r2w/sync_out_reg_2_
+  // to: wptr_full_near_full_reg
+  $name "src_clk-src_clk_1" ;
+  $cycle 3.0 ;
+  $slack 0.140142 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "U187/A2" v ; // (xn02d1)
+    "U188/A1" v ; // (xn02d1)
+    "U189/A1" v ; // (xn02d1)
+    "U113/A1" v ; // (or02d0)
+    "U140/A1" v ; // (nd02d1)
+    "U193/A1" ^ ; // (nd02d1)
+    "U195/A1" v ; // (nd02d1)
+    "U121/A1" ^ ; // (nd02d1)
+    "U105/A1" v ; // (nd02d1)
+    "U222/A1" ^ ; // (xn02d1)
+    "U192/A1" v ; // (nd02d0)
+    "U227/B" ^ ; // (oan211d1)
+    "U206/CI" v ; // (cg01d0)
+    "U229/A1" v ; // (nr03d0)
+    "wptr_full_near_full_reg/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_full_reg
+  // to: wptr_full_full_reg
+  $name "src_clk-src_clk_2" ;
+  $cycle 3.0 ;
+  $slack 0.298409 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "U141/A1" ^ ; // (nr02d2)
+    "U130/A2" v ; // (nd02d0)
+    "U157/A1" ^ ; // (nr02d0)
+    "U133/A1" v ; // (nd02d0)
+    "U131/A1" ^ ; // (nd12d0)
+    "U170/A1" ^ ; // (xn02d1)
+    "U172/A1" v ; // (xn02d1)
+    "U173/A1" v ; // (xn02d1)
+    "U182/A1" v ; // (nr03d0)
+    "U136/A1" ^ ; // (an02d0)
+    "wptr_full_full_reg/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: snps_clk_chain_0/U_shftreg_0_ff_0_q_reg
+  // to: occ_wclk/U_clk_control_i_0/pipeline_or_tree_l_reg
+  $name "src_clk-src_clk_3" ;
+  $cycle 1.5 ;
+  $slack 0.654188 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "occ_wclk/U_clk_control_i_0/U9/A2" v ; // (an02d1)
+    "occ_wclk/U_clk_control_i_0/U_or_tree_i/U2/A1" v ; // (nr04d0)
+    "occ_wclk/U_clk_control_i_0/U_or_tree_i/U1/A2" ^ ; // (nd02d0)
+    "occ_wclk/U_clk_control_i_0/pipeline_or_tree_l_reg/D" v ; // (dfcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_full_reg
+  // to: wptr_full_wptr_reg_3_
+  $name "src_clk-src_clk_4" ;
+  $cycle 3.0 ;
+  $slack 0.698963 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "U141/A1" ^ ; // (nr02d2)
+    "U130/A2" v ; // (nd02d0)
+    "U157/A1" ^ ; // (nr02d0)
+    "U133/A1" v ; // (nd02d0)
+    "U131/A1" ^ ; // (nd12d0)
+    "U170/A1" ^ ; // (xn02d1)
+    "U172/A1" v ; // (xn02d1)
+    "U232/A1" v ; // (an02d0)
+    "wptr_full_wptr_reg_3_/D" v ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_full_reg
+  // to: wptr_full_wptr_reg_2_
+  $name "src_clk-src_clk_5" ;
+  $cycle 3.0 ;
+  $slack 0.766978 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "U141/A1" ^ ; // (nr02d2)
+    "U130/A2" v ; // (nd02d0)
+    "U157/A1" ^ ; // (nr02d0)
+    "U133/A1" v ; // (nd02d0)
+    "U168/A1" ^ ; // (xr02d1)
+    "U135/I" v ; // (inv0d0)
+    "U174/A1" ^ ; // (xn02d1)
+    "U233/A1" v ; // (nr02d0)
+    "wptr_full_wptr_reg_2_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_full_reg
+  // to: wptr_full_wptr_reg_1_
+  $name "src_clk-src_clk_6" ;
+  $cycle 3.0 ;
+  $slack 0.917254 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "U141/A1" ^ ; // (nr02d2)
+    "U130/A2" v ; // (nd02d0)
+    "U128/I" ^ ; // (inv0d0)
+    "U125/A2" v ; // (xr02d1)
+    "U176/A2" v ; // (xn02d1)
+    "U230/A1" v ; // (nr02d0)
+    "wptr_full_wptr_reg_1_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_full_reg
+  // to: wptr_full_wbin_reg_4_
+  $name "src_clk-src_clk_7" ;
+  $cycle 3.0 ;
+  $slack 0.948524 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "U141/A1" ^ ; // (nr02d2)
+    "U130/A2" v ; // (nd02d0)
+    "U157/A1" ^ ; // (nr02d0)
+    "U133/A1" v ; // (nd02d0)
+    "U131/A1" ^ ; // (nd12d0)
+    "U170/A1" ^ ; // (xn02d1)
+    "U171/A1" v ; // (an02d0)
+    "wptr_full_wbin_reg_4_/D" v ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_full_reg
+  // to: wptr_full_wptr_reg_0_
+  $name "src_clk-src_clk_8" ;
+  $cycle 3.0 ;
+  $slack 0.964007 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "U141/A1" ^ ; // (nr02d2)
+    "U130/A2" v ; // (nd02d0)
+    "U128/I" ^ ; // (inv0d0)
+    "U125/A2" v ; // (xr02d1)
+    "U179/A1" v ; // (xn02d1)
+    "U231/A1" v ; // (nr02d0)
+    "wptr_full_wptr_reg_0_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: occ_wclk/U_clk_control_i_0/fast_clk_enable_l_reg
+  // to: occ_wclk/fast_clk_clkgt/cg_latch_reg
+  $name "src_clk-src_clk_9" ;
+  $cycle 3.0 ;
+  $slack 0.999346 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "occ_wclk/U_gf_mux_0/U5/B1" v ; // (aor21d1)
+    "occ_wclk/fast_clk_clkgt/cg_latch_reg/D" v ; // (laclq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_14__6_
+  $name "src_clk-src_clk_10" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U11/A2" ^ ; // (nd03d0)
+    "fifo_mem/U146/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_14__6_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_2__1_
+  $name "src_clk-src_clk_11" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U14/A2" ^ ; // (nd03d0)
+    "fifo_mem/U249/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_2__1_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_2__2_
+  $name "src_clk-src_clk_12" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U14/A2" ^ ; // (nd03d0)
+    "fifo_mem/U250/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_2__2_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_10__1_
+  $name "src_clk-src_clk_13" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U3/A2" ^ ; // (nd03d0)
+    "fifo_mem/U177/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_10__1_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_2__3_
+  $name "src_clk-src_clk_14" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U14/A2" ^ ; // (nd03d0)
+    "fifo_mem/U251/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_2__3_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_6__1_
+  $name "src_clk-src_clk_15" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U6/A2" ^ ; // (nd03d0)
+    "fifo_mem/U213/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_6__1_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_10__2_
+  $name "src_clk-src_clk_16" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U3/A2" ^ ; // (nd03d0)
+    "fifo_mem/U178/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_10__2_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_2__4_
+  $name "src_clk-src_clk_17" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U14/A2" ^ ; // (nd03d0)
+    "fifo_mem/U252/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_2__4_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_6__2_
+  $name "src_clk-src_clk_18" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U6/A2" ^ ; // (nd03d0)
+    "fifo_mem/U214/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_6__2_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_10__3_
+  $name "src_clk-src_clk_19" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U3/A2" ^ ; // (nd03d0)
+    "fifo_mem/U179/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_10__3_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_2__5_
+  $name "src_clk-src_clk_20" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U14/A2" ^ ; // (nd03d0)
+    "fifo_mem/U253/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_2__5_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_14__1_
+  $name "src_clk-src_clk_21" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U11/A2" ^ ; // (nd03d0)
+    "fifo_mem/U141/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_14__1_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_6__3_
+  $name "src_clk-src_clk_22" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U6/A2" ^ ; // (nd03d0)
+    "fifo_mem/U215/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_6__3_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_10__4_
+  $name "src_clk-src_clk_23" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U3/A2" ^ ; // (nd03d0)
+    "fifo_mem/U180/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_10__4_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_2__6_
+  $name "src_clk-src_clk_24" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U14/A2" ^ ; // (nd03d0)
+    "fifo_mem/U254/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_2__6_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_14__2_
+  $name "src_clk-src_clk_25" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U11/A2" ^ ; // (nd03d0)
+    "fifo_mem/U142/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_14__2_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_6__4_
+  $name "src_clk-src_clk_26" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U6/A2" ^ ; // (nd03d0)
+    "fifo_mem/U216/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_6__4_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_10__5_
+  $name "src_clk-src_clk_27" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U3/A2" ^ ; // (nd03d0)
+    "fifo_mem/U181/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_10__5_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_14__3_
+  $name "src_clk-src_clk_28" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U11/A2" ^ ; // (nd03d0)
+    "fifo_mem/U143/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_14__3_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_6__5_
+  $name "src_clk-src_clk_29" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U6/A2" ^ ; // (nd03d0)
+    "fifo_mem/U217/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_6__5_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_10__6_
+  $name "src_clk-src_clk_30" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U3/A2" ^ ; // (nd03d0)
+    "fifo_mem/U182/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_10__6_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_14__4_
+  $name "src_clk-src_clk_31" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U11/A2" ^ ; // (nd03d0)
+    "fifo_mem/U144/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_14__4_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_6__6_
+  $name "src_clk-src_clk_32" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U6/A2" ^ ; // (nd03d0)
+    "fifo_mem/U218/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_6__6_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_14__5_
+  $name "src_clk-src_clk_33" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U11/A2" ^ ; // (nd03d0)
+    "fifo_mem/U145/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_14__5_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_10__0_
+  $name "src_clk-src_clk_34" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U3/A2" ^ ; // (nd03d0)
+    "fifo_mem/U176/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_10__0_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_14__0_
+  $name "src_clk-src_clk_35" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U11/A2" ^ ; // (nd03d0)
+    "fifo_mem/U140/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_14__0_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_6__0_
+  $name "src_clk-src_clk_36" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U6/A2" ^ ; // (nd03d0)
+    "fifo_mem/U212/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_6__0_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_2__0_
+  $name "src_clk-src_clk_37" ;
+  $cycle 3.0 ;
+  $slack 1.030098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U14/A2" ^ ; // (nd03d0)
+    "fifo_mem/U248/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_2__0_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_5__1_
+  $name "src_clk-src_clk_38" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U7/A1" ^ ; // (nd03d0)
+    "fifo_mem/U222/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_5__1_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_7__5_
+  $name "src_clk-src_clk_39" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U5/A1" ^ ; // (nd03d0)
+    "fifo_mem/U208/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_7__5_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_4__5_
+  $name "src_clk-src_clk_40" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U17/A1" ^ ; // (nd03d0)
+    "fifo_mem/U235/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_4__5_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_5__2_
+  $name "src_clk-src_clk_41" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U7/A1" ^ ; // (nd03d0)
+    "fifo_mem/U223/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_5__2_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_7__6_
+  $name "src_clk-src_clk_42" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U5/A1" ^ ; // (nd03d0)
+    "fifo_mem/U209/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_7__6_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_4__6_
+  $name "src_clk-src_clk_43" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U17/A1" ^ ; // (nd03d0)
+    "fifo_mem/U236/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_4__6_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_5__3_
+  $name "src_clk-src_clk_44" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U7/A1" ^ ; // (nd03d0)
+    "fifo_mem/U224/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_5__3_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_5__4_
+  $name "src_clk-src_clk_45" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U7/A1" ^ ; // (nd03d0)
+    "fifo_mem/U225/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_5__4_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_5__5_
+  $name "src_clk-src_clk_46" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U7/A1" ^ ; // (nd03d0)
+    "fifo_mem/U226/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_5__5_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_5__6_
+  $name "src_clk-src_clk_47" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U7/A1" ^ ; // (nd03d0)
+    "fifo_mem/U227/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_5__6_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_7__1_
+  $name "src_clk-src_clk_48" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U5/A1" ^ ; // (nd03d0)
+    "fifo_mem/U204/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_7__1_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_4__1_
+  $name "src_clk-src_clk_49" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U17/A1" ^ ; // (nd03d0)
+    "fifo_mem/U231/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_4__1_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_7__2_
+  $name "src_clk-src_clk_50" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U5/A1" ^ ; // (nd03d0)
+    "fifo_mem/U205/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_7__2_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_4__2_
+  $name "src_clk-src_clk_51" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U17/A1" ^ ; // (nd03d0)
+    "fifo_mem/U232/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_4__2_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_7__3_
+  $name "src_clk-src_clk_52" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U5/A1" ^ ; // (nd03d0)
+    "fifo_mem/U206/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_7__3_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_4__3_
+  $name "src_clk-src_clk_53" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U17/A1" ^ ; // (nd03d0)
+    "fifo_mem/U233/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_4__3_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_7__4_
+  $name "src_clk-src_clk_54" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U5/A1" ^ ; // (nd03d0)
+    "fifo_mem/U207/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_7__4_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_4__4_
+  $name "src_clk-src_clk_55" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U17/A1" ^ ; // (nd03d0)
+    "fifo_mem/U234/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_4__4_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_4__0_
+  $name "src_clk-src_clk_56" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U17/A1" ^ ; // (nd03d0)
+    "fifo_mem/U230/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_4__0_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_5__0_
+  $name "src_clk-src_clk_57" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U7/A1" ^ ; // (nd03d0)
+    "fifo_mem/U221/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_5__0_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_3_
+  // to: fifo_mem/mem_reg_7__0_
+  $name "src_clk-src_clk_58" ;
+  $cycle 3.0 ;
+  $slack 1.042850 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U139/I" v ; // (inv0d0)
+    "fifo_mem/C547/A2" ^ ; // (an02d0)
+    "fifo_mem/U5/A1" ^ ; // (nd03d0)
+    "fifo_mem/U203/S" v ; // (mx02d0)
+    "fifo_mem/mem_reg_7__0_/D" ^ ; // (sdcrq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wptr_reg_3_
+  // to: LOCKUP1
+  $name "src_clk-src_clk_59" ;
+  $cycle 3.0 ;
+  $slack 1.074098 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "wptr_full_wptr_reg_3_/Q" ^ ; // (sdcrq1)
+    "LOCKUP1/D" ^ ; // (laclq1)
+  }
+}
+
+$path {
+  // from: wptr_full_wbin_reg_0_
+  // to: fifo_mem/mem_reg_14__7_
+  $name "src_clk-src_clk_60" ;
+  $cycle 3.0 ;
+  $slack 1.111145 ;
+  $launch "wclk" ; // (rise edge)
+  $capture "wclk" ; // (rise edge)
+  $transition {
+    "fifo_mem/U175/I" v ; // (inv0d0)
+    "fifo_mem/C550/A1" ^ ; // (an02d0)
+    "fifo_mem/U11/A2" ^ ; // (nd03d0)
+    "fifo_mem/mem_reg_14__7_/ENN" v ; // (secrq1)
+  }
+}
+
