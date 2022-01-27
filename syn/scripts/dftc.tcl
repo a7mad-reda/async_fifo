@@ -25,18 +25,34 @@ set test_default_delay		0
 set test_default_bidir_delay	0
 set test_default_strobe		40
 
-# DFT Signals used during during dft_drc
-create_port -direction in test_clk
-set_dft_signal -view existing_dft -type ScanClock  -port test_clk  -timing {45 55}
+# DFT Signals used for dft_drc
 set_dft_signal -view existing_dft -type	reset	   -port wrst_n	   -active_state 0
 set_dft_signal -view existing_dft -type	reset 	   -port rrst_n	   -active_state 0
 set_dft_signal -view existing_dft -type ScanEnable -port test_se   -active_state 1
 set_dft_signal -view existing_dft -type constant   -port atpg_mode -active_state 1
+# -- # PLLL-Generated Clocks
+set_dft_signal -view existing_dft -type ScanClock  -port wclk	   -timing {45 55}
+set_dft_signal -view existing_dft -type ScanClock  -port rclk      -timing {45 55}  
+# -- # ATE Clocks
+create_port -direction in ate_wclk
+create_port -direction in ate_rclk
+set_dft_signal -view existing_dft -type ScanClock  -port ate_wclk  -timing {45 55}
+set_dft_signal -view existing_dft -type ScanClock  -port ate_rclk  -timing {45 55}
+# -- # Model ATE clocks as free runnig clocks
+set_dft_signal -view existing_dft -type oscillator -port ate_wclk  
+set_dft_signal -view existing_dft -type oscillator -port ate_rclk  
 
-# DFT Signals used during insert_dft
+# DFT Signals used for insert_dft
 set_dft_signal -view spec -type ScanDataIn  -port test_si
 set_dft_signal -view spec -type ScanDataOut -port test_so
 set_dft_signal -view spec -type ScanEnable  -port test_se
+# -- # OCC Controller Interface Signals
+create_port -direction in occ_rst
+create_port -direction in occ_mode
+create_port -direction in pll_bypass
+set_dft_signal -view spec -type pll_reset  -port occ_rst
+set_dft_signal -view spec -type TestMode   -port occ_mode
+set_dft_signal -view spec -type pll_bypass -port pll_bypass
 
 # Create Ports "Undefined ports in RTL"
 create_port -direction in test_mode1
@@ -79,13 +95,15 @@ set_dft_configuration	-fix_set	enable
 set_dft_configuration	-fix_reset	enable
 
 # Declare Signals Used For AutoFixing
-set_dft_signal -view spec -type TestData    -port test_clk
+set_dft_signal -view spec -type TestData    -port ate_wclk
+set_dft_signal -view spec -type TestData    -port ate_rclk
 set_dft_signal -view spec -type TestData    -port wrst_n
 set_dft_signal -view spec -type TestData    -port rrst_n
 set_dft_signal -view spec -type TestMode    -port atpg_mode -active_state 1
 
 # AutoFix Cofiguration
-set_autofix_configuration -type clock -control_signal atpg_mode -method mux -test_data test_clk
+set_autofix_configuration -type clock -control_signal atpg_mode -method mux -test_data ate_wclk
+set_autofix_configuration -type clock -control_signal atpg_mode -method mux -test_data ate_rclk
 set_autofix_configuration -type reset -control_signal atpg_mode -method mux -test_data wrst_n
 set_autofix_configuration -type reset -control_signal atpg_mode -method mux -test_data rrst_n
 set_autofix_configuration -type bidirectional -method input
@@ -93,6 +111,27 @@ set_autofix_configuration -type bidirectional -method input
 #-----------------------------------------------------------------------
 # 04 _ Specify Scan Architecture In Preparation For Scan Insertion
 #-----------------------------------------------------------------------
+# Enable PLL on-chip clock controller capability 
+set_dft_configuration -clock_controller enable
+set_app_var test_occ_insert_clock_gating_cells true
+# Configuring the OCC Controllers to be synthesized
+set_dft_clock_controller \
+	-cell_name 		occ_wclk	\
+	-design_name		snps_clk_mux	\
+	-pllclocks 		wclk		\
+	-ateclocks		ate_wclk	\
+	-chain_count		1		\
+	-cycles_per_clock	8		\
+	-test_mode_port 	occ_mode
+set_dft_clock_controller \
+	-cell_name 		occ_rclk	\
+	-design_name		snps_clk_mux	\
+	-pllclocks 		rclk		\
+	-ateclocks		ate_rclk	\
+	-chain_count		1		\
+	-cycles_per_clock	8		\
+	-test_mode_port 	occ_mode
+
 # Declare Test Modes used in Multi-Mode
 set_dft_configuration -mode_decoding_style binary
 set_dft_configuration -scan_compression enable
@@ -112,6 +151,7 @@ set_scan_configuration -chain_count 1 -test_mode TM3 -clock_mixing mix_clocks
 set_scan_compression_configuration -minimum_compression 5 \
 	-base_mode TM1 -test_mode TM4
 
+
 remove_test_protocol
 create_test_protocol -capture_procedure multi_clock
 
@@ -120,6 +160,7 @@ create_test_protocol -capture_procedure multi_clock
 #-----------------------------------------------------------------------
 preview_dft -show scan_summary > ./reports/test/preview_dft.rpt
 preview_dft -test_points -all >> ./reports/test/preview_dft.rpt
+report_dft_clock_controller -view spec > ./reports/test/occ_ctrl.rpt
 
 #-----------------------------------------------------------------------
 # 06 _ Scan Stitching and applying AutoFix
@@ -137,14 +178,21 @@ puts $rpt_file "# Post Scan Insertion DFT_DRC 						"
 puts $rpt_file "#-----------------------------------------------------------------------"
 puts $rpt_file ""
 close $rpt_file
-dft_drc >> ./reports/test/dft_drc.rpt
 
 exec touch ./reports/test/coverage_est.rpt
 set rpt_file [open ./reports/test/coverage_est.rpt w]
 close $rpt_file
 
 foreach Mode { TM1 TM2 TM2 TM4 } {
+
 current_test_mode $Mode
+# Run DRC with PLL internal clocks enabled during capture
+set_dft_drc_configuration -pll_bypass disable
+dft_drc >> ./reports/test/dft_drc.rpt
+# Run DRC with external clocks enabled during capture
+set_dft_drc_configuration -pll_bypass enable
+dft_drc >> ./reports/test/dft_drc.rpt
+
 set rpt_file [open ./reports/test/coverage_est.rpt a]
 puts $rpt_file "#-----------------------------------------------------------------------"
 puts $rpt_file "# Current Mode >> $Mode		 					"
@@ -152,6 +200,7 @@ puts $rpt_file "#---------------------------------------------------------------
 puts $rpt_file ""
 close $rpt_file
 dft_drc -coverage_estimate >> ./reports/test/coverage_est.rpt
+
 }
 
 #-----------------------------------------------------------------------
@@ -163,9 +212,10 @@ check_scan_def
 write_file -format verilog -hier -out mapped_scan/async_fifo.v
 write_file -format ddc -hier -out mapped_scan/async_fifo.ddc
 set test_stil_netlist_format verilog
-exec mkdir ../tmax
+exec mkdir -p ../atpg/dftc_protocols
 foreach Mode { TM1 TM2 TM3 TM4 } {
-write_test_protocol -test_mode $Mode -out ../tmax/async_fifo_$Mode.spf
+# Write out combined PLL enabled/bypassed test protocol
+write_test_protocol -test_mode $Mode -out ../atpg/dftc_protocols/async_fifo_$Mode.spf
 }
 
 #----------------------------------------------------------------------
