@@ -1,8 +1,0 @@
- Fault analysis summary: #analyzed=0, #unexplained=0.
- Fault analysis summary: #analyzed=284, #unexplained=48.
- 107 faults are untestable due to constrain values.
- 129 faults are untestable due to constrain value blockage.
- 7 faults are connected to CLOCK.
- 4 faults are connected to SET.
- 7 faults are connected to RESET.
- 8 faults are connected from CLOCK.

@@ -1,4 +1,0 @@
- #faults  testcov  instance name (type)
- -------  -------  -----------------------
-     322   93.09%  /  (top_module)
-     196   94.01%     /fifo_mem  (dpram_ASIZE4_DSIZE8)
