@@ -2,7 +2,7 @@
 #									#
 #		*** ATPG Flow Automation  ***				#
 #	1) make atpg " atpg flow for all modes and faults "		#
-#	2) patterns validation 	< single fault & mode / time >		#
+#	2) patterns validation 	< single fault & mode at time >		#
 #	 -> make sim_serial " serial_simualtion "include sdf"		#
 #	 -> make sim_paralel " parallel simulation "faster"		#
 #	 -> make sim_debug " interactive debuging "			#
