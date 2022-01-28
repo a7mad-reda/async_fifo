@@ -10,7 +10,7 @@
 #	 -> for shift and capture modes using tester clock		#
 #	4) make pt_speed " at-speed STA "				#
 #	 -> capture mode using fast_ate_clock or pll_clock		#
-#	5) make ${fault} " run atpg flow for only ${fault} "		#
+#	5) make ${fault} " run atpg flow for only single fault "	#
 #									#
 #-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
 
