@@ -1,0 +1,182 @@
+
+                                 PrimeTime (R)
+
+               Version O-2018.06-SP1 for linux64 - Jul 19, 2018 
+
+                    Copyright (c) 1988 - 2018 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** primetime script for stuck-at faults  ***		#
+#			*** pre pattern validation  ***			#
+#		1) STA for at-stuck-at shift  				#
+#		2) STA for at-stuck-at capture  			#
+#		3) generate generate required reports   		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+set top_design "async_fifo"
+async_fifo
+set occ_mode "occ_bypass"
+occ_bypass
+set test_modes [list TM1 TM2 TM3 TM4]
+TM1 TM2 TM3 TM4
+#---------------------------------------------------------------------
+# 01 _ Load Libraries
+#---------------------------------------------------------------------
+set TARGET_LIBRARY_FILES "../libs/mw_lib/sc/LM/sc_max.db"
+../libs/mw_lib/sc/LM/sc_max.db
+set_app_var target_library $TARGET_LIBRARY_FILES
+../libs/mw_lib/sc/LM/sc_max.db
+set_app_var link_library "* $target_library"
+* ../libs/mw_lib/sc/LM/sc_max.db
+foreach mode ${test_modes} {
+	foreach type [list shift stuck_capture] {
+		remove_design -all
+#---------------------------------------------------------------------
+# 02 _ Read_Design
+#---------------------------------------------------------------------
+read_verilog ../syn/mapped_scan/${top_design}.v
+current_design ${top_design}
+link
+
+#---------------------------------------------------------------------
+# 03 _ Apply Timing Constraints
+#---------------------------------------------------------------------
+read_sdc ./pt/constraints/${occ_mode}/${mode}/${top_design}_${type}.sdc
+
+#---------------------------------------------------------------------
+# 04 _ check For Timing Violations
+#---------------------------------------------------------------------
+if {! [file exist ./reports/${occ_mode}/pt/stuck_at ]} 	{ exec mkdir -p ./reports/${occ_mode}/pt/stuck_at }
+report_constraints -all_violators > ./reports/${occ_mode}/pt/stuck_at/${mode}_${type}.rpt
+report_analysis_coverage >> ./reports/${occ_mode}/pt/stuck_at/${mode}_${type}.rpt
+
+	}
+}
+Error: Nothing matched for designs: there are none loaded (SEL-005)
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Loading db file '/home/rfic/Desktop/adapted/async_fifo/libs/mw_lib/sc/LM/sc_max.db'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Removing design 'async_fifo'...
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Removing design 'async_fifo'...
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Removing design 'async_fifo'...
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Removing design 'async_fifo'...
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Removing design 'async_fifo'...
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Removing design 'async_fifo'...
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Removing design 'async_fifo'...
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+#---------------------------------------------------------------------
+# 05 _ Generate SDF Bacl Annotated Delay
+#---------------------------------------------------------------------
+if {! [file exist ./pt/sdf]} { exec mkdir -p ./pt/sdf }
+write_sdf ./pt/sdf/${top_design}.sdf
+1
+exit
+Information: Defining new variable 'test_modes'. (CMD-041)
+Information: Defining new variable 'top_design'. (CMD-041)
+Information: Defining new variable 'type'. (CMD-041)
+Information: Defining new variable 'mode'. (CMD-041)
+Information: Defining new variable 'TARGET_LIBRARY_FILES'. (CMD-041)
+Information: Defining new variable 'occ_mode'. (CMD-041)
+Suppressed Messages Summary:
+Id          Severity      Occurrences   Suppressed
+-------------------------------------------------------------------------------
+UITE-121    Warning                16           16
+Total 1 type of message is suppressed
+
+Timing updates: 8 (8 implicit, 0 explicit) (0 incremental, 8 full, 0 logical)
+Noise updates: 0 (0 implicit, 0 explicit) (0 incremental, 0 full)
+Maximum memory usage for this session: 894.21 MB
+CPU usage for this session: 6 seconds 
+Elapsed time for this session: 4 seconds
+Diagnostics summary: 1 error, 8 warnings, 62 informationals
+
+Thank you for using pt_shell!

@@ -1,6 +1,6 @@
 
 # PrimeTime (R) Tcl script created by tmax2pt.tcl
-# Creation time: Thu Jan 27 08:09:08 2022
+# Creation time: Fri Jan 28 02:48:17 2022
 # tmax2pt.tcl version: N-2017.09: 2017/08/04 18:10:33 
 # arguments: ./pt/constraints/occ_bypass/TM2/async_fifo_stuck_capture.sdc -mode capture -replace -wft _multiclock_capture_WFT_
 
@@ -83,8 +83,8 @@ create_clock -name measurePO_wft1 -period 100     -waveform { 0 40 }
 unsuppress_message UITE-121
 
 # PI & PIO settings
-set_case_analysis 1 [get_ports wen]
-set_case_analysis 0 [get_ports wptr_clr]
+set_input_delay 0 -clock forcePI_wft1                 [get_ports wen]
+set_input_delay 0 -clock forcePI_wft1                 [get_ports wptr_clr]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[7]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[6]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[5]]
@@ -93,8 +93,8 @@ set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[3]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[2]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[1]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[0]]
-set_case_analysis 1 [get_ports ren]
-set_case_analysis 0 [get_ports rptr_clr]
+set_input_delay 0 -clock forcePI_wft1                 [get_ports ren]
+set_input_delay 0 -clock forcePI_wft1                 [get_ports rptr_clr]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports near_full_mrgn[4]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports near_full_mrgn[3]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports near_full_mrgn[2]]

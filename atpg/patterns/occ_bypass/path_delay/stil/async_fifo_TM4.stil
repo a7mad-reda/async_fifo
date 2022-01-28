@@ -1,33 +1,36 @@
 STIL 1.0 { Design 2005; }
 Header {
    Title "  TetraMAX(R)  O-2018.06-SP1-i20180719_204316 STIL output";
-   Date "Thu Jan 27 08:08:50 2022";
+   Date "Fri Jan 28 02:47:57 2022";
    Source "  TetraMAX(R)  O-2018.06-SP1-i20180719_204316 STIL output";
    History {
-      Ann {*  Incoming_Date "Thu Jan 27 08:08:50 2022"  *}
+      Ann {*  Incoming_Date "Fri Jan 28 02:47:56 2022"  *}
       Ann {*  Incoming_Src "Minimal STIL for design `async_fifo'"  *}
       Ann {*  Incoming_Date "Mon Jan 24 06:00:42 2022"  *}
-      Ann {*  Incoming_Src "DFT Compiler O-2018.06-SP1"  *}
+      Ann {*  Incoming_Src "ABC Tool"  *}
       Ann {*    Collapsed Path_delay Fault Summary Report *}
       Ann {* ----------------------------------------------- *}
       Ann {* fault class                     code   #faults *}
       Ann {* ------------------------------  ----  --------- *}
-      Ann {* Detected                         DT          0 *}
+      Ann {* Detected                         DT         50 *}
+      Ann {*   detected_by_simulation         DS         (8) *}
+      Ann {*   detected_robustly              DR        (42) *}
       Ann {* Possibly detected                PT          0 *}
       Ann {* Undetectable                     UD          0 *}
-      Ann {* ATPG untestable                  AU          0 *}
-      Ann {* Not detected                     ND         78 *}
-      Ann {*   not-controlled                 NC        (78) *}
+      Ann {* ATPG untestable                  AU         28 *}
+      Ann {*   atpg_untestable-not_detected   AN        (28) *}
+      Ann {* Not detected                     ND          0 *}
       Ann {* ----------------------------------------------- *}
       Ann {* total faults                                78 *}
-      Ann {* test coverage                             0.00% *}
-      Ann {* fault coverage                            0.00% *}
-      Ann {* ATPG effectiveness                        0.00% *}
+      Ann {* test coverage                            64.10% *}
+      Ann {* fault coverage                           64.10% *}
+      Ann {* ATPG effectiveness                      100.00% *}
       Ann {* ----------------------------------------------- *}
       Ann {*  *}
       Ann {*            Pattern Summary Report *}
       Ann {* ----------------------------------------------- *}
-      Ann {* #internal patterns                           0 *}
+      Ann {* #internal patterns                          13 *}
+      Ann {*     #full_sequential patterns               13 *}
       Ann {* ----------------------------------------------- *}
       Ann {*  *}
       Ann {* rule  severity  #fails  description *}
@@ -39,7 +42,6 @@ Header {
       Ann {* S19   warning       23  nonscan cell disturb *}
       Ann {* C3    warning        1  no latch transparency when clocks off *}
       Ann {* V6    warning        1  unused item *}
-      Ann {* V14   warning        4  missing state *}
       Ann {* P8    warning       60  capture later than path cycle time *}
       Ann {* P14   warning        4  ambiguous path segment *}
       Ann {* P16   warning        1  ambiguous capture clock *}
@@ -59,11 +61,7 @@ Header {
       Ann {* port_name         constraint_value *}
       Ann {* ----------------  --------------- *}
       Ann {* wrst_n              1 *}
-      Ann {* wen                 1 *}
-      Ann {* wptr_clr            0 *}
       Ann {* rrst_n              1 *}
-      Ann {* ren                 1 *}
-      Ann {* rptr_clr            0 *}
       Ann {* test_se             0 *}
       Ann {* atpg_mode           1 *}
       Ann {* test_mode           1 *}
@@ -648,41 +646,37 @@ Procedures "TM4_occ_bypass" {
    "multiclock_capture" {
       W "_multiclock_capture_WFT_";
       C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
-      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
-          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; 
-          "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; 
-          "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; 
-          "test_so_3"=X; }
+      F { "wrst_n"=1; "rrst_n"=1; "test_se"=0; "atpg_mode"=1; "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; 
+          "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; 
+          "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; "near_empty"=X; "over_flow"=X; 
+          "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
       V { "_pi"=\r39 # ; "_po"=\r18 # ; }
    }
    "allclock_capture" {
       W "_allclock_capture_WFT_";
       C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
-      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
-          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; 
-          "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; 
-          "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; 
-          "test_so_3"=X; }
+      F { "wrst_n"=1; "rrst_n"=1; "test_se"=0; "atpg_mode"=1; "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; 
+          "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; 
+          "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; "near_empty"=X; "over_flow"=X; 
+          "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
       V { "_pi"=\r39 # ; "_po"=\r18 # ; }
    }
    "allclock_launch" {
       W "_allclock_launch_WFT_";
       C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
-      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
-          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; 
-          "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; 
-          "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; 
-          "test_so_3"=X; }
+      F { "wrst_n"=1; "rrst_n"=1; "test_se"=0; "atpg_mode"=1; "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; 
+          "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; 
+          "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; "near_empty"=X; "over_flow"=X; 
+          "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
       V { "_pi"=\r39 # ; "_po"=\r18 # ; }
    }
    "allclock_launch_capture" {
       W "_allclock_launch_capture_WFT_";
       C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
-      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
-          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; 
-          "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; 
-          "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; 
-          "test_so_3"=X; }
+      F { "wrst_n"=1; "rrst_n"=1; "test_se"=0; "atpg_mode"=1; "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=1; 
+          "test_mode1"=1; "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; 
+          "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; "near_empty"=X; "over_flow"=X; 
+          "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
       V { "_pi"=\r39 # ; "_po"=\r18 # ; }
    }
    "load_unload" {
@@ -710,11 +704,155 @@ MacroDefs "TM4_occ_bypass" {
       C { "all_inputs"=\r39 N ; "all_outputs"=\r18 X ; }
       V { "atpg_mode"=1; "rclk"=0; "rrst_n"=1; "test_mode"=1; "wclk"=0; "wrst_n"=1; "ate_wclk"=0; "ate_rclk"=0; 
          "occ_mode"=1; "test_mode1"=1; }
-      V { "test_se"=0; "occ_rst"=0; "pll_bypass"=1; "wen"=1; "wptr_clr"=0; "ren"=1; "rptr_clr"=0; }
+      V { "test_se"=0; "occ_rst"=0; "pll_bypass"=1; }
    }
 }
 Pattern "_pattern_" {
    W "_multiclock_capture_WFT_";
    "precondition all Signals": C { "_pi"=\r39 0 ; "_po"=\r18 X ; }
    Macro "test_setup";
+   Ann {* full_sequential *}
+   "pattern 0": Call "load_unload" { 
+      "test_si_2"=0010000000; "test_si_3"=0000000000; "test_si"=1001110100; 
+      "test_si_1"=1000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=100011100110101101011111110101000111100; }
+   Call "allclock_launch" { 
+      "_pi"=100011100110101101011111110101P00111100; }
+   Call "allclock_capture" { 
+      "_pi"=100011100110101101011111110101P00111100; }
+   Ann {* full_sequential *}
+   "pattern 1": Call "load_unload" { 
+      "test_so"=LLLHLLLHXX; "test_so_1"=HLLHLLLHXX; "test_so_2"=LHHHHLHLXX; 
+      "test_so_3"=LHHHLHHHXX; "test_si_2"=0000000010; "test_si_3"=0000000100; 
+      "test_si"=0110000010; "test_si_1"=1111000011; }
+   Call "multiclock_capture" { 
+      "_pi"=100100100100011100011111110101000111011; }
+   Call "allclock_launch" { 
+      "_pi"=100100100100011100011111110101P00111011; }
+   Call "allclock_capture" { 
+      "_pi"=100100100100011100011111110101P00111011; }
+   Ann {* full_sequential *}
+   "pattern 2": Call "load_unload" { 
+      "test_so"=LLLLLLHHXX; "test_so_1"=LLLLLLLHXX; "test_so_2"=LLLLHHHHXX; 
+      "test_so_3"=HLHLHLHHXX; "test_si_2"=0000000111; "test_si_3"=0000010000; 
+      "test_si"=1011111000; "test_si_1"=0110000000; }
+   Call "multiclock_capture" { 
+      "_pi"=111100010010101101000101010011000111010; }
+   Call "allclock_launch" { 
+      "_pi"=1111000100101011010001010100110P0111010; }
+   Call "allclock_capture" { 
+      "_pi"=1111000100101011010001010100110P0111010; }
+   Ann {* full_sequential *}
+   "pattern 3": Call "load_unload" { 
+      "test_so"=HHHHHHLLXX; "test_so_1"=LHHHHHLLXX; "test_so_2"=LLHLLLLLXX; 
+      "test_so_3"=HHHLLHHHXX; "test_si_2"=0000000000; "test_si_3"=0000000000; 
+      "test_si"=1110000000; "test_si_1"=0011001010; }
+   Call "multiclock_capture" { 
+      "_pi"=100000100000001100011111110101000111001; }
+   Call "allclock_launch" { 
+      "_pi"=100000100000001100011111110101P00111001; }
+   Call "allclock_capture" { 
+      "_pi"=100000100000001100011111110101P00111001; }
+   Ann {* full_sequential *}
+   "pattern 4": Call "load_unload" { 
+      "test_so"=HLHLLLLHXX; "test_so_1"=HLHLLLLHXX; "test_so_2"=LLLLHHHHXX; 
+      "test_so_3"=LHLHLLLLXX; "test_si_2"=0000000000; "test_si_3"=0000000000; 
+      "test_si"=1010100111; "test_si_1"=0100011100; }
+   Call "multiclock_capture" { 
+      "_pi"=101000111100101100011111000001000111101; }
+   Call "allclock_launch" { 
+      "_pi"=1010001111001011000111110000010P0111101; }
+   Call "allclock_capture" { 
+      "_pi"=1010001111001011000111110000010P0111101; }
+   Ann {* full_sequential *}
+   "pattern 5": Call "load_unload" { 
+      "test_so"=HHHLLLHHXX; "test_so_1"=HLHLLHHHXX; "test_so_2"=LLLHHHLHXX; 
+      "test_so_3"=HHLLHLHHXX; "test_si_2"=0000000010; "test_si_3"=0000000010; 
+      "test_si"=1000000010; "test_si_1"=0010100011; }
+   Call "multiclock_capture" { 
+      "_pi"=101111101110101101011111111101000111010; }
+   Call "allclock_launch" { 
+      "_pi"=101111101110101101011111111101P00111010; }
+   Call "allclock_capture" { 
+      "_pi"=101111101110101101011111111101P00111010; }
+   Ann {* full_sequential *}
+   "pattern 6": Call "load_unload" { 
+      "test_so"=LHLLLLLHXX; "test_so_1"=LHLLLLLHXX; "test_so_2"=HLHLHHLHXX; 
+      "test_so_3"=LHHHLLHLXX; "test_si_2"=0000000000; "test_si_3"=0000000010; 
+      "test_si"=0110010110; "test_si_1"=0000000100; }
+   Call "multiclock_capture" { 
+      "_pi"=101011111110101100001000111001000111000; }
+   Call "allclock_launch" { 
+      "_pi"=1010111111101011000010001110010P0111000; }
+   Call "allclock_capture" { 
+      "_pi"=1010111111101011000010001110010P0111000; }
+   Ann {* full_sequential *}
+   "pattern 7": Call "load_unload" { 
+      "test_so"=HHHHHLHHXX; "test_so_1"=HLLHLHHLXX; "test_so_2"=LLHLLLHHXX; 
+      "test_so_3"=LHLLHLLLXX; "test_si_2"=0011100001; "test_si_3"=0000000000; 
+      "test_si"=1111110011; "test_si_1"=1101101110; }
+   Call "multiclock_capture" { 
+      "_pi"=111100000100111100011110010101000111100; }
+   Call "allclock_launch" { 
+      "_pi"=111100000100111100011110010101P00111100; }
+   Call "allclock_capture" { 
+      "_pi"=111100000100111100011110010101P00111100; }
+   Ann {* full_sequential *}
+   "pattern 8": Call "load_unload" { 
+      "test_so"=HHLHHHLLXX; "test_so_1"=HHHLLLHHXX; "test_so_2"=LLLLLLHHXX; 
+      "test_so_3"=HHHHLLLLXX; "test_si_2"=0010000000; "test_si_3"=0000000000; 
+      "test_si"=1010010111; "test_si_1"=1011000000; }
+   Call "multiclock_capture" { 
+      "_pi"=100000011010001100000100010101000111001; }
+   Call "allclock_launch" { 
+      "_pi"=100000011010001100000100010101P00111001; }
+   Call "allclock_capture" { 
+      "_pi"=100000011010001100000100010101P00111001; }
+   Ann {* full_sequential *}
+   "pattern 9": Call "load_unload" { 
+      "test_so"=HLLHLLLLXX; "test_so_1"=HLHHHLLLXX; "test_so_2"=LHHHLHHHXX; 
+      "test_so_3"=LLLLLHHHXX; "test_si_2"=0000000000; "test_si_3"=0000110101; 
+      "test_si"=1010001011; "test_si_1"=1001111100; }
+   Call "multiclock_capture" { 
+      "_pi"=110001100110101100000110100001000111011; }
+   Call "allclock_launch" { 
+      "_pi"=1100011001101011000001101000010P0111011; }
+   Call "allclock_capture" { 
+      "_pi"=1100011001101011000001101000010P0111011; }
+   Ann {* full_sequential *}
+   "pattern 10": Call "load_unload" { 
+      "test_so"=LLHHHLLLXX; "test_so_1"=LLHHLLLLXX; "test_so_2"=LLHLHHLHXX; 
+      "test_so_3"=LHHLLHHHXX; "test_si_2"=0000000000; "test_si_3"=0010000000; 
+      "test_si"=1000110110; "test_si_1"=1011000110; }
+   Call "multiclock_capture" { 
+      "_pi"=101000011110101101001100100011000111110; }
+   Call "allclock_launch" { 
+      "_pi"=1010000111101011010011001000110P0111110; }
+   Call "allclock_capture" { 
+      "_pi"=1010000111101011010011001000110P0111110; }
+   Ann {* full_sequential *}
+   "pattern 11": Call "load_unload" { 
+      "test_so"=HHHLHLLHXX; "test_so_1"=HHHLLHHLXX; "test_so_2"=HHLLHLLLXX; 
+      "test_so_3"=LHHLLLHLXX; "test_si_2"=0000000000; "test_si_3"=0010000000; 
+      "test_si"=0101001100; "test_si_1"=1111111110; }
+   Call "multiclock_capture" { 
+      "_pi"=111000100110101100000101101001000111101; }
+   Call "allclock_launch" { 
+      "_pi"=1110001001101011000001011010010P0111101; }
+   Call "allclock_capture" { 
+      "_pi"=1110001001101011000001011010010P0111101; }
+   Ann {* full_sequential *}
+   "pattern 12": Call "load_unload" { 
+      "test_so"=HLHLLLHLXX; "test_so_1"=HHHLHHHHXX; "test_so_2"=HHHHHHHHXX; 
+      "test_so_3"=HLHHLLHHXX; "test_si_2"=0000000000; "test_si_3"=0000000000; 
+      "test_si"=0011011001; "test_si_1"=1000100111; }
+   Call "multiclock_capture" { 
+      "_pi"=111111101000101100000110000101000111100; }
+      Ann {* full_sequential *}
+   "end 12 unload": Call "load_unload" { 
+      "test_so"=XXXXXXXXXX; "test_so_1"=XXXXXXXXXX; "test_so_2"=XXXXXXXXXX; 
+      "test_so_3"=XXXXXXXXXX; }
 }
+
+// Patterns reference 67 V statements, generating 193 test cycles

@@ -1,6 +1,6 @@
 
 # PrimeTime (R) Tcl script created by tmax2pt.tcl
-# Creation time: Thu Jan 27 08:09:12 2022
+# Creation time: Fri Jan 28 02:48:21 2022
 # tmax2pt.tcl version: N-2017.09: 2017/08/04 18:10:33 
 # arguments: ./pt/constraints/pll_based/TM3/async_fifo_stuck_capture.sdc -mode capture -replace -wft _multiclock_capture_WFT_
 
@@ -16,10 +16,10 @@ set timing_enable_preset_clear_arcs true
 
 # clocks
 suppress_message UITE-210
+create_clock -name wclk_wft1 -period 	    100 -waveform { 45 55 } [get_ports wclk]
+create_clock -name rclk_wft1 -period 	    100 -waveform { 45 55 } [get_ports rclk]
 create_clock -name wrst_n_wft1 -period 100 -waveform { 55 145 } [get_ports wrst_n]
 create_clock -name rrst_n_wft1 -period 100 -waveform { 55 145 } [get_ports rrst_n]
-create_clock -name wclk_wft1 -period 100 -waveform { 45 55 } [get_ports wclk]
-create_clock -name rclk_wft1 -period 100 -waveform { 45 55 } [get_ports rclk]
 create_clock -name ate_wclk_wft1 -period 100 -waveform { 45 55 } [get_ports ate_wclk]
 create_clock -name ate_rclk_wft1 -period 100 -waveform { 45 55 } [get_ports ate_rclk]
 unsuppress_message UITE-210
@@ -47,6 +47,10 @@ unsuppress_message UITE-210
     
 
 # clock domain exceptions
+set_false_path -hold -from                     [get_clocks wclk_wft1 ] -to [get_clocks ate_wclk_wft1 ]
+set_multicycle_path -setup 2 -rise_from                     [get_clocks wclk_wft1 ] -fall_to [get_clocks ate_wclk_wft1 ]
+set_false_path -hold -from                     [get_clocks rclk_wft1 ] -to [get_clocks ate_rclk_wft1 ]
+set_multicycle_path -setup 2 -rise_from                     [get_clocks rclk_wft1 ] -fall_to [get_clocks ate_rclk_wft1 ]
 set_false_path -hold -from                     [get_clocks wrst_n_wft1 ] -to [get_clocks ate_wclk_wft1 ]
 set_multicycle_path -setup 2 -fall_from                     [get_clocks wrst_n_wft1 ] -fall_to [get_clocks ate_wclk_wft1 ]
 set_false_path -hold -from                     [get_clocks wrst_n_wft1 ] -to [get_clocks ate_rclk_wft1 ]
@@ -55,22 +59,18 @@ set_false_path -hold -from                     [get_clocks rrst_n_wft1 ] -to [ge
 set_multicycle_path -setup 2 -fall_from                     [get_clocks rrst_n_wft1 ] -fall_to [get_clocks ate_rclk_wft1 ]
 set_false_path -hold -from                     [get_clocks rrst_n_wft1 ] -to [get_clocks ate_wclk_wft1 ]
 set_multicycle_path -setup 2 -fall_from                     [get_clocks rrst_n_wft1 ] -fall_to [get_clocks ate_wclk_wft1 ]
-set_false_path -hold -from                     [get_clocks wclk_wft1 ] -to [get_clocks ate_wclk_wft1 ]
-set_multicycle_path -setup 2 -rise_from                     [get_clocks wclk_wft1 ] -fall_to [get_clocks ate_wclk_wft1 ]
-set_false_path -hold -from                     [get_clocks rclk_wft1 ] -to [get_clocks ate_rclk_wft1 ]
-set_multicycle_path -setup 2 -rise_from                     [get_clocks rclk_wft1 ] -fall_to [get_clocks ate_rclk_wft1 ]
-set_false_path -hold -from                     [get_clocks ate_wclk_wft1 ] -to [get_clocks wrst_n_wft1 ]
-set_multicycle_path -setup 2 -rise_from                     [get_clocks ate_wclk_wft1 ] -rise_to [get_clocks wrst_n_wft1 ]
 set_false_path -hold -from                     [get_clocks ate_wclk_wft1 ] -to [get_clocks wclk_wft1 ]
 set_multicycle_path -setup 2 -rise_from                     [get_clocks ate_wclk_wft1 ] -fall_to [get_clocks wclk_wft1 ]
+set_false_path -hold -from                     [get_clocks ate_wclk_wft1 ] -to [get_clocks wrst_n_wft1 ]
+set_multicycle_path -setup 2 -rise_from                     [get_clocks ate_wclk_wft1 ] -rise_to [get_clocks wrst_n_wft1 ]
 set_false_path -hold -from                     [get_clocks ate_wclk_wft1 ] -to [get_clocks rrst_n_wft1 ]
 set_multicycle_path -setup 2 -rise_from                     [get_clocks ate_wclk_wft1 ] -rise_to [get_clocks rrst_n_wft1 ]
 set_false_path -hold -from                     [get_clocks ate_wclk_wft1 ] -to [get_clocks ate_rclk_wft1 ]
 set_multicycle_path -setup 2 -rise_from                     [get_clocks ate_wclk_wft1 ] -fall_to [get_clocks ate_rclk_wft1 ]
-set_false_path -hold -from                     [get_clocks ate_rclk_wft1 ] -to [get_clocks rrst_n_wft1 ]
-set_multicycle_path -setup 2 -rise_from                     [get_clocks ate_rclk_wft1 ] -rise_to [get_clocks rrst_n_wft1 ]
 set_false_path -hold -from                     [get_clocks ate_rclk_wft1 ] -to [get_clocks rclk_wft1 ]
 set_multicycle_path -setup 2 -rise_from                     [get_clocks ate_rclk_wft1 ] -fall_to [get_clocks rclk_wft1 ]
+set_false_path -hold -from                     [get_clocks ate_rclk_wft1 ] -to [get_clocks rrst_n_wft1 ]
+set_multicycle_path -setup 2 -rise_from                     [get_clocks ate_rclk_wft1 ] -rise_to [get_clocks rrst_n_wft1 ]
 set_false_path -hold -from                     [get_clocks ate_rclk_wft1 ] -to [get_clocks wrst_n_wft1 ]
 set_multicycle_path -setup 2 -rise_from                     [get_clocks ate_rclk_wft1 ] -rise_to [get_clocks wrst_n_wft1 ]
 set_false_path -hold -from                     [get_clocks ate_rclk_wft1 ] -to [get_clocks ate_wclk_wft1 ]
@@ -83,8 +83,8 @@ create_clock -name measurePO_wft1 -period 100     -waveform { 0 40 }
 unsuppress_message UITE-121
 
 # PI & PIO settings
-set_case_analysis 1 [get_ports wen]
-set_case_analysis 0 [get_ports wptr_clr]
+set_input_delay 0 -clock forcePI_wft1                 [get_ports wen]
+set_input_delay 0 -clock forcePI_wft1                 [get_ports wptr_clr]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[7]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[6]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[5]]
@@ -93,8 +93,8 @@ set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[3]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[2]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[1]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports wdata[0]]
-set_case_analysis 1 [get_ports ren]
-set_case_analysis 0 [get_ports rptr_clr]
+set_input_delay 0 -clock forcePI_wft1                 [get_ports ren]
+set_input_delay 0 -clock forcePI_wft1                 [get_ports rptr_clr]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports near_full_mrgn[4]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports near_full_mrgn[3]]
 set_input_delay 0 -clock forcePI_wft1                 [get_ports near_full_mrgn[2]]

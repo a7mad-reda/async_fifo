@@ -2,7 +2,7 @@
 Report : report_global_slack
 Design : async_fifo
 Version: O-2018.06-SP1
-Date   : Thu Jan 27 08:08:43 2022
+Date   : Fri Jan 28 02:47:48 2022
 ****************************************
 
         Max_Rise        Max_Fall        Min_Rise        Min_Fall Point

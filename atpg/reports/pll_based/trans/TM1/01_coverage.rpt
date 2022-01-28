@@ -1,0 +1,27 @@
+    Collapsed Transition Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       2215
+   detected_by_simulation         DS       (730)
+   detected_by_implication        DI       (870)
+   transition-partially_detected   TP       (615)
+ Possibly detected                PT          0
+ Undetectable                     UD         20
+   undetectable-tied              UT        (18)
+   undetectable-redundant         UR         (2)
+ ATPG untestable                  AU       2346
+   atpg_untestable-not_detected   AN      (2346)
+ Not detected                     ND         39
+   not-observed                   NO        (39)
+ -----------------------------------------------
+ total faults                              4620
+ test coverage                            48.15%
+ fault coverage                           47.94%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                         176
+     #basic_scan patterns                     1
+     #fast_sequential patterns              175
+ -----------------------------------------------

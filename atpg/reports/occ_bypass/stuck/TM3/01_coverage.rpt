@@ -1,0 +1,26 @@
+      Collapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       4424
+   detected_by_simulation         DS      (2812)
+   detected_by_implication        DI      (1612)
+ Possibly detected                PT          0
+ Undetectable                     UD         17
+   undetectable-tied              UT         (9)
+   undetectable-blocked           UB         (4)
+   undetectable-redundant         UR         (4)
+ ATPG untestable                  AU        768
+   atpg_untestable-not_detected   AN       (768)
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              5209
+ test coverage                            85.21%
+ fault coverage                           84.93%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          23
+     #basic_scan patterns                    20
+     #full_sequential patterns                3
+ -----------------------------------------------

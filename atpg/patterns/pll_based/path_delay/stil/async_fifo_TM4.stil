@@ -1,31 +1,35 @@
 STIL 1.0 { Design 2005; }
 Header {
    Title "  TetraMAX(R)  O-2018.06-SP1-i20180719_204316 STIL output";
-   Date "Thu Jan 27 08:08:52 2022";
+   Date "Fri Jan 28 02:48:01 2022";
    Source "Minimal STIL for design `async_fifo'";
    History {
       Ann {*  Incoming_Date "Mon Jan 24 06:00:42 2022"  *}
-      Ann {*  Incoming_Src "DFT Compiler O-2018.06-SP1"  *}
+      Ann {*  Incoming_Src "ABC Tool"  *}
       Ann {*    Collapsed Path_delay Fault Summary Report *}
       Ann {* ----------------------------------------------- *}
       Ann {* fault class                     code   #faults *}
       Ann {* ------------------------------  ----  --------- *}
-      Ann {* Detected                         DT          0 *}
+      Ann {* Detected                         DT         14 *}
+      Ann {*   detected_by_simulation         DS         (3) *}
+      Ann {*   detected_robustly              DR        (11) *}
       Ann {* Possibly detected                PT          0 *}
       Ann {* Undetectable                     UD          0 *}
-      Ann {* ATPG untestable                  AU          0 *}
-      Ann {* Not detected                     ND         89 *}
-      Ann {*   not-controlled                 NC        (89) *}
+      Ann {* ATPG untestable                  AU         41 *}
+      Ann {*   atpg_untestable-not_detected   AN        (41) *}
+      Ann {* Not detected                     ND         34 *}
+      Ann {*   not-controlled                 NC        (34) *}
       Ann {* ----------------------------------------------- *}
       Ann {* total faults                                89 *}
-      Ann {* test coverage                             0.00% *}
-      Ann {* fault coverage                            0.00% *}
-      Ann {* ATPG effectiveness                        0.00% *}
+      Ann {* test coverage                            15.73% *}
+      Ann {* fault coverage                           15.73% *}
+      Ann {* ATPG effectiveness                       61.80% *}
       Ann {* ----------------------------------------------- *}
       Ann {*  *}
       Ann {*            Pattern Summary Report *}
       Ann {* ----------------------------------------------- *}
-      Ann {* #internal patterns                           0 *}
+      Ann {* #internal patterns                           7 *}
+      Ann {*     #full_sequential patterns                7 *}
       Ann {* ----------------------------------------------- *}
       Ann {*  *}
       Ann {* rule  severity  #fails  description *}
@@ -36,14 +40,12 @@ Header {
       Ann {* B10   warning       34  unconnected module internal net *}
       Ann {* S19   warning       23  nonscan cell disturb *}
       Ann {* C3    warning        1  no latch transparency when clocks off *}
-      Ann {* C8    warning        2  LS port clock path affected by new capture  (nomask) *}
-      Ann {* C9    warning       16  TE port clock path affected by new capture  (nomask) *}
-      Ann {* C16   warning        2  nonscan cell port unable to capture *}
+      Ann {* C16   warning       22  nonscan cell port unable to capture *}
       Ann {* V6    warning        1  unused item *}
-      Ann {* V14   warning        4  missing state *}
       Ann {* P8    warning       89  capture later than path cycle time *}
       Ann {* P14   warning        4  ambiguous path segment *}
-      Ann {* P16   warning        3  ambiguous capture clock *}
+      Ann {* P15   warning       89  ambiguous launch clock *}
+      Ann {* P16   warning       89  ambiguous capture clock *}
       Ann {* P22   warning        6  off-path node values not satisfiable *}
       Ann {* R10   warning       36  two chains always have the same unload signature *}
       Ann {* R11   warning      136  X on chain affects observability of other chains *}
@@ -51,21 +53,19 @@ Header {
       Ann {*  *}
       Ann {* clock_name        off  usage *}
       Ann {* ----------------  ---  -------------------------- *}
+      Ann {* wclk               0   shift_clock refclock shift  *}
+      Ann {* rclk               0   shift_clock refclock shift  *}
       Ann {* wrst_n             1    *}
       Ann {* rrst_n             1    *}
-      Ann {* wclk               0   master shift nonscan_DLAT nonscan_DFF  *}
-      Ann {* rclk               0   master shift nonscan_DLAT nonscan_DFF  *}
       Ann {* ate_wclk           0   refclock shift  *}
       Ann {* ate_rclk           0   refclock shift  *}
       Ann {*  *}
       Ann {* port_name         constraint_value *}
       Ann {* ----------------  --------------- *}
+      Ann {* wclk                0 *}
       Ann {* wrst_n              1 *}
-      Ann {* wen                 1 *}
-      Ann {* wptr_clr            0 *}
+      Ann {* rclk                0 *}
       Ann {* rrst_n              1 *}
-      Ann {* ren                 1 *}
-      Ann {* rptr_clr            0 *}
       Ann {* test_se             0 *}
       Ann {* atpg_mode           1 *}
       Ann {* test_mode           1 *}
@@ -98,31 +98,40 @@ Signals {
    "test_so_1" Out { ScanOut; } "test_so_2" Out { ScanOut; } "test_so_3" Out { ScanOut;
    } "fifo_mem/U256/Z" Pseudo { ScanIn; } "fifo_mem/U202/Z" Pseudo { ScanIn; } 
    "sync_rst_r/dff2_reg/Q" Pseudo { ScanOut; } "fifo_mem/mem_reg_15__7_/Q" Pseudo
-   { ScanOut; } "fifo_mem/U277/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_6__7_/Q" Pseudo
-   { ScanOut; } "fifo_mem/U418/Z" Pseudo { ScanIn; } "fifo_mem/U229/Z" Pseudo { ScanIn;
-   } "occ_wclk/U2/Z" Pseudo; "fifo_mem/mem_reg_12__7_/Q" Pseudo { ScanOut; } 
-   "fifo_mem/U276/Z" Pseudo { ScanIn; } "sync_w2r/U5/Z" Pseudo { ScanIn; } 
-   "fifo_mem/mem_reg_3__7_/Q" Pseudo { ScanOut; } "fifo_mem/U265/Z" Pseudo { ScanIn;
-   } "fifo_mem/U417/Z" Pseudo { ScanIn; } "fifo_mem/U211/Z" Pseudo { ScanIn; } 
-   "fifo_mem/U275/Z" Pseudo { ScanIn; } "occ_rclk/fast_clk_clkgt/U2/A2" Pseudo; 
-   "fifo_mem/mem_reg_7__7_/Q" Pseudo { ScanOut; } "fifo_mem/mem_reg_0__7_/Q" Pseudo
-   { ScanOut; } "fifo_mem/U238/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_13__7_/Q" Pseudo
-   { ScanOut; } "occ_wclk/fast_clk_clkgt/U2/A2" Pseudo; "fifo_mem/U274/Z" Pseudo {
-   ScanIn; } "sync_w2r/U3/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_4__7_/Q" Pseudo
-   { ScanOut; } "fifo_mem/U220/Z" Pseudo { ScanIn; } "U203/Z" Pseudo { ScanIn; } 
-   "sync_r2w/U5/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_10__7_/Q" Pseudo { ScanOut;
-   } "snps_clk_chain_0/U_shftreg_0_ff_0_q_reg/Q" Pseudo { ScanOut; } 
+   { ScanOut; } "snps_clk_chain_0/U_shftreg_0_ff_5_q_reg/Q" Pseudo; "fifo_mem/U277/Z" Pseudo
+   { ScanIn; } "snps_clk_chain_1/U_shftreg_0_ff_5_q_reg/Q" Pseudo; "fifo_mem/mem_reg_6__7_/Q" Pseudo
+   { ScanOut; } "fifo_mem/U418/Z" Pseudo { ScanIn; } 
+   "snps_clk_chain_0/U_shftreg_0_ff_4_q_reg/Q" Pseudo; "fifo_mem/U229/Z" Pseudo {
+   ScanIn; } "occ_wclk/U2/Z" Pseudo; "snps_clk_chain_1/U_shftreg_0_ff_4_q_reg/Q" Pseudo;
+   "fifo_mem/mem_reg_12__7_/Q" Pseudo { ScanOut; } "fifo_mem/U276/Z" Pseudo { ScanIn;
+   } "sync_w2r/U5/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_3__7_/Q" Pseudo { ScanOut;
+   } "fifo_mem/U265/Z" Pseudo { ScanIn; } "fifo_mem/U417/Z" Pseudo { ScanIn; } 
+   "fifo_mem/U211/Z" Pseudo { ScanIn; } "snps_clk_chain_0/U_shftreg_0_ff_3_q_reg/Q" Pseudo;
+   "snps_clk_chain_1/U_shftreg_0_ff_3_q_reg/Q" Pseudo; "fifo_mem/U275/Z" Pseudo {
+   ScanIn; } "occ_rclk/fast_clk_clkgt/U2/A2" Pseudo; "fifo_mem/mem_reg_7__7_/Q" Pseudo
+   { ScanOut; } "fifo_mem/mem_reg_0__7_/Q" Pseudo { ScanOut; } 
+   "snps_clk_chain_0/U_shftreg_0_ff_2_q_reg/Q" Pseudo; 
+   "snps_clk_chain_1/U_shftreg_0_ff_2_q_reg/Q" Pseudo; "fifo_mem/U238/Z" Pseudo {
+   ScanIn; } "fifo_mem/mem_reg_13__7_/Q" Pseudo { ScanOut; } "occ_wclk/fast_clk_clkgt/U2/A2" Pseudo;
+   "fifo_mem/U274/Z" Pseudo { ScanIn; } "sync_w2r/U3/Z" Pseudo { ScanIn; } 
+   "fifo_mem/mem_reg_4__7_/Q" Pseudo { ScanOut; } "snps_clk_chain_0/U_shftreg_0_ff_1_q_reg/Q" Pseudo;
+   "fifo_mem/U220/Z" Pseudo { ScanIn; } "snps_clk_chain_1/U_shftreg_0_ff_1_q_reg/Q" Pseudo;
+   "U203/Z" Pseudo { ScanIn; } "sync_r2w/U5/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_10__7_/Q" Pseudo
+   { ScanOut; } "snps_clk_chain_0/U_shftreg_0_ff_0_q_reg/Q" Pseudo { ScanOut; } 
    "fifo_mem/mem_reg_8__7_/Q" Pseudo { ScanOut; } "fifo_mem/mem_reg_1__7_/Q" Pseudo
    { ScanOut; } "snps_clk_chain_1/U_shftreg_0_ff_0_q_reg/Q" Pseudo { ScanOut; } "R_2/Q" Pseudo
    { ScanOut; } "fifo_mem/U247/Z" Pseudo { ScanIn; } "wptr_full_wbin_reg_0_/Q" Pseudo
    { ScanOut; } "U199/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_14__7_/Q" Pseudo { ScanOut;
-   } "occ_rclk/U2/Z" Pseudo; "fifo_mem/mem_reg_5__7_/Q" Pseudo { ScanOut; } 
+   } "occ_rclk/U2/Z" Pseudo; "snps_clk_chain_0/U_shftreg_0_ff_7_q_reg/Q" Pseudo; 
+   "fifo_mem/mem_reg_5__7_/Q" Pseudo { ScanOut; } "snps_clk_chain_1/U_shftreg_0_ff_7_q_reg/Q" Pseudo;
    "sync_w2r/sync_out_reg_3_/Q" Pseudo { ScanOut; } "rptr_empty_rbin_reg_3_/Q" Pseudo
    { ScanOut; } "U201/Z" Pseudo { ScanIn; } "U198/Z" Pseudo { ScanIn; } 
    "fifo_mem/mem_reg_11__7_/Q" Pseudo { ScanOut; } "wptr_full_wptr_reg_3_/Q" Pseudo
-   { ScanOut; } "sync_r2w/U3/Z" Pseudo { ScanIn; } "fifo_mem/U193/Z" Pseudo { ScanIn;
-   } "fifo_mem/U419/Z" Pseudo { ScanIn; } "fifo_mem/mem_reg_9__7_/Q" Pseudo { ScanOut;
-   } "fifo_mem/mem_reg_2__7_/Q" Pseudo { ScanOut; }
+   { ScanOut; } "sync_r2w/U3/Z" Pseudo { ScanIn; } 
+   "snps_clk_chain_0/U_shftreg_0_ff_6_q_reg/Q" Pseudo; "fifo_mem/U193/Z" Pseudo {
+   ScanIn; } "snps_clk_chain_1/U_shftreg_0_ff_6_q_reg/Q" Pseudo; "fifo_mem/U419/Z" Pseudo
+   { ScanIn; } "fifo_mem/mem_reg_9__7_/Q" Pseudo { ScanOut; } "fifo_mem/mem_reg_2__7_/Q" Pseudo
+   { ScanOut; }
 }
 SignalGroups {
    "_pi" = '"atpg_mode" + "near_empty_mrgn[0]" + "near_empty_mrgn[1]" +
@@ -694,41 +703,37 @@ Procedures "TM4" {
    "multiclock_capture" {
       W "_multiclock_capture_WFT_";
       C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
-      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
-          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=0; "test_mode1"=1; "ate_wclk"=P; "ate_rclk"=P; 
-          "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; 
-          "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; 
-          "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
+      F { "wrst_n"=1; "rrst_n"=1; "test_se"=0; "atpg_mode"=1; "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=0; 
+          "test_mode1"=1; "wclk"=P; "rclk"=P; "ate_wclk"=P; "ate_rclk"=P; "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; 
+          "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; 
+          "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
       V { "_pi"=\r39 # ; "_po"=\r18 # ; }
    }
    "allclock_capture" {
       W "_allclock_capture_WFT_";
       C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
-      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
-          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=0; "test_mode1"=1; "ate_wclk"=P; "ate_rclk"=P; 
-          "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; 
-          "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; 
-          "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
+      F { "wrst_n"=1; "rrst_n"=1; "test_se"=0; "atpg_mode"=1; "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=0; 
+          "test_mode1"=1; "wclk"=P; "rclk"=P; "ate_wclk"=P; "ate_rclk"=P; "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; 
+          "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; 
+          "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
       V { "_pi"=\r39 # ; "_po"=\r18 # ; }
    }
    "allclock_launch" {
       W "_allclock_launch_WFT_";
       C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
-      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
-          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=0; "test_mode1"=1; "ate_wclk"=P; "ate_rclk"=P; 
-          "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; 
-          "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; 
-          "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
+      F { "wrst_n"=1; "rrst_n"=1; "test_se"=0; "atpg_mode"=1; "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=0; 
+          "test_mode1"=1; "wclk"=P; "rclk"=P; "ate_wclk"=P; "ate_rclk"=P; "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; 
+          "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; 
+          "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
       V { "_pi"=\r39 # ; "_po"=\r18 # ; }
    }
    "allclock_launch_capture" {
       W "_allclock_launch_capture_WFT_";
       C { "all_inputs"=1\r10 N 0NN110N0\r10 N 1000111NNN; "all_outputs"=\r18 X ; }
-      F { "wrst_n"=1; "wen"=1; "wptr_clr"=0; "rrst_n"=1; "ren"=1; "rptr_clr"=0; "test_se"=0; "atpg_mode"=1; 
-          "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=0; "test_mode1"=1; "ate_wclk"=P; "ate_rclk"=P; 
-          "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; 
-          "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; 
-          "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
+      F { "wrst_n"=1; "rrst_n"=1; "test_se"=0; "atpg_mode"=1; "test_mode"=1; "occ_rst"=0; "occ_mode"=1; "pll_bypass"=0; 
+          "test_mode1"=1; "wclk"=P; "rclk"=P; "ate_wclk"=P; "ate_rclk"=P; "rdata[7]"=X; "rdata[6]"=X; "rdata[5]"=X; 
+          "rdata[4]"=X; "rdata[3]"=X; "rdata[2]"=X; "rdata[1]"=X; "rdata[0]"=X; "full"=X; "empty"=X; "near_full"=X; 
+          "near_empty"=X; "over_flow"=X; "under_flow"=X; "test_so"=X; "test_so_1"=X; "test_so_2"=X; "test_so_3"=X; }
       V { "_pi"=\r39 # ; "_po"=\r18 # ; }
    }
    "load_unload" {
@@ -756,11 +761,170 @@ MacroDefs "TM4" {
       C { "all_inputs"=\r39 N ; "all_outputs"=\r18 X ; }
       V { "atpg_mode"=1; "rclk"=0; "rrst_n"=1; "test_mode"=1; "wclk"=0; "wrst_n"=1; "ate_wclk"=P; "ate_rclk"=P; 
          "occ_rst"=1; "occ_mode"=1; "test_mode1"=1; }
-      V { "test_se"=0; "occ_rst"=0; "pll_bypass"=0; "wen"=1; "wptr_clr"=0; "ren"=1; "rptr_clr"=0; }
+      V { "test_se"=0; "occ_rst"=0; "pll_bypass"=0; }
    }
 }
 Pattern "_pattern_" {
    W "_multiclock_capture_WFT_";
    "precondition all Signals": C { "_pi"=\r39 0 ; "_po"=\r18 X ; }
    Macro "test_setup";
+   Ann {* full_sequential *}
+   "pattern 0": Call "load_unload" { 
+      "test_si_2"=0000000100; "test_si_3"=0010000010; "test_si"=1000000011; 
+      "test_si_1"=0000010001; }
+   Ann {* Xs_are_explicit *}
+   Call "multiclock_capture" { 
+      "_pi"=10101100100P101100P11000011011PP0101101; "_po"=XXXXXXXXXXXXXXXXXX; }
+   Call "multiclock_capture" { 
+      "_pi"=10101100100P101100P11000011011PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10101100100P101100P11000011011PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10101100100P101100P11000011011PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10101100100P101100P11000011011PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10101100100P101100P11000011011PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10101100100P101100P11000011011PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10101100100P101100P11000011011PP0101101; }
+   Ann {* full_sequential *}
+   "pattern 1": Call "load_unload" { 
+      "test_so"=LHHLHHLHXX; "test_so_1"=HLLLLHLLXX; "test_so_2"=LXLLLHLXXX; 
+      "test_so_3"=LXLLLLLXXX; "test_si_2"=0000000100; "test_si_3"=0001100011; 
+      "test_si"=1100000011; "test_si_1"=0110001000; }
+   Ann {* Xs_are_explicit *}
+   Call "multiclock_capture" { 
+      "_pi"=11010100000P101101P10010100101PP0101111; "_po"=XXXXXXXXXXXXXXXXXX; }
+   Call "multiclock_capture" { 
+      "_pi"=11010100000P101101P10010100101PP0101111; }
+   Call "multiclock_capture" { 
+      "_pi"=11010100000P101101P10010100101PP0101111; }
+   Call "multiclock_capture" { 
+      "_pi"=11010100000P101101P10010100101PP0101111; }
+   Call "multiclock_capture" { 
+      "_pi"=11010100000P101101P10010100101PP0101111; }
+   Call "multiclock_capture" { 
+      "_pi"=11010100000P101101P10010100101PP0101111; }
+   Call "multiclock_capture" { 
+      "_pi"=11010100000P101101P10010100101PP0101111; }
+   Call "multiclock_capture" { 
+      "_pi"=11010100000P101101P10010100101PP0101111; }
+   Ann {* full_sequential *}
+   "pattern 2": Call "load_unload" { 
+      "test_so"=HLHLHLHLXX; "test_so_1"=HHHLLLLLXX; "test_so_2"=HHHLHHHLXX; 
+      "test_so_3"=LHHXXXXXXX; "test_si_2"=0000000000; "test_si_3"=0000000111; 
+      "test_si"=1000000011; "test_si_1"=0000000000; }
+   Ann {* Xs_are_explicit *}
+   Call "multiclock_capture" { 
+      "_pi"=10010111111P101100P01000100111PP0101000; "_po"=XXXXXXXXXXXXXXXXXX; }
+   Call "multiclock_capture" { 
+      "_pi"=10010111111P101100P01000100111PP0101000; }
+   Call "multiclock_capture" { 
+      "_pi"=10010111111P101100P01000100111PP0101000; }
+   Call "multiclock_capture" { 
+      "_pi"=10010111111P101100P01000100111PP0101000; }
+   Call "multiclock_capture" { 
+      "_pi"=10010111111P101100P01000100111PP0101000; }
+   Call "multiclock_capture" { 
+      "_pi"=10010111111P101100P01000100111PP0101000; }
+   Call "multiclock_capture" { 
+      "_pi"=10010111111P101100P01000100111PP0101000; }
+   Call "multiclock_capture" { 
+      "_pi"=10010111111P101100P01000100111PP0101000; }
+   Ann {* full_sequential *}
+   "pattern 3": Call "load_unload" { 
+      "test_so"=HHHHLLHHXX; "test_so_1"=LLLLHHHHXX; "test_so_2"=HHHLLLLLXX; 
+      "test_so_3"=LLLHHHLLXX; "test_si_2"=0000000000; "test_si_3"=0001001001; 
+      "test_si"=1000000011; "test_si_1"=0100100000; }
+   Ann {* Xs_are_explicit *}
+   Call "multiclock_capture" { 
+      "_pi"=10100101011P101100P11000101101PP0101101; "_po"=XXXXXXXXXXXXXXXXXX; }
+   Call "multiclock_capture" { 
+      "_pi"=10100101011P101100P11000101101PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10100101011P101100P11000101101PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10100101011P101100P11000101101PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10100101011P101100P11000101101PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10100101011P101100P11000101101PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10100101011P101100P11000101101PP0101101; }
+   Call "multiclock_capture" { 
+      "_pi"=10100101011P101100P11000101101PP0101101; }
+   Ann {* full_sequential *}
+   "pattern 4": Call "load_unload" { 
+      "test_so"=HLHHLHLLXX; "test_so_1"=LHHLHLLLXX; "test_so_2"=HHHHHLLXXX; 
+      "test_so_3"=HLHLXHXXXX; "test_si_2"=0000000000; "test_si_3"=0000110111; 
+      "test_si"=1000000011; "test_si_1"=1100000000; }
+   Ann {* Xs_are_explicit *}
+   Call "multiclock_capture" { 
+      "_pi"=10100100000P101101P10011100111PP0101011; "_po"=XXXXXXXXXXXXXXXXXX; }
+   Call "multiclock_capture" { 
+      "_pi"=10100100000P101101P10011100111PP0101011; }
+   Call "multiclock_capture" { 
+      "_pi"=10100100000P101101P10011100111PP0101011; }
+   Call "multiclock_capture" { 
+      "_pi"=10100100000P101101P10011100111PP0101011; }
+   Call "multiclock_capture" { 
+      "_pi"=10100100000P101101P10011100111PP0101011; }
+   Call "multiclock_capture" { 
+      "_pi"=10100100000P101101P10011100111PP0101011; }
+   Call "multiclock_capture" { 
+      "_pi"=10100100000P101101P10011100111PP0101011; }
+   Call "multiclock_capture" { 
+      "_pi"=10100100000P101101P10011100111PP0101011; }
+   Ann {* full_sequential *}
+   "pattern 5": Call "load_unload" { 
+      "test_so"=LLHLLLHHXX; "test_so_1"=HHLHHHHHXX; "test_so_2"=HHLLHHLLXX; 
+      "test_so_3"=HLHHLLLLXX; "test_si_2"=0000000000; "test_si_3"=0000010100; 
+      "test_si"=1000000011; "test_si_1"=1000000000; }
+   Ann {* Xs_are_explicit *}
+   Call "multiclock_capture" { 
+      "_pi"=10100010111P101101P10111001101PP0101001; "_po"=XXXXXXXXXXXXXXXXXX; }
+   Call "multiclock_capture" { 
+      "_pi"=10100010111P101101P10111001101PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10100010111P101101P10111001101PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10100010111P101101P10111001101PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10100010111P101101P10111001101PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10100010111P101101P10111001101PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10100010111P101101P10111001101PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10100010111P101101P10111001101PP0101001; }
+   Ann {* full_sequential *}
+   "pattern 6": Call "load_unload" { 
+      "test_so"=HHHLHLHHXX; "test_so_1"=LLLHLHHHXX; "test_so_2"=HHLHLLHLXX; 
+      "test_so_3"=LLHLHHHLXX; "test_si_2"=0000000000; "test_si_3"=0000000000; 
+      "test_si"=0101101010; "test_si_1"=0001001001; }
+   Ann {* Xs_are_explicit *}
+   Call "multiclock_capture" { 
+      "_pi"=10001110100P101100P10101100011PP0101001; "_po"=XXXXXXXXXXXXXXXXXX; }
+   Call "multiclock_capture" { 
+      "_pi"=10001110100P101100P10101100011PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10001110100P101100P10101100011PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10001110100P101100P10101100011PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10001110100P101100P10101100011PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10001110100P101100P10101100011PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10001110100P101100P10101100011PP0101001; }
+   Call "multiclock_capture" { 
+      "_pi"=10001110100P101100P10101100011PP0101001; }
+   Ann {* full_sequential *}
+   "end 6 unload": Call "load_unload" { 
+      "test_so"=XXXXXXXXXX; "test_so_1"=XXXXXXXXXX; "test_so_2"=XXXXXXXXXX; 
+      "test_so_3"=XXXXXXXXXX; }
 }
+
+// Patterns reference 74 V statements, generating 146 test cycles

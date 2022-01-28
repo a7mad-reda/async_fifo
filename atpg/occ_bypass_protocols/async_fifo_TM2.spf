@@ -1,11 +1,11 @@
 STIL 1.0 { Design 2005; }
 Header {
-   Title "  ABC Tool STIL output";
-   Date "Thu Jan 27 08:08:49 2022";
+   Title "  TetraMAX(R)  O-2018.06-SP1-i20180719_204316 STIL output";
+   Date "Fri Jan 28 02:47:55 2022";
    Source "Minimal STIL for design `async_fifo'";
    History {
       Ann {*  Incoming_Date "Mon Jan 24 06:00:42 2022"  *}
-      Ann {*  Incoming_Src "DFT Compiler O-2018.06-SP1"  *}
+      Ann {*  Incoming_Src "ABC Tool"  *}
       Ann {*    Collapsed Path_delay Fault Summary Report *}
       Ann {* ----------------------------------------------- *}
       Ann {* fault class                     code   #faults *}

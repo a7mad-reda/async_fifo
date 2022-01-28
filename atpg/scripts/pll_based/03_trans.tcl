@@ -26,15 +26,12 @@ set_drc ./dftc_protocols/${top_design}_${mode}.spf
 # read timing exceptions
 read_sdc ./pt/constraints/${occ_mode}/${mode}/${top_design}_speed_capture.sdc
 
+# define pll clock as free running clock
+add_clock 0 {wclk rclk} -refclock -shift
+
 # constrain signals to certain values during capture
 add_pi_constraints 1 {wrst_n rrst_n}
 add_pi_constraints 0 test_se
-
-add_pi_constraints 1 ren
-add_pi_constraints 1 wen
-
-add_pi_constraints 0 rptr_clr
-add_pi_constraints 0 wptr_clr
 
 # no. fast clock cycles per capture cycles
 set_drc -num_pll_cycle 8

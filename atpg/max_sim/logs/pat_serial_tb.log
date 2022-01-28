@@ -11,7 +11,7 @@ maxtb> Detected IDDQ test mode (IDDQ strobes in Pattern block: "_pattern_")
 
 maxtb> STIL file successfully interpreted (PatternExec: ""TM4_occ_bypass"").
 
-maxtb> Total test patterns to process 18
+maxtb> Total test patterns to process 21
 
 maxtb> Detected a Scan Compression mode.
 
@@ -21,6 +21,6 @@ maxtb> Test data file "./max_sim/serial/pll_based/iddq/TM4/pat_serial_tb.dat" ge
 
 maxtb> Test bench file "./max_sim/serial/pll_based/iddq/TM4/pat_serial_tb.v" generated successfully.
 
-maxtb> Memory usage: 5.51 Mbytes. CPU usage: 0.039 seconds.
+maxtb> Memory usage: 5.51 Mbytes. CPU usage: 0.051 seconds.
 
 maxtb> End.

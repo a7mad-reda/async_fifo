@@ -1,6 +1,6 @@
 
 # PrimeTime (R) Tcl script created by tmax2pt.tcl
-# Creation time: Thu Jan 27 08:09:09 2022
+# Creation time: Fri Jan 28 02:48:18 2022
 # tmax2pt.tcl version: N-2017.09: 2017/08/04 18:10:33 
 # arguments: ./pt/constraints/occ_bypass/TM3/async_fifo_shift.sdc -mode shift -replace -wft _default_WFT_
 

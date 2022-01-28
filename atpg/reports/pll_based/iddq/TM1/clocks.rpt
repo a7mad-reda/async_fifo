@@ -1,0 +1,17 @@
+ Warning: Requested report contained no entries. (M13)
+ Warning: Requested report contained no entries. (M13)
+ id#  clock_name        type    0    1    2    3    4    5
+ ---  ----------------  ----  ---  ---  ---  ---  ---  ---
+   0  wclk              C     ---  BPA  BPA  BPA  ---  BPA
+   1  rclk              C     BPA  ---  BPA  BPA  BPA  ---
+   2  wrst_n            R     BPA  BPA  ---  BPA  ---  -DA
+   3  rrst_n            SR    BPA  BPA  BPA  ---  -DA  ---
+   4  ate_wclk          C     ---  BPA  ---  BD-  ---  -D-
+   5  ate_rclk          C     BPA  ---  BD-  ---  -D-  ---
+ ------------------------------------------------------------------------------------------------
+      clock 1            clock 2
+ id# #masks #cells  id# #masks #cells   masked gates
+ --- ------ ------  --- ------ ------   ---------------------------------------------------------
+   2      0    153    5      5     32   1410 1411 1412 1413 1414
+   3      0     24    4      5    161   1402 1403 1404 1405 1406
+   4      5    161    5      5     32   1402 1403 1404 1405 1406 1410 1411 1412 ...

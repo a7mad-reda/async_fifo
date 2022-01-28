@@ -1,0 +1,23 @@
+    Collapsed Path_delay Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT         50
+   detected_by_simulation         DS         (8)
+   detected_robustly              DR        (42)
+ Possibly detected                PT          0
+ Undetectable                     UD          0
+ ATPG untestable                  AU         28
+   atpg_untestable-not_detected   AN        (28)
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                                78
+ test coverage                            64.10%
+ fault coverage                           64.10%
+ ATPG effectiveness                      100.00%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          13
+     #full_sequential patterns               13
+ -----------------------------------------------

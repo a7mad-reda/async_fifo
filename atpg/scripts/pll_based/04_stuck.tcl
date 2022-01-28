@@ -24,11 +24,8 @@ source -e ./scripts/00_build.tcl
 #------------------------------------------------------------------------
 set_drc ./dftc_protocols/${top_design}_${mode}.spf
 
-# constrain signals to certain values during capture
-add_pi_constraints 1 ren
-add_pi_constraints 1 wen
-add_pi_constraints 0 rptr_clr
-add_pi_constraints 0 wptr_clr
+# define pll clock as free running clock
+add_clock 0 {wclk rclk} -refclock -shift
 
 # avoid pattern simulation failure
 set_drc -nodslave_remodel -noreclassify_invalid_dslaves
@@ -60,7 +57,7 @@ run_atpg -auto fast_sequential_only
 
 set_atpg -full_seq_atpg
 set_atpg -full_seq_time 0
-set_atpg -full_seq_abort_limit 10
+set_atpg -full_seq_abort_limit 100
 run_atpg -auto full_sequential_only
 
 # write currents fault for later direct credit 

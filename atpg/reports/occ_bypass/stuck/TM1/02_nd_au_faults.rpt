@@ -1,0 +1,22 @@
+ #faults  testcov  instance name (type)
+ -------  -------  -----------------------
+     751   85.54%  /  (top_module)
+     144   95.44%     /fifo_mem  (dpram_ASIZE4_DSIZE8)
+     230    2.95%     /occ_wclk  (async_fifo_DFT_clk_mux_0)
+     205    0.00%        /occ_wclk/U_clk_control_i_0  (async_fifo_DFT_clk_control_0_0)
+      85    0.00%           /occ_wclk/U_clk_control_i_0/U_cycle_ctr_i  (async_fifo_DFT_cntr_scnto_width4_count_to9_rst_mode0_dcod_mode0_0_0)
+      47    0.00%           /occ_wclk/U_clk_control_i_0/U_decode_i  (async_fifo_DFT_decode_width8_0_0)
+     240    2.83%     /occ_rclk  (async_fifo_DFT_clk_mux_1)
+     215    0.00%        /occ_rclk/U_clk_control_i_0  (async_fifo_DFT_clk_control_1_0)
+      85    0.00%           /occ_rclk/U_clk_control_i_0/U_cycle_ctr_i  (async_fifo_DFT_cntr_scnto_width4_count_to9_rst_mode0_dcod_mode0_1_0)
+      57    0.00%           /occ_rclk/U_clk_control_i_0/U_decode_i  (async_fifo_DFT_decode_width8_1_0)
+ Fault analysis summary: #analyzed=3, #unexplained=3.
+ Fault analysis summary: #analyzed=748, #unexplained=50.
+ 500 faults are untestable due to constrain values.
+ 184 faults are untestable due to constrain value blockage.
+ 63 faults are connected to TLA.
+ 76 faults are connected to CLOCK.
+ 10 faults are connected to SET.
+ 13 faults are connected to RESET.
+ 54 faults are connected from CLOCK.
+ 16 faults are connected from TLA.

@@ -1,0 +1,23 @@
+       Collapsed IDDQ Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       5528
+   detected_by_simulation         DS      (5528)
+ Possibly detected                PT          0
+ Undetectable                     UD        433
+   undetectable-tied              UT         (9)
+   undetectable-redundant         UR       (424)
+ ATPG untestable                  AU        562
+   atpg_untestable-not_detected   AN       (562)
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              6523
+ test coverage                            90.77%
+ fault coverage                           84.75%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          19
+     #basic_scan patterns                    19
+ -----------------------------------------------

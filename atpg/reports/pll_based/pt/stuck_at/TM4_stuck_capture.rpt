@@ -1,0 +1,37 @@
+Information: Using automatic max wire load selection group 'predcaps'. (ENV-003)
+Information: Using automatic min wire load selection group 'predcaps'. (ENV-003)
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : async_fifo
+Version: O-2018.06-SP1
+Date   : Fri Jan 28 02:48:29 2022
+****************************************
+
+
+
+
+
+1
+****************************************
+Report : analysis_coverage
+Design : async_fifo
+Version: O-2018.06-SP1
+Date   : Fri Jan 28 02:48:30 2022
+****************************************
+
+Type of Check         Total              Met         Violated         Untested
+--------------------------------------------------------------------------------
+setup                   591       585 ( 99%)         0 (  0%)         6 (  1%)
+hold                    591       573 ( 97%)         0 (  0%)        18 (  3%)
+recovery                206       177 ( 86%)         0 (  0%)        29 ( 14%)
+removal                 206         0 (  0%)         0 (  0%)       206 (100%)
+min_pulse_width         642       613 ( 95%)         0 (  0%)        29 (  5%)
+out_setup                18        18 (100%)         0 (  0%)         0 (  0%)
+out_hold                 18        18 (100%)         0 (  0%)         0 (  0%)
+--------------------------------------------------------------------------------
+All Checks             2272      1984 ( 87%)         0 (  0%)       288 ( 13%)
+
+1

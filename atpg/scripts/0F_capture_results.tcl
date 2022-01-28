@@ -23,6 +23,12 @@ set_faults -fault_coverage
 # report coverage
 report_summaries >  ./reports/${occ_mode}/${fault}/${mode}/01_coverage.rpt
 
+# report drc violations
+report_violations -all >  ./reports/${occ_mode}/${fault}/${mode}/02_drc_violations.rpt
+
+# report not detected faults
+report_faults -class nd >  ./reports/${occ_mode}/${fault}/${mode}/03_nd_faults.rpt
+
 # report_clocks
 report_clocks -intclocks  >  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
 report_clocks -pllclocks >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt

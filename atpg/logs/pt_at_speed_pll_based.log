@@ -1,0 +1,415 @@
+
+                                 PrimeTime (R)
+
+               Version O-2018.06-SP1 for linux64 - Jul 19, 2018 
+
+                    Copyright (c) 1988 - 2018 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** primetime script for at speed faults  ***		#
+#		1) STA for at-speed capture  				#
+#		2) update exception from violation  			#
+#		3) generate global slacks   				#
+#		4) generate critical paths   				#
+#		5) generate sdf back-annotated delay   			#
+#		6) generate generate required reports   		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+source $env(TMAX_HOME)/auxx/syn/tmax/pt2tmax.tcl
+set top_design "async_fifo"
+async_fifo
+set occ_mode "pll_based"
+pll_based
+set test_modes [list TM1 TM2 TM3 TM4]
+TM1 TM2 TM3 TM4
+#---------------------------------------------------------------------
+# 01 _ Load Libraries
+#---------------------------------------------------------------------
+set TARGET_LIBRARY_FILES "../libs/mw_lib/sc/LM/sc_max.db"
+../libs/mw_lib/sc/LM/sc_max.db
+set_app_var target_library $TARGET_LIBRARY_FILES
+../libs/mw_lib/sc/LM/sc_max.db
+set_app_var link_library "* $target_library"
+* ../libs/mw_lib/sc/LM/sc_max.db
+foreach mode ${test_modes} {
+if { $mode != {TM1} } { remove_design -all }
+#---------------------------------------------------------------------
+# 02 _ Read_Design
+#---------------------------------------------------------------------
+read_verilog ../syn/mapped_scan/${top_design}.v
+current_design ${top_design}
+link
+
+#---------------------------------------------------------------------
+# 03 _ Apply Timing Constraints
+#---------------------------------------------------------------------
+read_sdc ./scripts/${occ_mode}/TX_${top_design}_test.sdc
+switch $mode {
+	TM1 { set a 0 ; set b 0 ; }
+	TM2 { set a 0 ; set b 1 ; }
+	TM3 { set a 1 ; set b 0 ; }
+	TM4 { set a 1 ; set b 1 ; }
+}
+set_case_analysis $a [get_ports test_mode ]
+set_case_analysis $b [get_ports test_mode1]
+
+#---------------------------------------------------------------------
+# 04 _ Generate Timing Reports
+#---------------------------------------------------------------------
+if {! [file exist ./reports/${occ_mode}/pt/at_speed ]} 	{ exec mkdir -p ./reports/${occ_mode}/pt/at_speed }
+report_constraints -all_violators > ./reports/${occ_mode}/pt/at_speed/${mode}_capture.rpt
+report_analysis_coverage >> ./reports/${occ_mode}/pt/at_speed/${mode}_capture.rpt
+
+#---------------------------------------------------------------------
+# 05 _ Update Exceptions to mask violations for Transion Fault ATPG
+#---------------------------------------------------------------------
+if {! [file exist ./pt/constraints/${occ_mode}/${mode} ]} 	{ exec mkdir -p ./pt/constraints/${occ_mode}/${mode} }
+write_exceptions_from_violations -delay_type min_max 
+write_sdc ./pt/constraints/${occ_mode}/${mode}/${top_design}_speed_capture.sdc
+report_analysis_coverage >> ./reports/${occ_mode}/pt/at_speed/${mode}_capture_updated.rpt
+
+#---------------------------------------------------------------------
+# 06 _ Generat Global Slacks for SDD ATPG
+#---------------------------------------------------------------------
+if {! [file exist ./pt/slacks/${occ_mode} ]} 	{ exec mkdir -p ./pt/slacks/${occ_mode} }
+report_global_slack > ./pt/slacks/${occ_mode}/${top_design}_${mode}.slack
+
+
+
+#---------------------------------------------------------------------
+# 07 _ Generat Critical Paths for Path Delay ATPG
+#---------------------------------------------------------------------
+if {! [file exist ./pt/crit_paths/${occ_mode}/${mode} ]} 	{ exec mkdir -p ./pt/crit_paths/${occ_mode}/${mode} }
+write_delay_paths -launch src_clk -capture src_clk -max_paths 60 	./pt/crit_paths/${occ_mode}/${mode}/wclk-wclk_path.rep   
+write_delay_paths -launch dest_clk -capture dest_clk -max_paths 60 	./pt/crit_paths/${occ_mode}/${mode}/rclk-rclk_path.rep 
+
+}
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Loading db file '/home/rfic/Desktop/adapted/async_fifo/libs/mw_lib/sc/LM/sc_max.db'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Iteration 1 update_timing...
+Iteration 1 found 0 Paths...
+Iteration 1 Exiting because timing is clean!
+Information: SDC supports a subset of the constraints supported by PrimeTime. Some constraints cannot be preserved by the write_sdc command. (WSCR-002)
+Information: Checking 'no_input_delay'.
+Information: Checking 'no_driving_cell'.
+Information: Checking 'unconstrained_endpoints'.
+Warning: There are 38 endpoints which are not constrained for maximum delay.
+
+Information: Checking 'unexpandable_clocks'.
+Information: Checking 'latch_fanout'.
+Information: Checking 'no_clock'.
+Warning: There are 4 register clock pins with no clock.
+
+Information: Checking 'partial_input_delay'.
+Information: Checking 'generic'.
+Information: Checking 'loops'.
+Information: Checking 'generated_clocks'.
+Information: Checking 'pulse_clock_non_pulse_clock_merge'.
+Information: Checking 'pll_configuration'.
+Warning: report_timing has satisfied the max_paths criteria. There are 99 further endpoints which have paths of interest with slack less than 1000000.00 that were not considered when generating this report. (UITE-502)
+Information: Checking 'no_input_delay'.
+Information: Checking 'no_driving_cell'.
+Information: Checking 'unconstrained_endpoints'.
+Warning: There are 38 endpoints which are not constrained for maximum delay.
+
+Information: Checking 'unexpandable_clocks'.
+Information: Checking 'latch_fanout'.
+Information: Checking 'no_clock'.
+Warning: There are 4 register clock pins with no clock.
+
+Information: Checking 'partial_input_delay'.
+Information: Checking 'generic'.
+Information: Checking 'loops'.
+Information: Checking 'generated_clocks'.
+Information: Checking 'pulse_clock_non_pulse_clock_merge'.
+Information: Checking 'pll_configuration'.
+Removing design 'async_fifo'...
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Iteration 1 update_timing...
+Iteration 1 found 0 Paths...
+Iteration 1 Exiting because timing is clean!
+Information: SDC supports a subset of the constraints supported by PrimeTime. Some constraints cannot be preserved by the write_sdc command. (WSCR-002)
+Information: Checking 'no_input_delay'.
+Information: Checking 'no_driving_cell'.
+Information: Checking 'unconstrained_endpoints'.
+Warning: There are 35 endpoints which are not constrained for maximum delay.
+
+Information: Checking 'unexpandable_clocks'.
+Information: Checking 'latch_fanout'.
+Information: Checking 'no_clock'.
+Warning: There are 4 register clock pins with no clock.
+
+Information: Checking 'partial_input_delay'.
+Information: Checking 'generic'.
+Information: Checking 'loops'.
+Information: Checking 'generated_clocks'.
+Information: Checking 'pulse_clock_non_pulse_clock_merge'.
+Information: Checking 'pll_configuration'.
+Warning: report_timing has satisfied the max_paths criteria. There are 99 further endpoints which have paths of interest with slack less than 1000000.00 that were not considered when generating this report. (UITE-502)
+Information: Checking 'no_input_delay'.
+Information: Checking 'no_driving_cell'.
+Information: Checking 'unconstrained_endpoints'.
+Warning: There are 35 endpoints which are not constrained for maximum delay.
+
+Information: Checking 'unexpandable_clocks'.
+Information: Checking 'latch_fanout'.
+Information: Checking 'no_clock'.
+Warning: There are 4 register clock pins with no clock.
+
+Information: Checking 'partial_input_delay'.
+Information: Checking 'generic'.
+Information: Checking 'loops'.
+Information: Checking 'generated_clocks'.
+Information: Checking 'pulse_clock_non_pulse_clock_merge'.
+Information: Checking 'pll_configuration'.
+Removing design 'async_fifo'...
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Iteration 1 update_timing...
+Iteration 1 found 0 Paths...
+Iteration 1 Exiting because timing is clean!
+Information: SDC supports a subset of the constraints supported by PrimeTime. Some constraints cannot be preserved by the write_sdc command. (WSCR-002)
+Information: Checking 'no_input_delay'.
+Information: Checking 'no_driving_cell'.
+Information: Checking 'unconstrained_endpoints'.
+Warning: There are 38 endpoints which are not constrained for maximum delay.
+
+Information: Checking 'unexpandable_clocks'.
+Information: Checking 'latch_fanout'.
+Information: Checking 'no_clock'.
+Warning: There are 4 register clock pins with no clock.
+
+Information: Checking 'partial_input_delay'.
+Information: Checking 'generic'.
+Information: Checking 'loops'.
+Information: Checking 'generated_clocks'.
+Information: Checking 'pulse_clock_non_pulse_clock_merge'.
+Information: Checking 'pll_configuration'.
+Warning: report_timing has satisfied the max_paths criteria. There are 99 further endpoints which have paths of interest with slack less than 1000000.00 that were not considered when generating this report. (UITE-502)
+Information: Checking 'no_input_delay'.
+Information: Checking 'no_driving_cell'.
+Information: Checking 'unconstrained_endpoints'.
+Warning: There are 38 endpoints which are not constrained for maximum delay.
+
+Information: Checking 'unexpandable_clocks'.
+Information: Checking 'latch_fanout'.
+Information: Checking 'no_clock'.
+Warning: There are 4 register clock pins with no clock.
+
+Information: Checking 'partial_input_delay'.
+Information: Checking 'generic'.
+Information: Checking 'loops'.
+Information: Checking 'generated_clocks'.
+Information: Checking 'pulse_clock_non_pulse_clock_merge'.
+Information: Checking 'pll_configuration'.
+Removing design 'async_fifo'...
+Information: current_design won't return any data before link (DES-071)
+Loading verilog file '/home/rfic/Desktop/adapted/async_fifo/syn/mapped_scan/async_fifo.v'
+Linking design async_fifo...
+Information: Removing 25 unneeded designs..... (LNK-034)
+Information: 482 (89.76%) library cells are unused in library cb13fs120_tsmc_max..... (LNK-045)
+Information: total 482 library cells are unused (LNK-046)
+Design 'async_fifo' was successfully linked.
+Information: There are 982 leaf cells, ports, hiers and 1324 nets in the design (LNK-047)
+
+Reading SDC version 2.1...
+1
+Iteration 1 update_timing...
+Iteration 1 found 0 Paths...
+Iteration 1 Exiting because timing is clean!
+Information: SDC supports a subset of the constraints supported by PrimeTime. Some constraints cannot be preserved by the write_sdc command. (WSCR-002)
+Information: Checking 'no_input_delay'.
+Information: Checking 'no_driving_cell'.
+Information: Checking 'unconstrained_endpoints'.
+Warning: There are 38 endpoints which are not constrained for maximum delay.
+
+Information: Checking 'unexpandable_clocks'.
+Information: Checking 'latch_fanout'.
+Information: Checking 'no_clock'.
+Warning: There are 4 register clock pins with no clock.
+
+Information: Checking 'partial_input_delay'.
+Information: Checking 'generic'.
+Information: Checking 'loops'.
+Information: Checking 'generated_clocks'.
+Information: Checking 'pulse_clock_non_pulse_clock_merge'.
+Information: Checking 'pll_configuration'.
+Warning: report_timing has satisfied the max_paths criteria. There are 99 further endpoints which have paths of interest with slack less than 1000000.00 that were not considered when generating this report. (UITE-502)
+Information: Checking 'no_input_delay'.
+Information: Checking 'no_driving_cell'.
+Information: Checking 'unconstrained_endpoints'.
+Warning: There are 38 endpoints which are not constrained for maximum delay.
+
+Information: Checking 'unexpandable_clocks'.
+Information: Checking 'latch_fanout'.
+Information: Checking 'no_clock'.
+Warning: There are 4 register clock pins with no clock.
+
+Information: Checking 'partial_input_delay'.
+Information: Checking 'generic'.
+Information: Checking 'loops'.
+Information: Checking 'generated_clocks'.
+Information: Checking 'pulse_clock_non_pulse_clock_merge'.
+Information: Checking 'pll_configuration'.
+#---------------------------------------------------------------------
+# 08 _ Generate SDF Bacl Annotated Delay include both the user and vioaltion exceptions
+#---------------------------------------------------------------------
+if {! [file exist ./pt/sdf]} { exec mkdir -p ./pt/sdf }
+write_sdf ./pt/sdf/${top_design}.sdf
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rptr_reg_2_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187684 to -0.175668.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rptr_reg_2_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195814 to -0.182667.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rptr_reg_2_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_under_flow_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187683 to -0.175667.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_under_flow_reg' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195814 to -0.182667.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_under_flow_reg' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rbin_reg_0_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.184005 to -0.168616.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rbin_reg_0_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.191002 to -0.176599.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rbin_reg_0_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.240003 to -0.224623.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rptr_reg_3_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187684 to -0.175667.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rptr_reg_3_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195814 to -0.182667.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rptr_reg_3_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rbin_reg_1_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187684 to -0.175669.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rbin_reg_1_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195825 to -0.182679.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rbin_reg_1_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_rst_r/dff2_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187686 to -0.175671.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_rst_r/dff2_reg' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195813 to -0.182666.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_rst_r/dff2_reg' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_rst_r/dff1_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187660 to -0.175646.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_rst_r/dff1_reg' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195810 to -0.182663.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_rst_r/dff1_reg' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'LOCKUP' for the arc between pins 'E' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.078157 to -0.044218.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'LOCKUP' for the arc between pins 'E' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.128694 to -0.108174.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_3_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057812 to -0.049047.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/tercnt_n_reg_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.054777 to -0.049094.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_1_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057808 to -0.049043.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_0_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057808 to -0.049044.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/U_clk_control_i_0/pipeline_or_tree_l_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057815 to -0.049046.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/U_clk_control_i_0/load_n_meta_1_l_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057803 to -0.049039.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg_2_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057808 to -0.049044.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/U_clk_control_i_0/load_n_meta_0_l_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057819 to -0.049054.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/U_clk_control_i_0/fast_clk_enable_l_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057808 to -0.049043.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/fast_clk_clkgt/cg_latch_reg' for the arc between pins 'EN' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.166373 to -0.163931.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/fast_clk_clkgt/cg_latch_reg' for the arc between pins 'EN' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.073636 to -0.041656.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/sync_out_reg_4_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057810 to -0.049044.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_2_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187687 to -0.175673.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_2_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195822 to -0.182676.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_2_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/sync_out_reg_3_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057810 to -0.049044.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_1_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187687 to -0.175673.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_1_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195822 to -0.182676.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_1_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_0_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187687 to -0.175673.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_0_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195804 to -0.182659.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_0_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/sync_out_reg_2_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057810 to -0.049044.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/sync_out_reg_1_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057810 to -0.049044.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_4_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187700 to -0.175686.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_4_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195804 to -0.182659.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_4_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/sync_out_reg_0_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057810 to -0.049044.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_3_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187706 to -0.175692.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_3_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195822 to -0.182676.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'sync_w2r/temp_reg_3_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rbin_reg_2_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.184003 to -0.168618.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rbin_reg_2_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.191037 to -0.176635.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rbin_reg_2_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.240003 to -0.224623.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_7_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.202744 to -0.193659.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_7_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.210022 to -0.201870.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'occ_rclk/U_clk_control_i_0/load_n_meta_2_l_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.057803 to -0.049039.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_6_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201684 to -0.195072.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_6_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.241146 to -0.238976.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_2_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201683 to -0.193659.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_2_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.209019 to -0.200870.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_5_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201683 to -0.193659.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_5_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.209019 to -0.200870.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_1_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201683 to -0.193659.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_1_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.209019 to -0.200870.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_4_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201683 to -0.193659.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_4_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.209019 to -0.200870.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_0_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201684 to -0.195072.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_0_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.241146 to -0.238976.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_3_q_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.148549 to -0.144134.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_3_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201683 to -0.174002.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_3_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.209019 to -0.165241.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_7_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201684 to -0.176157.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_7_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.241146 to -0.202011.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_2_q_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.148549 to -0.144134.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_2_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201683 to -0.174002.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_2_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.209019 to -0.165241.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_6_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201684 to -0.176157.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_6_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.241146 to -0.202011.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_5_q_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.148550 to -0.144135.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_5_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201683 to -0.174002.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_5_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.209019 to -0.165241.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_1_q_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.148549 to -0.144134.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_1_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201683 to -0.174002.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_1_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.209019 to -0.165241.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_4_q_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.148549 to -0.144134.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_4_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201683 to -0.174002.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_4_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.209019 to -0.165241.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_0_q_reg' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.148553 to -0.144134.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_0_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.202744 to -0.174002.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_1/U_shftreg_0_ff_0_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.210022 to -0.166236.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rptr_reg_0_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187684 to -0.175668.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rptr_reg_0_' for the arc between pins 'CP' and 'SD' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.195831 to -0.182684.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rptr_reg_0_' for the arc between pins 'CP' and 'SC' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.244980 to -0.231785.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_3_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.201683 to -0.193659.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'snps_clk_chain_0/U_shftreg_0_ff_3_q_reg' for the arc between pins 'CP' and 'ENN' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.209019 to -0.200870.  (SDF-036)
+Warning: The sum of the setup and hold values in the cell 'rptr_empty_rbin_reg_3_' for the arc between pins 'CP' and 'D' is negative, which is not allowed. To make it positive, the minimum hold value has been adjusted from -0.187684 to -0.175669.  (SDF-036)
+Note - message 'SDF-036' default limit (100) exceeded.  Remainder will be suppressed.
+1
+exit
+Information: Defining new variable 'test_modes'. (CMD-041)
+Information: Defining new variable 'a'. (CMD-041)
+Information: Defining new variable 'b'. (CMD-041)
+Information: Defining new variable 'top_design'. (CMD-041)
+Information: Defining new variable 'mode'. (CMD-041)
+Information: Defining new variable 'TARGET_LIBRARY_FILES'. (CMD-041)
+Information: Defining new variable 'occ_mode'. (CMD-041)
+Suppressed Messages Summary:
+Id          Severity      Occurrences   Suppressed
+-------------------------------------------------------------------------------
+SDF-036     Warning               111           11
+Total 1 type of message is suppressed
+
+Timing updates: 20 (4 implicit, 16 explicit) (16 incremental, 4 full, 0 logical)
+Noise updates: 0 (0 implicit, 0 explicit) (0 incremental, 0 full)
+Maximum memory usage for this session: 894.21 MB
+CPU usage for this session: 6 seconds 
+Elapsed time for this session: 4 seconds
+Diagnostics summary: 108 warnings, 45 informationals
+
+Thank you for using pt_shell!

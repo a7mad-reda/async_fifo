@@ -53,12 +53,6 @@ read_sdc ./pt/constraints/${occ_mode}/${mode}/${top_design}_speed_capture.sdc
 add_pi_constraints 1 {wrst_n rrst_n}
 add_pi_constraints 0 test_se
 
-add_pi_constraints 1 ren
-add_pi_constraints 1 wen
-
-add_pi_constraints 0 rptr_clr
-add_pi_constraints 0 wptr_clr
-
 # don't vary inputs and mask outputs during capture
 set_delay -nopi_change
 add_po_mask -all
@@ -85,7 +79,8 @@ if { $mode != "TM4" } {
 }
 
 add_faults -all
-run_atpg -auto
+set_atpg -full_seq_abort_limit 100
+run_atpg -auto full_sequential_only
 
 # write currents fault for later direct credit 
 if {! [file exist ./faults/${occ_mode}/${mode}] } \
@@ -96,6 +91,12 @@ write_faults ./faults/${occ_mode}/${mode}/${fault}.flt -all -replace
 # 04 _ Generate needed files " reports, images, patterns,testbenches "
 #------------------------------------------------------------------------
 source -e ./scripts/0F_capture_results.tcl
+
+#------------------------------------------------------------------------
+# 05 _ Report "Not Detected" Faults
+#------------------------------------------------------------------------
+report_faults -class {nd}  \
+	>  ./reports/${occ_mode}/${fault}/${mode}/02_nd_au_faults.rpt
 
 
 

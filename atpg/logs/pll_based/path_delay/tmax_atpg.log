@@ -1,0 +1,997 @@
+ Begin reading netlist ( ../libs/mw_lib/tmax/libs.v.gz )...
+ End parsing Verilog file ../libs/mw_lib/tmax/libs.v.gz with 0 errors.
+ End reading netlist: #modules=1005, top=pv0a, #lines=10922, CPU_time=0.03 sec, Memory=2MB
+ Begin reading netlist ( ../syn/mapped_scan/async_fifo.v )...
+ End parsing Verilog file ../syn/mapped_scan/async_fifo.v with 0 errors.
+ End reading netlist: #modules=26, top=async_fifo, #lines=1600, CPU_time=0.01 sec, Memory=1MB
+#------------------------------------------------------------------------
+# 02 _ Build ATPG Design Model
+#------------------------------------------------------------------------
+run_build_model  $top_design
+ ------------------------------------------------------------------------------
+ Begin build model for topcut = async_fifo ...
+ ------------------------------------------------------------------------------
+ There were 2966 primitives and 2 faultable pins removed during model optimizations
+ Warning: Rule B7 (undriven module output pin) was violated 16 times.
+ Warning: Rule B8 (unconnected module input pin) was violated 10 times.
+ Warning: Rule B9 (undriven module internal net) was violated 12 times.
+ Warning: Rule B10 (unconnected module internal net) was violated 34 times.
+ End build model: #primitives=1607, CPU_time=0.03 sec, Memory=1MB
+ ------------------------------------------------------------------------------
+ Begin learning analyses...
+ End learning analyses, total learning CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+report_modules -summary >  ./reports/${occ_mode}/${fault}/02_build.rpt
+report_modules -errors  >> ./reports/${occ_mode}/${fault}/02_build.rpt
+
+Reading SDC version 2.1...
+
+
+Summary of unsupported constraints:
+ Information: Ignored 1 unsupported 'set_units' constraint. (SDC-4)
+
+ Information: Ignored 4 unsupported 'set_clock_transition' constraints. (SDC-4)
+
+ Information: Ignored 1 unsupported 'set_operating_conditions' constraint. (SDC-4)
+
+ Information: Ignored 1 unsupported 'get_libs' constraint. (SDC-4)
+
+ End read_sdc: #false_paths:4 #multicycle paths:0 #disable_timing:0 #clk_groups:1
+               #clks:2 #generated clks:0 #Case Stmt:9
+ ------------------------------------------------------------------------------
+ Begin scan design rules checking...
+ ------------------------------------------------------------------------------
+ Begin reading test protocol file ./dftc_protocols/async_fifo_TM1.spf...
+ End parsing STIL file ./dftc_protocols/async_fifo_TM1.spf with 0 errors.
+ Test protocol file reading completed, CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ Warning: Unconstrained reference clock wclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock rclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock ate_wclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock ate_rclk is now constrained to its off state. (M559)
+ Begin simulating test protocol procedures...
+ Nonscan cell constant value results: #constant0 = 2, #constant1 = 0
+ Nonscan cell load value results    : #load0 = 24, #load1 = 2
+ Test protocol simulation completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin scan chain operation checking...
+ Chain 1 successfully traced with 8 scan_cells.
+ Chain 2 successfully traced with 8 scan_cells.
+ Chain 3 successfully traced with 153 scan_cells.
+ Chain 4 successfully traced with 24 scan_cells.
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Scan chain operation checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin clock rules checking...
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ Warning: Rule C16 (nonscan cell port unable to capture) was violated 22 times.
+ Clock rules checking completed, CPU time=0.00 sec.
+ Clock grouping results: #pairs=0, #groups=0, #serial_pairs=0, #disturbed_pairs=1, CPU time=0.00 sec.
+ Begin PLL clock rules checking...
+ PLL clock rules checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin nonscan rules checking...
+ Nonscan cell summary: #DFF=22  #DLAT=6  #RAM_outs=0  tla_usage_type=hot_clock_tla
+ Nonscan behavior:  #C0=2  #TLA=3  #L0=20  #L1=2  #LS=1
+ Nonscan rules checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin DRC dependent learning...
+ Fast-sequential depth results: control=1(1368), observe=0(0), detect=0(0), CPU time=0.00 sec
+ DRC dependent learning completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ DRC Summary Report
+ ------------------------------------------------------------------------------
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ Warning: Rule C16 (nonscan cell port unable to capture) was violated 22 times.
+ There were 46 violations that occurred during DRC process.
+ Design rules checking was successful, total CPU time=0.03 sec.
+ ------------------------------------------------------------------------------
+ Warning: Path delay defaults have changed as of 2014.09-SP1. By default, fast-sequential ATPG is enabled and full-sequential ATPG is disabled.
+ Warning: Rule P8 (capture later than path cycle time) was violated 60 times.
+ Warning: Rule P14 (ambiguous path segment) was violated 1 times.
+ Warning: Rule P15 (ambiguous launch clock) was violated 60 times.
+ Warning: Rule P16 (ambiguous capture clock) was violated 60 times.
+ Warning: Rule P22 (off-path node values not satisfiable) was violated 3 times.
+ Delay path file results: #paths=60, #invalid=0, #untestable=0, CPU time=0.00 sec.
+ Warning: Rule P8 (capture later than path cycle time) was violated 29 times.
+ Warning: Rule P14 (ambiguous path segment) was violated 3 times.
+ Warning: Rule P15 (ambiguous launch clock) was violated 29 times.
+ Warning: Rule P16 (ambiguous capture clock) was violated 29 times.
+ Warning: Rule P22 (off-path node values not satisfiable) was violated 3 times.
+ Delay path file results: #paths=29, #invalid=0, #untestable=0, CPU time=0.00 sec.
+ 354 faults were added to nofault list in module async_fifo_SCCOMP_DECOMPRESSOR.
+ 100 faults were added to nofault list in module async_fifo_SCCOMP_COMPRESSOR.
+ 89 faults were added to fault list.
+ 
+ ATPG performed for path_delay fault model using internal pattern source.
+ 1 out of 6 timing exceptions are optimized.
+ 
+ ------------------------------------------------------------
+ Begin Full-Sequential ATPG for 77 uncollapsed faults ...
+  --- abort limit : 10 seconds, NO BACKTRACK LIMIT
+ ------------------------------------------------------------
+ #patterns  #faults        #ATPG faults  test       process  
+ stored     detect/active  red/au/abort  coverage   CPU time 
+ ---------  -------------  ------------  --------  ----------
+ 1                 8     69         0/0/0      8.99%         0.03
+ 2                 9     59         0/1/0     19.10%         0.08
+ 3                 7     51         0/2/0     26.97%         0.12
+ 4                 1     50         0/2/0     28.09%         0.14
+ 5                 7     42         0/3/0     35.96%         0.17
+ 6                 2     37         0/6/0     38.20%         0.21
+ 7                 7     28         0/8/0     46.07%         0.25
+ 8                 2     23        0/11/0     48.31%         0.30
+ 9                 1     18        0/15/0     49.44%         0.34
+ 10                1     16        0/16/0     50.56%         0.36
+ 11                1      2        0/29/0     51.69%         0.44
+ 12                1      1        0/29/0     52.81%         0.45
+ 13                1      0        0/29/0     53.93%         0.47
+ 
+   Uncollapsed Path_delay Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT         48
+ Possibly detected                PT          0
+ Undetectable                     UD          0
+ ATPG untestable                  AU         41
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                                89
+ test coverage                            53.93%
+ ATPG effectiveness                      100.00%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          13
+     #full_sequential patterns               13
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.49
+ -----------------------------------------------
+ Write faults completed: 89 faults were written into file "./faults/pll_based/TM1/path_delay.flt".
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) generate required reports				#
+#		2) write test patterns					#
+#		3) write testbenches for pattern validation		#
+#		4) write images for post testing diagnosis		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 01 _ Generate ATPG Summaries and Reports
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}/${mode}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault}/${mode} }
+# reports setting
+set_faults -pt_credit 0 -au_credit 0
+set_faults -summary verbose -fault_coverage -report collapsed
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+set_patterns -histogram_summary
+set_faults -fault_coverage
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+# report coverage
+report_summaries >  ./reports/${occ_mode}/${fault}/${mode}/01_coverage.rpt
+# report drc violations
+report_violations -all >  ./reports/${occ_mode}/${fault}/${mode}/02_drc_violations.rpt
+# report not detected faults
+report_faults -class nd >  ./reports/${occ_mode}/${fault}/${mode}/03_nd_faults.rpt
+# report_clocks
+report_clocks -intclocks  >  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -pllclocks >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -matrix    >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+#------------------------------------------------------------------------
+# 02 _ Write Image File for Later Post_Testing Diagnosis
+#------------------------------------------------------------------------
+if { ! [file exist ./imgs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./imgs/${occ_mode}/${fault} }
+write_image ./imgs/${occ_mode}/${fault}/${top_design}_${mode}.img.gz 	-compress gzip -replace -violations 
+ End write image: #bytes=146350, CPU time=0.05 sec.
+#------------------------------------------------------------------------
+# 03 _ Write ATPG Patterns
+#------------------------------------------------------------------------
+if { ! [file exist ./patterns/${occ_mode}/${fault}/gzip] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/gzip }
+if { ! [file exist ./patterns/${occ_mode}/${fault}/stil] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/stil }
+write_patterns ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil  	-format stil -unified_stil_flow -replace
+ Patterns written reference 134 V statements, generating 2262 test cycles
+ End writing file 'async_fifo_TM1.stil' with 13 patterns, File_size = 46221, CPU_time = 0.0 sec.
+write_patterns ./patterns/${occ_mode}/${fault}/gzip/${top_design}_${mode}_pats.gz 	-format binary -compress gzip -replace
+ End writing file 'async_fifo_TM1_pats.gz' with 13 patterns, File_size = 983, CPU_time = 0.0 sec.
+#------------------------------------------------------------------------
+# 04 _ Save simulation testbench
+#------------------------------------------------------------------------
+if {! [file exist ./max_sim/logs]} {exec mkdir -p ./max_sim/logs }
+if {! [file exist ./max_sim/parallel/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/parallel/${occ_mode}/${fault}/${mode} }
+if {! [file exist ./max_sim/serial/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/serial/${occ_mode}/${fault}/${mode} }
+# parallel simulation testbench 
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/parallel/${occ_mode}/${fault}/${mode}/pat_parallel_tb 	-parameter {-parallel -replace -log ./max_sim/logs/pat_parallel_tb.log} 
+ Executing 'stil2verilog'...
+# parallel simulation testbench with back annotated delay
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/serial/${occ_mode}/${fault}/${mode}/pat_serial_tb 	-parameter {-serial -replace 	-log ./max_sim/logs/pat_serial_tb.log -sdf_file ../pt/sdf/async_fifo.sdf} 
+ Executing 'stil2verilog'...
+ Warning: Internal pattern set is now deleted. (M133)
+ Warning: All delay paths are now deleted. (M299)
+ Warning: Current simulation model is now deleted. (M39)
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) read design and simualtion library			#
+#		2) build test model 					#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 00 _ Save TetraMax Transcript to Log File
+#------------------------------------------------------------------------
+if { $mode == {TM1} } { 
+
+if { ! [file exist ./logs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./logs/${occ_mode}/${fault} }
+
+set_messages -log ./logs/${occ_mode}/${fault}/tmax_atpg.log -replace  
+
+#------------------------------------------------------------------------
+# 01 _ Read Libraries and Design
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault} }
+
+read_netlist ../libs/mw_lib/tmax/libs.v.gz
+read_netlist ../syn/mapped_scan/${top_design}.v
+
+report_modules -undefined > ./reports/${occ_mode}/${fault}/01_read.rpt
+
+}
+#------------------------------------------------------------------------
+# 02 _ Build ATPG Design Model
+#------------------------------------------------------------------------
+run_build_model  $top_design
+ ------------------------------------------------------------------------------
+ Begin build model for topcut = async_fifo ...
+ ------------------------------------------------------------------------------
+ There were 2966 primitives and 2 faultable pins removed during model optimizations
+ Warning: Rule B7 (undriven module output pin) was violated 16 times.
+ Warning: Rule B8 (unconnected module input pin) was violated 10 times.
+ Warning: Rule B9 (undriven module internal net) was violated 12 times.
+ Warning: Rule B10 (unconnected module internal net) was violated 34 times.
+ End build model: #primitives=1607, CPU_time=0.03 sec, Memory=1MB
+ ------------------------------------------------------------------------------
+ Begin learning analyses...
+ End learning analyses, total learning CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+report_modules -summary >  ./reports/${occ_mode}/${fault}/02_build.rpt
+report_modules -errors  >> ./reports/${occ_mode}/${fault}/02_build.rpt
+
+Reading SDC version 2.1...
+
+
+Summary of unsupported constraints:
+ Information: Ignored 1 unsupported 'set_units' constraint. (SDC-4)
+
+ Information: Ignored 4 unsupported 'set_clock_transition' constraints. (SDC-4)
+
+ Information: Ignored 1 unsupported 'set_operating_conditions' constraint. (SDC-4)
+
+ Information: Ignored 1 unsupported 'get_libs' constraint. (SDC-4)
+
+ End read_sdc: #false_paths:4 #multicycle paths:0 #disable_timing:0 #clk_groups:1
+               #clks:2 #generated clks:0 #Case Stmt:9
+ ------------------------------------------------------------------------------
+ Begin scan design rules checking...
+ ------------------------------------------------------------------------------
+ Begin reading test protocol file ./dftc_protocols/async_fifo_TM2.spf...
+ End parsing STIL file ./dftc_protocols/async_fifo_TM2.spf with 0 errors.
+ Test protocol file reading completed, CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ Warning: Unconstrained reference clock wclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock rclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock ate_wclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock ate_rclk is now constrained to its off state. (M559)
+ Begin simulating test protocol procedures...
+ Nonscan cell constant value results: #constant0 = 2, #constant1 = 0
+ Nonscan cell load value results    : #load0 = 24, #load1 = 2
+ Test protocol simulation completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin scan chain operation checking...
+ Chain 1 successfully traced with 8 scan_cells.
+ Chain 2 successfully traced with 8 scan_cells.
+ Chain 3 successfully traced with 153 scan_cells.
+ Chain 4 successfully traced with 24 scan_cells.
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Scan chain operation checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin clock rules checking...
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ Warning: Rule C16 (nonscan cell port unable to capture) was violated 22 times.
+ Clock rules checking completed, CPU time=0.00 sec.
+ Clock grouping results: #pairs=0, #groups=0, #serial_pairs=0, #disturbed_pairs=1, CPU time=0.00 sec.
+ Begin PLL clock rules checking...
+ PLL clock rules checking completed, CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ Begin nonscan rules checking...
+ Nonscan cell summary: #DFF=22  #DLAT=6  #RAM_outs=0  tla_usage_type=hot_clock_tla
+ Nonscan behavior:  #C0=2  #TLA=3  #L0=20  #L1=2  #LS=1
+ Nonscan rules checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin DRC dependent learning...
+ Fast-sequential depth results: control=1(1368), observe=0(0), detect=0(0), CPU time=0.00 sec
+ DRC dependent learning completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ DRC Summary Report
+ ------------------------------------------------------------------------------
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ Warning: Rule C16 (nonscan cell port unable to capture) was violated 22 times.
+ There were 46 violations that occurred during DRC process.
+ Design rules checking was successful, total CPU time=0.02 sec.
+ ------------------------------------------------------------------------------
+ Warning: Rule P8 (capture later than path cycle time) was violated 60 times.
+ Warning: Rule P14 (ambiguous path segment) was violated 1 times.
+ Warning: Rule P15 (ambiguous launch clock) was violated 60 times.
+ Warning: Rule P16 (ambiguous capture clock) was violated 60 times.
+ Warning: Rule P22 (off-path node values not satisfiable) was violated 3 times.
+ Delay path file results: #paths=60, #invalid=0, #untestable=0, CPU time=0.01 sec.
+ Warning: Rule P8 (capture later than path cycle time) was violated 29 times.
+ Warning: Rule P14 (ambiguous path segment) was violated 3 times.
+ Warning: Rule P15 (ambiguous launch clock) was violated 29 times.
+ Warning: Rule P16 (ambiguous capture clock) was violated 29 times.
+ Warning: Rule P22 (off-path node values not satisfiable) was violated 3 times.
+ Delay path file results: #paths=29, #invalid=0, #untestable=0, CPU time=0.01 sec.
+ 354 faults were added to nofault list in module async_fifo_SCCOMP_DECOMPRESSOR.
+ 100 faults were added to nofault list in module async_fifo_SCCOMP_COMPRESSOR.
+ 89 faults were added to fault list.
+ 
+ ATPG performed for path_delay fault model using internal pattern source.
+ 1 out of 6 timing exceptions are optimized.
+ 
+ ------------------------------------------------------------
+ Begin Full-Sequential ATPG for 77 collapsed faults ...
+  --- abort limit : 10 seconds, NO BACKTRACK LIMIT
+ ------------------------------------------------------------
+ #patterns  #faults        #ATPG faults  test       process  
+ stored     detect/active  red/au/abort  coverage   CPU time 
+ ---------  -------------  ------------  --------  ----------
+ 1                 8     69         0/0/0      8.99%         0.03
+ 2                 9     59         0/1/0     19.10%         0.08
+ 3                 7     51         0/2/0     26.97%         0.11
+ 4                 1     50         0/2/0     28.09%         0.14
+ 5                 7     42         0/3/0     35.96%         0.18
+ 6                 2     37         0/6/0     38.20%         0.21
+ 7                 7     28         0/8/0     46.07%         0.25
+ 8                 2     23        0/11/0     48.31%         0.29
+ 9                 1     18        0/15/0     49.44%         0.33
+ 10                1     16        0/16/0     50.56%         0.35
+ 11                1      2        0/29/0     51.69%         0.43
+ 12                1      1        0/29/0     52.81%         0.44
+ 13                1      0        0/29/0     53.93%         0.46
+ 
+    Collapsed Path_delay Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT         48
+   detected_by_simulation         DS         (8)
+   detected_robustly              DR        (40)
+ Possibly detected                PT          0
+ Undetectable                     UD          0
+ ATPG untestable                  AU         41
+   atpg_untestable-not_detected   AN        (41)
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                                89
+ test coverage                            53.93%
+ fault coverage                           53.93%
+ ATPG effectiveness                      100.00%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          13
+     #full_sequential patterns               13
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.48
+ -----------------------------------------------
+ Write faults completed: 89 faults were written into file "./faults/pll_based/TM2/path_delay.flt".
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) generate required reports				#
+#		2) write test patterns					#
+#		3) write testbenches for pattern validation		#
+#		4) write images for post testing diagnosis		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 01 _ Generate ATPG Summaries and Reports
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}/${mode}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault}/${mode} }
+# reports setting
+set_faults -pt_credit 0 -au_credit 0
+set_faults -summary verbose -fault_coverage -report collapsed
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+set_patterns -histogram_summary
+set_faults -fault_coverage
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+# report coverage
+report_summaries >  ./reports/${occ_mode}/${fault}/${mode}/01_coverage.rpt
+# report drc violations
+report_violations -all >  ./reports/${occ_mode}/${fault}/${mode}/02_drc_violations.rpt
+# report not detected faults
+report_faults -class nd >  ./reports/${occ_mode}/${fault}/${mode}/03_nd_faults.rpt
+# report_clocks
+report_clocks -intclocks  >  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -pllclocks >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -matrix    >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+#------------------------------------------------------------------------
+# 02 _ Write Image File for Later Post_Testing Diagnosis
+#------------------------------------------------------------------------
+if { ! [file exist ./imgs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./imgs/${occ_mode}/${fault} }
+write_image ./imgs/${occ_mode}/${fault}/${top_design}_${mode}.img.gz 	-compress gzip -replace -violations 
+ End write image: #bytes=146348, CPU time=0.04 sec.
+#------------------------------------------------------------------------
+# 03 _ Write ATPG Patterns
+#------------------------------------------------------------------------
+if { ! [file exist ./patterns/${occ_mode}/${fault}/gzip] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/gzip }
+if { ! [file exist ./patterns/${occ_mode}/${fault}/stil] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/stil }
+write_patterns ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil  	-format stil -unified_stil_flow -replace
+ Patterns written reference 134 V statements, generating 2262 test cycles
+ End writing file 'async_fifo_TM2.stil' with 13 patterns, File_size = 46221, CPU_time = 0.0 sec.
+write_patterns ./patterns/${occ_mode}/${fault}/gzip/${top_design}_${mode}_pats.gz 	-format binary -compress gzip -replace
+ End writing file 'async_fifo_TM2_pats.gz' with 13 patterns, File_size = 984, CPU_time = 0.0 sec.
+#------------------------------------------------------------------------
+# 04 _ Save simulation testbench
+#------------------------------------------------------------------------
+if {! [file exist ./max_sim/logs]} {exec mkdir -p ./max_sim/logs }
+if {! [file exist ./max_sim/parallel/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/parallel/${occ_mode}/${fault}/${mode} }
+if {! [file exist ./max_sim/serial/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/serial/${occ_mode}/${fault}/${mode} }
+# parallel simulation testbench 
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/parallel/${occ_mode}/${fault}/${mode}/pat_parallel_tb 	-parameter {-parallel -replace -log ./max_sim/logs/pat_parallel_tb.log} 
+ Executing 'stil2verilog'...
+# parallel simulation testbench with back annotated delay
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/serial/${occ_mode}/${fault}/${mode}/pat_serial_tb 	-parameter {-serial -replace 	-log ./max_sim/logs/pat_serial_tb.log -sdf_file ../pt/sdf/async_fifo.sdf} 
+ Executing 'stil2verilog'...
+ Warning: Internal pattern set is now deleted. (M133)
+ Warning: All delay paths are now deleted. (M299)
+ Warning: Current simulation model is now deleted. (M39)
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) read design and simualtion library			#
+#		2) build test model 					#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 00 _ Save TetraMax Transcript to Log File
+#------------------------------------------------------------------------
+if { $mode == {TM1} } { 
+
+if { ! [file exist ./logs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./logs/${occ_mode}/${fault} }
+
+set_messages -log ./logs/${occ_mode}/${fault}/tmax_atpg.log -replace  
+
+#------------------------------------------------------------------------
+# 01 _ Read Libraries and Design
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault} }
+
+read_netlist ../libs/mw_lib/tmax/libs.v.gz
+read_netlist ../syn/mapped_scan/${top_design}.v
+
+report_modules -undefined > ./reports/${occ_mode}/${fault}/01_read.rpt
+
+}
+#------------------------------------------------------------------------
+# 02 _ Build ATPG Design Model
+#------------------------------------------------------------------------
+run_build_model  $top_design
+ ------------------------------------------------------------------------------
+ Begin build model for topcut = async_fifo ...
+ ------------------------------------------------------------------------------
+ There were 2966 primitives and 2 faultable pins removed during model optimizations
+ Warning: Rule B7 (undriven module output pin) was violated 16 times.
+ Warning: Rule B8 (unconnected module input pin) was violated 10 times.
+ Warning: Rule B9 (undriven module internal net) was violated 12 times.
+ Warning: Rule B10 (unconnected module internal net) was violated 34 times.
+ End build model: #primitives=1607, CPU_time=0.03 sec, Memory=1MB
+ ------------------------------------------------------------------------------
+ Begin learning analyses...
+ End learning analyses, total learning CPU time=0.02 sec.
+ ------------------------------------------------------------------------------
+report_modules -summary >  ./reports/${occ_mode}/${fault}/02_build.rpt
+report_modules -errors  >> ./reports/${occ_mode}/${fault}/02_build.rpt
+
+Reading SDC version 2.1...
+
+
+Summary of unsupported constraints:
+ Information: Ignored 1 unsupported 'set_units' constraint. (SDC-4)
+
+ Information: Ignored 4 unsupported 'set_clock_transition' constraints. (SDC-4)
+
+ Information: Ignored 1 unsupported 'set_operating_conditions' constraint. (SDC-4)
+
+ Information: Ignored 1 unsupported 'get_libs' constraint. (SDC-4)
+
+ End read_sdc: #false_paths:4 #multicycle paths:0 #disable_timing:0 #clk_groups:1
+               #clks:2 #generated clks:0 #Case Stmt:9
+ ------------------------------------------------------------------------------
+ Begin scan design rules checking...
+ ------------------------------------------------------------------------------
+ Begin reading test protocol file ./dftc_protocols/async_fifo_TM3.spf...
+ End parsing STIL file ./dftc_protocols/async_fifo_TM3.spf with 0 errors.
+ Test protocol file reading completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Warning: Unconstrained reference clock wclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock rclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock ate_wclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock ate_rclk is now constrained to its off state. (M559)
+ Begin simulating test protocol procedures...
+ Nonscan cell constant value results: #constant0 = 2, #constant1 = 0
+ Nonscan cell load value results    : #load0 = 24, #load1 = 2
+ Test protocol simulation completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin scan chain operation checking...
+ Chain 1 successfully traced with 193 scan_cells.
+ Warning: Rule S19 (nonscan cell disturb) was violated 22 times.
+ Warning: Rule S22 (multiply clocked scan chain) was violated 1 times.
+ Warning: Rule S29 (invalid dependent slave operation) was violated 1 times.
+ Scan chain operation checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin clock rules checking...
+ Warning: Rule C16 (nonscan cell port unable to capture) was violated 22 times.
+ Clock rules checking completed, CPU time=0.00 sec.
+ Clock grouping results: #pairs=0, #groups=0, #serial_pairs=0, #disturbed_pairs=1, CPU time=0.00 sec.
+ Begin PLL clock rules checking...
+ PLL clock rules checking completed, CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ Begin nonscan rules checking...
+ Nonscan cell summary: #DFF=22  #DLAT=4  #RAM_outs=0  tla_usage_type=no_clock_tla
+ Nonscan behavior:  #C0=2  #TLA=2  #L0=20  #L1=2
+ Nonscan rules checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin DRC dependent learning...
+ Fast-sequential depth results: control=0(0), observe=0(0), detect=0(0), CPU time=0.00 sec
+ DRC dependent learning completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ DRC Summary Report
+ ------------------------------------------------------------------------------
+ Warning: Rule S19 (nonscan cell disturb) was violated 22 times.
+ Warning: Rule S22 (multiply clocked scan chain) was violated 1 times.
+ Warning: Rule S29 (invalid dependent slave operation) was violated 1 times.
+ Warning: Rule C16 (nonscan cell port unable to capture) was violated 22 times.
+ There were 46 violations that occurred during DRC process.
+ Design rules checking was successful, total CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ Warning: Rule P8 (capture later than path cycle time) was violated 60 times.
+ Warning: Rule P14 (ambiguous path segment) was violated 1 times.
+ Warning: Rule P15 (ambiguous launch clock) was violated 60 times.
+ Warning: Rule P16 (ambiguous capture clock) was violated 60 times.
+ Warning: Rule P22 (off-path node values not satisfiable) was violated 3 times.
+ Delay path file results: #paths=60, #invalid=0, #untestable=0, CPU time=0.00 sec.
+ Warning: Rule P8 (capture later than path cycle time) was violated 29 times.
+ Warning: Rule P14 (ambiguous path segment) was violated 3 times.
+ Warning: Rule P15 (ambiguous launch clock) was violated 29 times.
+ Warning: Rule P16 (ambiguous capture clock) was violated 29 times.
+ Warning: Rule P22 (off-path node values not satisfiable) was violated 3 times.
+ Delay path file results: #paths=29, #invalid=0, #untestable=0, CPU time=0.01 sec.
+ 354 faults were added to nofault list in module async_fifo_SCCOMP_DECOMPRESSOR.
+ 100 faults were added to nofault list in module async_fifo_SCCOMP_COMPRESSOR.
+ 89 faults were added to fault list.
+ 
+ ATPG performed for path_delay fault model using internal pattern source.
+ 1 out of 6 timing exceptions are optimized.
+ 
+ ------------------------------------------------------------
+ Begin Full-Sequential ATPG for 77 collapsed faults ...
+  --- abort limit : 10 seconds, NO BACKTRACK LIMIT
+ ------------------------------------------------------------
+ #patterns  #faults        #ATPG faults  test       process  
+ stored     detect/active  red/au/abort  coverage   CPU time 
+ ---------  -------------  ------------  --------  ----------
+ 1                 8     69         0/0/0      8.99%         0.02
+ 2                 9     59         0/1/0     19.10%         0.07
+ 3                 7     51         0/2/0     26.97%         0.11
+ 4                 1     50         0/2/0     28.09%         0.13
+ 5                 7     42         0/3/0     35.96%         0.17
+ 6                 2     37         0/6/0     38.20%         0.21
+ 7                 7     28         0/8/0     46.07%         0.24
+ 8                 2     23        0/11/0     48.31%         0.28
+ 9                 1     18        0/15/0     49.44%         0.32
+ 10                1     16        0/16/0     50.56%         0.35
+ 11                1      2        0/29/0     51.69%         0.43
+ 12                1      1        0/29/0     52.81%         0.44
+ 13                1      0        0/29/0     53.93%         0.46
+ 
+    Collapsed Path_delay Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT         48
+   detected_by_simulation         DS         (8)
+   detected_robustly              DR        (40)
+ Possibly detected                PT          0
+ Undetectable                     UD          0
+ ATPG untestable                  AU         41
+   atpg_untestable-not_detected   AN        (41)
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                                89
+ test coverage                            53.93%
+ fault coverage                           53.93%
+ ATPG effectiveness                      100.00%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          13
+     #full_sequential patterns               13
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.48
+ -----------------------------------------------
+ Write faults completed: 89 faults were written into file "./faults/pll_based/TM3/path_delay.flt".
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) generate required reports				#
+#		2) write test patterns					#
+#		3) write testbenches for pattern validation		#
+#		4) write images for post testing diagnosis		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 01 _ Generate ATPG Summaries and Reports
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}/${mode}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault}/${mode} }
+# reports setting
+set_faults -pt_credit 0 -au_credit 0
+set_faults -summary verbose -fault_coverage -report collapsed
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+set_patterns -histogram_summary
+set_faults -fault_coverage
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+# report coverage
+report_summaries >  ./reports/${occ_mode}/${fault}/${mode}/01_coverage.rpt
+# report drc violations
+report_violations -all >  ./reports/${occ_mode}/${fault}/${mode}/02_drc_violations.rpt
+# report not detected faults
+report_faults -class nd >  ./reports/${occ_mode}/${fault}/${mode}/03_nd_faults.rpt
+# report_clocks
+report_clocks -intclocks  >  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -pllclocks >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -matrix    >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+#------------------------------------------------------------------------
+# 02 _ Write Image File for Later Post_Testing Diagnosis
+#------------------------------------------------------------------------
+if { ! [file exist ./imgs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./imgs/${occ_mode}/${fault} }
+write_image ./imgs/${occ_mode}/${fault}/${top_design}_${mode}.img.gz 	-compress gzip -replace -violations 
+ End write image: #bytes=146049, CPU time=0.04 sec.
+#------------------------------------------------------------------------
+# 03 _ Write ATPG Patterns
+#------------------------------------------------------------------------
+if { ! [file exist ./patterns/${occ_mode}/${fault}/gzip] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/gzip }
+if { ! [file exist ./patterns/${occ_mode}/${fault}/stil] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/stil }
+write_patterns ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil  	-format stil -unified_stil_flow -replace
+ Patterns written reference 134 V statements, generating 2822 test cycles
+ End writing file 'async_fifo_TM3.stil' with 13 patterns, File_size = 44328, CPU_time = 0.0 sec.
+write_patterns ./patterns/${occ_mode}/${fault}/gzip/${top_design}_${mode}_pats.gz 	-format binary -compress gzip -replace
+ End writing file 'async_fifo_TM3_pats.gz' with 13 patterns, File_size = 1000, CPU_time = 0.0 sec.
+#------------------------------------------------------------------------
+# 04 _ Save simulation testbench
+#------------------------------------------------------------------------
+if {! [file exist ./max_sim/logs]} {exec mkdir -p ./max_sim/logs }
+if {! [file exist ./max_sim/parallel/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/parallel/${occ_mode}/${fault}/${mode} }
+if {! [file exist ./max_sim/serial/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/serial/${occ_mode}/${fault}/${mode} }
+# parallel simulation testbench 
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/parallel/${occ_mode}/${fault}/${mode}/pat_parallel_tb 	-parameter {-parallel -replace -log ./max_sim/logs/pat_parallel_tb.log} 
+ Executing 'stil2verilog'...
+# parallel simulation testbench with back annotated delay
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/serial/${occ_mode}/${fault}/${mode}/pat_serial_tb 	-parameter {-serial -replace 	-log ./max_sim/logs/pat_serial_tb.log -sdf_file ../pt/sdf/async_fifo.sdf} 
+ Executing 'stil2verilog'...
+ Warning: Internal pattern set is now deleted. (M133)
+ Warning: All delay paths are now deleted. (M299)
+ Warning: Current simulation model is now deleted. (M39)
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) read design and simualtion library			#
+#		2) build test model 					#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 00 _ Save TetraMax Transcript to Log File
+#------------------------------------------------------------------------
+if { $mode == {TM1} } { 
+
+if { ! [file exist ./logs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./logs/${occ_mode}/${fault} }
+
+set_messages -log ./logs/${occ_mode}/${fault}/tmax_atpg.log -replace  
+
+#------------------------------------------------------------------------
+# 01 _ Read Libraries and Design
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault} }
+
+read_netlist ../libs/mw_lib/tmax/libs.v.gz
+read_netlist ../syn/mapped_scan/${top_design}.v
+
+report_modules -undefined > ./reports/${occ_mode}/${fault}/01_read.rpt
+
+}
+#------------------------------------------------------------------------
+# 02 _ Build ATPG Design Model
+#------------------------------------------------------------------------
+run_build_model  $top_design
+ ------------------------------------------------------------------------------
+ Begin build model for topcut = async_fifo ...
+ ------------------------------------------------------------------------------
+ There were 2966 primitives and 2 faultable pins removed during model optimizations
+ Warning: Rule B7 (undriven module output pin) was violated 16 times.
+ Warning: Rule B8 (unconnected module input pin) was violated 10 times.
+ Warning: Rule B9 (undriven module internal net) was violated 12 times.
+ Warning: Rule B10 (unconnected module internal net) was violated 34 times.
+ End build model: #primitives=1607, CPU_time=0.02 sec, Memory=1MB
+ ------------------------------------------------------------------------------
+ Begin learning analyses...
+ End learning analyses, total learning CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+report_modules -summary >  ./reports/${occ_mode}/${fault}/02_build.rpt
+report_modules -errors  >> ./reports/${occ_mode}/${fault}/02_build.rpt
+
+Reading SDC version 2.1...
+
+
+Summary of unsupported constraints:
+ Information: Ignored 1 unsupported 'set_units' constraint. (SDC-4)
+
+ Information: Ignored 4 unsupported 'set_clock_transition' constraints. (SDC-4)
+
+ Information: Ignored 1 unsupported 'set_operating_conditions' constraint. (SDC-4)
+
+ Information: Ignored 1 unsupported 'get_libs' constraint. (SDC-4)
+
+ End read_sdc: #false_paths:4 #multicycle paths:0 #disable_timing:0 #clk_groups:1
+               #clks:2 #generated clks:0 #Case Stmt:9
+ ------------------------------------------------------------------------------
+ Begin scan design rules checking...
+ ------------------------------------------------------------------------------
+ Begin reading test protocol file ./dftc_protocols/async_fifo_TM4.spf...
+ Warning: Rule V6 (unused item) was violated 1 times.
+ End parsing STIL file ./dftc_protocols/async_fifo_TM4.spf with 0 errors.
+ Test protocol file reading completed, CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ Warning: Unconstrained reference clock wclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock rclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock ate_wclk is now constrained to its off state. (M559)
+ Warning: Unconstrained reference clock ate_rclk is now constrained to its off state. (M559)
+ Begin simulating test protocol procedures...
+ Nonscan cell constant value results: #constant0 = 2, #constant1 = 0
+ Nonscan cell load value results    : #load0 = 24, #load1 = 2
+ Test protocol simulation completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin compressor chain I/O checking: #undefined_io=48 ...
+ End compressor chain output checking: #resolved=0, #ambiguous=24, #failed=0, #undefined_inputs=24
+ Begin scan chain operation checking...
+ Chain 1 successfully traced with 8 scan_cells.
+ Chain 2 successfully traced with 8 scan_cells.
+ Chain 3 successfully traced with 9 scan_cells.
+ Chain 4 successfully traced with 8 scan_cells.
+ Chain 5 successfully traced with 8 scan_cells.
+ Chain 6 successfully traced with 8 scan_cells.
+ Chain 7 successfully traced with 8 scan_cells.
+ Chain 8 successfully traced with 8 scan_cells.
+ Chain 9 successfully traced with 8 scan_cells.
+ Chain 10 successfully traced with 8 scan_cells.
+ Chain 11 successfully traced with 8 scan_cells.
+ Chain 12 successfully traced with 8 scan_cells.
+ Chain 13 successfully traced with 8 scan_cells.
+ Chain 14 successfully traced with 8 scan_cells.
+ Chain 15 successfully traced with 8 scan_cells.
+ Chain 16 successfully traced with 8 scan_cells.
+ Chain 17 successfully traced with 8 scan_cells.
+ Chain 18 successfully traced with 8 scan_cells.
+ Chain 19 successfully traced with 8 scan_cells.
+ Chain 20 successfully traced with 8 scan_cells.
+ Chain 21 successfully traced with 8 scan_cells.
+ Chain 22 successfully traced with 8 scan_cells.
+ Chain 23 successfully traced with 8 scan_cells.
+ Chain 24 successfully traced with 8 scan_cells.
+ End ambiguous chain resolution: #resolved=24, #ambiguous=0, #failed=0
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Scan chain operation checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin clock rules checking...
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ Warning: Rule C16 (nonscan cell port unable to capture) was violated 22 times.
+ Clock rules checking completed, CPU time=0.00 sec.
+ Clock grouping results: #pairs=0, #groups=0, #serial_pairs=0, #disturbed_pairs=1, CPU time=0.00 sec.
+ Begin PLL clock rules checking...
+ PLL clock rules checking completed, CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ Begin nonscan rules checking...
+ Nonscan cell summary: #DFF=22  #DLAT=6  #RAM_outs=0  tla_usage_type=hot_clock_tla
+ Nonscan behavior:  #C0=2  #TLA=3  #L0=20  #L1=2  #LS=1
+ Nonscan rules checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin compressor rules checking...
+ Warning: Rule R10 (two chains always have the same unload signature) was violated 36 times.
+ Warning: Rule R11 (X on chain affects observability of other chains) was violated 136 times.
+ Warning: Rule R30 (two nonclock chains not independent when clock chain inputs are ignored) was violated 231 times.
+ Compressor rules checking completed: #chains=24, #scanins=4, #scanouts=4, #shifts=10, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin DRC dependent learning...
+ Fast-sequential depth results: control=1(1368), observe=0(0), detect=0(0), CPU time=0.00 sec
+ DRC dependent learning completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ DRC Summary Report
+ ------------------------------------------------------------------------------
+ Warning: Rule V6 (unused item) was violated 1 times.
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ Warning: Rule C16 (nonscan cell port unable to capture) was violated 22 times.
+ Warning: Rule R10 (two chains always have the same unload signature) was violated 36 times.
+ Warning: Rule R11 (X on chain affects observability of other chains) was violated 136 times.
+ Warning: Rule R30 (two nonclock chains not independent when clock chain inputs are ignored) was violated 231 times.
+ There were 450 violations that occurred during DRC process.
+ Design rules checking was successful, total CPU time=0.02 sec.
+ ------------------------------------------------------------------------------
+ Warning: Rule P8 (capture later than path cycle time) was violated 60 times.
+ Warning: Rule P14 (ambiguous path segment) was violated 1 times.
+ Warning: Rule P15 (ambiguous launch clock) was violated 60 times.
+ Warning: Rule P16 (ambiguous capture clock) was violated 60 times.
+ Warning: Rule P22 (off-path node values not satisfiable) was violated 3 times.
+ Delay path file results: #paths=60, #invalid=0, #untestable=0, CPU time=0.00 sec.
+ Warning: Rule P8 (capture later than path cycle time) was violated 29 times.
+ Warning: Rule P14 (ambiguous path segment) was violated 3 times.
+ Warning: Rule P15 (ambiguous launch clock) was violated 29 times.
+ Warning: Rule P16 (ambiguous capture clock) was violated 29 times.
+ Warning: Rule P22 (off-path node values not satisfiable) was violated 3 times.
+ Delay path file results: #paths=29, #invalid=0, #untestable=0, CPU time=0.02 sec.
+ 89 faults were added to fault list.
+ 
+ ATPG performed for path_delay fault model using internal pattern source.
+ Compressor unload adjustment completed: #patterns_adjusted=0, #patterns_added=0, CPU time=0.00 sec.
+ 1 out of 6 timing exceptions are optimized.
+ 
+ ------------------------------------------------------------
+ Begin Full-Sequential ATPG for 77 collapsed faults ...
+  --- abort limit : 10 seconds, NO BACKTRACK LIMIT
+ ------------------------------------------------------------
+ #patterns  #faults        #ATPG faults  test       process  
+ stored     detect/active  red/au/abort  coverage   CPU time 
+ ---------  -------------  ------------  --------  ----------
+ 0                 0     77         0/0/0      0.00%         0.03
+ 0                 0     77         0/0/0      0.00%         0.08
+ 1                 4     73         0/0/0      4.49%         0.13
+ 1                 0     72         0/1/0      4.49%         0.17
+ 2                 4     68         0/1/0      8.99%         0.19
+ 2                 0     68         0/1/0      8.99%         0.22
+ 2                 0     68         0/1/0      8.99%         0.26
+ 2                 0     68         0/1/0      8.99%         0.29
+ 3                 1     67         0/1/0     10.11%         0.30
+ 3                 0     67         0/1/0     10.11%         0.33
+ 3                 0     66         0/2/0     10.11%         0.36
+ 3                 0     66         0/2/0     10.11%         0.38
+ 3                 0     64         0/4/0     10.11%         0.42
+ 3                 0     63         0/5/0     10.11%         0.46
+ 4                 1     62         0/5/0     11.24%         0.50
+ 5                 3     58         0/6/0     14.61%         0.51
+ 5                 0     56         0/8/0     14.61%         0.56
+ 5                 0     56         0/8/0     14.61%         0.59
+ 5                 0     53        0/11/0     14.61%         0.63
+ 5                 0     53        0/11/0     14.61%         0.66
+ 5                 0     53        0/11/0     14.61%         0.68
+ 5                 0     53        0/11/0     14.61%         0.70
+ 5                 0     51        0/13/0     14.61%         0.74
+ 5                 0     51        0/13/0     14.61%         0.76
+ 5                 0     49        0/15/0     14.61%         0.78
+ 6                 1     48        0/15/0     15.73%         0.80
+ 6                 0     47        0/16/0     15.73%         0.83
+ 6                 0     46        0/17/0     15.73%         0.85
+ 6                 0     46        0/17/0     15.73%         0.87
+ 6                 0     46        0/17/0     15.73%         0.89
+ 6                 0     46        0/17/0     15.73%         0.90
+ 6                 0     46        0/17/0     15.73%         0.91
+ ------------------------------------------------------------
+ #patterns  #faults        #ATPG faults  test       process  
+ stored     detect/active  red/au/abort  coverage   CPU time 
+ ---------  -------------  ------------  --------  ----------
+ 6                 0     46        0/17/0     15.73%         0.94
+ 6                 0     46        0/17/0     15.73%         0.96
+ 6                 0     46        0/17/0     15.73%         0.98
+ 6                 0     46        0/17/0     15.73%         0.98
+ 6                 0     46        0/17/0     15.73%         1.00
+ 6                 0     46        0/17/0     15.73%         1.01
+ 6                 0     46        0/17/0     15.73%         1.02
+ 7                 0     34        0/29/0     15.73%         1.10
+ 
+    Collapsed Path_delay Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT         14
+   detected_by_simulation         DS         (3)
+   detected_robustly              DR        (11)
+ Possibly detected                PT          0
+ Undetectable                     UD          0
+ ATPG untestable                  AU         41
+   atpg_untestable-not_detected   AN        (41)
+ Not detected                     ND         34
+   not-controlled                 NC        (34)
+ -----------------------------------------------
+ total faults                                89
+ test coverage                            15.73%
+ fault coverage                           15.73%
+ ATPG effectiveness                       61.80%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           7
+     #full_sequential patterns                7
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            1.11
+ -----------------------------------------------
+ Write faults completed: 89 faults were written into file "./faults/pll_based/TM4/path_delay.flt".
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) generate required reports				#
+#		2) write test patterns					#
+#		3) write testbenches for pattern validation		#
+#		4) write images for post testing diagnosis		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 01 _ Generate ATPG Summaries and Reports
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}/${mode}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault}/${mode} }
+# reports setting
+set_faults -pt_credit 0 -au_credit 0
+set_faults -summary verbose -fault_coverage -report collapsed
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+set_patterns -histogram_summary
+set_faults -fault_coverage
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+# report coverage
+report_summaries >  ./reports/${occ_mode}/${fault}/${mode}/01_coverage.rpt
+# report drc violations
+report_violations -all >  ./reports/${occ_mode}/${fault}/${mode}/02_drc_violations.rpt
+# report not detected faults
+report_faults -class nd >  ./reports/${occ_mode}/${fault}/${mode}/03_nd_faults.rpt
+# report_clocks
+report_clocks -intclocks  >  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -pllclocks >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -matrix    >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+#------------------------------------------------------------------------
+# 02 _ Write Image File for Later Post_Testing Diagnosis
+#------------------------------------------------------------------------
+if { ! [file exist ./imgs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./imgs/${occ_mode}/${fault} }
+write_image ./imgs/${occ_mode}/${fault}/${top_design}_${mode}.img.gz 	-compress gzip -replace -violations 
+ End write image: #bytes=148361, CPU time=0.05 sec.
+#------------------------------------------------------------------------
+# 03 _ Write ATPG Patterns
+#------------------------------------------------------------------------
+if { ! [file exist ./patterns/${occ_mode}/${fault}/gzip] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/gzip }
+if { ! [file exist ./patterns/${occ_mode}/${fault}/stil] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/stil }
+write_patterns ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil  	-format stil -unified_stil_flow -replace
+ Patterns written reference 74 V statements, generating 146 test cycles
+ End writing file 'async_fifo_TM4.stil' with 7 patterns, File_size = 45423, CPU_time = 0.0 sec.
+write_patterns ./patterns/${occ_mode}/${fault}/gzip/${top_design}_${mode}_pats.gz 	-format binary -compress gzip -replace
+ End writing file 'async_fifo_TM4_pats.gz' with 7 patterns, File_size = 426, CPU_time = 0.0 sec.
+#------------------------------------------------------------------------
+# 04 _ Save simulation testbench
+#------------------------------------------------------------------------
+if {! [file exist ./max_sim/logs]} {exec mkdir -p ./max_sim/logs }
+if {! [file exist ./max_sim/parallel/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/parallel/${occ_mode}/${fault}/${mode} }
+if {! [file exist ./max_sim/serial/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/serial/${occ_mode}/${fault}/${mode} }
+# parallel simulation testbench 
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/parallel/${occ_mode}/${fault}/${mode}/pat_parallel_tb 	-parameter {-parallel -replace -log ./max_sim/logs/pat_parallel_tb.log} 
+ Executing 'stil2verilog'...
+# parallel simulation testbench with back annotated delay
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/serial/${occ_mode}/${fault}/${mode}/pat_serial_tb 	-parameter {-serial -replace 	-log ./max_sim/logs/pat_serial_tb.log -sdf_file ../pt/sdf/async_fifo.sdf} 
+ Executing 'stil2verilog'...
+ Warning: Internal pattern set is now deleted. (M133)
+ Warning: All delay paths are now deleted. (M299)
+ Warning: Current simulation model is now deleted. (M39)
+exit

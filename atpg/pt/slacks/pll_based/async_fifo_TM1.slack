@@ -4,7 +4,7 @@ Information: It is recommended that the variable timing_save_pin_arrival_and_sla
 Report : report_global_slack
 Design : async_fifo
 Version: O-2018.06-SP1
-Date   : Thu Jan 27 08:08:42 2022
+Date   : Fri Jan 28 02:47:47 2022
 ****************************************
 
         Max_Rise        Max_Fall        Min_Rise        Min_Fall Point

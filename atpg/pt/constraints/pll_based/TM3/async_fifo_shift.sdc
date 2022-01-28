@@ -1,6 +1,6 @@
 
 # PrimeTime (R) Tcl script created by tmax2pt.tcl
-# Creation time: Thu Jan 27 08:09:12 2022
+# Creation time: Fri Jan 28 02:48:21 2022
 # tmax2pt.tcl version: N-2017.09: 2017/08/04 18:10:33 
 # arguments: ./pt/constraints/pll_based/TM3/async_fifo_shift.sdc -mode shift -replace -wft _default_WFT_
 
@@ -16,10 +16,10 @@ set timing_enable_preset_clear_arcs true
 
 # clocks
 suppress_message UITE-210
+create_clock -name wclk_wft1 -period 	    100 -waveform { 45 55 } [get_ports wclk]
+create_clock -name rclk_wft1 -period 	    100 -waveform { 45 55 } [get_ports rclk]
 # Clock wrst_n is constrained off, so no create_clock command is printed for it.
 # Clock rrst_n is constrained off, so no create_clock command is printed for it.
-create_clock -name wclk_wft1 -period 100 -waveform { 45 55 } [get_ports wclk]
-create_clock -name rclk_wft1 -period 100 -waveform { 45 55 } [get_ports rclk]
 create_clock -name ate_wclk_wft1 -period 100 -waveform { 45 55 } [get_ports ate_wclk]
 create_clock -name ate_rclk_wft1 -period 100 -waveform { 45 55 } [get_ports ate_rclk]
 unsuppress_message UITE-210

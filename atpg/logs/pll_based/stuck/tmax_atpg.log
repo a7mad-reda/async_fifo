@@ -1,0 +1,1165 @@
+ Begin reading netlist ( ../libs/mw_lib/tmax/libs.v.gz )...
+ End parsing Verilog file ../libs/mw_lib/tmax/libs.v.gz with 0 errors.
+ End reading netlist: #modules=1005, top=pv0a, #lines=10922, CPU_time=0.02 sec, Memory=2MB
+ Begin reading netlist ( ../syn/mapped_scan/async_fifo.v )...
+ End parsing Verilog file ../syn/mapped_scan/async_fifo.v with 0 errors.
+ End reading netlist: #modules=26, top=async_fifo, #lines=1600, CPU_time=0.01 sec, Memory=1MB
+#------------------------------------------------------------------------
+# 02 _ Build ATPG Design Model
+#------------------------------------------------------------------------
+run_build_model  $top_design
+ ------------------------------------------------------------------------------
+ Begin build model for topcut = async_fifo ...
+ ------------------------------------------------------------------------------
+ There were 2966 primitives and 2 faultable pins removed during model optimizations
+ Warning: Rule B7 (undriven module output pin) was violated 16 times.
+ Warning: Rule B8 (unconnected module input pin) was violated 10 times.
+ Warning: Rule B9 (undriven module internal net) was violated 12 times.
+ Warning: Rule B10 (unconnected module internal net) was violated 34 times.
+ End build model: #primitives=1607, CPU_time=0.03 sec, Memory=1MB
+ ------------------------------------------------------------------------------
+ Begin learning analyses...
+ End learning analyses, total learning CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+report_modules -summary >  ./reports/${occ_mode}/${fault}/02_build.rpt
+report_modules -errors  >> ./reports/${occ_mode}/${fault}/02_build.rpt
+ ------------------------------------------------------------------------------
+ Begin scan design rules checking...
+ ------------------------------------------------------------------------------
+ Begin reading test protocol file ./dftc_protocols/async_fifo_TM1.spf...
+ End parsing STIL file ./dftc_protocols/async_fifo_TM1.spf with 0 errors.
+ Test protocol file reading completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin simulating test protocol procedures...
+ Nonscan cell constant value results: #constant0 = 2, #constant1 = 2
+ Nonscan cell load value results    : #load0 = 4, #load1 = 2
+ Test protocol simulation completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin scan chain operation checking...
+ Chain 1 successfully traced with 8 scan_cells.
+ Chain 2 successfully traced with 8 scan_cells.
+ Chain 3 successfully traced with 153 scan_cells.
+ Chain 4 successfully traced with 24 scan_cells.
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Scan chain operation checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin clock rules checking...
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ Clock rules checking completed, CPU time=0.00 sec.
+ The following clocks were identified as groupable with clock wclk (0).
+    rclk (12)   ~wrst_n (1)   ~rrst_n (13)
+ Clock grouping results: #pairs=8, #groups=1, #serial_pairs=0, #disturbed_pairs=3, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin nonscan rules checking...
+ Nonscan cell summary: #DFF=22  #DLAT=6  #RAM_outs=0  tla_usage_type=hot_clock_tla
+ Nonscan behavior:  #C0=2  #C1=2  #TLA=1  #L0=2  #LE=20  #LS=1
+ Nonscan rules checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin DRC dependent learning...
+ Fast-sequential depth results: control=8(1568), observe=0(0), detect=0(0), CPU time=0.00 sec
+ DRC dependent learning completed, CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ DRC Summary Report
+ ------------------------------------------------------------------------------
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ There were 24 violations that occurred during DRC process.
+ 1 potential clock groups were identified.
+ Design rules checking was successful, total CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ 354 faults were added to nofault list in module async_fifo_SCCOMP_DECOMPRESSOR.
+ 100 faults were added to nofault list in module async_fifo_SCCOMP_COMPRESSOR.
+ 7156 faults were added to fault list.
+ Warning: 89 invalid fault sites were ignored (first occ. at line 1). (M107)
+ 0 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 1845 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 0 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ ----------------------------------------------------------
+ #patterns     #faults     #ATPG faults  test      process
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin deterministic ATPG: #uncollapsed_faults=2273, abort_limit=100...
+ 32           2067    206         0/0/0    80.88%      0.04
+ 47            116      0        1/69/0    82.51%      0.06
+ 
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       5890
+ Possibly detected                PT          3
+ Undetectable                     UD         16
+ ATPG untestable                  AU       1247
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              7156
+ test coverage                            82.51%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          47
+     #basic_scan patterns                    47
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.06
+ -----------------------------------------------
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ ----------------------------------------------------------
+ #patterns     #faults     #ATPG faults  test      process
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin fast-seq ATPG: #uncollapsed_faults=146, abort_limit=100, depth=5...
+ 48              3     55        0/70/0    82.54%      0.01
+ 
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       5893
+ Possibly detected                PT          0
+ Undetectable                     UD         16
+ ATPG untestable                  AU       1247
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              7156
+ test coverage                            82.54%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          48
+     #basic_scan patterns                    47
+     #fast_sequential patterns                1
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.02
+ -----------------------------------------------
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ 
+ ------------------------------------------------------------
+ Begin Full-Sequential ATPG for 1247 uncollapsed faults ...
+  --- abort limit : 100 backtracks, NO TIME LIMIT
+ ------------------------------------------------------------
+ #patterns  #faults        #ATPG faults  test       process  
+ stored     detect/active  red/au/abort  coverage   CPU time 
+ ---------  -------------  ------------  --------  ----------
+ 48                0      4       1/748/3     82.55%         0.22
+ 
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       5893
+ Possibly detected                PT          0
+ Undetectable                     UD         17
+ ATPG untestable                  AU       1242
+ Not detected                     ND          4
+ -----------------------------------------------
+ total faults                              7156
+ test coverage                            82.55%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          48
+     #basic_scan patterns                    47
+     #fast_sequential patterns                1
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.25
+ -----------------------------------------------
+ Write faults completed: 7156 faults were written into file "./faults/pll_based/TM1/stuck.flt".
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) generate required reports				#
+#		2) write test patterns					#
+#		3) write testbenches for pattern validation		#
+#		4) write images for post testing diagnosis		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 01 _ Generate ATPG Summaries and Reports
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}/${mode}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault}/${mode} }
+# reports setting
+set_faults -pt_credit 0 -au_credit 0
+set_faults -summary verbose -fault_coverage -report collapsed
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+set_patterns -histogram_summary
+set_faults -fault_coverage
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+# report coverage
+report_summaries >  ./reports/${occ_mode}/${fault}/${mode}/01_coverage.rpt
+# report drc violations
+report_violations -all >  ./reports/${occ_mode}/${fault}/${mode}/02_drc_violations.rpt
+# report not detected faults
+report_faults -class nd >  ./reports/${occ_mode}/${fault}/${mode}/03_nd_faults.rpt
+# report_clocks
+report_clocks -intclocks  >  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -pllclocks >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -matrix    >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+#------------------------------------------------------------------------
+# 02 _ Write Image File for Later Post_Testing Diagnosis
+#------------------------------------------------------------------------
+if { ! [file exist ./imgs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./imgs/${occ_mode}/${fault} }
+write_image ./imgs/${occ_mode}/${fault}/${top_design}_${mode}.img.gz 	-compress gzip -replace -violations 
+ End write image: #bytes=134550, CPU time=0.05 sec.
+#------------------------------------------------------------------------
+# 03 _ Write ATPG Patterns
+#------------------------------------------------------------------------
+if { ! [file exist ./patterns/${occ_mode}/${fault}/gzip] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/gzip }
+if { ! [file exist ./patterns/${occ_mode}/${fault}/stil] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/stil }
+write_patterns ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil  	-format stil -unified_stil_flow -replace
+ Patterns written reference 149 V statements, generating 7597 test cycles
+ End writing file 'async_fifo_TM1.stil' with 48 patterns, File_size = 57264, CPU_time = 0.0 sec.
+write_patterns ./patterns/${occ_mode}/${fault}/gzip/${top_design}_${mode}_pats.gz 	-format binary -compress gzip -replace
+ End writing file 'async_fifo_TM1_pats.gz' with 48 patterns, File_size = 3349, CPU_time = 0.0 sec.
+#------------------------------------------------------------------------
+# 04 _ Save simulation testbench
+#------------------------------------------------------------------------
+if {! [file exist ./max_sim/logs]} {exec mkdir -p ./max_sim/logs }
+if {! [file exist ./max_sim/parallel/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/parallel/${occ_mode}/${fault}/${mode} }
+if {! [file exist ./max_sim/serial/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/serial/${occ_mode}/${fault}/${mode} }
+# parallel simulation testbench 
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/parallel/${occ_mode}/${fault}/${mode}/pat_parallel_tb 	-parameter {-parallel -replace -log ./max_sim/logs/pat_parallel_tb.log} 
+ Executing 'stil2verilog'...
+# parallel simulation testbench with back annotated delay
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/serial/${occ_mode}/${fault}/${mode}/pat_serial_tb 	-parameter {-serial -replace 	-log ./max_sim/logs/pat_serial_tb.log -sdf_file ../pt/sdf/async_fifo.sdf} 
+ Executing 'stil2verilog'...
+ Warning: Internal pattern set is now deleted. (M133)
+ Warning: Current simulation model is now deleted. (M39)
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) read design and simualtion library			#
+#		2) build test model 					#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 00 _ Save TetraMax Transcript to Log File
+#------------------------------------------------------------------------
+if { $mode == {TM1} } { 
+
+if { ! [file exist ./logs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./logs/${occ_mode}/${fault} }
+
+set_messages -log ./logs/${occ_mode}/${fault}/tmax_atpg.log -replace  
+
+#------------------------------------------------------------------------
+# 01 _ Read Libraries and Design
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault} }
+
+read_netlist ../libs/mw_lib/tmax/libs.v.gz
+read_netlist ../syn/mapped_scan/${top_design}.v
+
+report_modules -undefined > ./reports/${occ_mode}/${fault}/01_read.rpt
+
+}
+#------------------------------------------------------------------------
+# 02 _ Build ATPG Design Model
+#------------------------------------------------------------------------
+run_build_model  $top_design
+ ------------------------------------------------------------------------------
+ Begin build model for topcut = async_fifo ...
+ ------------------------------------------------------------------------------
+ There were 2966 primitives and 2 faultable pins removed during model optimizations
+ Warning: Rule B7 (undriven module output pin) was violated 16 times.
+ Warning: Rule B8 (unconnected module input pin) was violated 10 times.
+ Warning: Rule B9 (undriven module internal net) was violated 12 times.
+ Warning: Rule B10 (unconnected module internal net) was violated 34 times.
+ End build model: #primitives=1607, CPU_time=0.02 sec, Memory=1MB
+ ------------------------------------------------------------------------------
+ Begin learning analyses...
+ End learning analyses, total learning CPU time=0.02 sec.
+ ------------------------------------------------------------------------------
+report_modules -summary >  ./reports/${occ_mode}/${fault}/02_build.rpt
+report_modules -errors  >> ./reports/${occ_mode}/${fault}/02_build.rpt
+ ------------------------------------------------------------------------------
+ Begin scan design rules checking...
+ ------------------------------------------------------------------------------
+ Begin reading test protocol file ./dftc_protocols/async_fifo_TM2.spf...
+ End parsing STIL file ./dftc_protocols/async_fifo_TM2.spf with 0 errors.
+ Test protocol file reading completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin simulating test protocol procedures...
+ Nonscan cell constant value results: #constant0 = 2, #constant1 = 2
+ Nonscan cell load value results    : #load0 = 4, #load1 = 2
+ Test protocol simulation completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin scan chain operation checking...
+ Chain 1 successfully traced with 8 scan_cells.
+ Chain 2 successfully traced with 8 scan_cells.
+ Chain 3 successfully traced with 153 scan_cells.
+ Chain 4 successfully traced with 24 scan_cells.
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Scan chain operation checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin clock rules checking...
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ Clock rules checking completed, CPU time=0.00 sec.
+ The following clocks were identified as groupable with clock wclk (0).
+    rclk (12)   ~wrst_n (1)   ~rrst_n (13)
+ Clock grouping results: #pairs=8, #groups=1, #serial_pairs=0, #disturbed_pairs=3, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin nonscan rules checking...
+ Nonscan cell summary: #DFF=22  #DLAT=6  #RAM_outs=0  tla_usage_type=hot_clock_tla
+ Nonscan behavior:  #C0=2  #C1=2  #TLA=1  #L0=2  #LE=20  #LS=1
+ Nonscan rules checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin DRC dependent learning...
+ Fast-sequential depth results: control=8(1568), observe=0(0), detect=0(0), CPU time=0.00 sec
+ DRC dependent learning completed, CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ DRC Summary Report
+ ------------------------------------------------------------------------------
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ There were 24 violations that occurred during DRC process.
+ 1 potential clock groups were identified.
+ Design rules checking was successful, total CPU time=0.02 sec.
+ ------------------------------------------------------------------------------
+ 354 faults were added to nofault list in module async_fifo_SCCOMP_DECOMPRESSOR.
+ 100 faults were added to nofault list in module async_fifo_SCCOMP_COMPRESSOR.
+ 5209 faults were added to fault list.
+ Warning: 89 invalid fault sites were ignored (first occ. at line 1). (M107)
+ 0 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 1187 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 0 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ ----------------------------------------------------------
+ #patterns     #faults     #ATPG faults  test      process
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin deterministic ATPG: #collapsed_faults=2387, abort_limit=100...
+ 32           1485    185         0/7/0    82.63%      0.05
+ Local redundancy analysis results: #redundant_faults=0, CPU_time=0.00 sec
+ 49            122      0        1/69/0    85.00%      0.06
+ 
+      Collapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       4414
+   detected_by_simulation         DS      (2794)
+   detected_by_implication        DI      (1620)
+ Possibly detected                PT          0
+ Undetectable                     UD         16
+   undetectable-tied              UT         (9)
+   undetectable-blocked           UB         (4)
+   undetectable-redundant         UR         (3)
+ ATPG untestable                  AU        653
+   atpg_untestable-not_detected   AN       (653)
+ Not detected                     ND        126
+   not-controlled                 NC       (126)
+ -----------------------------------------------
+ total faults                              5209
+ test coverage                            85.00%
+ fault coverage                           84.74%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          49
+     #basic_scan patterns                    49
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.07
+ -----------------------------------------------
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ ----------------------------------------------------------
+ #patterns     #faults     #ATPG faults  test      process
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin fast-seq ATPG: #collapsed_faults=126, abort_limit=100, depth=5...
+ 50              2     55        0/69/0    85.04%      0.00
+ 
+      Collapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       4416
+   detected_by_simulation         DS      (2796)
+   detected_by_implication        DI      (1620)
+ Possibly detected                PT          0
+ Undetectable                     UD         16
+   undetectable-tied              UT         (9)
+   undetectable-blocked           UB         (4)
+   undetectable-redundant         UR         (3)
+ ATPG untestable                  AU        777
+   atpg_untestable-not_detected   AN       (777)
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              5209
+ test coverage                            85.04%
+ fault coverage                           84.78%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          50
+     #basic_scan patterns                    49
+     #fast_sequential patterns                1
+          # 2-cycle patterns                  1
+          # 1-load patterns                   1
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.00
+ -----------------------------------------------
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ 
+ ------------------------------------------------------------
+ Begin Full-Sequential ATPG for 777 collapsed faults ...
+  --- abort limit : 100 backtracks, NO TIME LIMIT
+ ------------------------------------------------------------
+ #patterns  #faults        #ATPG faults  test       process  
+ stored     detect/active  red/au/abort  coverage   CPU time 
+ ---------  -------------  ------------  --------  ----------
+ 50                0      2       1/774/2     85.05%         0.28
+ 
+      Collapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       4416
+   detected_by_simulation         DS      (2796)
+   detected_by_implication        DI      (1620)
+ Possibly detected                PT          0
+ Undetectable                     UD         17
+   undetectable-tied              UT         (9)
+   undetectable-blocked           UB         (4)
+   undetectable-redundant         UR         (4)
+ ATPG untestable                  AU        774
+   atpg_untestable-not_detected   AN       (774)
+ Not detected                     ND          2
+   not-controlled                 NC         (2)
+ -----------------------------------------------
+ total faults                              5209
+ test coverage                            85.05%
+ fault coverage                           84.78%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          50
+     #basic_scan patterns                    49
+     #fast_sequential patterns                1
+          # 2-cycle patterns                  1
+          # 1-load patterns                   1
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.31
+ -----------------------------------------------
+ Write faults completed: 5209 faults were written into file "./faults/pll_based/TM2/stuck.flt".
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) generate required reports				#
+#		2) write test patterns					#
+#		3) write testbenches for pattern validation		#
+#		4) write images for post testing diagnosis		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 01 _ Generate ATPG Summaries and Reports
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}/${mode}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault}/${mode} }
+# reports setting
+set_faults -pt_credit 0 -au_credit 0
+set_faults -summary verbose -fault_coverage -report collapsed
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+set_patterns -histogram_summary
+set_faults -fault_coverage
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+# report coverage
+report_summaries >  ./reports/${occ_mode}/${fault}/${mode}/01_coverage.rpt
+# report drc violations
+report_violations -all >  ./reports/${occ_mode}/${fault}/${mode}/02_drc_violations.rpt
+# report not detected faults
+report_faults -class nd >  ./reports/${occ_mode}/${fault}/${mode}/03_nd_faults.rpt
+# report_clocks
+report_clocks -intclocks  >  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -pllclocks >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -matrix    >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+#------------------------------------------------------------------------
+# 02 _ Write Image File for Later Post_Testing Diagnosis
+#------------------------------------------------------------------------
+if { ! [file exist ./imgs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./imgs/${occ_mode}/${fault} }
+write_image ./imgs/${occ_mode}/${fault}/${top_design}_${mode}.img.gz 	-compress gzip -replace -violations 
+ End write image: #bytes=134599, CPU time=0.04 sec.
+#------------------------------------------------------------------------
+# 03 _ Write ATPG Patterns
+#------------------------------------------------------------------------
+if { ! [file exist ./patterns/${occ_mode}/${fault}/gzip] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/gzip }
+if { ! [file exist ./patterns/${occ_mode}/${fault}/stil] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/stil }
+write_patterns ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil  	-format stil -unified_stil_flow -replace
+ Patterns written reference 155 V statements, generating 7907 test cycles
+ End writing file 'async_fifo_TM2.stil' with 50 patterns, File_size = 58614, CPU_time = 0.0 sec.
+write_patterns ./patterns/${occ_mode}/${fault}/gzip/${top_design}_${mode}_pats.gz 	-format binary -compress gzip -replace
+ End writing file 'async_fifo_TM2_pats.gz' with 50 patterns, File_size = 3485, CPU_time = 0.0 sec.
+#------------------------------------------------------------------------
+# 04 _ Save simulation testbench
+#------------------------------------------------------------------------
+if {! [file exist ./max_sim/logs]} {exec mkdir -p ./max_sim/logs }
+if {! [file exist ./max_sim/parallel/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/parallel/${occ_mode}/${fault}/${mode} }
+if {! [file exist ./max_sim/serial/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/serial/${occ_mode}/${fault}/${mode} }
+# parallel simulation testbench 
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/parallel/${occ_mode}/${fault}/${mode}/pat_parallel_tb 	-parameter {-parallel -replace -log ./max_sim/logs/pat_parallel_tb.log} 
+ Executing 'stil2verilog'...
+# parallel simulation testbench with back annotated delay
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/serial/${occ_mode}/${fault}/${mode}/pat_serial_tb 	-parameter {-serial -replace 	-log ./max_sim/logs/pat_serial_tb.log -sdf_file ../pt/sdf/async_fifo.sdf} 
+ Executing 'stil2verilog'...
+ Warning: Internal pattern set is now deleted. (M133)
+ Warning: Current simulation model is now deleted. (M39)
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) read design and simualtion library			#
+#		2) build test model 					#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 00 _ Save TetraMax Transcript to Log File
+#------------------------------------------------------------------------
+if { $mode == {TM1} } { 
+
+if { ! [file exist ./logs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./logs/${occ_mode}/${fault} }
+
+set_messages -log ./logs/${occ_mode}/${fault}/tmax_atpg.log -replace  
+
+#------------------------------------------------------------------------
+# 01 _ Read Libraries and Design
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault} }
+
+read_netlist ../libs/mw_lib/tmax/libs.v.gz
+read_netlist ../syn/mapped_scan/${top_design}.v
+
+report_modules -undefined > ./reports/${occ_mode}/${fault}/01_read.rpt
+
+}
+#------------------------------------------------------------------------
+# 02 _ Build ATPG Design Model
+#------------------------------------------------------------------------
+run_build_model  $top_design
+ ------------------------------------------------------------------------------
+ Begin build model for topcut = async_fifo ...
+ ------------------------------------------------------------------------------
+ There were 2966 primitives and 2 faultable pins removed during model optimizations
+ Warning: Rule B7 (undriven module output pin) was violated 16 times.
+ Warning: Rule B8 (unconnected module input pin) was violated 10 times.
+ Warning: Rule B9 (undriven module internal net) was violated 12 times.
+ Warning: Rule B10 (unconnected module internal net) was violated 34 times.
+ End build model: #primitives=1607, CPU_time=0.02 sec, Memory=1MB
+ ------------------------------------------------------------------------------
+ Begin learning analyses...
+ End learning analyses, total learning CPU time=0.02 sec.
+ ------------------------------------------------------------------------------
+report_modules -summary >  ./reports/${occ_mode}/${fault}/02_build.rpt
+report_modules -errors  >> ./reports/${occ_mode}/${fault}/02_build.rpt
+ ------------------------------------------------------------------------------
+ Begin scan design rules checking...
+ ------------------------------------------------------------------------------
+ Begin reading test protocol file ./dftc_protocols/async_fifo_TM3.spf...
+ End parsing STIL file ./dftc_protocols/async_fifo_TM3.spf with 0 errors.
+ Test protocol file reading completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin simulating test protocol procedures...
+ Nonscan cell constant value results: #constant0 = 2, #constant1 = 2
+ Nonscan cell load value results    : #load0 = 4, #load1 = 2
+ Test protocol simulation completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin scan chain operation checking...
+ Chain 1 successfully traced with 193 scan_cells.
+ Warning: Rule S19 (nonscan cell disturb) was violated 22 times.
+ Warning: Rule S22 (multiply clocked scan chain) was violated 1 times.
+ Warning: Rule S29 (invalid dependent slave operation) was violated 1 times.
+ Scan chain operation checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin clock rules checking...
+ Clock rules checking completed, CPU time=0.00 sec.
+ The following clocks were identified as groupable with clock wclk (0).
+    rclk (12)   ~wrst_n (1)   ~rrst_n (13)
+ Clock grouping results: #pairs=8, #groups=1, #serial_pairs=0, #disturbed_pairs=3, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin nonscan rules checking...
+ Nonscan cell summary: #DFF=22  #DLAT=4  #RAM_outs=0  tla_usage_type=hot_clock_tla
+ Nonscan behavior:  #C0=2  #C1=2  #L0=2  #LE=20
+ Nonscan rules checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin DRC dependent learning...
+ Fast-sequential depth results: control=8(1568), observe=0(0), detect=2(930), CPU time=0.00 sec
+ DRC dependent learning completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ DRC Summary Report
+ ------------------------------------------------------------------------------
+ Warning: Rule S19 (nonscan cell disturb) was violated 22 times.
+ Warning: Rule S22 (multiply clocked scan chain) was violated 1 times.
+ Warning: Rule S29 (invalid dependent slave operation) was violated 1 times.
+ There were 24 violations that occurred during DRC process.
+ 1 potential clock groups were identified.
+ Design rules checking was successful, total CPU time=0.02 sec.
+ ------------------------------------------------------------------------------
+ 354 faults were added to nofault list in module async_fifo_SCCOMP_DECOMPRESSOR.
+ 100 faults were added to nofault list in module async_fifo_SCCOMP_COMPRESSOR.
+ 5209 faults were added to fault list.
+ Warning: 89 invalid fault sites were ignored (first occ. at line 1). (M107)
+ 0 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 1187 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 0 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ ----------------------------------------------------------
+ #patterns     #faults     #ATPG faults  test      process
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin deterministic ATPG: #collapsed_faults=2395, abort_limit=100...
+ 32           1507    164         0/7/0    82.90%      0.04
+ Local redundancy analysis results: #redundant_faults=0, CPU_time=0.00 sec
+ 50            114      0        1/56/0    85.11%      0.05
+ 
+      Collapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       4420
+   detected_by_simulation         DS      (2808)
+   detected_by_implication        DI      (1612)
+ Possibly detected                PT          0
+ Undetectable                     UD         16
+   undetectable-tied              UT         (9)
+   undetectable-blocked           UB         (4)
+   undetectable-redundant         UR         (3)
+ ATPG untestable                  AU        660
+   atpg_untestable-not_detected   AN       (660)
+ Not detected                     ND        113
+   not-controlled                 NC       (113)
+ -----------------------------------------------
+ total faults                              5209
+ test coverage                            85.11%
+ fault coverage                           84.85%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          50
+     #basic_scan patterns                    50
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.06
+ -----------------------------------------------
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ ----------------------------------------------------------
+ #patterns     #faults     #ATPG faults  test      process
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin fast-seq ATPG: #collapsed_faults=113, abort_limit=100, depth=5...
+ 
+      Collapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       4420
+   detected_by_simulation         DS      (2808)
+   detected_by_implication        DI      (1612)
+ Possibly detected                PT          0
+ Undetectable                     UD         16
+   undetectable-tied              UT         (9)
+   undetectable-blocked           UB         (4)
+   undetectable-redundant         UR         (3)
+ ATPG untestable                  AU        773
+   atpg_untestable-not_detected   AN       (773)
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              5209
+ test coverage                            85.11%
+ fault coverage                           84.85%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          50
+     #basic_scan patterns                    50
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.00
+ -----------------------------------------------
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ 
+ ------------------------------------------------------------
+ Begin Full-Sequential ATPG for 773 collapsed faults ...
+  --- abort limit : 100 backtracks, NO TIME LIMIT
+ ------------------------------------------------------------
+ #patterns  #faults        #ATPG faults  test       process  
+ stored     detect/active  red/au/abort  coverage   CPU time 
+ ---------  -------------  ------------  --------  ----------
+ 51                2    638       0/133/0     85.15%         0.15
+ 52                1    468       0/302/0     85.17%         0.27
+ 53                1    464       0/305/0     85.19%         0.35
+ 53                0      0       1/768/0     85.21%         0.46
+ 
+      Collapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       4424
+   detected_by_simulation         DS      (2812)
+   detected_by_implication        DI      (1612)
+ Possibly detected                PT          0
+ Undetectable                     UD         17
+   undetectable-tied              UT         (9)
+   undetectable-blocked           UB         (4)
+   undetectable-redundant         UR         (4)
+ ATPG untestable                  AU        768
+   atpg_untestable-not_detected   AN       (768)
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              5209
+ test coverage                            85.21%
+ fault coverage                           84.93%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          53
+     #basic_scan patterns                    50
+     #full_sequential patterns                3
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.49
+ -----------------------------------------------
+ Write faults completed: 5209 faults were written into file "./faults/pll_based/TM3/stuck.flt".
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) generate required reports				#
+#		2) write test patterns					#
+#		3) write testbenches for pattern validation		#
+#		4) write images for post testing diagnosis		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 01 _ Generate ATPG Summaries and Reports
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}/${mode}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault}/${mode} }
+# reports setting
+set_faults -pt_credit 0 -au_credit 0
+set_faults -summary verbose -fault_coverage -report collapsed
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+set_patterns -histogram_summary
+set_faults -fault_coverage
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+# report coverage
+report_summaries >  ./reports/${occ_mode}/${fault}/${mode}/01_coverage.rpt
+# report drc violations
+report_violations -all >  ./reports/${occ_mode}/${fault}/${mode}/02_drc_violations.rpt
+# report not detected faults
+report_faults -class nd >  ./reports/${occ_mode}/${fault}/${mode}/03_nd_faults.rpt
+# report_clocks
+report_clocks -intclocks  >  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -pllclocks >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -matrix    >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+#------------------------------------------------------------------------
+# 02 _ Write Image File for Later Post_Testing Diagnosis
+#------------------------------------------------------------------------
+if { ! [file exist ./imgs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./imgs/${occ_mode}/${fault} }
+write_image ./imgs/${occ_mode}/${fault}/${top_design}_${mode}.img.gz 	-compress gzip -replace -violations 
+ End write image: #bytes=134568, CPU time=0.04 sec.
+#------------------------------------------------------------------------
+# 03 _ Write ATPG Patterns
+#------------------------------------------------------------------------
+if { ! [file exist ./patterns/${occ_mode}/${fault}/gzip] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/gzip }
+if { ! [file exist ./patterns/${occ_mode}/${fault}/stil] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/stil }
+write_patterns ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil  	-format stil -unified_stil_flow -replace
+ Patterns written reference 167 V statements, generating 10535 test cycles
+ End writing file 'async_fifo_TM3.stil' with 53 patterns, File_size = 55061, CPU_time = 0.0 sec.
+write_patterns ./patterns/${occ_mode}/${fault}/gzip/${top_design}_${mode}_pats.gz 	-format binary -compress gzip -replace
+ End writing file 'async_fifo_TM3_pats.gz' with 53 patterns, File_size = 3941, CPU_time = 0.0 sec.
+#------------------------------------------------------------------------
+# 04 _ Save simulation testbench
+#------------------------------------------------------------------------
+if {! [file exist ./max_sim/logs]} {exec mkdir -p ./max_sim/logs }
+if {! [file exist ./max_sim/parallel/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/parallel/${occ_mode}/${fault}/${mode} }
+if {! [file exist ./max_sim/serial/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/serial/${occ_mode}/${fault}/${mode} }
+# parallel simulation testbench 
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/parallel/${occ_mode}/${fault}/${mode}/pat_parallel_tb 	-parameter {-parallel -replace -log ./max_sim/logs/pat_parallel_tb.log} 
+ Executing 'stil2verilog'...
+# parallel simulation testbench with back annotated delay
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/serial/${occ_mode}/${fault}/${mode}/pat_serial_tb 	-parameter {-serial -replace 	-log ./max_sim/logs/pat_serial_tb.log -sdf_file ../pt/sdf/async_fifo.sdf} 
+ Executing 'stil2verilog'...
+ Warning: Internal pattern set is now deleted. (M133)
+ Warning: Current simulation model is now deleted. (M39)
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) read design and simualtion library			#
+#		2) build test model 					#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 00 _ Save TetraMax Transcript to Log File
+#------------------------------------------------------------------------
+if { $mode == {TM1} } { 
+
+if { ! [file exist ./logs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./logs/${occ_mode}/${fault} }
+
+set_messages -log ./logs/${occ_mode}/${fault}/tmax_atpg.log -replace  
+
+#------------------------------------------------------------------------
+# 01 _ Read Libraries and Design
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault} }
+
+read_netlist ../libs/mw_lib/tmax/libs.v.gz
+read_netlist ../syn/mapped_scan/${top_design}.v
+
+report_modules -undefined > ./reports/${occ_mode}/${fault}/01_read.rpt
+
+}
+#------------------------------------------------------------------------
+# 02 _ Build ATPG Design Model
+#------------------------------------------------------------------------
+run_build_model  $top_design
+ ------------------------------------------------------------------------------
+ Begin build model for topcut = async_fifo ...
+ ------------------------------------------------------------------------------
+ There were 2966 primitives and 2 faultable pins removed during model optimizations
+ Warning: Rule B7 (undriven module output pin) was violated 16 times.
+ Warning: Rule B8 (unconnected module input pin) was violated 10 times.
+ Warning: Rule B9 (undriven module internal net) was violated 12 times.
+ Warning: Rule B10 (unconnected module internal net) was violated 34 times.
+ End build model: #primitives=1607, CPU_time=0.03 sec, Memory=1MB
+ ------------------------------------------------------------------------------
+ Begin learning analyses...
+ End learning analyses, total learning CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+report_modules -summary >  ./reports/${occ_mode}/${fault}/02_build.rpt
+report_modules -errors  >> ./reports/${occ_mode}/${fault}/02_build.rpt
+ ------------------------------------------------------------------------------
+ Begin scan design rules checking...
+ ------------------------------------------------------------------------------
+ Begin reading test protocol file ./dftc_protocols/async_fifo_TM4.spf...
+ Warning: Rule V6 (unused item) was violated 1 times.
+ End parsing STIL file ./dftc_protocols/async_fifo_TM4.spf with 0 errors.
+ Test protocol file reading completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin simulating test protocol procedures...
+ Nonscan cell constant value results: #constant0 = 2, #constant1 = 2
+ Nonscan cell load value results    : #load0 = 4, #load1 = 2
+ Test protocol simulation completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin compressor chain I/O checking: #undefined_io=48 ...
+ End compressor chain output checking: #resolved=0, #ambiguous=24, #failed=0, #undefined_inputs=24
+ Begin scan chain operation checking...
+ Chain 1 successfully traced with 8 scan_cells.
+ Chain 2 successfully traced with 8 scan_cells.
+ Chain 3 successfully traced with 9 scan_cells.
+ Chain 4 successfully traced with 8 scan_cells.
+ Chain 5 successfully traced with 8 scan_cells.
+ Chain 6 successfully traced with 8 scan_cells.
+ Chain 7 successfully traced with 8 scan_cells.
+ Chain 8 successfully traced with 8 scan_cells.
+ Chain 9 successfully traced with 8 scan_cells.
+ Chain 10 successfully traced with 8 scan_cells.
+ Chain 11 successfully traced with 8 scan_cells.
+ Chain 12 successfully traced with 8 scan_cells.
+ Chain 13 successfully traced with 8 scan_cells.
+ Chain 14 successfully traced with 8 scan_cells.
+ Chain 15 successfully traced with 8 scan_cells.
+ Chain 16 successfully traced with 8 scan_cells.
+ Chain 17 successfully traced with 8 scan_cells.
+ Chain 18 successfully traced with 8 scan_cells.
+ Chain 19 successfully traced with 8 scan_cells.
+ Chain 20 successfully traced with 8 scan_cells.
+ Chain 21 successfully traced with 8 scan_cells.
+ Chain 22 successfully traced with 8 scan_cells.
+ Chain 23 successfully traced with 8 scan_cells.
+ Chain 24 successfully traced with 8 scan_cells.
+ End ambiguous chain resolution: #resolved=24, #ambiguous=0, #failed=0
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Scan chain operation checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin clock rules checking...
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ Clock rules checking completed, CPU time=0.00 sec.
+ The following clocks were identified as groupable with clock wclk (0).
+    rclk (12)   ~wrst_n (1)   ~rrst_n (13)
+ Clock grouping results: #pairs=8, #groups=1, #serial_pairs=0, #disturbed_pairs=3, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin nonscan rules checking...
+ Nonscan cell summary: #DFF=22  #DLAT=6  #RAM_outs=0  tla_usage_type=hot_clock_tla
+ Nonscan behavior:  #C0=2  #C1=2  #TLA=1  #L0=2  #LE=20  #LS=1
+ Nonscan rules checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin compressor rules checking...
+ Warning: Rule R10 (two chains always have the same unload signature) was violated 36 times.
+ Warning: Rule R11 (X on chain affects observability of other chains) was violated 136 times.
+ Compressor rules checking completed: #chains=24, #scanins=4, #scanouts=4, #shifts=10, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin DRC dependent learning...
+ Fast-sequential depth results: control=8(1568), observe=0(0), detect=0(0), CPU time=0.00 sec
+ DRC dependent learning completed, CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ DRC Summary Report
+ ------------------------------------------------------------------------------
+ Warning: Rule V6 (unused item) was violated 1 times.
+ Warning: Rule S19 (nonscan cell disturb) was violated 23 times.
+ Warning: Rule C3 (no latch transparency when clocks off) was violated 1 times.
+ Warning: Rule R10 (two chains always have the same unload signature) was violated 36 times.
+ Warning: Rule R11 (X on chain affects observability of other chains) was violated 136 times.
+ There were 197 violations that occurred during DRC process.
+ 1 potential clock groups were identified.
+ Design rules checking was successful, total CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ 5495 faults were added to fault list.
+ Warning: 89 invalid fault sites were ignored (first occ. at line 1). (M107)
+ 0 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 1030 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 1 stuck faults were changed to DS from the inactive transition fault list.
+ 0 stuck faults were changed to DI from the inactive transition fault list.
+ 0 stuck faults were changed to NP from the inactive transition fault list.
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ ----------------------------------------------------------
+ #patterns     #faults     #ATPG faults  test      process
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin deterministic ATPG: #collapsed_faults=2517, abort_limit=100...
+ 32           1604    228         0/0/0    83.34%      0.06
+ 61            163     47        1/17/0    86.33%      0.07
+ Local redundancy analysis results: #redundant_faults=0, CPU_time=0.00 sec
+ Compressor unload adjustment completed: #patterns_adjusted=61, #patterns_added=1, CPU time=0.00 sec.
+ 
+      Collapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       4730
+   detected_by_simulation         DS      (2798)
+   detected_by_implication        DI      (1932)
+ Possibly detected                PT          1
+   not_analyzed-pos_detected      NP         (1)
+ Undetectable                     UD         16
+   undetectable-tied              UT         (9)
+   undetectable-blocked           UB         (4)
+   undetectable-redundant         UR         (3)
+ ATPG untestable                  AU        628
+   atpg_untestable-not_detected   AN       (628)
+ Not detected                     ND        120
+   not-controlled                 NC        (80)
+   not-observed                   NO        (40)
+ -----------------------------------------------
+ total faults                              5495
+ test coverage                            86.33%
+ fault coverage                           86.08%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          62
+     #basic_scan patterns                    62
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.08
+ -----------------------------------------------
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ ----------------------------------------------------------
+ #patterns     #faults     #ATPG faults  test      process
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin fast-seq ATPG: #collapsed_faults=121, abort_limit=100, depth=5...
+ 63              4     54        0/63/0    86.40%      0.01
+ 64              6     48        0/63/0    86.51%      0.01
+ 65              1     47        0/63/0    86.53%      0.01
+ 66              5     42        0/63/0    86.62%      0.01
+ 67              1     41        0/63/0    86.64%      0.01
+ 68              1     40        0/63/0    86.66%      0.01
+ 69              1     39        0/63/0    86.68%      0.01
+ 70              1     38        0/63/0    86.69%      0.01
+ 71              5     33        0/63/0    86.79%      0.01
+ 72              5     28        0/63/0    86.88%      0.01
+ 73              1     27        0/63/0    86.90%      0.01
+ 74              1     26        0/63/0    86.91%      0.01
+ 75              1     24        0/64/0    86.93%      0.02
+ Compressor unload adjustment completed: #patterns_adjusted=13, #patterns_added=1, CPU time=0.00 sec.
+ 
+      Collapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       4763
+   detected_by_simulation         DS      (2831)
+   detected_by_implication        DI      (1932)
+ Possibly detected                PT          0
+ Undetectable                     UD         16
+   undetectable-tied              UT         (9)
+   undetectable-blocked           UB         (4)
+   undetectable-redundant         UR         (3)
+ ATPG untestable                  AU        701
+   atpg_untestable-not_detected   AN       (701)
+ Not detected                     ND         15
+   not-observed                   NO        (15)
+ -----------------------------------------------
+ total faults                              5495
+ test coverage                            86.93%
+ fault coverage                           86.68%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          76
+     #basic_scan patterns                    62
+     #fast_sequential patterns               14
+          # 2-cycle patterns                 14
+          # 1-load patterns                  14
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.02
+ -----------------------------------------------
+ 
+ ATPG performed for stuck fault model using internal pattern source.
+ Compressor unload adjustment completed: #patterns_adjusted=0, #patterns_added=0, CPU time=0.00 sec.
+ 
+ ------------------------------------------------------------
+ Begin Full-Sequential ATPG for 716 collapsed faults ...
+  --- abort limit : 100 backtracks, NO TIME LIMIT
+ ------------------------------------------------------------
+ #patterns  #faults        #ATPG faults  test       process  
+ stored     detect/active  red/au/abort  coverage   CPU time 
+ ---------  -------------  ------------  --------  ----------
+ 77                4    547       0/165/0     87.00%         0.05
+ 78                2    540       0/170/0     87.04%         0.07
+ 79                6    494       0/210/0     87.15%         0.09
+ 80                1    391       1/311/0     87.19%         0.13
+ 81                1    390       1/311/0     87.20%         0.13
+ 82                1    384       1/316/0     87.22%         0.15
+ 83                0      0       1/700/0     87.22%         0.23
+ 
+      Collapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT       4778
+   detected_by_simulation         DS      (2846)
+   detected_by_implication        DI      (1932)
+ Possibly detected                PT          0
+ Undetectable                     UD         17
+   undetectable-tied              UT         (9)
+   undetectable-blocked           UB         (4)
+   undetectable-redundant         UR         (4)
+ ATPG untestable                  AU        700
+   atpg_untestable-not_detected   AN       (700)
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                              5495
+ test coverage                            87.22%
+ fault coverage                           86.95%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                          83
+     #basic_scan patterns                    62
+     #fast_sequential patterns               14
+          # 2-cycle patterns                 14
+          # 1-load patterns                  14
+     #full_sequential patterns                7
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                            0.26
+ -----------------------------------------------
+ Write faults completed: 5495 faults were written into file "./faults/pll_based/TM4/stuck.flt".
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#									#
+#		*** common script for all faults ***			#
+#		1) generate required reports				#
+#		2) write test patterns					#
+#		3) write testbenches for pattern validation		#
+#		4) write images for post testing diagnosis		#
+#									#
+#-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-<-->-#
+#------------------------------------------------------------------------
+# 01 _ Generate ATPG Summaries and Reports
+#------------------------------------------------------------------------
+if { ! [file exist ./reports/${occ_mode}/${fault}/${mode}] } 	{ exec mkdir -p ./reports/${occ_mode}/${fault}/${mode} }
+# reports setting
+set_faults -pt_credit 0 -au_credit 0
+set_faults -summary verbose -fault_coverage -report collapsed
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+set_patterns -histogram_summary
+set_faults -fault_coverage
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+# report coverage
+report_summaries >  ./reports/${occ_mode}/${fault}/${mode}/01_coverage.rpt
+# report drc violations
+report_violations -all >  ./reports/${occ_mode}/${fault}/${mode}/02_drc_violations.rpt
+# report not detected faults
+report_faults -class nd >  ./reports/${occ_mode}/${fault}/${mode}/03_nd_faults.rpt
+# report_clocks
+report_clocks -intclocks  >  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -pllclocks >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+report_clocks -matrix    >>  ./reports/${occ_mode}/${fault}/${mode}/clocks.rpt
+#------------------------------------------------------------------------
+# 02 _ Write Image File for Later Post_Testing Diagnosis
+#------------------------------------------------------------------------
+if { ! [file exist ./imgs/${occ_mode}/${fault}] } 	{ exec mkdir -p ./imgs/${occ_mode}/${fault} }
+write_image ./imgs/${occ_mode}/${fault}/${top_design}_${mode}.img.gz 	-compress gzip -replace -violations 
+ End write image: #bytes=136560, CPU time=0.04 sec.
+#------------------------------------------------------------------------
+# 03 _ Write ATPG Patterns
+#------------------------------------------------------------------------
+if { ! [file exist ./patterns/${occ_mode}/${fault}/gzip] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/gzip }
+if { ! [file exist ./patterns/${occ_mode}/${fault}/stil] } { exec mkdir -p ./patterns/${occ_mode}/${fault}/stil }
+write_patterns ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil  	-format stil -unified_stil_flow -replace
+ Patterns written reference 267 V statements, generating 1023 test cycles
+ End writing file 'async_fifo_TM4.stil' with 83 patterns, File_size = 66106, CPU_time = 0.0 sec.
+write_patterns ./patterns/${occ_mode}/${fault}/gzip/${top_design}_${mode}_pats.gz 	-format binary -compress gzip -replace
+ End writing file 'async_fifo_TM4_pats.gz' with 83 patterns, File_size = 3265, CPU_time = 0.0 sec.
+#------------------------------------------------------------------------
+# 04 _ Save simulation testbench
+#------------------------------------------------------------------------
+if {! [file exist ./max_sim/logs]} {exec mkdir -p ./max_sim/logs }
+if {! [file exist ./max_sim/parallel/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/parallel/${occ_mode}/${fault}/${mode} }
+if {! [file exist ./max_sim/serial/${occ_mode}/${fault}/${mode}]} 	{exec mkdir -p ./max_sim/serial/${occ_mode}/${fault}/${mode} }
+# parallel simulation testbench 
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/parallel/${occ_mode}/${fault}/${mode}/pat_parallel_tb 	-parameter {-parallel -replace -log ./max_sim/logs/pat_parallel_tb.log} 
+ Executing 'stil2verilog'...
+# parallel simulation testbench with back annotated delay
+write_testbench -input ./patterns/${occ_mode}/${fault}/stil/${top_design}_${mode}.stil 	-output ./max_sim/serial/${occ_mode}/${fault}/${mode}/pat_serial_tb 	-parameter {-serial -replace 	-log ./max_sim/logs/pat_serial_tb.log -sdf_file ../pt/sdf/async_fifo.sdf} 
+ Executing 'stil2verilog'...
+ Warning: Internal pattern set is now deleted. (M133)
+ Warning: Current simulation model is now deleted. (M39)
+exit

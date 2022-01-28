@@ -24,12 +24,6 @@ source -e ./scripts/00_build.tcl
 #------------------------------------------------------------------------
 set_drc ./${occ_mode}_protocols/${top_design}_${mode}.spf
 
-# constrain signals to certain values during capture
-add_pi_constraints 1 ren
-add_pi_constraints 1 wen
-add_pi_constraints 0 rptr_clr
-add_pi_constraints 0 wptr_clr
-
 # avoid pattern simulation failure
 set_drc -nodslave_remodel -noreclassify_invalid_dslaves
 

@@ -1,0 +1,4 @@
+ sa0   NC   test_mode
+ sa0   NC   pll_bypass
+ sa1   NC   async_fifo_DW_decoder_inst_U7/ZN
+ sa1   NC   U224/Z
