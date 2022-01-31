@@ -6,7 +6,7 @@ Sep 2021 - Present
 - Lint and CDC Checks.
 - Complete timing constraints in the form of SDC
 - Logic Synthesis using Controlled Optimization Techniques.
-- Multi-mode DFT Architecture, Test Protocols , on-chip clock controller.
+- Multi-mode DFT Architectures, on-chip clock controller, Test Protocol.
 - Logic Equivalence Checking.
 - ATPG for " Stuck-At Transition Small-Delay-Defects Path_Delay IDDQ " fault models.
 - Patterns Validation with SDF back annotated delay.
