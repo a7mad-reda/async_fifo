@@ -7,6 +7,7 @@ Sep 2021 - Present
 - Complete timing constraints in the form of SDC
 - Logic Synthesis using Controlled Optimization Techniques.
 - Multi-mode DFT Architectures, on-chip clock controller, Scan Compression.
+    => 3 Basic Scan Modes - 1 Compression Scan Mode.
 - Logic Equivalence Checking.
 - ATPG for " Stuck-At Transition Small-Delay-Defects Path_Delay IDDQ " fault models.
 - Patterns Validation with SDF back annotated delay.
