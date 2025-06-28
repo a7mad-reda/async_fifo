@@ -150,7 +150,7 @@ verdi_cov: cov_rpt
 clean:
 	#	remove all except
 	find -maxdepth 1 ! -name 'Makefile'        \
-	! -name 'cov' ! -name 'testbench'          \
+	! -name 'cov' ! -name 'sva' ! -name 'testbench'          \
 	! -name '.' ! -name '..' -exec rm -rf {} +
 
 
