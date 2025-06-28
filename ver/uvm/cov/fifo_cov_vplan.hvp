@@ -1,0 +1,82 @@
+
+plan FIFO_VPLAN;
+
+
+    description = "";
+    feature Basic;
+        feature Reset;
+            measure Group Write_Reset;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.vif.wrst_n";
+            endmeasure
+            measure Group Read_Reset;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_rd_cov.vif.rrst_n";
+            endmeasure
+        endfeature
+        feature "Combinations of Reads & Writes";
+            measure Group Cross_cov_Wr_Rd;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.fifo_wr_cov_cc_0";
+            endmeasure
+        endfeature
+        feature "Write flags";
+            measure Group Near_full;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.vif.near_full";
+            endmeasure
+            measure Group Full;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.vif.full";
+            endmeasure
+        endfeature
+        feature "Read flags";
+            measure Group Near_empty;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_rd_cov.vif.near_empty";
+            endmeasure
+            measure Group Empty;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_rd_cov.vif.empty";
+            endmeasure
+        endfeature
+    endfeature
+    feature Advanced;
+        weight = 5;
+        feature "Negative Scenarios";
+            measure Group Underflow;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_rd_cov.vif.under_flow";
+            endmeasure
+            measure Group Overflow;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.vif.over_flow";
+            endmeasure
+        endfeature
+        feature "State Transitions";
+            measure Group Empty_NearEmpty_transitions;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_rd_cov.{vif.near_empty, vif.empty}";
+            endmeasure
+            measure Group Full_NearFull_transitions;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.{vif.near_full, vif.full}";
+            endmeasure
+            measure Group Full_Empty_Flags_transitions;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.fifo_state";
+            endmeasure
+        endfeature
+        feature "State repetition";
+            measure Group Near_empty_repetition;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_rd_cov.ne_rep_cov";
+            endmeasure
+            measure Group Near_full_repetition;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.nf_rep_cov";
+            endmeasure
+        endfeature
+        feature "Configured Margins";
+            measure Group Empty_Margins_Min_Max;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.cov_empty_mrgn_bounds";
+            endmeasure
+            measure Group Full_Margins_Min_Max;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.cov_full_mrgn_bounds";
+            endmeasure
+            measure Group Full_Margins_hot_range;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.cov_full_mrgn_range";
+            endmeasure
+            measure Group Cross_Margins_Full_Empty;
+                source = "group: fifo_env_pkg::fifo_scoreboard::fifo_wr_cov.cross_mrgn";
+            endmeasure
+        endfeature
+    endfeature
+endplan
+

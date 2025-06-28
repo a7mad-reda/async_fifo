@@ -1,0 +1,4 @@
+// Compile only the Dut and the instances under it for coverage
+// More options in VCS coverage metrics guide
++tree async_fifo_test_top.u_reg 0
++tree async_fifo_test_top.dut 0

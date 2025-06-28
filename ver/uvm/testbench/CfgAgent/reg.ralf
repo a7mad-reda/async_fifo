@@ -1,0 +1,109 @@
+# This file contains the DUT registers
+
+register CLEAR {
+  field WPTR_CLR {
+    bits 1;
+    access rw;
+    reset 'h0;
+  }
+  field RSVD_7_1 {
+    bits 7;
+    access ro;
+    reset 'h00;
+  }
+  field RPTR_CLR {
+    bits 1;
+    access rw;
+    reset 'h0;
+  }
+  field RSVD_15_9 {
+    bits 7;
+    access ro;
+    reset 'h00;
+  }
+}
+
+register WPTR {
+  field FULL_MRGN {
+    bits 4;
+    access rw;
+    reset 'h4;
+  }
+  field RSVD_15_4 {
+    bits 12;
+    access ro;
+    reset 'h000;
+  }
+}
+
+register RPTR {
+  field EMPTY_MRGN {
+    bits 4;
+    access rw;
+    reset 'h4;
+  }
+  field RSVD_15_4 {
+    bits 12;
+    access ro;
+    reset 'h000;
+  }
+}
+
+register WR_STATUS {
+  field OVERFLOW {
+    bits 1;
+    access ro;
+    reset 'h0;
+  }
+  field NEAR_FULL {
+    bits 1;
+    access ro;
+    reset 'h0;
+  }
+  field FULL {
+    bits 1;
+    access ro;
+    reset 'h0;
+  }
+  field RSVD_15_3 {
+    bits 13;
+    access ro;
+    reset 'h0000;
+  }
+}
+
+register RD_STATUS {
+  field UNDERFLOW {
+    bits 1;
+    access ro;
+    reset 'h0;
+  }
+  field NEAR_EMPTY {
+    bits 1;
+    access ro;
+    reset 'h0;
+  }
+  field EMPTY {
+    bits 1;
+    access ro;
+    reset 'h1;
+  }
+  field RSVD_15_3 {
+    bits 13;
+    access ro;
+    reset 'h0000;
+  }
+}
+
+#
+# The block level declaration is done for you.  This include the hdl_path name for
+# the signals in the DUT.  Later on, the hdl_path will be in RAL backdoor access.
+#
+block dut_regmodel {
+  bytes 2;
+  register CLEAR         (u_reg.r_data[0])   @'h0;
+  register WPTR          (u_reg.r_data[1])   @'h1;
+  register RPTR          (u_reg.r_data[2])   @'h2;
+  register WR_STATUS     (u_reg.r_data[3])   @'h3;
+  register RD_STATUS     (u_reg.r_data[4])   @'h4;
+}
