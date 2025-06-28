@@ -2,7 +2,8 @@
 Sep 2021 - Present
 
 - Design: Modular, Parameterizable, and Configurable flags at runtime.
-- Testbench: 3 modes of testing, uncorrelated clocks, and random inputs.
+- Simple Testbench: 3 modes of testing, uncorrelated clocks, and random inputs.
+- UVM based TB: Complete environment, Callbacks, Virtual sequences, SVA, RAL, and Coverage.
 - Lint and CDC Checks.
 - Complete timing constraints in the form of SDC
 - Logic Synthesis using Controlled Optimization Techniques.
